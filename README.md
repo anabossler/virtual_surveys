@@ -41,6 +41,7 @@ The pipeline follows the structure described in the paper:
 * **schema_extractor.py** — schema construction from CIS data
 * **ingest_pdf.py** — extraction of prior information from literature
 * **app_gradio.py** — interactive interface (ASAP v6)
+* **run_k_sensitivity_pipeline.sh** — K-bin sensitivity (K ∈ {3, 5, 7}) over the full pipeline → `k_sensitivity_results/resumen.csv`
 
 ---
 
