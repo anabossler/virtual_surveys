@@ -1,6 +1,4 @@
 """
-run_lambda_sensitivity.py
--------------------------
 Sensitivity analysis of the BVS framework to the heterogeneity discount
 parameter lambda (lambda in {0, 0.5, 1.0, 2.0}).
 
