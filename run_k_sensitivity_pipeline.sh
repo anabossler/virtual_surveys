@@ -1,4 +1,4 @@
-#!/bin/bash
+
 # Analisis de sensibilidad al numero de bins (K)
 # Ejecuta el pipeline completo para K en {3, 5, 7}
 # Uso: bash run_k_sensitivity_pipeline.sh
