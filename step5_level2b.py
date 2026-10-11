@@ -453,12 +453,12 @@ def level3b_subsample(df_disc: pd.DataFrame,
 
     sys.path.insert(0, BASE)
     try:
-        from step4_improved import (
+        from step4 import (
             DirichletBDeuCPD, MC3DAGEnsemble, Sampler,
             generate_martins, Config, HARM_TO_CIS,
         )
     except ImportError as exc:
-        print(f"  Cannot import step4_improved: {exc}")
+        print(f"  Cannot import step4: {exc}")
         return []
 
     df_full = df_disc[common_cols].dropna().reset_index(drop=True)
@@ -750,7 +750,7 @@ def main() -> None:
         set(df_s1.columns) & set(df_s2.columns) - {"_draw", "Unnamed: 0"}
     )
     sys.path.insert(0, BASE)
-    from step4_improved import load_cis_microdata, discretise, Config
+    from step4 import load_cis_microdata, discretise, Config
     cfg_tmp  = Config()
     df_clean = load_cis_microdata(cfg_tmp)
     df_disc, binfo = discretise(df_clean)

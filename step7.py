@@ -100,7 +100,7 @@ def run_held_out_experiment():
     """
     base = _base()
     sys.path.insert(0, base)
-    from step4_improved import (
+    from step4 import (
         Config,
         load_cis_microdata,
         load_dag_structure,

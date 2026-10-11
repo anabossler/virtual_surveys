@@ -291,12 +291,12 @@ def level3b_subsample(df_orig_disc, binfo, fused_priors,
 
     sys.path.insert(0, BASE)
     try:
-        from step4_improved import (
+        from step4 import (
             DirichletBDeuCPD, MC3DAGEnsemble, Sampler,
             generate_martins, Config, HARM_TO_CIS
         )
     except ImportError as e:
-        print(f"  Cannot import step4_improved: {e}")
+        print(f"  Cannot import step4: {e}")
         return []
 
     df_full = df_orig_disc[common].dropna().reset_index(drop=True)
@@ -519,11 +519,11 @@ def main():
     print(f"\n  Discretising CIS to match synthetic encoding...")
     if binfo:
         sys.path.insert(0, BASE)
-        from step4_improved import discretise
+        from step4 import discretise
         df_disc, binfo_full = discretise(df_raw.copy())
         binfo = binfo_full
     else:
-        from step4_improved import discretise
+        from step4 import discretise
         df_disc, binfo = discretise(df_raw.copy())
 
     common = sorted(set(common_all) & set(df_disc.columns))
