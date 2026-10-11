@@ -282,6 +282,9 @@ def discretise(df, n_bins=5):
     dd = pd.DataFrame(cols, index=df.index)
     for c in dd.columns:
         dd[c] = pd.to_numeric(dd[c], errors='coerce')
+    # Columns with no valid value cannot be discretised (e.g. empty weights).
+    dd = dd.dropna(axis=1, how='all')
+    binfo = {c: binfo[c] for c in dd.columns}
     dd = dd.fillna(dd.mode().iloc[0]).astype(int)
     for c in dd.columns:
         K = binfo.get(c, {}).get('K', 2)
