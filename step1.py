@@ -35,6 +35,9 @@ from pgmpy.models import BayesianNetwork
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Random seed for structure learning; override with the BVS_SEED environment variable.
+SEED = int(os.environ.get("BVS_SEED", "42"))
 PATH_NUM = os.path.join(BASE_DIR, "metadata", "3391_num.csv")
 
 # CIS survey missing-value codes (numeric and string variants)
@@ -1252,7 +1255,7 @@ if __name__ == "__main__":
         gamma = calibrate_gamma(
             df_disc, block_vars, ess=10.0, max_indegree=3,
             gammas=[0, 2, 5, 10, 15, 20],
-            n_folds=3, seed=42, forbidden=fb
+            n_folds=3, seed=SEED, forbidden=fb
         )
         block_gammas[block_name] = gamma
 
@@ -1268,7 +1271,7 @@ if __name__ == "__main__":
             n_iter=n_iter,
             burn_in=burn_in,
             lag=lag,
-            seed=42,
+            seed=SEED,
             forbidden=fb
         )
 
@@ -1280,7 +1283,7 @@ if __name__ == "__main__":
     inter_edge_probs, inter_retained = bootstrap_interblock(
         df_disc, inter_candidates,
         ess=10.0, max_indegree=2,
-        n_bootstrap=50, threshold=0.8, seed=42
+        n_bootstrap=50, threshold=0.8, seed=SEED
     )
 
     all_vars = sorted(df_disc.columns)

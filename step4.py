@@ -45,6 +45,9 @@ class Config:
     SEED            = 42
     ESS             = 10.0
     N_BINS          = 5
+    # Survey weight used for the conditional tables (structure is learned
+    # unweighted). Stored with a decimal comma in the CIS file. None disables.
+    WEIGHT_COLUMN   = "PESOFIN"
     OUTDIR          = os.path.join(BASE_DIR, "step4_output")
     MISSING_CODES   = {96, 97, 98, 99, 996, 997, 998, 999,
                        9996, 9997, 9998, 9999}
@@ -112,6 +115,21 @@ def load_cis_microdata(cfg):
     df = df.dropna(thresh=int(len(df.columns) * 0.4))
     print(f"      {df.shape[0]} obs x {df.shape[1]} vars")
     return df
+
+
+def load_survey_weights(cfg, index):
+    """Survey weights aligned to the retained rows, normalised to sum to n."""
+    if not cfg.WEIGHT_COLUMN:
+        return None
+    raw = pd.read_csv(cfg.PATH_CIS, sep=";", encoding="latin1", low_memory=False,
+                      usecols=[cfg.WEIGHT_COLUMN])[cfg.WEIGHT_COLUMN]
+    weights = pd.to_numeric(raw.astype(str).str.replace(",", "."), errors="raise")
+    weights = np.array(weights.loc[index], dtype=float)
+    weights *= len(weights) / weights.sum()
+    deff = len(weights) * np.sum(weights ** 2) / np.sum(weights) ** 2
+    print(f"      Weights {cfg.WEIGHT_COLUMN}: range {weights.min():.2f}-{weights.max():.2f}, "
+          f"Kish deff {deff:.3f}, effective n {len(weights) / deff:.0f}")
+    return weights
 
 
 def load_cis_level_mappings(cfg):
@@ -297,8 +315,10 @@ def discretise(df, n_bins=5):
 # 3. DIRICHLET-BDeu CPD ENGINE
 
 class DirichletBDeuCPD:
-    def __init__(self, df_disc, binfo, fused_priors, ess=10.0):
+    def __init__(self, df_disc, binfo, fused_priors, ess=10.0, weights=None):
         self.data    = df_disc.values.astype(int)
+        self.weights = (np.ones(len(df_disc)) if weights is None
+                        else np.asarray(weights, dtype=float))
         self.cols    = list(df_disc.columns)
         self.col_idx = {c: i for i, c in enumerate(self.cols)}
         self.n       = len(df_disc)
@@ -312,7 +332,7 @@ class DirichletBDeuCPD:
             K = self._K(col)
             ci = self.col_idx[col]
             self.marginals[col] = np.bincount(
-                self.data[:, ci], minlength=K)[:K].astype(float)
+                self.data[:, ci], weights=self.weights, minlength=K)[:K].astype(float)
 
         print(f"   Dirichlet-BDeu CPD engine: {len(self.cols)} vars, n={self.n}")
 
@@ -371,7 +391,8 @@ class DirichletBDeuCPD:
             n_match = mask.sum()
             if n_match > 0:
                 child_vals = self.data[mask, ci]
-                counts = np.bincount(child_vals, minlength=K)[:K].astype(float)
+                counts = np.bincount(child_vals, weights=self.weights[mask],
+                                     minlength=K)[:K].astype(float)
             else:
                 counts = np.zeros(K)
             alpha_post = alpha_config + counts
@@ -1133,7 +1154,8 @@ def main():
 
     # 3. CPD engine
     print("\n3. Dirichlet-BDeu CPD engine...")
-    cpd = DirichletBDeuCPD(dd[common], binfo, pr, cfg.ESS)
+    weights = load_survey_weights(cfg, dd.index)
+    cpd = DirichletBDeuCPD(dd[common], binfo, pr, cfg.ESS, weights)
 
     # 4. Optimal indegree
     d_star, K_median, tau = compute_optimal_indegree(cpd, common, tau=5)
@@ -1160,7 +1182,7 @@ def main():
 
     # 7. Generate S2 — flat BDeu (baseline comparison)
     print("\n   Building S2 CPD (BDeu flat, no intl priors)...")
-    cpd_flat = DirichletBDeuCPD(dd[common], binfo, {}, cfg.ESS)
+    cpd_flat = DirichletBDeuCPD(dd[common], binfo, {}, cfg.ESS, weights)
     s2, d2 = generate_martins(
         ensemble, cpd_flat, common, cfg,
         method_label="S2 (MC3 + BDeu flat)"

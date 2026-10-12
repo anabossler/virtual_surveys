@@ -137,6 +137,55 @@ def calculate_i2_and_discount(entries, target):
 # PART 1: LOAD
 # ============================================================
 
+EVIDENCE_RULES_PATH = "evidence_rules.csv"
+
+
+def load_evidence_rules(path=EVIDENCE_RULES_PATH):
+    """Corrections to extracted entries, keyed by (study, target, source item)."""
+    if not os.path.exists(path):
+        return {}
+    rules = pd.read_csv(path)
+    return {
+        (r.study_id, r.cis_target, r.source_variable): (r.action, r.reason)
+        for r in rules.itertuples(index=False)
+    }
+
+
+def binary_share_counts(share, n, K):
+    """Spread a single share over the two highest of K categories."""
+    positive = share * n / 2.0
+    negative = (1.0 - share) * n / (K - 2)
+    return [negative] * (K - 2) + [positive, positive]
+
+
+def apply_evidence_rules(flat, rules):
+    """Exclude, reverse or re-expand entries according to the rules table."""
+    kept, applied = [], []
+    for entry in flat:
+        key = (entry['study_id'], entry['cis_target'], entry['source_variable'])
+        action, reason = rules.get(key, (None, None))
+        if action == 'exclude':
+            applied.append((key, action))
+            continue
+        if action == 'reverse':
+            entry['dirichlet_counts'] = list(reversed(entry['dirichlet_counts']))
+        elif action == 'binary_share':
+            values = entry.get('extracted_values') or {}
+            share = values.get('percentage', values.get('agree_percentage'))
+            K = entry.get('cis_K') or len(entry['dirichlet_counts'])
+            entry['dirichlet_counts'] = binary_share_counts(float(share), entry['total_n'], K)
+        if action:
+            entry['rule'] = action
+            entry['rule_reason'] = reason
+            applied.append((key, action))
+        kept.append(entry)
+    missing = set(rules) - {key for key, _ in applied}
+    print(f"  Evidence rules applied: {len(applied)} (unmatched: {len(missing)})")
+    for key in sorted(missing):
+        print(f"    unmatched rule: {key}")
+    return kept
+
+
 def load_category_mappings(filepath="category_mappings.json"):
     """
     Load and flatten category_mappings.json (output of harmonize_categories.py).
@@ -174,10 +223,12 @@ def load_category_mappings(filepath="category_mappings.json"):
                 'transform_type': m.get('transform_type'),
                 'dirichlet_counts': dc,
                 'total_n': m.get('total_n', sum(dc)),
+                'extracted_values': m.get('extracted_values'),
                 'notes': m.get('notes', ''),
             })
 
     print(f"  Valid mappings: {len(flat)}")
+    flat = apply_evidence_rules(flat, load_evidence_rules())
 
     by_target = defaultdict(list)
     for m in flat:

@@ -1,0 +1,16 @@
+study_id,cis_target,source_variable,action,reason
+widiastuti_2025_recycled_plastics,perception_safety,environmental_advantages,exclude,"perceived-benefit item, not safety"
+widiastuti_2025_recycled_plastics,perception_safety,sustainable_future,exclude,"perceived-benefit item, not safety"
+widiastuti_2025_recycled_plastics,perception_safety,environmental_protection,exclude,"perceived-benefit item, not safety"
+widiastuti_2025_recycled_plastics,perception_safety,personal_satisfaction,exclude,"perceived-benefit item, not safety"
+widiastuti_2025_recycled_plastics,perception_safety,personal_delight,exclude,"perceived-benefit item, not safety"
+widiastuti_2025_recycled_plastics,perception_safety,risk_carries,reverse,risk statement; agreement means low perceived safety
+widiastuti_2025_recycled_plastics,perception_safety,negative_health,reverse,risk statement; agreement means low perceived safety
+widiastuti_2025_recycled_plastics,perception_safety,contamination,reverse,risk statement; agreement means low perceived safety
+widiastuti_2025_recycled_plastics,perception_safety,unclean_perception,reverse,risk statement; agreement means low perceived safety
+widiastuti_2025_recycled_plastic_acceptance,perception_safety,perceived_risk,exclude,construct mean of the same respondents and items
+widiastuti_2025_recycled_plastic_acceptance,perception_quality,perceived_benefits,exclude,"perceived-benefit score, not quality"
+widiastuti_2025_recycled_plastic_acceptance,acceptance_general,willingness_to_consume,exclude,composite of the same respondents including the price-premium item
+cao_lu_zhu_2022_eol_recycled_preferences,acceptance_general,recycled_products_used,exclude,"second-hand products, not recycled material"
+leal_filho_2025,price_willingness_to_pay_premium,willingness_pay_more_bioplastics,exclude,duplicate of the distribution of the same item
+ruokamo_2022_recycled_plastics,acceptance_food_packaging,suitable_products_food_packaging,binary_share,single share judging recycled plastic suitable; positive mass on the two highest categories
