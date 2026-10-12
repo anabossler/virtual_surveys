@@ -11,6 +11,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from scipy.stats import beta as beta_dist
 from scipy.stats import norm
 
 from transfer_model import A0, P0, P0_N, PREDICTORS, SEED, calibrate_intercept, load_design, worry_score
@@ -51,3 +52,21 @@ class TransferQuery:
         draws = norm.cdf(self.draw_intercept + self.a0 * (self.draw_beta @ x))
         low, high = np.percentile(draws, [2.5, 97.5])
         return point, float(low), float(high)
+
+    def beta_prior(self, **profile) -> tuple[float, float]:
+        """Beta prior (mean, effective sample size m) matched to the Monte Carlo draws.
+
+        Moment matching: m = mean (1 - mean) / var - 1. The value of m is the
+        weight, in respondents, that the transferred evidence carries against
+        the first Spanish measurement in Eq. (fusion).
+        """
+        draws = norm.cdf(self.draw_intercept + self.a0 * (self.draw_beta @ self.vector(**profile)))
+        mean, var = float(draws.mean()), float(draws.var(ddof=1))
+        return mean, mean * (1.0 - mean) / var - 1.0
+
+    def update(self, accepted: int, respondents: int, **profile) -> tuple[float, float, float]:
+        """Posterior mean and 95% interval after observing Spanish data for the profile."""
+        mean, m = self.beta_prior(**profile)
+        a, b = m * mean + accepted, m * (1.0 - mean) + respondents - accepted
+        low, high = beta_dist.ppf([0.025, 0.975], a, b)
+        return a / (a + b), float(low), float(high)
