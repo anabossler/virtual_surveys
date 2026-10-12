@@ -46,6 +46,7 @@ A0_GRID = (0.50, 0.70, 0.80, 0.90, 1.00)
 P0_GRID = (0.25, 0.38, 0.50, 0.60)
 N_DRAWS = 5000
 SEED = 42
+CODINGS = ("centered", "contrast", "per_step")
 PREDICTORS = ("female", "under_30", "high_education", "recycles", "env_worry")
 
 # Contrasting profiles used in the paper, as predictor values before coding
@@ -59,11 +60,16 @@ PROFILES = {
 def worry_score(v15: np.ndarray, coding: str) -> np.ndarray:
     """Code the five-point worry scale.
 
-    'contrast': the coefficient is the difference between the extremes of the
-    scale (score from 0 to 1). 'per_step': the coefficient applies to each
-    scale point (score from 0 to 4).
+    'centered': the scale is centred on its midpoint and scaled to [-1, 1], so
+    the coefficient is the shift from the midpoint to either extreme and each
+    scale point moves the index by half the coefficient (the transformation
+    used in step2_v5_complete.py). 'contrast': the coefficient is the
+    difference between the extremes (score from 0 to 1). 'per_step': the
+    coefficient applies to each scale point (score from 0 to 4).
     """
     steps = np.asarray(v15, dtype=float) - 1.0
+    if coding == "centered":
+        return (steps - 2.0) / 2.0
     if coding == "contrast":
         return steps / 4.0
     if coding == "per_step":
@@ -212,7 +218,7 @@ def main() -> None:
     coefficients = pd.read_csv(args.coefficients).set_index("predictor").loc[list(PREDICTORS)].reset_index()
     summary = {"p0": P0, "p0_n": P0_N, "a0": A0, "n_draws": N_DRAWS, "seed": SEED, "weights": "PESOFIN", "codings": {}}
 
-    for coding in ("contrast", "per_step"):
+    for coding in CODINGS:
         design = load_design(args.cis, coding)
         sim = simulate(design, coefficients, coding, rng=np.random.default_rng(SEED))
         probabilities = sim["point"]["respondents"]

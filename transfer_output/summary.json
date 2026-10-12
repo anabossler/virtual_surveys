@@ -6,6 +6,17 @@
   "seed": 42,
   "weights": "PESOFIN",
   "codings": {
+    "centered": {
+      "n_cis": 2254,
+      "n_complete": 2133,
+      "intercept": -1.372934201924482,
+      "population_mean": 0.3799999999999925,
+      "weighted_median": 0.3525020412678397,
+      "share_below_0.25": 0.2560220273439757,
+      "share_above_0.50": 0.2418179383211427,
+      "n_most_receptive_profile": 18,
+      "n_least_receptive_profile": 8
+    },
     "contrast": {
       "n_cis": 2254,
       "n_complete": 2133,

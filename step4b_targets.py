@@ -40,7 +40,7 @@ from transfer_model import (
     worry_score,
 )
 
-WORRY_CODING = "contrast"
+WORRY_CODING = "centered"
 TARGET = "acceptance_food_packaging"
 
 
