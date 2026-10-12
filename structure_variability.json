@@ -1,0 +1,112 @@
+{
+  "runs": [
+    {
+      "seed": "42",
+      "n_edges": 283,
+      "tvd_mean": 0.03387051282051282,
+      "tvd_median": 0.0125,
+      "dependencies_kept": 4,
+      "v_ratio": {
+        "gender -> env_concern": 0.49,
+        "gender -> WTP taxes": 0.27,
+        "gender -> WTP prices": 0.35,
+        "education -> env_concern": 0.21,
+        "education -> WTP": 0.25,
+        "env_concern -> recycling": 1.05,
+        "env_concern -> WTP": 0.84,
+        "age -> env_concern": 0.28,
+        "urban_rural -> env_concern": 0.33,
+        "trust -> WTP": 0.38
+      },
+      "share_accepting": 0.3689731906326163
+    },
+    {
+      "seed": "7",
+      "n_edges": 283,
+      "tvd_mean": 0.033446153846153855,
+      "tvd_median": 0.01265,
+      "dependencies_kept": 3,
+      "v_ratio": {
+        "gender -> env_concern": 0.26,
+        "gender -> WTP taxes": 0.3,
+        "gender -> WTP prices": 0.27,
+        "education -> env_concern": 0.23,
+        "education -> WTP": 0.25,
+        "env_concern -> recycling": 0.96,
+        "env_concern -> WTP": 0.78,
+        "age -> env_concern": 0.2,
+        "urban_rural -> env_concern": 0.3,
+        "trust -> WTP": 0.35
+      },
+      "share_accepting": 0.3708940150951419
+    },
+    {
+      "seed": "2024",
+      "n_edges": 284,
+      "tvd_mean": 0.03351153846153846,
+      "tvd_median": 0.0105,
+      "dependencies_kept": 3,
+      "v_ratio": {
+        "gender -> env_concern": 0.29,
+        "gender -> WTP taxes": 0.19,
+        "gender -> WTP prices": 0.29,
+        "education -> env_concern": 0.24,
+        "education -> WTP": 0.21,
+        "env_concern -> recycling": 1.04,
+        "env_concern -> WTP": 0.77,
+        "age -> env_concern": 0.25,
+        "urban_rural -> env_concern": 0.26,
+        "trust -> WTP": 0.28
+      },
+      "share_accepting": 0.37876537971998303
+    }
+  ],
+  "edge_jaccard": {
+    "42-7": 0.9186440677966101,
+    "42-2024": 0.9220338983050848,
+    "7-2024": 0.9285714285714286
+  },
+  "v_ratio_range": {
+    "gender -> env_concern": [
+      0.26,
+      0.49
+    ],
+    "gender -> WTP taxes": [
+      0.19,
+      0.3
+    ],
+    "gender -> WTP prices": [
+      0.27,
+      0.35
+    ],
+    "education -> env_concern": [
+      0.21,
+      0.24
+    ],
+    "education -> WTP": [
+      0.21,
+      0.25
+    ],
+    "env_concern -> recycling": [
+      0.96,
+      1.05
+    ],
+    "env_concern -> WTP": [
+      0.77,
+      0.84
+    ],
+    "age -> env_concern": [
+      0.2,
+      0.28
+    ],
+    "urban_rural -> env_concern": [
+      0.26,
+      0.33
+    ],
+    "trust -> WTP": [
+      0.28,
+      0.38
+    ]
+  },
+  "text": "Across 3 structure-learning seeds, the learned graphs share 92--93\\% of their edges (Jaccard), mean TVD ranges from $0.033$ to $0.034$, and 3--4 of the ten dependencies remain detectable. The within-block concern--recycling ratio stays between 0.96 and 1.05, while the cross-block ratios vary between 0.19 and 0.49. The share accepting recycled food packaging in the synthetic population ranges from 36.9\\% to 37.9\\%."
+}
