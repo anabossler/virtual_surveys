@@ -5,14 +5,15 @@ ASAP v6 — Acceptance of recycled plastic: CPT-based inference engine.
 Loads fused Bayesian network priors from step3_fused_priors.json and
 computes posterior acceptance probabilities for 13 product categories.
 
-Five primary indicators (food packaging, general acceptance, perceived
-safety, perceived quality, WTP premium) use real CPTs estimated from
-the full pipeline (CIS 3391 + 14 international studies).
+Food-packaging acceptance is computed with the transfer model
+(transfer_query.py), from the coefficients in transfer_coefficients.csv,
+calibrated to the weighted CIS sample. This is the only category reported
+in the paper.
 
-Eight extended categories (non-food packaging, beverages, cleaning
-products, personal care, toys, clothing, electronics, furniture) use
-inline CPTs built from Ruokamo 2022 base rates scaled to Spain and
-demographic betas from Athanasios 2022.
+All other categories are exploratory: the remaining primary indicators
+fall back to pooled marginals, and eight extended categories use inline
+tables built from Ruokamo 2022 suitability shares scaled by 0.85 with
+fixed, assumed coefficients. They are flagged as exploratory in the output.
 
 Uncertainty is quantified via Dirichlet posterior variance, consistent
 with Martins et al. (2024) Algorithm 1, step 2:
@@ -73,6 +74,18 @@ if META_PATH.exists():
         _meta = json.load(f)
     N_CIS  = _meta.get('n_cis', 2254)
     N_VARS = _meta.get('n_variables', 0)
+
+# Transfer model for food-packaging acceptance (the projection reported in the paper)
+TRANSFER = None
+try:
+    from transfer_query import TransferQuery
+    TRANSFER = TransferQuery(BASE / "metadata" / "3391_num.csv", BASE / "transfer_coefficients.csv")
+    print("Loaded transfer model for food-packaging acceptance")
+except (FileNotFoundError, KeyError) as exc:
+    print(f"WARNING: transfer model unavailable ({exc}); food packaging falls back to CPTs")
+
+# Interface levels mapped to CIS V15 (1 = not at all worried, 5 = very worried)
+ENV_TO_V15 = {'low': 2, 'medium': 3, 'high': 5}
 
 DF_S1 = None
 if S1_PATH.exists():
@@ -619,7 +632,18 @@ def compute(age, gender, edu, income, product, env, urban,
     cpt_var    = tinfo.get('cpt_var')
     inline_key = tinfo.get('inline_key')
 
-    c, lo, hi, debug = compute_from_cpt(profile, cpt_var, inline_key=inline_key)
+    if cpt_var == 'acceptance_food_packaging' and TRANSFER is not None:
+        c, lo, hi = TRANSFER.predict(
+            female=gender == 'F',
+            under_30=age == '18-29',
+            higher_education=edu in ('university', 'postgrad'),
+            recycles=recycling in ('always', 'nearly_always'),
+            worry=ENV_TO_V15.get(env, 3),
+        )
+        debug = {'method': 'transfer model (transfer_coefficients.csv)'}
+    else:
+        c, lo, hi, debug = compute_from_cpt(profile, cpt_var, inline_key=inline_key)
+        debug['exploratory'] = True
     debug['product']       = product
     debug['product_label'] = tinfo['label']
     debug['base_rate']     = tinfo['base']
@@ -1225,4 +1249,4 @@ if __name__ == "__main__":
             allowed_paths=[str(BASE)],
         )
     else:
-        print("gradio not installed -- CLI test only")ƒ
+        print("gradio not installed -- CLI test only")
