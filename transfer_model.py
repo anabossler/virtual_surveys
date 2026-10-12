@@ -14,8 +14,9 @@ Model
     P(accept | x) = Phi(c + a0 * sum_j beta_j x_j)
 
 Phi is the standard normal CDF, matching the link of the source model. The
-intercept c is calibrated so that the average of P(accept | x) over the CIS
-respondents equals p0. The transfer factor a0 scales every coefficient.
+intercept c is calibrated so that the weighted average of P(accept | x) over
+the CIS respondents equals p0, using the CIS final weight PESOFIN (stored with a
+decimal comma in the microdata file). The transfer factor a0 scales every coefficient.
 
 Assumptions that the data cannot check are explicit arguments: p0, a0 and the
 coding of the environmental-worry scale. Uncertainty is propagated by Monte
@@ -90,15 +91,17 @@ def load_design(cis_path: Path, coding: str) -> pd.DataFrame:
             "env_worry": worry_score(kept["V15"].to_numpy(), coding),
             "V15": kept["V15"].astype(int),
             "age": SURVEY_YEAR - kept["BIRTH"],
+            "weight": pd.to_numeric(kept["PESOFIN"].astype(str).str.replace(",", "."), errors="raise"),
         }
     )
     design.attrs["n_total"] = len(cis)
     return design.reset_index(drop=True)
 
 
-def calibrate_intercept(linear: np.ndarray, p0: float) -> float:
-    """Intercept c such that mean(Phi(c + linear)) equals p0."""
-    return brentq(lambda c: norm.cdf(c + linear).mean() - p0, -12.0, 12.0)
+def calibrate_intercept(linear: np.ndarray, p0: float, weights: np.ndarray | None = None) -> float:
+    """Intercept c such that the weighted mean of Phi(c + linear) equals p0."""
+    w = np.ones_like(linear) if weights is None else np.asarray(weights, dtype=float)
+    return brentq(lambda c: np.average(norm.cdf(c + linear), weights=w) - p0, -12.0, 12.0)
 
 
 def profile_vector(profile: dict, coding: str) -> np.ndarray:
@@ -111,7 +114,7 @@ def project(design: pd.DataFrame, beta: np.ndarray, p0: float, a0: float, coding
     """Respondent-level probabilities and the two contrasting profiles."""
     x = design[list(PREDICTORS)].to_numpy()
     linear = a0 * (x @ beta)
-    intercept = calibrate_intercept(linear, p0)
+    intercept = calibrate_intercept(linear, p0, design["weight"].to_numpy())
     result = {"intercept": intercept, "respondents": norm.cdf(intercept + linear)}
     for name, profile in PROFILES.items():
         result[name] = float(norm.cdf(intercept + a0 * (profile_vector(profile, coding) @ beta)))
@@ -157,7 +160,7 @@ def sensitivity_table(design, coefficients, coding, parameter: str, grid) -> pd.
         rows.append(
             {
                 parameter: value,
-                "population_mean": float(out["respondents"].mean()),
+                "population_mean": float(np.average(out["respondents"], weights=design["weight"])),
                 "most_receptive": out["most_receptive"],
                 "least_receptive": out["least_receptive"],
                 "spread_pp": 100 * out["spread"],
@@ -168,6 +171,7 @@ def sensitivity_table(design, coefficients, coding, parameter: str, grid) -> pd.
 
 def segment_table(design: pd.DataFrame, probabilities: np.ndarray) -> pd.DataFrame:
     frame = design.assign(p=probabilities)
+    total_weight = frame["weight"].sum()
     frame["age_group"] = pd.cut(frame["age"], [0, 29, 44, 59, 200], labels=["18-29", "30-44", "45-59", "60+"])
     groupings = {
         "gender": frame["female"].map({1.0: "female", 0.0: "male"}),
@@ -184,11 +188,17 @@ def segment_table(design: pd.DataFrame, probabilities: np.ndarray) -> pd.DataFra
                     "dimension": dimension,
                     "level": level,
                     "n": len(group),
-                    "share_of_sample": len(group) / len(frame),
-                    "projected_acceptance": group["p"].mean(),
+                    "share_of_sample": group["weight"].sum() / total_weight,
+                    "projected_acceptance": np.average(group["p"], weights=group["weight"]),
                 }
             )
     return pd.DataFrame(rows)
+
+
+def weighted_median(values: np.ndarray, weights: np.ndarray) -> float:
+    order = np.argsort(values)
+    cumulative = np.cumsum(weights[order]) / weights.sum()
+    return float(values[order][np.searchsorted(cumulative, 0.5)])
 
 
 def main() -> None:
@@ -200,7 +210,7 @@ def main() -> None:
     args.out.mkdir(parents=True, exist_ok=True)
 
     coefficients = pd.read_csv(args.coefficients).set_index("predictor").loc[list(PREDICTORS)].reset_index()
-    summary = {"p0": P0, "p0_n": P0_N, "a0": A0, "n_draws": N_DRAWS, "seed": SEED, "codings": {}}
+    summary = {"p0": P0, "p0_n": P0_N, "a0": A0, "n_draws": N_DRAWS, "seed": SEED, "weights": "PESOFIN", "codings": {}}
 
     for coding in ("contrast", "per_step"):
         design = load_design(args.cis, coding)
@@ -216,17 +226,16 @@ def main() -> None:
         )
         segment_table(design, probabilities).to_csv(args.out / f"segments_{coding}.csv", index=False)
 
+        weights = design["weight"].to_numpy()
         x = design[list(PREDICTORS[:-1]) + ["V15"]]
         summary["codings"][coding] = {
             "n_cis": design.attrs["n_total"],
             "n_complete": len(design),
             "intercept": sim["point"]["intercept"],
-            "population_mean": float(probabilities.mean()),
-            "respondent_quantiles": {
-                str(q): float(np.quantile(probabilities, q)) for q in (0.05, 0.25, 0.5, 0.75, 0.95)
-            },
-            "share_below_0.25": float((probabilities < 0.25).mean()),
-            "share_above_0.50": float((probabilities > 0.50).mean()),
+            "population_mean": float(np.average(probabilities, weights=weights)),
+            "weighted_median": weighted_median(probabilities, weights),
+            "share_below_0.25": float(np.average(probabilities < 0.25, weights=weights)),
+            "share_above_0.50": float(np.average(probabilities > 0.50, weights=weights)),
             "n_most_receptive_profile": int((x == pd.Series(PROFILES["most_receptive"])).all(axis=1).sum()),
             "n_least_receptive_profile": int((x == pd.Series(PROFILES["least_receptive"])).all(axis=1).sum()),
         }

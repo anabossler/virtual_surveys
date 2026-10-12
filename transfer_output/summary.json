@@ -4,38 +4,27 @@
   "a0": 0.8,
   "n_draws": 5000,
   "seed": 42,
+  "weights": "PESOFIN",
   "codings": {
     "contrast": {
       "n_cis": 2254,
       "n_complete": 2133,
-      "intercept": -1.4733484134978236,
-      "population_mean": 0.37999999999999573,
-      "respondent_quantiles": {
-        "0.05": 0.1562552117232202,
-        "0.25": 0.29559636475026674,
-        "0.5": 0.4144048533106998,
-        "0.75": 0.47926896280952175,
-        "0.95": 0.6059934441935858
-      },
-      "share_below_0.25": 0.20253164556962025,
-      "share_above_0.50": 0.17674636661978435,
+      "intercept": -1.469145310931808,
+      "population_mean": 0.37999999999999523,
+      "weighted_median": 0.3743608689228639,
+      "share_below_0.25": 0.20516354720536695,
+      "share_above_0.50": 0.17489040754166466,
       "n_most_receptive_profile": 18,
       "n_least_receptive_profile": 8
     },
     "per_step": {
       "n_cis": 2254,
       "n_complete": 2133,
-      "intercept": -3.0683094281390746,
+      "intercept": -3.0640334803045315,
       "population_mean": 0.38,
-      "respondent_quantiles": {
-        "0.05": 0.033428849360596626,
-        "0.25": 0.1856851764510225,
-        "0.5": 0.390295313760967,
-        "0.75": 0.5168824128496261,
-        "0.95": 0.7010596337538636
-      },
-      "share_below_0.25": 0.2812939521800281,
-      "share_above_0.50": 0.3661509610876699,
+      "weighted_median": 0.3919372314982242,
+      "share_below_0.25": 0.28405250743480587,
+      "share_above_0.50": 0.36391634558221403,
       "n_most_receptive_profile": 18,
       "n_least_receptive_profile": 8
     }

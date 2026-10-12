@@ -95,7 +95,9 @@ def main() -> None:
         pd.read_csv("transfer_coefficients.csv").set_index("predictor").loc[list(PREDICTORS)]
     )
     beta, se = coefficients["coefficient"].to_numpy(), coefficients["std_error"].to_numpy()
-    design = load_design(cfg.PATH_CIS, WORRY_CODING)[list(PREDICTORS)].to_numpy()
+    design_frame = load_design(cfg.PATH_CIS, WORRY_CODING)
+    design = design_frame[list(PREDICTORS)].to_numpy()
+    weights = design_frame["weight"].to_numpy()
 
     decoded = decode(synthetic, binfo)
     x, valid = predictors(decoded, under_30_by_bin(cis, binfo), rng)
@@ -105,7 +107,7 @@ def main() -> None:
     for m in np.unique(draws):
         beta_m = rng.normal(beta, se)
         p0_m = rng.beta(P0 * P0_N + 0.5, (1 - P0) * P0_N + 0.5)
-        intercept = calibrate_intercept(A0 * (design @ beta_m), p0_m)
+        intercept = calibrate_intercept(A0 * (design @ beta_m), p0_m, weights)
         rows = (draws == m) & valid
         prob = norm.cdf(intercept + A0 * (x[rows] @ beta_m))
         outcome[rows] = (rng.random(rows.sum()) < prob).astype(float)
