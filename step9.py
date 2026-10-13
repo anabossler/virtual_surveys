@@ -18,7 +18,7 @@ def _build_paths():
     base = os.path.dirname(os.path.abspath(__file__))
     return {
         "base": base,
-        "s1":   os.path.join(base, "step4_output", "synthetic_surveys_S1.csv"),
+        "s1":   os.path.join(base, "step4_output", "synthetic_surveys_final.csv"),
         "out":  os.path.join(base, "step9_output"),
     }
 
@@ -112,7 +112,7 @@ def save_outputs(results, rmse, mae, coverage, paths):
 
     output = {
         'method':           'External comparison: BVS synthetic population vs Ipsos 2022 Spain',
-        'source_bvs':       'step4_output/synthetic_surveys_S1.csv',
+        'source_bvs':       'step4_output/synthetic_surveys_final.csv',
         'source_ipsos':     'Ipsos 2022, Spain, n=1000',
         'scale_conversion': 'Ipsos agreement vs share of V15 in categories 3-5 among valid answers (1-5)',
         'excluded_items':   _EXCLUDED,

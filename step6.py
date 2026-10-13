@@ -19,7 +19,7 @@ def _build_paths():
         "base":    base,
         "out":     os.path.join(base, "step6_output"),
         "cis":     os.path.join(base, "metadata", "3391_num.csv"),
-        "s1":      os.path.join(base, "step4_output", "synthetic_surveys_S1.csv"),
+        "s1":      os.path.join(base, "step4_output", "synthetic_surveys_final.csv"),
         "s2":      os.path.join(base, "step4_output", "synthetic_surveys_S2.csv"),
     }
 
