@@ -30,6 +30,7 @@ The synthetic population has 10,000 individuals (50 graphs from the structure po
 | `step6.py` | Fidelity and dependency diagnostics | `step6_output/` |
 | `step8.py` | Baseline generators (CTGAN, TVAE, independent) | `step8_output/comparison_table.csv` |
 | `step9.py` | Comparison with Ipsos 2022 Spain | `step9_output/ipsos_validation.json` |
+| `make_figures.py` | Manuscript figures from pipeline outputs | `figures/*.png` |
 | `app_gradio.py` | Query interface (ASAP v6) | |
 
 Supporting modules: `harmonize_categories.py` (language-model-assisted extraction and scale harmonisation).
@@ -56,6 +57,7 @@ python transfer_model.py
 python step4b_targets.py
 python step6.py
 python step9.py
+python make_figures.py --base . --out figures
 ```
 
 All random seeds are fixed at 42 unless set explicitly.
