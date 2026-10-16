@@ -1,0 +1,2636 @@
+[
+  {
+    "study_id": "abella_2022_recycled_plastics_perception",
+    "mappings": [
+      {
+        "cis_target": "demographics_gender",
+        "cis_K": 2,
+        "source_variable": "sample_stratification",
+        "source_scale": "categorical",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            18,
+            18
+          ],
+          "labels": [
+            "men",
+            "women"
+          ],
+          "n": 36
+        },
+        "dirichlet_counts": [
+          18,
+          18
+        ],
+        "total_n": 36,
+        "computation_method": "direct_counts",
+        "notes": "Extracted from stratification clusters showing 9 women under 35 + 9 women over 35 = 18 women, 9 men under 35 + 9 men over 35 = 18 men"
+      },
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "sample_stratification_age",
+        "source_scale": "categorical",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            18,
+            18
+          ],
+          "labels": [
+            "under_35",
+            "over_35"
+          ],
+          "n": 36
+        },
+        "dirichlet_counts": [
+          9,
+          9,
+          6,
+          6,
+          6
+        ],
+        "total_n": 36,
+        "computation_method": "expand_2→5",
+        "notes": "Extracted from stratification showing 9 women under 35 + 9 men under 35 = 18 under 35, 9 women over 35 + 9 men over 35 = 18 over 35"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "environmental_attitude_score",
+        "reason": "Scale range 0-100 mentioned but no actual numerical results provided"
+      },
+      {
+        "variable": "consumption_habits_score",
+        "reason": "Scale range 0-100 mentioned but no actual numerical results provided"
+      },
+      {
+        "variable": "EDA_measurements",
+        "reason": "Approximate values given (~4.15 µS, ~4.22 µS) but no precise numerical data"
+      },
+      {
+        "variable": "correlation_coefficients",
+        "reason": "Only confidence intervals provided, not the actual correlation values"
+      },
+      {
+        "variable": "sensory_property_ratings",
+        "reason": "Qualitative descriptions provided but no numerical scale ratings"
+      }
+    ]
+  },
+  {
+    "study_id": "athanasios_2022",
+    "mappings": [],
+    "skipped_variables": [
+      {
+        "variable": "sample_sizes",
+        "reason": "Sample sizes are study metadata, not CIS target measurements"
+      },
+      {
+        "variable": "publication_years",
+        "reason": "Years are temporal metadata, not consumer attitude/behavior data"
+      },
+      {
+        "variable": "country_counts",
+        "reason": "Geographic distribution is study metadata, not individual consumer data"
+      },
+      {
+        "variable": "product_category_counts",
+        "reason": "Study categorization metadata, not consumer response data"
+      },
+      {
+        "variable": "specific_percentages_without_scales",
+        "reason": "Various percentages mentioned (32.7% not surprised, 86% aware) lack proper scale context for CIS mapping"
+      }
+    ]
+  },
+  {
+    "study_id": "cabrera_2025_plastic_apparel_stpb",
+    "mappings": [
+      {
+        "cis_target": "demographics_gender",
+        "cis_K": 2,
+        "source_variable": "gender",
+        "source_scale": "categorical",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            154,
+            346
+          ],
+          "labels": [
+            "male",
+            "female"
+          ],
+          "n": 500
+        },
+        "dirichlet_counts": [
+          154,
+          346
+        ],
+        "total_n": 500,
+        "computation_method": "direct_counts",
+        "notes": "Gender distribution from demographics section"
+      },
+      {
+        "cis_target": "demographics_gender",
+        "cis_K": 2,
+        "source_variable": "gender",
+        "source_scale": "categorical",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            30.8,
+            69.2
+          ],
+          "labels": [
+            "male",
+            "female"
+          ],
+          "n": 500
+        },
+        "dirichlet_counts": [
+          154,
+          346
+        ],
+        "total_n": 500,
+        "computation_method": "percentages→proportions×n=500",
+        "notes": "Gender percentages from demographics section"
+      },
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "age_groups",
+        "source_scale": "ordinal_bins",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            72,
+            277,
+            65,
+            45,
+            20,
+            14,
+            7
+          ],
+          "labels": [
+            "below_18",
+            "18_25",
+            "26_35",
+            "36_45",
+            "46_55",
+            "56_65",
+            "66_above"
+          ],
+          "n": 500
+        },
+        "dirichlet_counts": [
+          349,
+          65,
+          65,
+          14,
+          7
+        ],
+        "total_n": 500,
+        "computation_method": "collapse_7→5",
+        "notes": "Age group distribution from demographics section"
+      },
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "age_groups",
+        "source_scale": "ordinal_bins",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            14.4,
+            55.4,
+            13.0,
+            9.0,
+            4.0,
+            2.8,
+            1.4
+          ],
+          "labels": [
+            "below_18",
+            "18_25",
+            "26_35",
+            "36_45",
+            "46_55",
+            "56_65",
+            "66_above"
+          ],
+          "n": 500
+        },
+        "dirichlet_counts": [
+          349,
+          65,
+          65,
+          14,
+          7
+        ],
+        "total_n": 500,
+        "computation_method": "collapse_7→5",
+        "notes": "Age group percentages from demographics section"
+      },
+      {
+        "cis_target": "demographics_urban_rural",
+        "cis_K": 5,
+        "source_variable": "area_of_residence",
+        "source_scale": "categorical",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            403,
+            97
+          ],
+          "labels": [
+            "urban",
+            "rural"
+          ],
+          "n": 500
+        },
+        "dirichlet_counts": [
+          202,
+          202,
+          32,
+          32,
+          32
+        ],
+        "total_n": 500,
+        "computation_method": "expand_2→5",
+        "notes": "Urban/rural residence distribution"
+      },
+      {
+        "cis_target": "demographics_urban_rural",
+        "cis_K": 5,
+        "source_variable": "area_of_residence",
+        "source_scale": "categorical",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            80.6,
+            19.4
+          ],
+          "labels": [
+            "urban",
+            "rural"
+          ],
+          "n": 500
+        },
+        "dirichlet_counts": [
+          201,
+          201,
+          32,
+          32,
+          32
+        ],
+        "total_n": 500,
+        "computation_method": "expand_2→5",
+        "notes": "Urban/rural residence percentages"
+      },
+      {
+        "cis_target": "demographics_education",
+        "cis_K": 7,
+        "source_variable": "education_level",
+        "source_scale": "ordinal",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            8,
+            187,
+            203,
+            102
+          ],
+          "labels": [
+            "attended_grade_school",
+            "attended_high_school_senior_high",
+            "attended_college",
+            "finished_college_or_graduate_degree"
+          ],
+          "n": 500
+        },
+        "dirichlet_counts": [
+          8,
+          94,
+          94,
+          102,
+          102,
+          51,
+          51
+        ],
+        "total_n": 500,
+        "computation_method": "expand_4→7",
+        "notes": "Education level distribution from demographics section"
+      },
+      {
+        "cis_target": "demographics_education",
+        "cis_K": 7,
+        "source_variable": "education_level",
+        "source_scale": "ordinal",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            1.6,
+            37.4,
+            40.6,
+            20.4
+          ],
+          "labels": [
+            "attended_grade_school",
+            "attended_high_school_senior_high",
+            "attended_college",
+            "finished_college_or_graduate_degree"
+          ],
+          "n": 500
+        },
+        "dirichlet_counts": [
+          8,
+          94,
+          94,
+          102,
+          102,
+          51,
+          51
+        ],
+        "total_n": 500,
+        "computation_method": "expand_4→7",
+        "notes": "Education level percentages from demographics section"
+      },
+      {
+        "cis_target": "demographics_income",
+        "cis_K": 5,
+        "source_variable": "monthly_income_allowance_php",
+        "source_scale": "ordinal",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            154,
+            177,
+            81,
+            51,
+            28,
+            69
+          ],
+          "labels": [
+            "less_than_10000",
+            "10001_20000",
+            "20001_30000",
+            "30001_40000",
+            "40001_50000",
+            "above_50000"
+          ],
+          "n": 560
+        },
+        "dirichlet_counts": [
+          331,
+          81,
+          51,
+          28,
+          69
+        ],
+        "total_n": 560,
+        "computation_method": "collapse_6→5",
+        "notes": "Monthly income/allowance distribution - note total exceeds 500, possible data error in original"
+      },
+      {
+        "cis_target": "demographics_income",
+        "cis_K": 5,
+        "source_variable": "monthly_income_allowance_php",
+        "source_scale": "ordinal",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            30.8,
+            23.4,
+            16.2,
+            10.2,
+            5.6,
+            13.8
+          ],
+          "labels": [
+            "less_than_10000",
+            "10001_20000",
+            "20001_30000",
+            "30001_40000",
+            "40001_50000",
+            "above_50000"
+          ],
+          "n": 500
+        },
+        "dirichlet_counts": [
+          271,
+          81,
+          51,
+          28,
+          69
+        ],
+        "total_n": 500,
+        "computation_method": "collapse_6→5",
+        "notes": "Monthly income/allowance percentages from demographics section"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "attitudes_env_concern",
+        "reason": "No numerical data found for environmental concern attitudes in the JSON"
+      },
+      {
+        "variable": "attitudes_wtp_prices",
+        "reason": "No numerical data found for willingness to pay price attitudes in the JSON"
+      },
+      {
+        "variable": "attitudes_wtp_taxes",
+        "reason": "No numerical data found for willingness to pay tax attitudes in the JSON"
+      },
+      {
+        "variable": "attitudes_wtp_lifestyle",
+        "reason": "No numerical data found for willingness to pay lifestyle attitudes in the JSON"
+      },
+      {
+        "variable": "behavior_recycling",
+        "reason": "No numerical data found for recycling behavior in the JSON"
+      },
+      {
+        "variable": "behavior_reduce_consumption",
+        "reason": "No numerical data found for consumption reduction behavior in the JSON"
+      },
+      {
+        "variable": "attitudes_env_science_optimism",
+        "reason": "No numerical data found for environmental science optimism in the JSON"
+      },
+      {
+        "variable": "trust_institutions",
+        "reason": "No numerical data found for institutional trust in the JSON"
+      },
+      {
+        "variable": "perception_danger_pollution",
+        "reason": "No numerical data found for pollution danger perception in the JSON"
+      },
+      {
+        "variable": "acceptance_general",
+        "reason": "No numerical data found for general acceptance in the JSON"
+      },
+      {
+        "variable": "acceptance_food_packaging",
+        "reason": "No numerical data found for food packaging acceptance in the JSON"
+      },
+      {
+        "variable": "perception_safety",
+        "reason": "No numerical data found for safety perception in the JSON"
+      },
+      {
+        "variable": "perception_quality",
+        "reason": "No numerical data found for quality perception in the JSON"
+      },
+      {
+        "variable": "price_willingness_to_pay_premium",
+        "reason": "No numerical data found for price premium willingness in the JSON"
+      }
+    ]
+  },
+  {
+    "study_id": "cao_lu_zhu_2022_eol_recycled_preferences",
+    "mappings": [
+      {
+        "cis_target": "demographics_gender",
+        "cis_K": 2,
+        "source_variable": "gender",
+        "source_scale": "categorical",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            351,
+            575
+          ],
+          "labels": [
+            "Male",
+            "Female"
+          ],
+          "n": 926
+        },
+        "dirichlet_counts": [
+          351,
+          575
+        ],
+        "total_n": 926,
+        "computation_method": "direct_counts",
+        "notes": "Final distribution from main experiment"
+      },
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "age",
+        "source_scale": "categorical",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            458,
+            390,
+            49,
+            29
+          ],
+          "labels": [
+            "18-30",
+            "31-40",
+            "41-50",
+            "51-60"
+          ],
+          "n": 926
+        },
+        "dirichlet_counts": [
+          458,
+          390,
+          49,
+          14,
+          14
+        ],
+        "total_n": 926,
+        "computation_method": "expand_4→5",
+        "notes": "Age groups from final distribution"
+      },
+      {
+        "cis_target": "demographics_education",
+        "cis_K": 7,
+        "source_variable": "education",
+        "source_scale": "categorical",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            1,
+            5,
+            26,
+            121,
+            649,
+            124
+          ],
+          "labels": [
+            "Primary school",
+            "Junior high school",
+            "High school",
+            "Specialty",
+            "Undergraduate",
+            "Bachelor's degree or above"
+          ],
+          "n": 926
+        },
+        "dirichlet_counts": [
+          1,
+          5,
+          26,
+          121,
+          649,
+          62,
+          62
+        ],
+        "total_n": 926,
+        "computation_method": "expand_6→7",
+        "notes": "Education levels from final distribution"
+      },
+      {
+        "cis_target": "demographics_income",
+        "cis_K": 5,
+        "source_variable": "monthly_disposable_income",
+        "source_scale": "categorical",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            22,
+            170,
+            178,
+            556
+          ],
+          "labels": [
+            "Less than $1000",
+            "$1000-3000",
+            "$3000-5000",
+            "Above $5000"
+          ],
+          "n": 926
+        },
+        "dirichlet_counts": [
+          22,
+          170,
+          178,
+          278,
+          278
+        ],
+        "total_n": 926,
+        "computation_method": "expand_4→5",
+        "notes": "Monthly disposable income in USD"
+      },
+      {
+        "cis_target": "acceptance_general",
+        "cis_K": 5,
+        "source_variable": "recycled_products_used",
+        "source_scale": "likert_7_1to7",
+        "data_type": "mean_only",
+        "extracted_values": {
+          "mean": 5.41,
+          "scale_min": 1,
+          "scale_max": 7,
+          "n": 926
+        },
+        "dirichlet_counts": [
+          7,
+          63,
+          236,
+          354,
+          211
+        ],
+        "total_n": 926,
+        "computation_method": "Normal(5.41,1.50)[1-7]→rescale→K=5bins×n=926",
+        "notes": "Overall ranking for Used products - highest rated recycled product type"
+      },
+      {
+        "cis_target": "acceptance_general",
+        "cis_K": 5,
+        "source_variable": "recycled_products_recycled_material",
+        "source_scale": "likert_7_1to7",
+        "data_type": "mean_only",
+        "extracted_values": {
+          "mean": 5.35,
+          "scale_min": 1,
+          "scale_max": 7,
+          "n": 926
+        },
+        "dirichlet_counts": [
+          7,
+          67,
+          244,
+          353,
+          203
+        ],
+        "total_n": 926,
+        "computation_method": "Normal(5.35,1.50)[1-7]→rescale→K=5bins×n=926",
+        "notes": "Overall ranking for Recycled material products"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "demographics_urban_rural",
+        "reason": "No urban/rural demographic data found in JSON"
+      },
+      {
+        "variable": "attitudes_env_concern",
+        "reason": "No environmental concern attitude measures found in JSON"
+      },
+      {
+        "variable": "attitudes_wtp_prices",
+        "reason": "No willingness to pay for prices measures found in JSON"
+      },
+      {
+        "variable": "attitudes_wtp_taxes",
+        "reason": "No willingness to pay taxes measures found in JSON"
+      },
+      {
+        "variable": "attitudes_wtp_lifestyle",
+        "reason": "No willingness to pay lifestyle measures found in JSON"
+      },
+      {
+        "variable": "behavior_recycling",
+        "reason": "No recycling behavior measures found in JSON"
+      },
+      {
+        "variable": "behavior_reduce_consumption",
+        "reason": "No consumption reduction behavior measures found in JSON"
+      },
+      {
+        "variable": "attitudes_env_science_optimism",
+        "reason": "No environmental science optimism measures found in JSON"
+      },
+      {
+        "variable": "trust_institutions",
+        "reason": "No institutional trust measures found in JSON"
+      },
+      {
+        "variable": "perception_danger_pollution",
+        "reason": "No pollution danger perception measures found in JSON"
+      },
+      {
+        "variable": "acceptance_food_packaging",
+        "reason": "No food packaging acceptance measures found in JSON"
+      },
+      {
+        "variable": "perception_safety",
+        "reason": "No safety perception measures found in JSON"
+      },
+      {
+        "variable": "perception_quality",
+        "reason": "No quality perception measures found in JSON"
+      },
+      {
+        "variable": "price_willingness_to_pay_premium",
+        "reason": "No price premium willingness measures found in JSON"
+      }
+    ]
+  },
+  {
+    "study_id": "dicicco_2024_pcr_odor_acceptance",
+    "mappings": [
+      {
+        "cis_target": "demographics_gender",
+        "cis_K": 2,
+        "source_variable": "gender",
+        "source_scale": "categorical",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            57,
+            1
+          ],
+          "labels": [
+            "female",
+            "non_binary"
+          ],
+          "n": 58
+        },
+        "dirichlet_counts": [
+          57,
+          1
+        ],
+        "total_n": 58,
+        "computation_method": "direct_counts",
+        "notes": "males were excluded from study"
+      },
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "age",
+        "source_scale": "continuous",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 23.5,
+          "std": 3.9,
+          "n": 58,
+          "range_min": 18,
+          "range_max": 44
+        },
+        "dirichlet_counts": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "total_n": 58,
+        "computation_method": "Normal(23.50,3.90)[1-5]→rescale→K=5bins×n=58",
+        "notes": "continuous age data, not binned"
+      },
+      {
+        "cis_target": "attitudes_env_concern",
+        "cis_K": 5,
+        "source_variable": "environmental_concern",
+        "source_scale": "likert_7_1to7",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 6.1,
+          "std": 0.7,
+          "n": 58,
+          "scale_min": 1,
+          "scale_max": 7,
+          "reliability_alpha": 0.88
+        },
+        "dirichlet_counts": [
+          1,
+          1,
+          2,
+          32,
+          24
+        ],
+        "total_n": 58,
+        "computation_method": "Normal(6.10,0.70)[1-7]→rescale→K=5bins×n=58",
+        "notes": "7-point Likert scale"
+      },
+      {
+        "cis_target": "attitudes_env_concern",
+        "cis_K": 5,
+        "source_variable": "environmental_motivation",
+        "source_scale": "likert_5_1to5",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 4.4,
+          "std": 0.6,
+          "n": 58,
+          "scale_min": 1,
+          "scale_max": 5,
+          "reliability_alpha_min": 0.89,
+          "reliability_alpha_max": 0.93
+        },
+        "dirichlet_counts": [
+          1,
+          1,
+          4,
+          29,
+          23
+        ],
+        "total_n": 58,
+        "computation_method": "Normal(4.40,0.60)[1-5]→rescale→K=5bins×n=58",
+        "notes": "5-point Likert scale, METS instrument"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "willingness_to_buy",
+        "reason": "no direct CIS target match for purchase intention"
+      },
+      {
+        "variable": "odor_pleasantness",
+        "reason": "no direct CIS target match for sensory attributes"
+      },
+      {
+        "variable": "odor_familiarity",
+        "reason": "no direct CIS target match for sensory attributes"
+      },
+      {
+        "variable": "odor_intensity",
+        "reason": "no direct CIS target match for sensory attributes"
+      },
+      {
+        "variable": "demographics_education",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "demographics_income",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "demographics_urban_rural",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "attitudes_wtp_prices",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "attitudes_wtp_taxes",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "attitudes_wtp_lifestyle",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "behavior_recycling",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "behavior_reduce_consumption",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "attitudes_env_science_optimism",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "trust_institutions",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "perception_danger_pollution",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "acceptance_food_packaging",
+        "reason": "study focused on personal care packaging, not food"
+      },
+      {
+        "variable": "perception_safety",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "perception_quality",
+        "reason": "not reported in JSON"
+      },
+      {
+        "variable": "price_willingness_to_pay_premium",
+        "reason": "not reported in JSON"
+      }
+    ]
+  },
+  {
+    "study_id": "ipsos_2022_single_use_plastics_global",
+    "mappings": [],
+    "skipped_variables": [
+      {
+        "variable": "country_specific_results",
+        "reason": "Individual country breakdowns available but using global averages for meta-analysis"
+      },
+      {
+        "variable": "regional_groupings",
+        "reason": "Regional aggregations available but using global data for consistency"
+      },
+      {
+        "variable": "demographic_data",
+        "reason": "No specific demographic breakdowns provided in numerical format matching CIS targets"
+      }
+    ]
+  },
+  {
+    "study_id": "leal_filho_2025",
+    "mappings": [
+      {
+        "cis_target": "demographics_gender",
+        "cis_K": 2,
+        "source_variable": "gender",
+        "source_scale": "categorical",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            50,
+            50
+          ],
+          "labels": [
+            "female",
+            "male"
+          ],
+          "n": 127
+        },
+        "dirichlet_counts": [
+          64,
+          64
+        ],
+        "total_n": 127,
+        "computation_method": "percentages→proportions×n=127",
+        "notes": "Sample demographics"
+      },
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "age",
+        "source_scale": "categorical",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            22,
+            17,
+            19,
+            17,
+            6
+          ],
+          "labels": [
+            "18-25",
+            "26-35",
+            "36-45",
+            "46-59",
+            "60+"
+          ],
+          "n": 127
+        },
+        "dirichlet_counts": [
+          28,
+          22,
+          24,
+          22,
+          8
+        ],
+        "total_n": 127,
+        "computation_method": "percentages→proportions×n=127",
+        "notes": "Age group distribution"
+      },
+      {
+        "cis_target": "demographics_education",
+        "cis_K": 7,
+        "source_variable": "education",
+        "source_scale": "categorical",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            5,
+            3,
+            20,
+            50,
+            22
+          ],
+          "labels": [
+            "high_school_or_less",
+            "trade_school",
+            "bachelors",
+            "masters",
+            "phd_or_higher"
+          ],
+          "n": 127
+        },
+        "dirichlet_counts": [
+          6,
+          4,
+          13,
+          13,
+          64,
+          14,
+          14
+        ],
+        "total_n": 127,
+        "computation_method": "expand_5→7",
+        "notes": "Education level distribution"
+      },
+      {
+        "cis_target": "behavior_reduce_consumption",
+        "cis_K": 4,
+        "source_variable": "engagement_reducing_plastic",
+        "source_scale": "likert_5_1to5",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            4,
+            1,
+            33,
+            43,
+            19
+          ],
+          "labels": [
+            "not_at_all",
+            "slightly",
+            "moderately",
+            "very",
+            "extremely"
+          ],
+          "n": 127
+        },
+        "dirichlet_counts": [
+          6,
+          42,
+          55,
+          24
+        ],
+        "total_n": 127,
+        "computation_method": "collapse_5→4",
+        "notes": "Engagement in reducing plastic consumption"
+      },
+      {
+        "cis_target": "price_willingness_to_pay_premium",
+        "cis_K": 5,
+        "source_variable": "willingness_pay_more_bioplastics",
+        "source_scale": "likert_5_1to5",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 3.19,
+          "std": 1.111,
+          "n": 127,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          7,
+          26,
+          44,
+          34,
+          13
+        ],
+        "total_n": 127,
+        "computation_method": "Normal(3.19,1.11)[1-5]→rescale→K=5bins×n=127",
+        "notes": "Willingness to pay more for bioplastics"
+      },
+      {
+        "cis_target": "price_willingness_to_pay_premium",
+        "cis_K": 5,
+        "source_variable": "willingness_pay_more_bioplastics_distribution",
+        "source_scale": "likert_5_1to5",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            11,
+            12,
+            38,
+            29,
+            10
+          ],
+          "labels": [
+            "not_at_all",
+            "slightly",
+            "moderately",
+            "very",
+            "extremely"
+          ],
+          "n": 127
+        },
+        "dirichlet_counts": [
+          14,
+          15,
+          48,
+          37,
+          13
+        ],
+        "total_n": 127,
+        "computation_method": "percentages→proportions×n=127",
+        "notes": "Distribution of willingness to pay more for bioplastics"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "plastic_use_frequency",
+        "reason": "No clear mapping to CIS targets - relates to general plastic use rather than bioplastics acceptance"
+      },
+      {
+        "variable": "main_plastic_modalities",
+        "reason": "Categorical data about types of plastic products used, not covered by CIS targets"
+      },
+      {
+        "variable": "waste_management",
+        "reason": "Waste segregation behavior not directly mapped to CIS recycling behavior target"
+      },
+      {
+        "variable": "bioplastics_knowledge",
+        "reason": "Knowledge percentages don't map to CIS attitude/perception targets"
+      },
+      {
+        "variable": "bioplastics_barriers",
+        "reason": "Barrier identification percentages don't directly map to CIS targets"
+      }
+    ]
+  },
+  {
+    "study_id": "neumann_2024_pcr_nudging_germany",
+    "mappings": [
+      {
+        "cis_target": "demographics_gender",
+        "cis_K": 2,
+        "source_variable": "gender",
+        "source_scale": "categorical",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            45,
+            36,
+            3,
+            3
+          ],
+          "labels": [
+            "male",
+            "female",
+            "diverse",
+            "not_specified"
+          ],
+          "n": 87
+        },
+        "dirichlet_counts": [
+          81,
+          6
+        ],
+        "total_n": 87,
+        "computation_method": "collapse_4→2",
+        "notes": "Gender distribution from sample_characteristics"
+      },
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "age",
+        "source_scale": "continuous",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 34.7,
+          "std": 13.2,
+          "n": 87,
+          "scale_min": 18,
+          "scale_max": 82
+        },
+        "dirichlet_counts": [
+          20,
+          40,
+          22,
+          3,
+          1
+        ],
+        "total_n": 87,
+        "computation_method": "Normal(34.70,13.20)[18-82]→rescale→K=5bins×n=87",
+        "notes": "Age range 18-82 years from sample_characteristics"
+      },
+      {
+        "cis_target": "attitudes_env_concern",
+        "cis_K": 5,
+        "source_variable": "sustainability_attitude",
+        "source_scale": "likert_5_1to5",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 4.04,
+          "std": 0.59,
+          "n": 87,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          1,
+          1,
+          15,
+          52,
+          18
+        ],
+        "total_n": 87,
+        "computation_method": "Normal(4.04,0.59)[1-5]→rescale→K=5bins×n=87",
+        "notes": "German short version of environmental awareness scale, 9 items, measured at end to avoid priming"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "demographics_education",
+        "reason": "Only modal category provided (Abitur, n=26), no full distribution"
+      },
+      {
+        "variable": "demographics_income",
+        "reason": "Not measured in this study"
+      },
+      {
+        "variable": "demographics_urban_rural",
+        "reason": "Not measured in this study"
+      },
+      {
+        "variable": "attitudes_wtp_prices",
+        "reason": "Not measured as separate construct"
+      },
+      {
+        "variable": "attitudes_wtp_taxes",
+        "reason": "Not measured in this study"
+      },
+      {
+        "variable": "attitudes_wtp_lifestyle",
+        "reason": "Not measured in this study"
+      },
+      {
+        "variable": "behavior_recycling",
+        "reason": "Not measured in this study"
+      },
+      {
+        "variable": "behavior_reduce_consumption",
+        "reason": "Not measured in this study"
+      },
+      {
+        "variable": "attitudes_env_science_optimism",
+        "reason": "Not measured as separate construct"
+      },
+      {
+        "variable": "trust_institutions",
+        "reason": "Not measured in this study"
+      },
+      {
+        "variable": "perception_danger_pollution",
+        "reason": "Not measured in this study"
+      },
+      {
+        "variable": "acceptance_food_packaging",
+        "reason": "Study focused on home appliances, not food packaging"
+      },
+      {
+        "variable": "perception_safety",
+        "reason": "Not measured as separate construct"
+      },
+      {
+        "variable": "perception_quality",
+        "reason": "Not measured as separate construct"
+      }
+    ]
+  },
+  {
+    "study_id": "plasticircle_valencia_2019",
+    "mappings": [
+      {
+        "cis_target": "demographics_gender",
+        "cis_K": 2,
+        "source_variable": "gender_distribution_registered",
+        "source_scale": "categorical",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            46.9,
+            53.1
+          ],
+          "labels": [
+            "male",
+            "female"
+          ],
+          "n": 1464
+        },
+        "dirichlet_counts": [
+          687,
+          777
+        ],
+        "total_n": 1464,
+        "computation_method": "percentages→proportions×n=1464",
+        "notes": "Registered participants gender distribution"
+      },
+      {
+        "cis_target": "demographics_gender",
+        "cis_K": 2,
+        "source_variable": "gender_pre_pilot",
+        "source_scale": "categorical",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            28.4,
+            61.2
+          ],
+          "labels": [
+            "male",
+            "female"
+          ],
+          "n": 116
+        },
+        "dirichlet_counts": [
+          33,
+          71
+        ],
+        "total_n": 116,
+        "computation_method": "percentages→proportions×n=116",
+        "notes": "Pre-pilot questionnaire respondents, 10.3% no answer excluded"
+      },
+      {
+        "cis_target": "demographics_gender",
+        "cis_K": 2,
+        "source_variable": "gender_post_pilot",
+        "source_scale": "categorical",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            28.9,
+            63.2
+          ],
+          "labels": [
+            "male",
+            "female"
+          ],
+          "n": 114
+        },
+        "dirichlet_counts": [
+          33,
+          72
+        ],
+        "total_n": 114,
+        "computation_method": "percentages→proportions×n=114",
+        "notes": "Post-pilot questionnaire respondents, 7.9% no answer excluded"
+      },
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "age_distribution_pre_pilot",
+        "source_scale": "ordinal_bins",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            2.6,
+            19.0,
+            25.9,
+            23.3,
+            15.5,
+            10.3
+          ],
+          "labels": [
+            "18_24",
+            "25_34",
+            "35_44",
+            "45_54",
+            "55_64",
+            "65_74"
+          ],
+          "n": 116
+        },
+        "dirichlet_counts": [
+          25,
+          30,
+          27,
+          18,
+          12
+        ],
+        "total_n": 116,
+        "computation_method": "collapse_6→5",
+        "notes": "Pre-pilot age distribution"
+      },
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "age_distribution_post_pilot",
+        "source_scale": "ordinal_bins",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            2.6,
+            13.2,
+            20.2,
+            25.4,
+            22.8,
+            12.3
+          ],
+          "labels": [
+            "18_24",
+            "25_34",
+            "35_44",
+            "45_54",
+            "55_64",
+            "65_74"
+          ],
+          "n": 114
+        },
+        "dirichlet_counts": [
+          18,
+          23,
+          29,
+          26,
+          14
+        ],
+        "total_n": 114,
+        "computation_method": "collapse_6→5",
+        "notes": "Post-pilot age distribution"
+      },
+      {
+        "cis_target": "demographics_education",
+        "cis_K": 7,
+        "source_variable": "education_level_pre_pilot",
+        "source_scale": "categorical",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            54.3,
+            45.7
+          ],
+          "labels": [
+            "basic",
+            "high"
+          ],
+          "n": 116
+        },
+        "dirichlet_counts": [
+          21,
+          21,
+          21,
+          13,
+          13,
+          13,
+          13
+        ],
+        "total_n": 116,
+        "computation_method": "expand_2→7",
+        "notes": "Basic = no studies, primary/secondary school, professional formation; High = university or doctorate"
+      },
+      {
+        "cis_target": "demographics_education",
+        "cis_K": 7,
+        "source_variable": "education_level_post_pilot",
+        "source_scale": "categorical",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            58.8,
+            41.2
+          ],
+          "labels": [
+            "basic",
+            "high"
+          ],
+          "n": 114
+        },
+        "dirichlet_counts": [
+          22,
+          22,
+          22,
+          12,
+          12,
+          12,
+          12
+        ],
+        "total_n": 114,
+        "computation_method": "expand_2→7",
+        "notes": "Basic = no studies, primary/secondary school, professional formation; High = university or doctorate"
+      },
+      {
+        "cis_target": "trust_institutions",
+        "cis_K": 11,
+        "source_variable": "packages_effectively_recycled",
+        "source_scale": "percentage",
+        "data_type": "single_percentage",
+        "extracted_values": {
+          "percentage": 67.2,
+          "label": "packages_effectively_recycled",
+          "n": 116
+        },
+        "dirichlet_counts": [
+          1,
+          1,
+          1,
+          4,
+          9,
+          16,
+          21,
+          23,
+          19,
+          12,
+          6
+        ],
+        "total_n": 116,
+        "computation_method": "single_pct(67.2%)→K=11×n=116",
+        "notes": "Trust that municipality effectively recycles packages"
+      },
+      {
+        "cis_target": "attitudes_env_concern",
+        "cis_K": 5,
+        "source_variable": "valuable_resource_society",
+        "source_scale": "percentage",
+        "data_type": "single_percentage",
+        "extracted_values": {
+          "percentage": 95.3,
+          "label": "valuable_resource_society",
+          "n": 116
+        },
+        "dirichlet_counts": [
+          2,
+          4,
+          6,
+          55,
+          55
+        ],
+        "total_n": 116,
+        "computation_method": "single_pct(95.3%)→K=5×n=116",
+        "notes": "Perceived benefit: recycling is valuable resource for society"
+      },
+      {
+        "cis_target": "attitudes_env_concern",
+        "cis_K": 5,
+        "source_variable": "preserves_environment_reduces_landfill",
+        "source_scale": "percentage",
+        "data_type": "single_percentage",
+        "extracted_values": {
+          "percentage": 96.6,
+          "label": "preserves_environment_reduces_landfill",
+          "n": 116
+        },
+        "dirichlet_counts": [
+          1,
+          3,
+          6,
+          56,
+          56
+        ],
+        "total_n": 116,
+        "computation_method": "single_pct(96.6%)→K=5×n=116",
+        "notes": "Perceived benefit: recycling preserves environment and reduces landfill"
+      },
+      {
+        "cis_target": "behavior_recycling",
+        "cis_K": 4,
+        "source_variable": "always_often_sort",
+        "source_scale": "percentage",
+        "data_type": "single_percentage",
+        "extracted_values": {
+          "percentage": 93.1,
+          "label": "always_often_sort",
+          "n": 116
+        },
+        "dirichlet_counts": [
+          3,
+          5,
+          65,
+          43
+        ],
+        "total_n": 116,
+        "computation_method": "single_pct(93.1%)→K=4×n=116",
+        "notes": "Self-reported recycling behavior: always or often sort waste"
+      },
+      {
+        "cis_target": "attitudes_wtp_prices",
+        "cis_K": 5,
+        "source_variable": "should_be_rewarded_pre",
+        "source_scale": "percentage",
+        "data_type": "single_percentage",
+        "extracted_values": {
+          "percentage": 87.1,
+          "label": "should_be_rewarded",
+          "n": 116
+        },
+        "dirichlet_counts": [
+          4,
+          10,
+          6,
+          51,
+          51
+        ],
+        "total_n": 116,
+        "computation_method": "single_pct(87.1%)→K=5×n=116",
+        "notes": "Pre-pilot: households should be rewarded for recycling"
+      },
+      {
+        "cis_target": "attitudes_wtp_prices",
+        "cis_K": 5,
+        "source_variable": "should_be_rewarded_post",
+        "source_scale": "percentage",
+        "data_type": "single_percentage",
+        "extracted_values": {
+          "percentage": 89.5,
+          "label": "should_be_rewarded",
+          "n": 114
+        },
+        "dirichlet_counts": [
+          4,
+          8,
+          6,
+          51,
+          51
+        ],
+        "total_n": 114,
+        "computation_method": "single_pct(89.5%)→K=5×n=114",
+        "notes": "Post-pilot: households should be rewarded for recycling"
+      },
+      {
+        "cis_target": "attitudes_wtp_taxes",
+        "cis_K": 5,
+        "source_variable": "payt_principle",
+        "source_scale": "percentage",
+        "data_type": "percentages",
+        "extracted_values": {
+          "percentages": [
+            50.0,
+            28.1,
+            21.9
+          ],
+          "labels": [
+            "strongly_agree_agree",
+            "neutral",
+            "disagree_strongly_disagree"
+          ],
+          "n": 114
+        },
+        "dirichlet_counts": [
+          57,
+          16,
+          16,
+          12,
+          12
+        ],
+        "total_n": 114,
+        "computation_method": "expand_3→5",
+        "notes": "Pay-as-you-throw principle acceptance"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "household_composition_average_persons",
+        "reason": "Mean=2.8, SD=1.0 provided but no clear mapping to CIS targets"
+      },
+      {
+        "variable": "employment_rates",
+        "reason": "Employment percentages don't map to defined CIS targets"
+      },
+      {
+        "variable": "waste_characterization_percentages",
+        "reason": "Waste composition data doesn't map to attitude/behavior CIS targets"
+      },
+      {
+        "variable": "technical_issues_percentages",
+        "reason": "Technical problems with equipment don't map to CIS targets"
+      },
+      {
+        "variable": "container_accessibility",
+        "reason": "Physical accessibility percentages don't map to CIS targets"
+      }
+    ]
+  },
+  {
+    "study_id": "reijonen_2020",
+    "mappings": [
+      {
+        "cis_target": "demographics_gender",
+        "cis_K": 2,
+        "source_variable": "total_responses",
+        "source_scale": "categorical",
+        "data_type": "counts",
+        "extracted_values": {
+          "counts": [
+            386
+          ],
+          "labels": [
+            "total"
+          ],
+          "n": 386
+        },
+        "dirichlet_counts": [
+          193,
+          193
+        ],
+        "total_n": 386,
+        "computation_method": "expand_1→2",
+        "notes": "Only total sample size provided, no gender breakdown for web survey respondents"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "demographics_age",
+        "reason": "Only comparative finding that web respondents were significantly younger than paper respondents (d=1.19), but no actual mean/std values provided for web sample"
+      },
+      {
+        "variable": "demographics_education",
+        "reason": "No separate education statistics reported for web respondents"
+      },
+      {
+        "variable": "demographics_income",
+        "reason": "No income data reported for web respondents"
+      },
+      {
+        "variable": "demographics_urban_rural",
+        "reason": "No urban/rural breakdown provided for web respondents"
+      },
+      {
+        "variable": "attitudes_env_concern",
+        "reason": "Environmental concerns mentioned in regression but no descriptive statistics (mean/std) provided for web sample"
+      },
+      {
+        "variable": "behavior_recycling",
+        "reason": "Recycling behavior mentioned as outcome variable but no descriptive statistics provided for web sample"
+      },
+      {
+        "variable": "trust_institutions",
+        "reason": "No trust/institutional data reported"
+      },
+      {
+        "variable": "all_other_cis_targets",
+        "reason": "JSON explicitly states 'The article does NOT provide separate demographic breakdowns for web vs paper respondents. Only combined statistics are reported' and 'No separate descriptive statistics by mode'"
+      }
+    ]
+  },
+  {
+    "study_id": "ruokamo_2022_recycled_plastics",
+    "mappings": [
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "demo_age",
+        "source_scale": "continuous_years",
+        "data_type": "mean_only",
+        "extracted_values": {
+          "mean": 51.1,
+          "n": 301
+        },
+        "dirichlet_counts": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "total_n": 301,
+        "computation_method": "Normal(51.10,1.00)[1-5]→rescale→K=5bins×n=301",
+        "notes": "Age in years, range 18-80"
+      },
+      {
+        "cis_target": "acceptance_food_packaging",
+        "cis_K": 5,
+        "source_variable": "suitable_products_food_packaging",
+        "source_scale": "binary_selection",
+        "data_type": "single_percentage",
+        "extracted_values": {
+          "percentage": 0.38,
+          "n": 301
+        },
+        "dirichlet_counts": [
+          90,
+          210,
+          15,
+          1,
+          1
+        ],
+        "total_n": 301,
+        "computation_method": "single_pct(0.38%)→K=5×n=301",
+        "notes": "Percentage who think recycled plastic suitable for food packaging"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "secondary_education",
+        "reason": "Coefficient not provided in best model (Model 3), only in Model 1"
+      },
+      {
+        "variable": "high_education",
+        "reason": "Coefficient not provided in best model (Model 3), only in Models 1 and 2"
+      },
+      {
+        "variable": "income",
+        "reason": "Not significant in any model, coefficient not reported"
+      },
+      {
+        "variable": "countryside",
+        "reason": "Not significant in any model, coefficient not reported"
+      },
+      {
+        "variable": "at_least_60_years",
+        "reason": "Not significant in any model, coefficient not reported"
+      },
+      {
+        "variable": "price_most_important",
+        "reason": "Not significant in any model, coefficient not reported"
+      },
+      {
+        "variable": "owns_recycled_product",
+        "reason": "Not significant in any model, coefficient not reported"
+      }
+    ]
+  },
+  {
+    "study_id": "widiastuti_2025_recycled_plastics",
+    "mappings": [
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "environmental_advantages",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 3.42,
+          "std": 0.51,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          1,
+          4,
+          61,
+          49,
+          2
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(3.42,0.51)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Products made from recycled plastics provide significant environmental advantages"
+      },
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "sustainable_future",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 3.46,
+          "std": 0.52,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          1,
+          4,
+          58,
+          52,
+          3
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(3.46,0.52)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Products made from recycled plastics play a crucial role in achieving a sustainable future"
+      },
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "environmental_protection",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 3.53,
+          "std": 0.52,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          1,
+          3,
+          53,
+          57,
+          4
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(3.53,0.52)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Products made from recycled plastics contribute to environmental protection"
+      },
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "personal_satisfaction",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 3.09,
+          "std": 0.52,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          1,
+          15,
+          76,
+          25,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(3.09,0.52)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Purchasing products made from recycled plastic gives me a sense of personal satisfaction"
+      },
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "personal_delight",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 3.09,
+          "std": 0.51,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          1,
+          14,
+          77,
+          24,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(3.09,0.51)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Purchasing products made from recycled plastics makes me feel delighted"
+      },
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "risk_carries",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 2.09,
+          "std": 0.79,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          24,
+          55,
+          31,
+          4,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.09,0.79)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Buying products made from recycled plastic carries certain risks"
+      },
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "negative_health",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 2.07,
+          "std": 0.72,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          23,
+          59,
+          29,
+          3,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.07,0.72)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Products made from recycled plastic may have negative health effects"
+      },
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "contamination",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 2.23,
+          "std": 0.65,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          15,
+          62,
+          36,
+          3,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.23,0.65)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Products made from recycled plastics may be contaminated"
+      },
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "unclean_perception",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 2.03,
+          "std": 0.65,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          23,
+          65,
+          26,
+          1,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.03,0.65)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Products made from recycled plastic may be perceived as unclean"
+      },
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "safety_consideration",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 2.11,
+          "std": 0.52,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          14,
+          76,
+          26,
+          1,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.11,0.52)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Products made from recycled plastic are considered safe"
+      },
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "no_harm",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 2.13,
+          "std": 0.54,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          14,
+          73,
+          28,
+          1,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.13,0.54)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Products made from recycled plastic do not pose any harm"
+      },
+      {
+        "cis_target": "acceptance_general",
+        "cis_K": 5,
+        "source_variable": "favourable_impression",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 3.16,
+          "std": 0.56,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          1,
+          14,
+          71,
+          31,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(3.16,0.56)[1-5]→rescale→K=5bins×n=116",
+        "notes": "I have a highly favourable impression of products made from recycled plastic"
+      },
+      {
+        "cis_target": "acceptance_general",
+        "cis_K": 5,
+        "source_variable": "purchase_intention",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 2.98,
+          "std": 0.44,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          1,
+          16,
+          86,
+          14,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.98,0.44)[1-5]→rescale→K=5bins×n=116",
+        "notes": "I would purchase products made from recycled plastic"
+      },
+      {
+        "cis_target": "price_willingness_to_pay_premium",
+        "cis_K": 5,
+        "source_variable": "price_premium",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 2.56,
+          "std": 0.61,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          5,
+          49,
+          55,
+          7,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.56,0.61)[1-5]→rescale→K=5bins×n=116",
+        "notes": "I would likely pay more for products made from recycled plastic compared to those made from conventional plastic"
+      },
+      {
+        "cis_target": "attitudes_env_concern",
+        "cis_K": 5,
+        "source_variable": "interest_recycled",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 3.09,
+          "std": 0.5,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          1,
+          14,
+          78,
+          24,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(3.09,0.50)[1-5]→rescale→K=5bins×n=116",
+        "notes": "I am highly interested in products made from recycled plastic"
+      },
+      {
+        "cis_target": "attitudes_env_concern",
+        "cis_K": 5,
+        "source_variable": "environmental_impacts",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 3.18,
+          "std": 0.55,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          1,
+          12,
+          71,
+          32,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(3.18,0.55)[1-5]→rescale→K=5bins×n=116",
+        "notes": "I am fully aware of the environmental impacts of plastic usage"
+      },
+      {
+        "cis_target": "attitudes_env_concern",
+        "cis_K": 5,
+        "source_variable": "single_use_risk",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 3.26,
+          "std": 0.66,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          1,
+          14,
+          60,
+          38,
+          3
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(3.26,0.66)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Single-use plastics pose a major risk to human health"
+      },
+      {
+        "cis_target": "attitudes_env_concern",
+        "cis_K": 5,
+        "source_variable": "familiarity",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 2.84,
+          "std": 0.7,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          3,
+          33,
+          60,
+          19,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.84,0.70)[1-5]→rescale→K=5bins×n=116",
+        "notes": "I am familiar with products made from recycled plastic"
+      },
+      {
+        "cis_target": "behavior_reduce_consumption",
+        "cis_K": 4,
+        "source_variable": "consumption_habits",
+        "source_scale": "likert_5_agreement",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 2.88,
+          "std": 0.58,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          2,
+          65,
+          48,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.88,0.58)[1-5]→rescale→K=4bins×n=116",
+        "notes": "I have altered my consumption habits due to environmental considerations"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "material_identification_accuracy",
+        "reason": "Experimental task accuracy rates, not attitude/behavior measures matching CIS targets"
+      },
+      {
+        "variable": "product_appearance_semantic_differential",
+        "reason": "Sensory evaluation scales (reflective-nonreflective, glossy-matte) not matching CIS attitude/behavior targets"
+      },
+      {
+        "variable": "qualitative_interview_themes",
+        "reason": "Qualitative thematic analysis without numerical data"
+      }
+    ]
+  },
+  {
+    "study_id": "widiastuti_2025_recycled_plastic_acceptance",
+    "mappings": [
+      {
+        "cis_target": "perception_quality",
+        "cis_K": 5,
+        "source_variable": "perceived_benefits",
+        "source_scale": "likert_5",
+        "data_type": "mean_only",
+        "extracted_values": {
+          "mean": 3.48,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          3,
+          16,
+          40,
+          39,
+          15
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(3.48,1.00)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Mean range 3.42-3.53, using midpoint"
+      },
+      {
+        "cis_target": "perception_safety",
+        "cis_K": 5,
+        "source_variable": "perceived_risk",
+        "source_scale": "likert_5",
+        "data_type": "mean_only",
+        "extracted_values": {
+          "mean": 2.15,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          24,
+          44,
+          32,
+          9,
+          1
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.15,1.00)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Mean range 2.07-2.23, using midpoint"
+      },
+      {
+        "cis_target": "acceptance_general",
+        "cis_K": 5,
+        "source_variable": "willingness_to_consume",
+        "source_scale": "likert_5",
+        "data_type": "mean_only",
+        "extracted_values": {
+          "mean": 2.9,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          8,
+          31,
+          44,
+          25,
+          6
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(2.90,1.00)[1-5]→rescale→K=5bins×n=116",
+        "notes": "Average of favorable impression (3.16), purchase intention (2.98), and price premium (2.56)"
+      },
+      {
+        "cis_target": "attitudes_env_concern",
+        "cis_K": 5,
+        "source_variable": "environmental_awareness",
+        "source_scale": "likert_5",
+        "data_type": "mean_only",
+        "extracted_values": {
+          "mean": 3.26,
+          "n": 116,
+          "scale_min": 1,
+          "scale_max": 5
+        },
+        "dirichlet_counts": [
+          4,
+          21,
+          43,
+          35,
+          11
+        ],
+        "total_n": 116,
+        "computation_method": "Normal(3.26,1.00)[1-5]→rescale→K=5bins×n=116",
+        "notes": "High level of environmental awareness"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "sensory_evaluation_chi_square",
+        "reason": "Chi-square results not relevant for CIS targets"
+      },
+      {
+        "variable": "identification_accuracy",
+        "reason": "Percentages for material identification, not attitude measures"
+      },
+      {
+        "variable": "mediation_effects",
+        "reason": "Indirect effects already captured through direct regression paths"
+      }
+    ]
+  },
+  {
+    "study_id": "zwicker_2020_plastic_attitudes",
+    "mappings": [
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "age_study2",
+        "source_scale": "continuous",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 32.41,
+          "std": 10.83,
+          "n": 508,
+          "scale_min": 18,
+          "scale_max": 72
+        },
+        "dirichlet_counts": [
+          109,
+          236,
+          131,
+          18,
+          3
+        ],
+        "total_n": 508,
+        "computation_method": "Normal(32.41,10.83)[18-72]→rescale→K=5bins×n=508",
+        "notes": "Study 2 sample"
+      },
+      {
+        "cis_target": "demographics_age",
+        "cis_K": 5,
+        "source_variable": "age_study3",
+        "source_scale": "continuous",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 30.87,
+          "std": 10.83,
+          "n": 285,
+          "scale_min": 18,
+          "scale_max": 70
+        },
+        "dirichlet_counts": [
+          69,
+          129,
+          67,
+          10,
+          1
+        ],
+        "total_n": 285,
+        "computation_method": "Normal(30.87,10.83)[18-70]→rescale→K=5bins×n=285",
+        "notes": "Study 3 sample"
+      },
+      {
+        "cis_target": "attitudes_wtp_prices",
+        "cis_K": 5,
+        "source_variable": "wtp_bottle_study2",
+        "source_scale": "continuous_euros",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 1.21,
+          "std": 0.28,
+          "n": 508,
+          "scale_min": 0,
+          "scale_max": 2
+        },
+        "dirichlet_counts": [
+          3,
+          25,
+          257,
+          211,
+          14
+        ],
+        "total_n": 508,
+        "computation_method": "Normal(1.21,0.28)[0-2]→rescale→K=5bins×n=508",
+        "notes": "Study 2 WTP for bio-based plastic bottle, base price 1.0 euro"
+      },
+      {
+        "cis_target": "attitudes_wtp_prices",
+        "cis_K": 5,
+        "source_variable": "wtp_bottle_study3",
+        "source_scale": "continuous_gbp",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 1.18,
+          "std": 0.32,
+          "n": 285,
+          "scale_min": 0,
+          "scale_max": 2
+        },
+        "dirichlet_counts": [
+          1,
+          25,
+          142,
+          107,
+          11
+        ],
+        "total_n": 285,
+        "computation_method": "Normal(1.18,0.32)[0-2]→rescale→K=5bins×n=285",
+        "notes": "Study 3 WTP for bio-based plastic bottle, base price 1.0 GBP"
+      },
+      {
+        "cis_target": "attitudes_wtp_prices",
+        "cis_K": 5,
+        "source_variable": "percent_willing_to_pay_more_study2",
+        "source_scale": "binary_percentage",
+        "data_type": "single_percentage",
+        "extracted_values": {
+          "percentage": 72.83,
+          "n": 508
+        },
+        "dirichlet_counts": [
+          41,
+          97,
+          25,
+          185,
+          185
+        ],
+        "total_n": 508,
+        "computation_method": "single_pct(72.83%)→K=5×n=508",
+        "notes": "Study 2 percentage willing to pay more than base price"
+      },
+      {
+        "cis_target": "attitudes_wtp_prices",
+        "cis_K": 5,
+        "source_variable": "percent_willing_to_pay_more_study3",
+        "source_scale": "binary_percentage",
+        "data_type": "single_percentage",
+        "extracted_values": {
+          "percentage": 74.04,
+          "n": 285
+        },
+        "dirichlet_counts": [
+          22,
+          52,
+          14,
+          106,
+          106
+        ],
+        "total_n": 285,
+        "computation_method": "single_pct(74.04%)→K=5×n=285",
+        "notes": "Study 3 percentage willing to pay more than base price"
+      },
+      {
+        "cis_target": "behavior_reduce_consumption",
+        "cis_K": 4,
+        "source_variable": "donation_behavior",
+        "source_scale": "continuous_euros",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 0.39,
+          "std": 0.28,
+          "n": 285,
+          "scale_min": 0,
+          "scale_max": 0.85
+        },
+        "dirichlet_counts": [
+          45,
+          103,
+          92,
+          32
+        ],
+        "total_n": 285,
+        "computation_method": "Normal(0.39,0.28)[0-0.85]→rescale→K=4bins×n=285",
+        "notes": "Actual donation behavior from compensation, median=0.0"
+      },
+      {
+        "cis_target": "behavior_reduce_consumption",
+        "cis_K": 4,
+        "source_variable": "percent_donors",
+        "source_scale": "binary_percentage",
+        "data_type": "single_percentage",
+        "extracted_values": {
+          "percentage": 49.5,
+          "n": 285
+        },
+        "dirichlet_counts": [
+          58,
+          86,
+          85,
+          56
+        ],
+        "total_n": 285,
+        "computation_method": "single_pct(49.5%)→K=4×n=285",
+        "notes": "Percentage who made any donation"
+      },
+      {
+        "cis_target": "attitudes_env_concern",
+        "cis_K": 5,
+        "source_variable": "guilt_manipulation_check_control",
+        "source_scale": "likert_7",
+        "data_type": "mean_std",
+        "extracted_values": {
+          "mean": 4.14,
+          "std": 1.62,
+          "n": 100,
+          "scale_min": 1,
+          "scale_max": 7
+        },
+        "dirichlet_counts": [
+          6,
+          22,
+          36,
+          26,
+          8
+        ],
+        "total_n": 100,
+        "computation_method": "Normal(4.14,1.62)[1-7]→rescale→K=5bins×n=100",
+        "notes": "Control condition guilt level"
+      }
+    ],
+    "skipped_variables": [
+      {
+        "variable": "ers_cognitive_items",
+        "reason": "Individual scale items without aggregate scores"
+      },
+      {
+        "variable": "ers_emotional_items",
+        "reason": "Individual scale items without aggregate scores"
+      },
+      {
+        "variable": "network_centrality_measures",
+        "reason": "Network analysis metrics not matching CIS targets"
+      },
+      {
+        "variable": "ambivalence_scores",
+        "reason": "Calculated composite measure not directly matching CIS targets"
+      }
+    ]
+  }
+]

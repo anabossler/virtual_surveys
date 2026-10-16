@@ -1,0 +1,484 @@
+{
+  "method": "Fixed-effects meta-analysis: regression_coefficient + conditional→beta",
+  "version": "harmonize_categories_v6",
+  "paper_section": "§2.2 Stage 2b (Ruokamo 2022 pivot + multi-study pooling)",
+  "description": "Regression coefficients (β) per predictor per CIS target. Sources: explicit regression models (n=39), conditional_means→Cohen_d→beta, correlations→r_to_beta, group_percentages→log_OR→beta. Pooled via 1/SE² weighting when multiple studies report same predictor. Used by step3_cpt_conditional to construct P(acceptance|demographics).",
+  "predictor_to_cis_mapping": {
+    "female": "demographics_gender",
+    "gender": "demographics_gender",
+    "sex": "demographics_gender",
+    "female_choose_less_plastic": "demographics_gender",
+    "female_bottle_own_water": "demographics_gender",
+    "under_30": "demographics_age",
+    "under_30_years": "demographics_age",
+    "over_60": "demographics_age",
+    "at_least_60_years": "demographics_age",
+    "age": "demographics_age",
+    "age_recycling_positive": "demographics_age",
+    "secondary": "demographics_education",
+    "secondary_education": "demographics_education",
+    "tertiary": "demographics_education",
+    "tertiary_education": "demographics_education",
+    "high_education": "demographics_education",
+    "education": "demographics_education",
+    "income": "demographics_income",
+    "income_bracket": "demographics_income",
+    "urban": "demographics_urban_rural",
+    "rural": "demographics_urban_rural",
+    "countryside": "demographics_urban_rural",
+    "living_environment": "demographics_urban_rural",
+    "env_worry_plastics": "attitudes_env_concern",
+    "env_concern": "attitudes_env_concern",
+    "environmental_concern": "attitudes_env_concern",
+    "environmental_awareness": "attitudes_env_concern",
+    "environmental_awareness_direct": "attitudes_env_concern",
+    "env_friendliness_important": "attitudes_env_concern",
+    "environmental_friendliness_importance": "attitudes_env_concern",
+    "env_concern_recycling_positive": "attitudes_env_concern",
+    "recyclability_important": "attitudes_env_concern",
+    "recyclability_importance": "attitudes_env_concern",
+    "recycling": "behavior_recycling",
+    "recycles_plastic": "behavior_recycling",
+    "recycling_frequency": "behavior_recycling",
+    "wtp": "attitudes_wtp_prices",
+    "willingness_to_pay": "attitudes_wtp_prices",
+    "culpa_guilt": "attitudes_wtp_prices",
+    "price_sensitivity": "attitudes_wtp_prices",
+    "perceived_benefit": "perception_quality",
+    "perceived_benefit_to_willingness": "perception_quality",
+    "safety_important": "perception_safety",
+    "safety_importance": "perception_safety",
+    "perceived_risk": "perception_safety",
+    "perceived_risk_to_willingness": "perception_safety",
+    "appearance_most_important": "perception_quality",
+    "appearance_importance": "perception_quality",
+    "product_ownership": "perception_quality",
+    "environmental_awareness_to_perceived_benefit": "perception_quality",
+    "environmental_awareness_to_perceived_risk": "perception_safety",
+    "pcr_recycled_content_effect": "acceptance_food_packaging",
+    "pleasantness_effect_on_acceptability": "acceptance_food_packaging",
+    "self_efficacy_cue": "acceptance_general",
+    "female_choose_less_plastic__female": "demographics_gender",
+    "female_bottle_own_water__female": "demographics_gender",
+    "no_gender_effect_wtp_bioplastics__male": "demographics_gender",
+    "env_concern_recycling_positive__r_predictor": "attitudes_env_concern"
+  },
+  "variables": {
+    "acceptance_general": {
+      "model_type": "ordered_probit",
+      "model_name": "Full model with purchasing attitudes",
+      "study_id": "ruokamo_2022_recycled_plastics",
+      "n_observations": 272,
+      "outcome_variable": "attractiveness_statement",
+      "predictors": {
+        "perception_quality": {
+          "cis_variable": null,
+          "levels": {
+            "appearance_most_important": {
+              "coefficient": -0.2645,
+              "std_error": 0.1593,
+              "significance": "*",
+              "n_studies": 1,
+              "n_observations": 272,
+              "studies": [
+                "ruokamo_2022_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            },
+            "perceived_benefit_to_willingness": {
+              "coefficient": 0.1562,
+              "std_error": 0.0417,
+              "significance": "**",
+              "n_studies": 2,
+              "n_observations": 232,
+              "studies": [
+                "widiastuti_2025_recycled_plastics",
+                "widiastuti_2025_recycled_plastic_acceptance"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": "appearance_not_most_important"
+        },
+        "attitudes_env_concern": {
+          "cis_variable": "V15",
+          "levels": {
+            "env_friendliness_important": {
+              "coefficient": 0.3896,
+              "std_error": 0.1699,
+              "significance": "**",
+              "n_studies": 1,
+              "n_observations": 272,
+              "studies": [
+                "ruokamo_2022_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            },
+            "env_worry_plastics": {
+              "coefficient": 0.7605,
+              "std_error": 0.1636,
+              "significance": "***",
+              "n_studies": 1,
+              "n_observations": 272,
+              "studies": [
+                "ruokamo_2022_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            },
+            "environmental_awareness_direct": {
+              "coefficient": 0.0626,
+              "std_error": 0.056,
+              "significance": "ns",
+              "n_studies": 1,
+              "n_observations": 116,
+              "studies": [
+                "widiastuti_2025_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            },
+            "environmental_awareness_to_willingness": {
+              "coefficient": 0.0626,
+              "std_error": 0.056,
+              "significance": "ns",
+              "n_studies": 1,
+              "n_observations": 116,
+              "studies": [
+                "widiastuti_2025_recycled_plastic_acceptance"
+              ],
+              "derived_method": "direct_regression"
+            },
+            "recyclability_important": {
+              "coefficient": -0.3385,
+              "std_error": 0.176,
+              "significance": "*",
+              "n_studies": 1,
+              "n_observations": 272,
+              "studies": [
+                "ruokamo_2022_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": null
+        },
+        "demographics_gender": {
+          "cis_variable": "SEX",
+          "levels": {
+            "female": {
+              "coefficient": 0.463,
+              "std_error": 0.157,
+              "significance": "***",
+              "n_studies": 1,
+              "n_observations": 272,
+              "studies": [
+                "ruokamo_2022_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": "male"
+        },
+        "unknown": {
+          "cis_variable": null,
+          "levels": {
+            "household_size": {
+              "coefficient": 0.0853,
+              "std_error": 0.0462,
+              "significance": "*",
+              "n_studies": 1,
+              "n_observations": 272,
+              "studies": [
+                "ruokamo_2022_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": null
+        },
+        "perception_safety": {
+          "cis_variable": null,
+          "levels": {
+            "perceived_risk_to_willingness": {
+              "coefficient": -0.1046,
+              "std_error": 0.028,
+              "significance": "**",
+              "n_studies": 2,
+              "n_observations": 232,
+              "studies": [
+                "widiastuti_2025_recycled_plastics",
+                "widiastuti_2025_recycled_plastic_acceptance"
+              ],
+              "derived_method": "direct_regression"
+            },
+            "safety_important": {
+              "coefficient": 0.3435,
+              "std_error": 0.1775,
+              "significance": "*",
+              "n_studies": 1,
+              "n_observations": 272,
+              "studies": [
+                "ruokamo_2022_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": null
+        },
+        "behavior_recycling": {
+          "cis_variable": "V52",
+          "levels": {
+            "recycles_plastic": {
+              "coefficient": 0.3523,
+              "std_error": 0.1884,
+              "significance": "*",
+              "n_studies": 1,
+              "n_observations": 272,
+              "studies": [
+                "ruokamo_2022_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": "does_not_recycle"
+        },
+        "demographics_age": {
+          "cis_variable": "BIRTH",
+          "levels": {
+            "under_30_years": {
+              "coefficient": 0.4683,
+              "std_error": 0.2608,
+              "significance": "*",
+              "n_studies": 1,
+              "n_observations": 272,
+              "studies": [
+                "ruokamo_2022_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": "30_plus"
+        },
+        "attitudes_wtp_prices": {
+          "cis_variable": "V27",
+          "levels": {
+            "administrative_staff": {
+              "coefficient": 0.7618,
+              "std_error": 0.4082,
+              "significance": "ns",
+              "n_studies": 1,
+              "n_observations": null,
+              "studies": [
+                "widiastuti_2025_recycled_plastics"
+              ],
+              "derived_method": "conditional_means→beta (ref=teaching_staff)"
+            },
+            "students": {
+              "coefficient": 0.9432,
+              "std_error": 0.3069,
+              "significance": "ns",
+              "n_studies": 1,
+              "n_observations": null,
+              "studies": [
+                "widiastuti_2025_recycled_plastics"
+              ],
+              "derived_method": "conditional_means→beta (ref=teaching_staff)"
+            },
+            "teaching_staff": {
+              "coefficient": 0.0,
+              "std_error": 0.4082,
+              "significance": "ns",
+              "n_studies": 1,
+              "n_observations": null,
+              "studies": [
+                "widiastuti_2025_recycled_plastics"
+              ],
+              "derived_method": "conditional_means→beta (ref=teaching_staff)"
+            }
+          },
+          "reference_level": "teaching_staff"
+        }
+      },
+      "n_predictor_dimensions": 8,
+      "meta_analysis_note": "Pooled from 18 entries across 3 studies"
+    },
+    "attitudes_env_concern": {
+      "model_type": "parallel_mediation",
+      "model_name": "SPSS PROCESS Model 4",
+      "study_id": "widiastuti_2025_recycled_plastics",
+      "n_observations": 116,
+      "outcome_variable": "perceived_benefit",
+      "predictors": {
+        "attitudes_env_concern": {
+          "cis_variable": "V15",
+          "levels": {
+            "administrative_staff": {
+              "coefficient": 0.0,
+              "std_error": 0.4082,
+              "significance": "ns",
+              "n_studies": 1,
+              "n_observations": null,
+              "studies": [
+                "widiastuti_2025_recycled_plastics"
+              ],
+              "derived_method": "conditional_means→beta (ref=administrative_staff)"
+            },
+            "students": {
+              "coefficient": 0.3083,
+              "std_error": 0.3069,
+              "significance": "ns",
+              "n_studies": 1,
+              "n_observations": null,
+              "studies": [
+                "widiastuti_2025_recycled_plastics"
+              ],
+              "derived_method": "conditional_means→beta (ref=administrative_staff)"
+            },
+            "teaching_staff": {
+              "coefficient": 3.1741,
+              "std_error": 0.4082,
+              "significance": "***",
+              "n_studies": 1,
+              "n_observations": null,
+              "studies": [
+                "widiastuti_2025_recycled_plastics"
+              ],
+              "derived_method": "conditional_means→beta (ref=administrative_staff)"
+            }
+          },
+          "reference_level": "administrative_staff"
+        },
+        "perception_quality": {
+          "cis_variable": null,
+          "levels": {
+            "environmental_awareness_to_perceived_benefit": {
+              "coefficient": 0.2002,
+              "std_error": 0.0858,
+              "significance": "*",
+              "n_studies": 1,
+              "n_observations": 116,
+              "studies": [
+                "widiastuti_2025_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": null
+        }
+      },
+      "n_predictor_dimensions": 2,
+      "meta_analysis_note": "Pooled from 4 entries across 1 studies"
+    },
+    "attitudes_wtp_prices": {
+      "model_type": "regression",
+      "model_name": "guilt_predicting_wtp",
+      "study_id": "zwicker_2020_plastic_attitudes",
+      "n_observations": null,
+      "outcome_variable": "willingness_to_pay",
+      "predictors": {
+        "attitudes_wtp_prices": {
+          "cis_variable": "V27",
+          "levels": {
+            "guilt": {
+              "coefficient": 0.283,
+              "std_error": 0.1788,
+              "significance": "ns",
+              "n_studies": 1,
+              "n_observations": null,
+              "studies": [
+                "zwicker_2020_plastic_attitudes"
+              ],
+              "derived_method": "correlation→beta_logit"
+            },
+            "guilt_wtp_regression": {
+              "coefficient": 0.243,
+              "std_error": 0.068,
+              "significance": "***",
+              "n_studies": 1,
+              "n_observations": null,
+              "studies": [
+                "zwicker_2020_plastic_attitudes"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": null
+        }
+      },
+      "n_predictor_dimensions": 1,
+      "meta_analysis_note": "Pooled from 2 entries across 1 studies"
+    },
+    "perception_quality": {
+      "model_type": "parallel_mediation",
+      "model_name": "Hayes Model 4",
+      "study_id": "widiastuti_2025_recycled_plastic_acceptance",
+      "n_observations": 116,
+      "outcome_variable": "perceived_benefit",
+      "predictors": {
+        "attitudes_env_concern": {
+          "cis_variable": "V15",
+          "levels": {
+            "environmental_awareness_to_benefit": {
+              "coefficient": 0.2002,
+              "std_error": 0.0858,
+              "significance": "*",
+              "n_studies": 1,
+              "n_observations": 116,
+              "studies": [
+                "widiastuti_2025_recycled_plastic_acceptance"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": null
+        }
+      },
+      "n_predictor_dimensions": 1,
+      "meta_analysis_note": "Pooled from 1 entries across 1 studies"
+    },
+    "perception_safety": {
+      "model_type": "parallel_mediation",
+      "model_name": "SPSS PROCESS Model 4",
+      "study_id": "widiastuti_2025_recycled_plastics",
+      "n_observations": 116,
+      "outcome_variable": "perceived_risk",
+      "predictors": {
+        "perception_safety": {
+          "cis_variable": null,
+          "levels": {
+            "environmental_awareness_to_perceived_risk": {
+              "coefficient": -0.2695,
+              "std_error": 0.128,
+              "significance": "*",
+              "n_studies": 1,
+              "n_observations": 116,
+              "studies": [
+                "widiastuti_2025_recycled_plastics"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": null
+        },
+        "attitudes_env_concern": {
+          "cis_variable": "V15",
+          "levels": {
+            "environmental_awareness_to_risk": {
+              "coefficient": -0.2695,
+              "std_error": 0.128,
+              "significance": "*",
+              "n_studies": 1,
+              "n_observations": 116,
+              "studies": [
+                "widiastuti_2025_recycled_plastic_acceptance"
+              ],
+              "derived_method": "direct_regression"
+            }
+          },
+          "reference_level": null
+        }
+      },
+      "n_predictor_dimensions": 2,
+      "meta_analysis_note": "Pooled from 2 entries across 2 studies"
+    }
+  }
+}

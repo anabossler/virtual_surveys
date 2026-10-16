@@ -629,7 +629,7 @@ def main():
     if not os.path.exists("category_mappings.json"):
         print("\nERROR: category_mappings.json not found.")
         print("Run harmonize_categories.py first.")
-        return
+        raise SystemExit(1)
 
     flat, by_target = load_category_mappings()
     cleaned = validate_mappings(by_target)

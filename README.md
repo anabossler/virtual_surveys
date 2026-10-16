@@ -43,6 +43,8 @@ Supporting modules: `harmonize_categories.py` (language-model-assisted extractio
 | File | Content |
 |---|---|
 | `transfer_coefficients.csv` | Coefficients, standard errors, CIS coding and source of each predictor of the transfer model |
+| `category_mappings.json` | Reviewed output of the language-model extraction (`harmonize_categories.py`): one entry per extracted item, with source, scale and statistics |
+| `regression_priors.json` | Regression coefficients extracted from the external studies (used by the legacy `step3.py` only) |
 | `evidence_rules.csv` | Corrections to extracted entries (exclusions, reversed items, re-expansion of single shares), with reasons |
 
 ISSP 2020 Environment IV (ZA7650 v2.0.0, doi:10.4232/1.14153) must be downloaded from GESIS (registration required) and placed at `metadata/ZA7650_v2-0-0.dta`; it is not redistributed.
