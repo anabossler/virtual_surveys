@@ -26,6 +26,8 @@ The synthetic population has 10,000 individuals (50 graphs from the structure po
 | `step3.py` | Conditional probability tables (legacy fusion; not used for the final population) | `step3_fused_priors.json` |
 | `step4.py` | Synthetic population; S2 = network with BDeu prior and PESOFIN-weighted counts | `step4_output/synthetic_surveys_S2.csv` |
 | `transfer_model.py` | Transfer model for food-packaging acceptance, intervals and sensitivity | `transfer_output/*.csv` |
+| `transport_issp.py` | Finland-to-Spain transport error on ISSP 2020 proxy outcomes | `transport_output/issp_transport.json` |
+| `transfer_transport.py` | Projections with empirical transport error | `transfer_output/transport_*.csv` |
 | `measurement_plan.py` | Segment sensitivity to a0 and sample sizes for the first Spanish measurement | `transfer_output/segments_a0.csv`, `measurement_plan.csv` |
 | `step4b_targets.py` | Attaches the target outcome to each synthetic individual | `step4_output/synthetic_surveys_final.csv` |
 | `step6.py` | Fidelity and dependency diagnostics | `step6_output/` |
@@ -43,6 +45,8 @@ Supporting modules: `harmonize_categories.py` (language-model-assisted extractio
 | `transfer_coefficients.csv` | Coefficients, standard errors, CIS coding and source of each predictor of the transfer model |
 | `evidence_rules.csv` | Corrections to extracted entries (exclusions, reversed items, re-expansion of single shares), with reasons |
 
+ISSP 2020 Environment IV (ZA7650 v2.0.0, doi:10.4232/1.14153) must be downloaded from GESIS (registration required) and placed at `metadata/ZA7650_v2-0-0.dta`; it is not redistributed.
+
 CIS Study 3391 microdata must be obtained from https://www.cis.es and placed at `metadata/3391_num.csv` (semicolon-separated, latin-1). The weight `PESOFIN` is stored with a decimal comma and is parsed accordingly.
 
 ---
@@ -56,6 +60,8 @@ python evidence_table.py
 python step4.py
 python transfer_model.py
 python measurement_plan.py
+python transport_issp.py --issp metadata/ZA7650_v2-0-0.dta
+python transfer_transport.py
 python step4b_targets.py
 python step6.py
 python step9.py

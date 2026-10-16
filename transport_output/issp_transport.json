@@ -1,0 +1,47 @@
+{
+  "source": "FI",
+  "target": "ES",
+  "outcomes": [
+    "pay_higher_prices",
+    "pay_higher_taxes",
+    "cut_living_standard",
+    "do_right_despite_cost",
+    "avoid_products"
+  ],
+  "n_countries": 28,
+  "a0_fi_es": {
+    "estimate": 0.8441248562958007,
+    "ci_low": 0.6754423059233372,
+    "ci_high": 0.9197615747987186,
+    "sd": 0.0645178954949898,
+    "n_pairs": 25,
+    "n_boot": 500
+  },
+  "level_shift_fi_es": {
+    "per_outcome": {
+      "avoid_products": 0.1256,
+      "cut_living_standard": -0.3161,
+      "do_right_despite_cost": 0.2029,
+      "pay_higher_prices": -0.3661,
+      "pay_higher_taxes": -0.2503
+    },
+    "mean": -0.12079761110047213,
+    "sd": 0.26485855589438584
+  },
+  "level_rms_fi_es": 0.2659174807190165,
+  "level_sd_pairs": 0.4815643197060259,
+  "coefficient_residual_fi_es": {
+    "sd": 0.15685950559006764,
+    "sampling_sd": 0.1298571919375304,
+    "transport_sd": 0.08798871629964751,
+    "mean_by_predictor": {
+      "env_worry": 0.0448,
+      "female": -0.1874,
+      "high_education": -0.0058,
+      "recycles": 0.0857,
+      "under_30": -0.0419
+    }
+  },
+  "tau_rel_median": 0.6712765758933575,
+  "tau_median": 0.15266763223341148
+}
