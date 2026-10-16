@@ -26,6 +26,7 @@ The synthetic population has 10,000 individuals (50 graphs from the structure po
 | `step3.py` | Conditional probability tables (legacy fusion; not used for the final population) | `step3_fused_priors.json` |
 | `step4.py` | Synthetic population; S2 = network with BDeu prior and PESOFIN-weighted counts | `step4_output/synthetic_surveys_S2.csv` |
 | `transfer_model.py` | Transfer model for food-packaging acceptance, intervals and sensitivity | `transfer_output/*.csv` |
+| `measurement_plan.py` | Segment sensitivity to a0 and sample sizes for the first Spanish measurement | `transfer_output/segments_a0.csv`, `measurement_plan.csv` |
 | `step4b_targets.py` | Attaches the target outcome to each synthetic individual | `step4_output/synthetic_surveys_final.csv` |
 | `step6.py` | Fidelity and dependency diagnostics | `step6_output/` |
 | `step8.py` | Baseline generators (CTGAN, TVAE, independent) | `step8_output/comparison_table.csv` |
@@ -54,6 +55,7 @@ python step2.py
 python evidence_table.py
 python step4.py
 python transfer_model.py
+python measurement_plan.py
 python step4b_targets.py
 python step6.py
 python step9.py
