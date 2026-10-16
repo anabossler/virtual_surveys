@@ -1,0 +1,83 @@
+%=============================================================================
+\section{Introduction}
+\label{sec:intro}
+%=============================================================================
+
+Consider two bottled water brands in 2030. Both comply with the EU mandate
+requiring 30\% recycled plastic content, and both face the same higher material
+cost. One sells primarily to environmentally engaged urban consumers; the other
+to price-sensitive rural households. The regulation and the material are
+identical, yet consumer reactions may differ sharply. Compliance is
+enforceable. What is not known is which segments will accept, resist, or
+switch, and that knowledge is needed before market outcomes make it observable.
+
+This is the \emph{policy-before-data} problem: regulatory timelines precede
+behavioural measurement, so firms and regulators must decide on pricing,
+labelling, communication, and sequencing while the relevant consumer responses
+remain unmeasured in the target population. It recurs across sustainability
+transitions, where mandates are designed to drive structural change before
+market actors have adapted \citep{mao2020}. Regulation (EU)~2025/40 is a current
+instance. Article~7 sets minimum recycled-content shares of 30\% for
+contact-sensitive PET packaging and for single-use plastic beverage bottles
+from 2030, rising to 50\% and 65\% respectively from 2040 \citep{eu2025}. The
+Regulation entered into force in February~2025 and applies from August~2026.
+
+Three features of this case define the governance problem. First,
+\emph{compliance does not secure acceptance}. A package can meet every legal
+requirement and still be distrusted \citep{polyportis2022}. If resistant
+segments account for most consumption in a product category, a uniform
+implementation may erode the legitimacy that later, more ambitious mandates
+will need \citep{molenbuur2025}. Second, \emph{response is heterogeneous}.
+Reactions to recycled content vary with age, education, environmental concern,
+and recycling behaviour \citep{ruokamo2022,zwicker2020}, so an aggregate
+acceptance rate hides where the risk lies. Third, \emph{the evidence gap is
+built into the timeline}. The Spanish dataset used here, fielded in 2023, does
+not measure acceptance of post-consumer recycled (PCR) plastic in food-contact
+applications, willingness to pay a premium for it, or its perceived safety and
+quality. A dedicated national survey would take months and return a single
+static snapshot.
+
+Existing instruments cover only part of this problem. Delphi panels,
+cross-impact analysis, and scenario planning structure expert judgement when
+quantitative evidence is scarce, but they yield a small number of narrative
+futures and are difficult to update \citep{bas2015}. Statistical forecasting
+and Bayesian demand updating \citep{lee2012} provide uncertainty estimates but
+assume that the target variable has been observed in the population of
+interest. Synthetic-data generators based on Bayesian networks reproduce survey
+structure with explicit uncertainty \citep{pearl1988,kjaerulff2008,martins2024},
+yet they have been developed for disclosure control on a single dataset, for a
+small number of binary variables, and for statistically trained users.
+Section~\ref{sec:theory} shows that this gap is not incidental: anticipatory
+governance and risk-mitigation theory imply specific requirements that none of
+these instruments meets jointly.
+
+\paragraph{Aim and contributions.}
+This paper examines how an AI-enabled probabilistic decision-support system can
+support the anticipatory governance of a mandated circular-packaging transition
+when target-specific behavioural evidence is unavailable, and under which
+conditions its outputs may be used. It makes three contributions.
+
+\emph{Theoretical.} We frame policy-before-data as a demand-side Collingridge
+dilemma and derive from anticipatory governance and risk-mitigation theory four
+design requirements for an instrument operating in the pre-observational window
+(Section~\ref{sec:theory}).
+
+\emph{Technological.} We present Bayesian Virtual Surveys (BVS), a system
+combining language-model-assisted evidence extraction, a Bayesian inference
+engine that generates national microdata as in \citet{martins2024} and attaches
+unmeasured outcomes through a documented transfer model updated by conjugate
+fusion as national data arrive, and a
+natural-language interface for non-specialist users
+(Sections~\ref{sec:system}--\ref{sec:framework}). The language model extracts
+evidence and translates queries; it does not generate acceptance
+probabilities.
+
+\emph{Empirical and governance-related.} Applied to Spain under
+Regulation~2025/40, the system produces segment-level scenarios for outcomes
+not yet measured nationally. We separate what has been validated (reproduction
+of observed variables) from what remains a prior-informed projection (the
+target outcome), report where external evidence fails to transfer, and
+translate the scenarios into a risk-mitigation procedure based on pilots,
+engagement, measurement, and updating
+(Sections~\ref{sec:results}--\ref{sec:implications}).
+

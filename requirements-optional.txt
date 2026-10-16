@@ -1,0 +1,6 @@
+# Baseline generators (step8.py)
+sdv>=1.12
+# Evidence extraction and query interface (harmonize_categories.py, app_gradio.py)
+anthropic>=0.40
+python-dotenv>=1.0
+gradio>=4.0

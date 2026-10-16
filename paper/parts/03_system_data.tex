@@ -1,0 +1,140 @@
+%=============================================================================
+\section{BVS as a technological decision-support system}
+\label{sec:system}
+%=============================================================================
+
+BVS is implemented as a system with three layers. Separating them matters for
+governance, because each layer has a different epistemic role and a different
+failure mode.
+
+\paragraph{Evidence layer.}
+Published studies and reports are ingested as PDF files. A large language model
+extracts, for each source, the reported sample sizes, response distributions,
+and regression coefficients, and proposes a mapping from each source item to a
+target construct and response scale. Every proposed mapping is exported to a
+review table (source item, source scale, extracted statistic, transformation,
+resulting pseudo-counts) so that it can be verified manually. The language
+model is therefore an extraction aid whose output is auditable line by line; it
+is not a source of evidence. One of the authors reviewed all 80 extracted entries.
+
+\paragraph{Inference engine.}
+A Bayesian network encodes the dependencies among demographic, attitudinal, and
+behavioural variables. Its structure is learned from national microdata by
+Markov chain Monte Carlo over graphs and its parameters from national counts;
+an outcome absent from the national data is attached through a transfer model
+with explicit assumptions, which later Spanish data update by conjugate fusion
+(Section~\ref{sec:framework}). All acceptance
+probabilities and intervals reported in this paper are computed by this layer.
+
+\paragraph{Access layer.}
+A conversational interface (ASAP~v6) makes the engine usable without
+statistical training. A free-text query is parsed by a language model into a
+structured profile (single profile, comparison of profiles, or overview); the
+profile is passed to the inference engine, which returns the projected
+probability and its 95\% interval; the result is
+displayed as a probability card with a short narrative
+(Figure~\ref{fig:gradio}). The language model translates in both directions and
+generates no probabilities. The prototype offers 13 product categories. In this
+paper only food-packaging acceptance is supported by the transfer model of
+Section~\ref{sec:step2}. The other twelve categories use base rates taken from
+the shares of the Finnish survey that judged recycled plastic suitable for each
+product type \citep{ruokamo2022}, multiplied by 0.85, together with the
+food-packaging coefficients scaled by a fixed factor between 0.4 and 0.7. They
+are exploratory, are not estimated from data, and are not reported here.
+Response latency and the accuracy of query parsing have not been evaluated and
+are left to future work.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{fig_gradio.png}
+\caption{Query flow of the ASAP~v6 interface, with the output of the current
+model for the most receptive profile of Section~\ref{sec:spread}.}
+\label{fig:gradio}
+\end{figure}
+
+Table~\ref{tab:requirements} relates the layers to the requirements of
+Section~\ref{sec:requirements}. The technological contribution lies in their
+combination: evidence integration, scenario exploration, and later updating
+become available within one traceable workflow, to users who could not run the
+underlying model themselves.
+
+\begin{table}[htbp]
+\centering
+\caption{Design requirements and the BVS components that address them.}
+\label{tab:requirements}
+\small
+\begin{tabularx}{\textwidth}{lXX}
+\toprule
+\textbf{Requirement} & \textbf{Component} & \textbf{Limit} \\
+\midrule
+R1 Pre-observational & External-evidence priors and transfer mapping for
+  outcomes absent from national data & Levels and effects are transferred from
+  other populations \\
+R2 Segment-level & Profile projections with Monte Carlo intervals; segment
+  projections at the central specification & Intervals omit transfer and
+  extraction uncertainty \\
+R3 Updatable & Conjugate update of a Beta prior matched to the projection &
+  Implemented, not yet applied to Spanish data \\
+R4 Accessible & Natural-language interface; review tables and versioned
+  outputs & Query parsing and user interpretation not yet evaluated \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+%=============================================================================
+\section{Data and evidence provenance}
+\label{sec:data}
+%=============================================================================
+
+\paragraph{National microdata.}
+The primary dataset is CIS Study~3391 (ISSP Environment~IV, Spain, 2023;
+$n = 2{,}254$), comprising 194 raw variables filtered to 90 substantive items on
+demographics, environmental concern, institutional trust, willingness to pay,
+and recycling behaviour \citep{cis2023}. It is used to learn the dependency
+structure and to estimate the conditional distributions of observed variables.
+The final weight PESOFIN (range 0.53--3.59; Kish design effect 1.05,
+effective $n = 2{,}153$) is applied to the counts of the conditional
+probability tables and to all population estimates. Structure is learned
+without weights, because the BDeu score is not a well-defined marginal
+likelihood for fractional counts.
+
+\paragraph{Missing values.}
+Missing values affect 31 of the 90 network variables: 3.9\% of all cells of the
+90 variables, 11.2\% on average among the 31 affected, and at most 62\%. They
+are treated differently in three places. (i)~For structure learning and the
+conditional tables, they are imputed with the modal category. Available-case
+analysis is not used here because, with BDeu, each parent set would be scored
+on a different subsample and the scores of different graphs would cease to be
+comparable within MC$^3$. Mode imputation inflates the modal category of the
+variables with most missing values (Appendix~\ref{app:missing}). (ii)~The
+transfer model uses complete cases on its five predictors ($n = 2{,}133$ of
+$2{,}254$). (iii)~Validation metrics compare synthetic and CIS distributions
+over the non-missing responses of each variable.
+
+\paragraph{Target outcomes.}
+CIS~3391 contains no measure of five outcomes relevant to implementation:
+general acceptance of recycled plastics, acceptance in food packaging,
+perceived safety, perceived quality, and willingness to pay a premium. The
+statement is limited to this dataset; we have not established that no Spanish
+survey measures them.
+
+\paragraph{External evidence.}
+The extraction corpus comprises 11 journal articles reporting aggregate
+statistics (Appendix~\ref{app:studies}, Table~\ref{tab:studies}): about
+3{,}200 independent respondents, counting each study once at its largest
+sample, and 80 extracted item-level entries. Three levels must be kept apart.
+\emph{Corpus}: all 11 studies and 80 entries. \emph{Retained evidence}: entries
+that measure one of the five target outcomes and pass the review rules
+(\texttt{evidence\_rules.csv}); they come from four studies
+(Table~\ref{tab:i2_summary}). \emph{Transfer model}: the base rate and
+coefficients for food-packaging acceptance, all from \citet{ruokamo2022}.
+Entries for variables the CIS already measures were extracted but are not
+used, and no external study influences the learned structure or the
+generation of observed variables.
+
+\paragraph{External benchmark.}
+The Ipsos Global Advisor survey on plastic packaging (\citealp{ipsos2022};
+Spain, $n = 1{,}000$) is reserved for external comparison. It contributes no
+entry to the priors. A scoping review \citep{polyportis2022} was used to define
+the construct taxonomy and contributes no data.
+

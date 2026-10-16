@@ -1,0 +1,148 @@
+%=============================================================================
+\section{Discussion and limitations}
+\label{sec:limitations}
+%=============================================================================
+
+\paragraph{Assumptions and conditions of failure.}
+The projections rest on three assumptions, each of which can be tested once
+Spanish data exist. \emph{Directional stability}: the sign and ordering of the
+effects linking gender, age, recycling behaviour, and environmental attitudes
+to acceptance hold across populations. The projections fail if these effects
+reverse in Spain. On ISSP proxy outcomes, effects transfer from Finland to
+Spain with a slope of %%TA0%%, but the gender effect is weaker in Spain, so
+the gender contrast is the least secure part of the profile ordering.
+\emph{Level transfer for the reference profile}: the base rate $p_0$ is taken
+unchanged from the source population. On the same proxies, Spanish and Finnish
+levels differ by %%TLEVEL%% on the probit scale, so absolute levels are the
+least reliable part of the output.
+\emph{Construct equivalence}: source items measure the target construct on a
+comparable scale. Heterogeneity statistics describe disagreement between
+entries; they do not establish equivalence.
+
+\paragraph{State of the evidence base.}
+The audit of the deposited priors identifies limitations that go beyond small
+samples and that bound every projection in Section~\ref{sec:scenarios}.
+(i)~Each target outcome rests on one or two studies. (ii)~Pooled sample sizes
+count the same respondents several times, so effective sample sizes overstate
+the information available. (iii)~Some extracted entries did not measure the construct to which they were
+assigned, risk items were pooled without reversal, a single percentage was
+expanded into five categories without preserving it, and some statistics were
+entered twice. These have been corrected through an explicit rules table
+(\texttt{evidence\_rules.csv}, 15 entries), applied before pooling. They are
+also the reason only one outcome is projected, and external evidence no longer
+enters observed variables (Section~\ref{sec:step3}). \todo{Deposit the outputs
+of this run (structure, population with the target column, validation) as a
+new version.}
+
+\paragraph{Uncertainty that is not represented.}
+Intervals reflect parameter and structural uncertainty and, in the transport
+specification, cross-national error measured on proxy outcomes; whether the
+target outcome transports like its proxies cannot be checked. Summing pseudo-counts
+narrows the prior as entries accumulate and does not represent disagreement
+between studies; no between-study variance component is modelled; and
+extraction, harmonisation, and transfer uncertainty are omitted. The reported
+intervals are lower bounds. The power-prior discount of
+Section~\ref{sec:step3} limits the weight of the transferred evidence when
+Spanish data arrive but does not widen the projections themselves. The transport
+error of Section~\ref{sec:transport} is a first empirical version of a
+hierarchical prior over $p_0$ and the coefficients; a full version would need
+the target outcome itself measured in more than one country.
+
+\paragraph{Block-wise structure learning.}
+Partitioning 90 polytomous variables into blocks makes structure learning
+tractable, an order of magnitude beyond earlier applications
+\citep{martins2024}. The cost is the attenuation of most cross-block
+dependencies to between a fifth and two fifths of their observed strength
+(Table~\ref{tab:vratios}). Queries that fully specify a profile are less
+affected than queries that specify demographics alone, which are answered
+through the attenuated paths and understate demographic differences. The
+projections of Section~\ref{sec:scenarios} are not affected, because they are
+computed from the CIS respondents' own characteristics. Three remedies have
+not been tested here: a demographic super-block; overlapping partitions with
+local model averaging \citep{lu2012lsbn}; and enumeration of all networks
+within a Bayes-factor bound of the best \citep{liao2020credible}, which would
+replace sampled graphs with a credible set. Comparing these with the present
+sampler, together with Bayesian-network baselines in
+Table~\ref{tab:comparison}, is required before claims about cross-block
+fidelity can be generalised.
+
+\paragraph{Associations, not effects.}
+The surface describes conditional associations in a model. It does not show
+that demographic characteristics cause acceptance differences, nor that any
+flanking measure would change acceptance. Assessing interventions requires
+experimental or quasi-experimental variation that the present design does not
+contain.
+
+\paragraph{Stated acceptance and behaviour.}
+The model concerns stated acceptance. Stated preferences frequently exceed
+revealed willingness to pay, in particular for unfamiliar products or products
+associated with risk, so the projections should not be read as forecasts of
+purchases. Linking BVS priors to scanner data or discrete-choice experiments
+would allow the gap to be estimated for specific product categories.
+
+\paragraph{Missing data and survey design.}
+Mode imputation of the network variables (Section~\ref{sec:data}) treats
+missing responses as typical ones. MCAR is rejected in 4 of 9 tested blocks,
+so the imputed distributions, and the complete-case estimates of the transfer
+model, are unbiased only under assumptions that have not been verified.
+The projections of Section~\ref{sec:scenarios} do not depend on the
+imputation: they are computed on CIS respondents with complete predictors.
+Imputation affects the synthetic population and the fidelity results. EM
+estimation of the conditional tables or multiple imputation within the
+structure sampler, with results combined across imputations, would represent
+this uncertainty. The treatment of survey weights is noted in Section~\ref{sec:data}.
+
+\paragraph{Relation to other modelling approaches.}
+BVS sits between generative models, which optimise fidelity to one table
+\citep{xu2019}, and causal inference, which requires identification
+assumptions and interventional data unavailable here. It extends
+Bayesian-network synthetic data \citep{martins2024} to outcomes absent from the
+observed dataset through an explicit transfer model. The baselines in
+Table~\ref{tab:comparison} cannot represent such outcomes at all; the transfer
+component is the part of BVS that they lack, and it should be judged by its
+assumptions and, once Spanish data exist, by its predictions. Agent-based models
+generate heterogeneous populations but need behavioural rules specified in
+advance; acceptance surfaces could supply such rules once validated.
+
+\paragraph{Further work.}
+Beyond the corrections and extensions above, three steps follow: validation of
+the target outcomes against a dedicated Spanish survey; an evaluation of the
+interface in two parts, parsing accuracy and latency on a labelled set of
+queries coded by hand, and a study with regulators and firms of how they read
+intervals and status labels and whether the answers change their decisions;
+and longitudinal data to model how acceptance moves as the
+mandate takes effect.
+
+%=============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%=============================================================================
+
+Regulation~2025/40 fixes recycled content in food-contact packaging before the
+consumer response to it has been measured \citep{eu2025}. We have argued that
+this is a demand-side Collingridge dilemma, derived from anticipatory
+governance and risk-mitigation theory what an instrument for that window must
+do, and presented BVS as an AI-enabled decision-support system built to those
+requirements: language-model-assisted evidence extraction, a Bayesian
+inference engine that generates Spanish survey microdata and attaches an
+outcome the survey does not measure through a documented transfer model, and a
+natural-language interface.
+
+The evaluation separates three levels of support. The system reproduces
+variables observed in national data (mean TVD %%TVDMEAN%% over 78 variables)
+but attenuates dependencies across thematic blocks. External evidence, which
+did not transfer to observed Spanish variables, is confined to the outcome the
+national survey does not measure. The projections for that outcome, including a 75-point difference in
+projected food-packaging acceptance between contrasting profiles that ranges
+from 55 to 83 points across transfer factors, are scenarios conditional on
+transferred evidence and remain unvalidated in Spain.
+
+For governance, the value of such a system lies in making assumptions
+explicit, showing where adoption risk may concentrate, and directing pilots,
+engagement, and measurement before commitments harden. It does not substitute
+for fieldwork, for public participation, or for the accountability of those who
+decide. As mandates continue to precede behavioural evidence across
+circular-economy policy \citep{molenbuur2025}, instruments of this kind will be
+used; the conditions under which they should and should not be used need to be
+specified with the same care as their algorithms.
+

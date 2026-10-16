@@ -1,0 +1,106 @@
+%=============================================================================
+\section{Results}
+\label{sec:results}
+%=============================================================================
+
+Results are reported in the order of the validation design
+(Section~\ref{sec:step5}): what the generator reproduces, how it compares with
+an independent survey, and then, in Section~\ref{sec:scenarios}, the projection
+for the outcome the national survey does not measure. All figures can be
+recomputed with the scripts of Appendix~\ref{app:code}.
+
+%-----------------------------------------------------------------------------
+\subsection{Reproduction of observed variables}
+\label{sec:res_fidelity}
+%-----------------------------------------------------------------------------
+
+Across 78 alignable variables, the synthetic population has a mean total
+variation distance (TVD) of %%TVDMEAN%% and a median of %%TVDMEDIAN%% from the
+CIS marginals; %%TVD05%% of variables fall below $0.05$ and %%TVD10%% below
+$0.10$. Table~\ref{tab:comparison} compares BVS with three alternatives fitted
+to the same data.
+
+\begin{table}[htbp]
+\centering
+\caption{Synthetic-data methods on CIS~3391 (78 alignable variables). For
+observed variables BVS is a Bayesian network with a BDeu prior and
+survey-weighted counts, as in \citet{martins2024}. $\chi^2$: dependencies significant in the CIS that remain
+significant in the synthetic data, of those tested. $V$ ratio: range of
+$V_{\mathrm{synthetic}} / V_{\mathrm{CIS}}$ over the tested pairs; 1 indicates
+preserved strength. CTGAN, TVAE and the independent baseline are from the
+deposited comparison (v1.0).}
+\label{tab:comparison}
+\small
+\begin{threeparttable}
+\begin{tabular}{lccccccc}
+\toprule
+\textbf{Method} & \textbf{TVD}$_\mu$ & \textbf{TVD}$_{\tilde x}$ &
+  \textbf{TVD${<}0.05$} & \textbf{Corr.} & $\chi^2$ & \textbf{$V$ ratio} &
+  \textbf{Unobserved} \\
+ & $\downarrow$ & $\downarrow$ & \textbf{(\%)} $\uparrow$ &
+  \textbf{MAE} $\downarrow$ & \textbf{kept} & \textbf{(range)} &
+  \textbf{outcomes} \\
+\midrule
+%%CMPROWS%%
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\small
+\item The independent baseline samples each marginal separately; it reproduces
+  marginals by construction and no dependency. A random-forest detector
+  separates every synthetic set from the CIS (AUC $\geq 0.99$ for all
+  methods); the detector was trained on unbalanced classes and the figure is
+  not informative about relative quality.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+BVS has a mean TVD 4.3 and 6.0 times lower than CTGAN and TVAE, and a median
+TVD 11 and 12 times lower. CTGAN shrinks association strength to 10--31\% of its CIS
+value, and TVAE inflates it by up to a factor of six.
+
+Table~\ref{tab:vratios} reports dependency preservation pair by pair.
+Dependencies within thematic blocks are kept (environmental concern with
+recycling, %%VREC%%), whereas those that cross blocks, in particular between
+demographics and attitudes, are attenuated to between a fifth and a half of
+their CIS strength; %%KEPT%% of the ten remain statistically detectable. This
+follows from block-wise structure learning: variables in different blocks are
+linked only through the cross-block screening of Step~1. Joint distributions
+across blocks are therefore less faithful than marginals. For the target
+outcome this matters less, because the transfer model is evaluated on each
+synthetic individual's own characteristics; it matters for any analysis that
+relies on associations among observed attitudes. %%SEEDTEXT%%
+
+\begin{table}[htbp]
+\centering
+\caption{Cram\'er's $V$ in the CIS and in the BVS synthetic population for the
+ten tested dependencies. Ratio $= V_{\mathrm{BVS}} / V_{\mathrm{CIS}}$.
+\emph{Kept}: the dependency remains significant at the 5\% level.}
+\label{tab:vratios}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Dependency} & $V_{\mathrm{CIS}}$ & $V_{\mathrm{BVS}}$ &
+  \textbf{Ratio} & \textbf{Kept} \\
+\midrule
+%%VROWS%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+%-----------------------------------------------------------------------------
+\subsection{External comparison with an independent Spanish survey}
+\label{sec:res_ipsos}
+%-----------------------------------------------------------------------------
+
+One item of the Ipsos survey for Spain \citep{ipsos2022} is loosely comparable
+with a CIS variable: support for an international treaty on plastics against
+environmental concern (V15, top three of five categories). The synthetic share
+is %%IPSOSBVS%% against 90\% in Ipsos, a difference of %%IPSOSERR%%; the CIS
+itself gives %%IPSOSCIS%%. The difference therefore reflects the two
+instruments, not the generator. The other Ipsos items have no counterpart in
+the CIS: an earlier comparison of manufacturer responsibility with V27 matched
+an item on paying higher taxes, coded from ``strongly in favour'' to ``strongly
+against'', and is discarded. This comparison is a plausibility check under
+loose construct matching and does not bear on food-packaging acceptance.
+

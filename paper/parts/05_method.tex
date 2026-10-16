@@ -1,0 +1,360 @@
+%=============================================================================
+\section{Inference engine: scenario inference under partial observability}
+\label{sec:framework}
+%=============================================================================
+
+\paragraph{Positioning relative to existing approaches.}
+The engine separates two tasks. Variables measured in the national survey are
+generated from national data alone; outcomes the survey does not measure are
+attached through an explicit transfer model built from published aggregates. The objective is decision-relevant inference
+under data constraints, not optimal estimation under a fully specified
+generative model. Deep generative models such as CTGAN \citep{xu2019} and
+variational autoencoders \citep{ma2020} reach high distributional fidelity but,
+as commonly implemented, learn from a single table and offer no explicit route
+for aggregate external evidence. Bayesian-network generators
+\citep{zhang2017,martins2024} provide an interpretable dependency structure but
+have likewise been applied to one dataset at a time. BVS keeps the
+Bayesian-network generator of \citet{martins2024} unchanged for observed
+variables and adds a transfer component for unobserved ones, so that each part
+can be checked on its own terms.
+Figure~\ref{fig:pipeline_steps} shows the five steps.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.93\textwidth]{fig_pipeline_steps.png}
+\caption{BVS pipeline. Observed variables are learned and generated from
+national data alone (Steps~1, 3 and~4). External evidence enters only the
+outcome the national survey does not measure, through the transfer model
+(Step~2), which later national data update by conjugate fusion.}
+\label{fig:pipeline_steps}
+\end{figure}
+
+%-----------------------------------------------------------------------------
+\subsection{Step 1: Learning the dependency structure from national data}
+\label{sec:step1}
+%-----------------------------------------------------------------------------
+
+Structure learning identifies which CIS variables are statistically dependent
+on which others, and quantifies structural uncertainty instead of committing to
+one graph. As \citet{martins2024} show, selecting a single ``optimal'' network
+discards the uncertainty inherent in structure learning and can produce worse
+synthetic data than averaging over plausible structures.
+
+We estimate a posterior distribution over directed acyclic graphs with a
+constrained Bayesian-network sampler. To scale to 90 variables, variables are
+grouped into 15 thematic blocks aligned with the ISSP questionnaire, and the
+sampler explores each block independently; cross-block dependencies are
+recovered through a separate four-layer screening procedure. Domain knowledge
+enters as forbidden edges \citep{heckerman1995} that impose an ordering taken
+from environmental psychology \citep{ajzen1991,stern2000}: demographic
+variables have no parents among attitudes, and general attitudes precede
+specific behaviours. This ordering constrains edge directions. It does not turn
+observational associations into causal effects, and the learned graph is read
+throughout as a dependency structure (Figure~\ref{fig:dag}). Algorithmic
+details are given in Appendix~\ref{app:technical}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.82\textwidth]{fig_dag.png}
+\caption{Dependency structure learned from CIS microdata, summarised by
+thematic block (seed 42). Line width is the number of edges between two blocks;
+outlined in orange are the blocks containing the five predictors of the
+transfer model. The target outcomes are not nodes of the network.}
+\label{fig:dag}
+\end{figure}
+
+%-----------------------------------------------------------------------------
+\subsection{Step 2: External evidence for the target outcomes}
+\label{sec:step2}
+%-----------------------------------------------------------------------------
+
+For each target construct, the category proportions reported for each matching
+source item are converted into Dirichlet pseudo-counts,
+\begin{equation}
+\alpha_{k,s} = n_s \hat{\pi}_{k,s},
+\label{eq:pseudocounts}
+\end{equation}
+where $n_s$ is the sample size and $\hat{\pi}_{k,s}$ the proportion in category
+$k$ for entry~$s$. When source and target scales differ (a mean on a
+seven-point scale, or a single percentage, mapped to a five-category target),
+proportions are redistributed over the target categories by parametric
+discretisation. Entries for the same construct are summed
+(Figure~\ref{fig:step2_pooling}).
+
+\paragraph{Pooling and heterogeneity.}
+Heterogeneity across entries is quantified with the $I^2$ statistic
+\citep{higgins2002} and reported in Table~\ref{tab:i2_summary}; it is not
+estimable for constructs with a single entry. In the reported specification
+$I^2$ does not discount the prior ($\lambda = 0$): the effective sample size
+equals the pooled $n$. Two consequences must be stated plainly. First, summing
+pseudo-counts treats all entries as draws from one distribution. For a category
+with pooled mean $\mu_k$ and total concentration $A$, the prior variance is
+$\mu_k(1-\mu_k)/(A+1)$, so adding entries narrows the prior; disagreement
+between studies does not widen it. Between-study heterogeneity is therefore not
+represented in the intervals. Second, several entries often come from the same
+respondents (different items of one questionnaire), so the pooled $n$ exceeds
+the number of independent respondents. Table~\ref{tab:i2_summary} reports both.
+For perceived safety, for example, six entries from one sample of 116
+respondents give a pooled $n$ of 696. The pooled prior
+should be read as a transportable summary of the available evidence whose
+stated precision is an upper bound.
+
+\begin{table}[htbp]
+\centering
+\caption{External evidence for the target outcomes. \emph{Entries}: extracted
+item-level distributions. \emph{Pooled $n$}: sum of entry sample sizes, equal
+to the prior effective sample size. \emph{Indep.\ $n$}: respondents counted
+once per study. $I^2$ is not estimable (n.e.) with a single entry.}
+\label{tab:i2_summary}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Construct} & \textbf{Studies} & \textbf{Entries} &
+  \textbf{Pooled $n$} & \textbf{Indep.\ $n$} & $I^2$ (\%) \\
+\midrule
+%%I2ROWS%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Outcomes absent from the national data.}
+For the target outcomes no conditional distribution can be learned from the
+CIS. For food-packaging acceptance, the outcome with a published base rate and
+published profile effects, the conditional probability is built with a
+transfer model,
+\begin{equation}
+P(Y = 1 \mid \mathbf{x}) = \Phi\!\Bigl(c + a_0 \sum_j \beta_j x_j\Bigr),
+\qquad
+\frac{\sum_{i} w_i\, \Phi\!\bigl(c + a_0 \sum_j \beta_j x_{ij}\bigr)}{\sum_i w_i} = p_0 ,
+\label{eq:transfer}
+\end{equation}
+where $\Phi$ is the standard normal distribution function, $w_i$ the CIS
+final weights, $\beta_j$ are
+coefficients of an ordered-probit model estimated in the source population,
+$a_0 = 0.80$ attenuates them for transfer, and the intercept $c$ is calibrated
+so that the weighted average over the $n$ CIS respondents equals the base rate
+$p_0$.
+The probit link matches the source model, so the coefficients are used on the
+scale on which they were estimated. Table~\ref{tab:coefficients} lists them.
+The other target outcomes have no published profile effects of comparable
+quality and are not projected (Section~\ref{sec:evidence_base}).
+
+\begin{table}[htbp]
+\centering
+\caption{Inputs of the transfer model for food-packaging acceptance. All
+coefficients are from model~2 of \citet{ruokamo2022} (ordered probit,
+Finland, $n = 272$), which contains sociodemographic characteristics and
+plastic-related practices and attitudes. Effects not reported as significant
+in that model are set to zero.}
+\label{tab:coefficients}
+\small
+\begin{tabular}{llrr}
+\toprule
+\textbf{Predictor} & \textbf{Coding in CIS~3391} & $\beta_j$ & \textbf{SE} \\
+\midrule
+Female & SEX $= 2$ & 0.401 & 0.148 \\
+Under 30 & $2023 - \text{BIRTH} < 30$ & 0.456 & 0.255 \\
+Higher education & ESTUDIOS $= 7$ & 0.606 & 0.332 \\
+Recycles always or often & V52 $\in \{1, 2\}$ & 0.398 & 0.181 \\
+Environmental worry & V15, centred, scaled to $[-1, 1]$ & 0.772 & 0.154 \\
+\midrule
+Base rate $p_0$ & suitable for food packaging ($n = 301$) & 0.38 & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Four assumptions of Eq.~\eqref{eq:transfer} cannot be checked with the
+available data and are varied in sensitivity analyses. First, the level: $p_0$
+is the share of a Finnish sample that judged recycled plastic suitable for food
+packaging, and it is assumed to hold for the Spanish population as a whole.
+The transfer factor does not correct it. Second, the effects: sign and ordering
+of the coefficients are assumed stable across populations, and $a_0$ shrinks
+their size. No Spanish data identify $a_0$ for the target outcome, but its
+order of magnitude can be checked on outcomes measured in both countries
+(Section~\ref{sec:transport}): Spanish coefficients are %%TA0%% (95\%
+interval %%TA0CI%%) times the Finnish ones, so the central value $0.80$ lies
+within the empirical range. All results are also reported over $0.50$--$1.00$,
+for the two profiles and for every segment (Appendix~\ref{app:sensitivity}). Third, the outcome: the coefficients
+were estimated for agreement that recycled content makes a product more
+attractive, and are applied to suitability for food packaging, whose base rate
+comes from a different item of the same survey. No source measures both items
+on the same respondents, so the mapping cannot be tested with the available
+data; it carries the direction and ordering of the effects, while the level is
+fixed by $p_0$ alone. The projection is accordingly a scenario for suitability
+under the assumption that the drivers of attractiveness and of suitability
+coincide in sign and ordering. Fourth, the scale of environmental worry: the
+five-point item (``not at all'' to ``extremely'' worried) is centred on its
+midpoint and scaled to $[-1, 1]$, so the coefficient is the shift from the
+midpoint to either extreme. Coding the coefficient as the full contrast between
+the extremes gives a spread of 67~points; applying it per scale point gives
+81~points. Uncertainty is propagated by Monte Carlo
+(5{,}000 draws) over the published standard errors of the coefficients and the
+binomial error of $p_0$; cases with missing predictors are excluded
+($n = 2{,}133$ of $2{,}254$).
+
+\paragraph{Empirical transport error.}
+\label{sec:transport}
+The assumptions on level and effects can be confronted with data on outcomes
+other than the target. CIS~3391 is the Spanish component of ISSP~2020
+Environment~IV \citep{issp2023}, which asks the same questions in %%TNC%%
+countries, Finland among them. For five proxy outcomes asked in every country
+(willingness to pay higher prices, to pay higher taxes, and to cut one's
+standard of living to protect the environment; doing what is right for the
+environment despite cost; avoiding products for environmental reasons), we fit
+in each country the probit of Eq.~\eqref{eq:transfer} with the same five
+predictors and coding, using the ISSP weights (\texttt{transport\_issp.py}).
+Three quantities follow. The slope of Spanish on Finnish coefficients, through
+the origin and pooled over outcomes and predictors, is %%TA0%%
+(%%TA0CI%%, respondent bootstrap): effects transfer from Finland to Spain with
+moderate attenuation. The residual Spanish--Finnish discrepancy per
+coefficient, beyond sampling error, has a standard deviation of %%TETA%% on
+the probit scale; it is largest for gender, whose effect is on average
+%%TFEMALE%% lower in Spain. Levels do not transfer: the Spanish share differs
+from the Finnish one by a root mean square of %%TLEVEL%% on the probit scale,
+and across all %%TNC%% countries coefficients vary with a median
+between-country standard deviation of %%TTAU%% times their mean. These
+quantities are measured on proxies, not on the target outcome; they set the
+order of magnitude of transport error, and \texttt{transfer\_transport.py}
+propagates them into the projections (Section~\ref{sec:sensitivity}).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\textwidth]{fig_step2_pooling.png}
+\caption{External evidence after the review rules. Four of the 11 studies
+supply retained entries for a target outcome. Only food-packaging acceptance
+is projected, through the transfer model; the pooled distributions of the
+other outcomes are reported as evidence (Tables~\ref{tab:i2_summary}
+and~\ref{tab:novel}) and do not enter observed variables.}
+\label{fig:step2_pooling}
+\end{figure}
+
+%-----------------------------------------------------------------------------
+\subsection{Step 3: Parameter estimation and the role of external evidence}
+\label{sec:step3}
+%-----------------------------------------------------------------------------
+
+\paragraph{Observed variables.}
+For each variable $X_j$ observed in the CIS and each parent configuration $c$,
+the conditional probability table is estimated from weighted national counts
+$\tilde{\mathbf{n}}_{j,c}$ under a BDeu prior with equivalent sample size 10,
+as in \citet{martins2024}:
+\begin{equation}
+\boldsymbol{\theta}_{j,c} \sim \mathrm{Dir}\!\left(\frac{10}{K_j q_j}\,\mathbf{1} + \tilde{\mathbf{n}}_{j,c}\right),
+\label{eq:cpt}
+\end{equation}
+where $K_j$ is the number of categories of $X_j$, $q_j$ the number of parent
+configurations, and the weights are normalised to sum to the sample size.
+No external evidence enters these tables. An earlier configuration added
+pooled external pseudo-counts to the tables of eleven observed variables. It
+was abandoned for three reasons. First, it departs from the single-dataset
+estimation for which the method of \citet{martins2024} was developed and
+validated. Second, the external items are not equivalent to the CIS items they
+were mapped to: several measure different constructs (weekly meat consumption
+was treated as reduced plastic consumption, interpersonal trust as institutional
+trust), others use reversed response scales, and demographic priors encoded the
+sample composition of foreign convenience samples. Third, the evidence was
+negative where it could be tested: recovering masked CIS variables from the
+external priors alone gave a mean total variation distance of $0.110$ against
+$0.038$ with a flat prior, and the external priors did not improve fidelity at
+any subsample size from 100 to 1{,}000 respondents (deposit v1.0,
+\texttt{level4\_heldout\_summary.json} and \texttt{subsample\_experiment.csv}).
+
+\paragraph{Target outcome and later updating.}
+Food-packaging acceptance is attached to every synthetic individual through
+Eq.~\eqref{eq:transfer}, evaluated at that individual's own characteristics.
+The transfer model then serves as the prior for the first Spanish measurement.
+Writing its projection for a segment as a Beta distribution with mean $\pi$ and
+effective sample size $m$, a Spanish survey with $y$ acceptances among $N$
+respondents of that segment gives
+\begin{equation}
+\pi \mid y \sim \mathrm{Beta}\bigl(m\pi + y,\; m(1-\pi) + N - y\bigr),
+\label{eq:fusion}
+\end{equation}
+so national data progressively replace the transferred evidence without
+re-estimating the network. The prior is obtained by matching a Beta
+distribution to the Monte Carlo draws of the projection for the segment,
+$m = \bar{p}(1-\bar{p})/s^2 - 1$, where $\bar{p}$ and $s^2$ are the mean and
+variance of the draws. The concentration $m$ is therefore not chosen; it
+expresses, in respondents, the precision that the transfer inputs imply. Under
+the central specification it is 26 for the most receptive profile of
+Section~\ref{sec:spread} and 80 for the least receptive, so a first Spanish
+sample of 100 respondents of either profile would outweigh the transferred
+evidence. Because the intervals omit transfer and extraction uncertainty
+(Section~\ref{sec:step5}), these values overstate the weight the transfer
+deserves. With a single source study, a between-study variance component cannot
+be estimated, so the discount is applied as a power prior \citep{ibrahim2000}:
+the prior enters Eq.~\eqref{eq:fusion} with concentration $\delta m$,
+$0 < \delta \leq 1$. The empirical transport error of
+Section~\ref{sec:transport} gives a direct value: propagated into the draws,
+it lowers $m$ to between %%TMLOW%% and %%TMHIGH%% across segments, between a
+tenth and a third of the values from parameter uncertainty alone. The measurement plan
+therefore uses the transport-based prior (Table~\ref{tab:plan}). The update is implemented
+(\texttt{transfer\_query.py}, \texttt{measurement\_plan.py}) and has not been
+applied to Spanish data. Conjugate fusion is thus the updating mechanism of
+the system, applied where national data are missing, not a correction of
+variables the national survey already measures.
+
+%-----------------------------------------------------------------------------
+\subsection{Step 4: Posterior predictive generation}
+\label{sec:step4}
+%-----------------------------------------------------------------------------
+
+A synthetic population is generated by ancestral sampling from the network of
+Step~3. To propagate structural uncertainty, $M = 50$ graphs are drawn from the
+posterior of Step~1 and 200 individuals are generated from each, giving
+10{,}000 synthetic profiles (Figure~\ref{fig:step4}). Food-packaging
+acceptance is then drawn for each individual from Eq.~\eqref{eq:transfer}, with
+one Monte Carlo draw of the coefficients and of $p_0$ per graph, so that
+parameter uncertainty is carried into the population. The age predictor
+(under 30) is not identified by the five birth-year bins of the network; it is
+drawn from the share of respondents under 30 within each bin in the CIS.
+Simulated profiles reduce Monte Carlo error only; they are not
+new observations and add no information beyond the evidence already in the
+model.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{step4.png}
+\caption{Synthetic population. Observed variables are generated from the
+network; food-packaging acceptance is attached from Eq.~\eqref{eq:transfer}.}
+\label{fig:step4}
+\end{figure}
+
+%-----------------------------------------------------------------------------
+\subsection{Step 5: Validation design and uncertainty accounting}
+\label{sec:step5}
+%-----------------------------------------------------------------------------
+
+Validation is organised by what each test can and cannot establish
+\citep{gelman2013}.
+\begin{enumerate}
+\item \emph{Reproduction of observed variables}: distributional fidelity and
+  dependency preservation of the synthetic population against CIS microdata,
+  with baseline generators for comparison.
+\item \emph{External comparison}: constructs shared with an independent Spanish
+  survey are compared with the synthetic population.
+\item \emph{Target outcome}: food-packaging acceptance cannot be validated
+  until it is measured in Spain. The first two levels test the generator; they
+  do not confirm the projection.
+\end{enumerate}
+
+Three kinds of query are computed differently. \emph{Fully specified
+profiles}: the probability follows directly from Eq.~\eqref{eq:transfer}, and
+its interval from 5{,}000 Monte Carlo draws of the coefficients and of $p_0$;
+the network does not enter. \emph{Segments defined by the five predictors}
+(Table~\ref{tab:segments}): weighted averages of Eq.~\eqref{eq:transfer} over
+the CIS respondents in the segment, reported at the central specification.
+\emph{Queries that leave characteristics unspecified or involve other observed
+variables} (for instance, institutional trust): these need the joint
+distribution of the unspecified characteristics, which the synthetic
+population supplies. This is the role of the network. Each individual carries
+one draw of the transfer inputs per graph, so these queries combine parameter
+and structural uncertainty, and they inherit the cross-block attenuation of
+Section~\ref{sec:res_fidelity}.
+
+The reported intervals reflect the published uncertainty of the transfer
+inputs. They do not include
+uncertainty from extraction and scale harmonisation, from cross-national
+transfer, or from between-study heterogeneity. They are therefore lower bounds
+on the uncertainty of the projections.
+

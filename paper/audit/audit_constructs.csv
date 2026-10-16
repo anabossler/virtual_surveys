@@ -1,0 +1,17 @@
+construct,K,entries,studies,study_ids,pooled_n,independent_n,I2_pct,aggregate_w_lit_pct,low_mid_high_pct
+acceptance_food_packaging,5,1,1,ruokamo_2022_recycled_plastics,301,301,0.0,9.1,95/5/1
+acceptance_general,5,5,2,cao_lu_zhu_2022_eol_recycled_preferences;widiastuti_2025,2200,1042,48.5,48.3,10/32/58
+attitudes_env_concern,5,11,5,dicicco_2024_pcr_odor_acceptance;neumann_2024_pcr_nudging_germany;plasticircle_valencia_2019;widiastuti_2025;zwicker_2020_plastic_attitudes,1115,885,41.0,31.2,13/34/53
+attitudes_wtp_prices,5,6,2,plasticircle_valencia_2019;zwicker_2020_plastic_attitudes,1816,624,40.5,43.3,15/25/60
+attitudes_wtp_taxes,5,1,1,plasticircle_valencia_2019,114,116,0.0,2.6,65/14/21
+behavior_recycling,4,1,1,plasticircle_valencia_2019,116,116,0.0,2.7,
+behavior_reduce_consumption,4,4,3,leal_filho_2025;widiastuti_2025;zwicker_2020_plastic_attitudes,813,751,21.6,24.3,
+demographics_age,5,12,9,abella_2022_recycled_plastics_perception;cabrera_2025_plastic_apparel_stpb;cao_lu_zhu_2022_eol_recycled_preferences;dicicco_2024_pcr_odor_acceptance;leal_filho_2025;neumann_2024_pcr_nudging_germany;plasticircle_valencia_2019;ruokamo_2022_recycled_plastics;zwicker_2020_plastic_attitudes,3558,2659,57.8,60.6,74/16/10
+demographics_education,7,6,4,cabrera_2025_plastic_apparel_stpb;cao_lu_zhu_2022_eol_recycled_preferences;leal_filho_2025;plasticircle_valencia_2019,2283,1669,36.8,49.2,
+demographics_gender,2,11,8,abella_2022_recycled_plastics_perception;cabrera_2025_plastic_apparel_stpb;cao_lu_zhu_2022_eol_recycled_preferences;dicicco_2024_pcr_odor_acceptance;leal_filho_2025;neumann_2024_pcr_nudging_germany;plasticircle_valencia_2019;reijonen_2020,4314,2236,84.5,65.2,
+demographics_income,5,3,2,cabrera_2025_plastic_apparel_stpb;cao_lu_zhu_2022_eol_recycled_preferences,1986,1426,66.9,45.6,48/14/38
+demographics_urban_rural,5,2,1,cabrera_2025_plastic_apparel_stpb,1000,500,0.0,28.7,81/6/13
+perception_quality,5,1,1,widiastuti_2025,116,116,0.0,2.7,17/35/48
+perception_safety,5,12,1,widiastuti_2025,1392,116,45.9,36.6,44/38/18
+price_willingness_to_pay_premium,5,3,2,leal_filho_2025;widiastuti_2025,370,243,22.9,11.4,31/40/29
+trust_institutions,11,1,1,plasticircle_valencia_2019,116,116,0.0,2.7,

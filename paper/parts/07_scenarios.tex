@@ -1,0 +1,188 @@
+%=============================================================================
+\section{Adoption-risk scenarios for outcomes not measured in Spain}
+\label{sec:scenarios}
+%=============================================================================
+
+This section concerns the five outcomes absent from the CIS; only one of them
+is projected. The projections are prior-informed conditional estimates: their
+levels and their profile
+effects come from external evidence and from the assumptions of
+Eq.~\eqref{eq:transfer}. They are not observed Spanish values and none has been
+validated in Spain.
+
+%-----------------------------------------------------------------------------
+\subsection{Evidence base for the target outcomes}
+\label{sec:evidence_base}
+%-----------------------------------------------------------------------------
+
+Table~\ref{tab:novel} summarises the pooled evidence for each target outcome.
+The base is thin. General acceptance rests on two studies; food-packaging
+acceptance on one item from one Finnish survey, in which 38\% of respondents
+judged recycled plastic suitable for food packaging \citep{ruokamo2022};
+perceived safety on a single sample of 116 respondents; perceived quality on
+no usable entry;
+and willingness to pay a premium on two studies, one of which concerns
+bioplastics.
+
+\begin{table}[htbp]
+\centering
+\caption{Pooled external evidence for the five target outcomes. Low, middle,
+and high are the two lowest, the central, and the two highest of five response
+categories. Food-packaging acceptance is reported as its source statistic.}
+\label{tab:novel}
+\small
+\begin{threeparttable}
+\begin{tabular}{lrrrccc}
+\toprule
+\textbf{Outcome} & \textbf{Studies} & \textbf{Entries} &
+  \textbf{Indep.\ $n$} & \textbf{Low} & \textbf{Middle} & \textbf{High} \\
+\midrule
+%%NOVELROWS%%
+\bottomrule
+\end{tabular}
+\begin{tablenotes}\small
+\item[a] Source statistic: 38\% judge recycled plastic suitable for food
+  packaging; the share is placed on the two highest categories.
+\item[b] Four risk statements, reversed, and two safety statements from one
+  sample; benefit items are excluded.
+\item[c] No usable entry: the only candidate measures perceived benefit.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+Only food-packaging acceptance has both a base rate and published profile
+effects, and only it is projected. For the other four outcomes the evidence
+does not support a projection: general acceptance and willingness to pay rest
+on heterogeneous items from two studies each, there is no quality measure,
+and the single source on safety gives no direction:
+respondents disagreed both with risk statements (``carries certain risks'',
+``may be contaminated'') and with safety statements (``are considered safe'',
+``do not pose any harm''), all with means between 2.0 and 2.2 on a five-point
+agreement scale. The data do not support ranking safety above price as a
+barrier. Safety-related concerns are prominent in the
+source literature \citep{magnier2019,meng2021} and warrant targeted measurement
+in Spain; their relative weight is an open empirical question.
+
+%-----------------------------------------------------------------------------
+\subsection{The conditional acceptance surface}
+\label{sec:surface}
+%-----------------------------------------------------------------------------
+
+The object the system returns is a \emph{conditional acceptance surface}: a
+mapping from demographic and attitudinal profiles to acceptance distributions,
+conditional on the dependency structure learned from national data and on the
+priors derived from external evidence. A narrative scenario fixes a few
+qualitative futures and an aggregate forecast collapses heterogeneity into one
+expected value. The surface keeps segment-level structure and can be queried:
+any profile, specified by demographics, environmental concern, recycling
+behaviour, or a combination, returns a projected probability. Fully specified
+profiles carry an interval; partial queries are answered from the synthetic
+population (Section~\ref{sec:step5}). In the
+sense of \citet{bas2015}, it treats the future as a space to be explored
+through deliberate choices and not as a single outcome to be predicted.
+
+For implementation, the relevant quantity is the composition of demand, not
+its mean. A product category bought mainly by low-acceptance profiles carries a
+different risk from one bought mainly by high-acceptance profiles, even when
+population-wide acceptance is identical. The surface makes that composition
+explicit.
+
+The surface is also updatable in a specific sense (R3). When a Spanish survey
+measures a target outcome, its counts $\mathbf{n}_{j,c}$ enter
+Eq.~\eqref{eq:fusion} as data, shift the posterior toward Spanish values, and
+narrow the intervals in proportion to sample size, without re-estimating the
+network. It is silent on structural ruptures such as a contamination
+scandal, a regulatory reversal, or a material innovation that changes the
+choice set. Those remain the province of qualitative foresight, which the
+surface complements and does not replace.
+
+%-----------------------------------------------------------------------------
+\subsection{Profile spread under the transfer assumptions}
+\label{sec:spread}
+%-----------------------------------------------------------------------------
+
+Under the central specification ($p_0 = 0.38$, $a_0 = 0.80$), the projected
+probability of judging recycled plastic suitable for food packaging is 77\%
+(95\%~interval: 58--90\%) for a woman under 30 with higher education who
+recycles always or often and is extremely worried about the environment. It is
+2\% (0.5--7\%) for a man aged 30 or over without higher education who recycles
+sometimes or never and is not at all worried. The difference is
+75~percentage points (54--88). The intervals are wide because they carry the
+standard errors of five coefficients estimated on 272 respondents.
+
+The two profiles are rare: 18 and 8 of the 2{,}133 CIS respondents match them.
+The distribution over the whole sample is more informative for policy. With
+CIS weights, the median projected probability is 35\%; a quarter of residents
+(26\%) fall below 25\%, and 24\% exceed 50\%. Table~\ref{tab:segments} gives
+the projection by segment. The largest contrast is environmental worry (46\%
+at the top of the scale against 8\% at the bottom), followed by education
+(50\% with higher education against 32\% without), recycling practice (41\%
+against 25\%) and gender (45\% for women against 30\% for men).
+
+\begin{table}[htbp]
+\centering
+\caption{Projected acceptance of recycled plastic in food packaging by
+segment of the CIS~3391 sample, weighted with PESOFIN (central specification;
+population mean fixed at $p_0 = 0.38$ by calibration).}
+\label{tab:segments}
+\small
+\begin{tabular}{llrrr}
+\toprule
+\textbf{Dimension} & \textbf{Segment} & $n$ & \textbf{Share} &
+  \textbf{Projected acceptance} \\
+\midrule
+%%SEGROWS%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three qualifications apply. The magnitude depends on the transfer assumptions:
+the spread between the two profiles ranges from 55 to 83~points for $a_0$
+between $0.50$ and $1.00$, and from 62 to 83~points for $p_0$ between $0.25$
+and $0.60$ (Appendix~\ref{app:sensitivity}); the ordering of profiles and
+segments is unchanged. The segment differences reproduce by construction the
+coefficients of one Finnish study, redistributed over the Spanish population
+structure. And none of these figures is an observed or validated property of
+the Spanish population.
+
+Read as scenarios, the spread separates two situations for a given product
+category.
+
+\textbf{Scenario~A (receptive majority).} Environmentally engaged, younger
+consumers make up most of the purchasing segment. The recycled-content
+requirement meets limited resistance and general communication may suffice.
+
+\textbf{Scenario~B (reluctant majority).} Consumers with low environmental
+concern who do not recycle dominate the segment. The same requirement meets
+substantial resistance, with consequences for sales and for the perceived
+legitimacy of the measure. Nothing in the regulation differs between the two
+scenarios; segment composition does.
+
+%-----------------------------------------------------------------------------
+\subsection{Sensitivity}
+\label{sec:sensitivity}
+%-----------------------------------------------------------------------------
+
+Three assumptions are varied (Appendix~\ref{app:sensitivity}). The transfer
+factor $a_0$ and the base rate $p_0$ move the spread substantially, as reported
+above; the base rate also shifts every level, since the population mean equals
+$p_0$ by calibration. The coding of the worry scale is the third: the spread
+is 67~points if the coefficient is read as the full contrast between the
+extremes and 81~points if it applies per scale point.
+
+Adding the empirical transport error of Section~\ref{sec:transport} (a
+random transfer factor, per-coefficient transport noise, and a level shift)
+widens every interval. The population mean is no longer fixed at $p_0$:
+%%TPOP%%. The most receptive profile is projected at %%TMOST%%, the least
+receptive at %%TLEAST%%, and the spread between them at %%TSPREAD%%~points;
+segment intervals are given in Table~\ref{tab:plan}. The ordering of profiles survives, and the spread
+remains large under the lower bound; the absolute levels are uncertain by
+about $\pm 20$ points. These are the intervals that should accompany any use
+of the projections.
+
+In the synthetic population, where the outcome is drawn for each of the
+%%NWITH%% individuals with complete predictors, %%SHAREACC%% accept, and the
+contrasts by gender (%%FEMW%% against %%FEMWO%%), higher education
+(%%EDUW%% against %%EDUWO%%) and recycling (%%RECW%% against %%RECWO%%)
+reproduce those of the CIS projection in Table~\ref{tab:segments}.
+

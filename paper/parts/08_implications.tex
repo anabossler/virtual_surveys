@@ -1,0 +1,179 @@
+%=============================================================================
+\section{Implications for anticipatory governance and risk mitigation}
+\label{sec:implications}
+%=============================================================================
+
+The results support a specific role for BVS in the governance of a mandated
+transition and exclude others. The system reproduces what national data
+already measure, and it organises thin external evidence into explicit,
+queryable scenarios for what they do not. It does not measure Spanish
+acceptance. Its outputs are therefore inputs to risk mitigation, used to
+decide where to pilot, whom to engage, and what to measure first. This section
+sets out that use. The governance contribution demonstrated here is the
+organisation of evidence and assumptions into a decision-support workflow;
+improvements in decision quality, user understanding, and implementation
+outcomes remain to be evaluated.
+
+\subsection{From scenarios to a risk-mitigation procedure}
+
+Following the distinctions of Section~\ref{sec:theory}, mitigation proceeds as
+a cycle and not as a single prediction-to-policy step:
+\emph{explore} scenarios, \emph{identify} the assumptions that drive them,
+\emph{deliberate} with affected actors, \emph{pilot} flanking measures,
+\emph{measure} the target outcomes, and \emph{update} the model.
+Table~\ref{tab:mitigation} maps the main adoption risks of the
+recycled-content mandate onto this cycle.
+
+\begin{table}[htbp]
+\centering
+\caption{Risk-mitigation matrix for recycled-content food-contact packaging:
+what BVS contributes, which measure it suggests testing, and which evidence is
+needed before acting at scale.}
+\label{tab:mitigation}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.9cm}XXX}
+\toprule
+\textbf{Risk} & \textbf{Contribution of BVS} & \textbf{Measure to test} &
+  \textbf{Evidence required} \\
+\midrule
+Low acceptance in some segments & Indicates candidate segments under stated
+  assumptions & Communication and product-experience pilots in those segments
+  & Target-specific surveys; observed purchases \\
+Distrust of safety & Flags safety perception as a priority for measurement &
+  Verifiable information, traceability, certification marks, comprehension
+  tests & Communication experiments; technical safety evidence under
+  Regulation~2022/1616 \\
+Wrong transfer of foreign evidence & Shows sensitivity to base rate and
+  transfer factor & Collect Spanish data on the target outcomes & Dedicated
+  validation of acceptance \\
+Unequal burden across groups & Disaggregates scenarios and intervals by
+  profile & Distributional review with consumer organisations & Impact
+  assessment by group \\
+Over-confident use of the interface & Displays assumptions, sources and
+  validation status with each answer & Human oversight, query logging, option
+  to return no estimate & Evaluation of parsing and interpretation errors \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Targeting flanking measures.}
+A spread of several tens of points between profiles, if confirmed, means that
+one communication strategy cannot serve all segments. The scenarios justify
+comparing instruments in pilots before rollout: safety-framed information and
+third-party certification against environmental-benefit messaging, and
+traceability (for instance, access to recycling-process documentation)
+against price measures. They do not establish which instrument works. The
+design identifies no causal effect of any intervention, and stated acceptance
+is not purchase.
+
+\paragraph{Staging within the legal timeline.}
+The surface can inform the order in which firms introduce recycled content
+across product lines and channels, starting where the purchasing segment
+resembles receptive profiles and using the experience gained to prepare
+categories closer to Scenario~B. Staging concerns commercial sequencing and
+pilots ahead of the 2030 targets. It is no argument for postponing legal
+obligations.
+
+\paragraph{Prioritising measurement.}
+The most direct implication is where to spend fieldwork. The held-out tests
+show that levels do not transfer, and the target outcomes rest on one or two
+sources each. A Spanish survey module on food-contact acceptance, perceived
+safety, and willingness to pay would replace the weakest assumptions of the
+model, and Eq.~\eqref{eq:fusion} absorbs it without rebuilding. BVS indicates
+which segments such a module should oversample. Table~\ref{tab:plan} turns this
+into a sampling plan: for each segment, the number of Spanish respondents
+needed for a 95\% posterior interval of $\pm 5$ points. Under the
+transport-based prior the transferred evidence is worth about 15--25
+respondents per segment, so the first Spanish measurement carries almost all of
+the information: between about 100 and 370 respondents per segment, so a module
+of 1{,}500 respondents with oversampling of higher-educated, non-recycling, and
+unworried respondents covers all of them.
+Pilots follow the same logic: an intervention is compared between segments of
+contrasting projected acceptance, each sized from the table, and the result
+enters the model through Eq.~\eqref{eq:fusion}.
+
+\begin{table}[htbp]
+\centering
+\caption{Projected food-packaging acceptance (\%, 95\% interval) and
+measurement plan by segment. \emph{Parameter}: uncertainty of the published
+coefficients and base rate only. \emph{Transport}: adds the empirical
+transport error of Section~\ref{sec:transport}. $m$, $m_T$: Beta concentration
+matched to each set of draws. $N$, $N_T$: Spanish respondents needed for a
+95\% posterior interval of half-width 5 points under each prior. Sources:
+\texttt{transfer\_output/measurement\_plan.csv} and
+\texttt{transport\_segments.csv}.}
+\label{tab:plan}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+\textbf{Segment} & \textbf{Parameter} & \textbf{Transport} & $m$ & $m_T$ & $N$ & $N_T$ \\
+\midrule
+%%PLANROWS%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Users, decisions, and responsibilities}
+
+Three groups of users have distinct needs. \emph{Regulators and public
+agencies} can use the scenarios to plan information campaigns and to decide
+which outcomes national statistics should start to measure. \emph{Firms},
+including the small and medium enterprises that make up much of the
+food-contact packaging sector and cannot commission repeated fieldwork, can use
+them to choose where to pilot. \emph{Consumer and civil-society organisations}
+can use the disaggregated scenarios to question whose acceptance is being
+assumed. For all three, the interface lowers the cost of access (R4), which is
+also what makes misuse easy.
+
+\paragraph{How the system can shape and bias decisions.}
+The outputs bear on four decisions: which segments are prioritised, how a
+measurement budget is allocated, which pilots are run and where, and which
+outcomes national statistics begin to track. Each can be distorted. Segments
+absent from the source study are ranked only through the transferred
+coefficients; omitted predictors make the surface look flatter than it may be;
+a measurement budget steered by the model is spent where the model already
+expects differences; and a probability reported to the percentage point lends
+weak assumptions an authority they do not have. Reporting the sensitivity range
+with every estimate, reserving part of the measurement budget for segments the
+model does not flag, and stating the source population with each answer limit
+these effects.
+
+\subsection{Governing the instrument}
+
+Used in or around rule-making, BVS is a technology with its own governance
+requirements \citep{stilgoe2013}. Four conditions follow from the results.
+
+\emph{Provenance.} Every estimate must be traceable to sources, extracted
+statistics, transformations, and model version. The pipeline exports these
+tables and fixes its random seeds; the audit of the current evidence base
+(Section~\ref{sec:limitations}) shows why the tables must be reviewed and not
+only produced.
+
+\emph{Separation of roles.} Language models extract and translate; they must
+not be the origin of a number. Extraction errors propagate silently into
+priors, so extraction requires human sign-off.
+
+\emph{Status labelling.} Each answer should state whether the outcome is
+observed in national data, validated externally, or projected from transferred
+evidence, and the system should decline queries outside its domain.
+
+\emph{Contestability and accountability.} Affected parties need a route to
+challenge sources and mappings, and the body that acts on an estimate remains
+answerable for the decision. Synthetic respondents do not consent or
+deliberate. Their use must not displace consultation, and a projection must
+not be cited as evidence that the public accepts a measure.
+
+\subsection{Beyond recycled plastics}
+
+Mandates that precede behavioural measurement are common: novel food
+ingredients, alternative proteins, reuse-and-refill systems, extended producer
+responsibility. The BVS architecture requires only a national survey with
+demographic and attitudinal variables, external studies reporting aggregate
+outcomes for the target constructs, and a defensible ordering among variable
+blocks. Unlike approaches that improve as early market data accumulate
+\citep{lee2012}, it is built for the window before such data exist. Its
+transfer to other domains is an architectural possibility. Its performance
+there has not been evaluated, and the transfer tests reported here would need
+to be repeated in each case.
+

@@ -1,0 +1,159 @@
+%=============================================================================
+\section{Theoretical background}
+\label{sec:theory}
+%=============================================================================
+
+\subsection{Anticipatory governance and the demand-side Collingridge dilemma}
+
+Anticipatory governance designates the capacity of a society to act on
+emerging sociotechnical change while that change can still be shaped
+\citep{barben2008,guston2014}. It rests on three coupled capacities: foresight,
+engagement with affected publics, and integration of both into decision
+routines. \citet{fuerth2009} adds a systems requirement: foresight governs only
+when it is wired into the policy process and fed back as evidence accumulates.
+Applied to planning, the same logic replaces prediction with the preparation of
+responses across a range of plausible futures \citep{quay2010}.
+
+The underlying problem is the dilemma of control \citep{collingridge1980}.
+Early in the diffusion of a technology, intervention is cheap but its
+consequences cannot be known; once consequences are known, the technology is
+entrenched and intervention is costly. The dilemma is usually stated for the
+supply side, that is, for the impacts of an artefact. Regulatory mandates
+create a demand-side variant. Regulation~2025/40 fixes the technology and the
+timeline, so the unknown is no longer what the technology does but how
+heterogeneous publics will respond to it. Before the 2030 targets bind,
+pricing, labelling, and communication can still be adjusted at low cost, yet
+consumer response has not been measured. Once response becomes observable in
+market data, firms have committed capital and any loss of trust has already
+occurred. The policy-before-data problem is this demand-side Collingridge
+dilemma, and it defines the window in which anticipatory instruments have
+value.
+
+\subsection{Risk mitigation under regulatory transition in the recycling sector}
+
+Governance under such conditions is necessarily tentative: provisional,
+revisable, and designed to learn \citep{kuhlmann2019}. Adaptive planning
+operationalises this through commitments staged against monitored signposts
+\citep{walker2013}, and transition studies show that a mandate performs as part
+of a policy mix, in which flanking instruments determine whether the core
+instrument retains legitimacy \citep{rogge2016}. Risk mitigation in a
+regulatory transition therefore consists of three decisions: where to intervene
+first, with which flanking instrument, and when to revise.
+
+The appropriate strategy depends on the kind of risk. \citet{klinke2002}
+distinguish risk-based, precaution-based, and discourse-based management, the
+last being required when the problem is ambiguity rather than lack of data.
+Three sources of indeterminacy must accordingly be kept apart in the present
+case: \emph{variability} (consumers and segments differ), \emph{epistemic
+uncertainty} (the outcomes have not been measured in the target population and
+must be inferred from other populations), and \emph{ambiguity} (actors disagree
+on what counts as safe, fair, or acceptable). A quantitative instrument can
+describe the first, can address the second only under explicit transfer
+assumptions, and cannot resolve the third.
+
+Recycled-content food-contact packaging sharpens each decision. The risk object
+is double. Technical safety is governed \emph{ex ante}: recycling processes
+require authorisation under Regulation (EU)~2022/1616 following assessment by
+the European Food Safety Authority \citep{eu2022}. Perceived safety is not
+governed at all. Consumers associate recycled material with contamination; the
+association lowers acceptance independently of certified safety and is
+strongest for products in contact with the body or with food
+\citep{magnier2019,meng2021}. The binding targets remove the option of waiting,
+and perception varies across demographic and attitudinal segments
+\citep{ruokamo2022,zwicker2020}. Mitigation is consequently a targeting
+problem: the flanking measures that matter (traceability, certification marks,
+safety-framed communication, staged rollout) can be effective only if directed
+at the segments where the perception gap is largest.
+
+\subsection{Design requirements for an anticipatory instrument}
+\label{sec:requirements}
+
+Four requirements follow. \emph{(R1) Pre-observational operation}: the
+instrument must produce estimates for variables not yet measured in the target
+population. Measurement does not close the Collingridge window; the window
+narrows as commitments, infrastructure, and practices consolidate, and an
+instrument that waits for measurement acts when adjustment has become costly.
+\emph{(R2) Segment-level resolution}: because mitigation is a targeting
+problem, outputs must be distributions conditional on demographic and
+attitudinal profiles, with explicit uncertainty. \emph{(R3) Updatability}:
+tentative governance requires that new evidence revise the estimates without
+rebuilding the instrument. \emph{(R4) Accessibility}: the engagement and
+integration capacities require that actors without statistical training,
+including SMEs and regulators, can query the instrument and inspect its
+assumptions.
+
+Delphi panels and scenario methods satisfy R1, and iterative designs revise
+their outputs between rounds, but they do not usually provide quantitative
+conditional resolution and formal probabilistic updating together. Statistical
+forecasting and synthetic-data generators trained on a single dataset satisfy
+R2 only for variables already observed, and so fail R1.
+Sections~\ref{sec:system} and~\ref{sec:framework} present BVS as an instrument
+built to satisfy all four.
+
+Within foresight methodology, BVS belongs to what \citet{bossler2026} call
+\emph{synthetic foresight}: a mode in which the participants, populations, and
+evidence bases of a foresight exercise are computationally generated rather
+than recruited. They position it as the sixth column of the typology of
+approaches to the future of \citet{bas2004} and \citet{bas2015}
+(Table~\ref{tab:typology}), with synthetic Delphi panels, language-model
+virtual surveys, and Bayesian virtual surveys as its methods. Their evaluation
+of a 60-agent synthetic Delphi panel over a knowledge graph of 25{,}823
+circular-economy publications bears directly on R1--R4: the panel converged
+under every one of eight evidence configurations, with reductions of 81--91\%
+in the coefficient of variation, yet convergence was independent of coverage of
+the field's research communities, and coverage and ranking accuracy against
+observed 2021--2024 publication growth depended on the type of grounding.
+Agreement among synthetic respondents is therefore not a validity criterion.
+The same holds for BVS: a coherent synthetic population says nothing about
+whether the transferred evidence is adequate, so validity has to be built into
+the evidence architecture (Section~\ref{sec:data}) and tested against an
+external record (Section~\ref{sec:step5}).
+
+\begin{table}[htbp]
+\centering
+\caption{Approaches to the future: a typology. Columns 1--5 build on Bas [1]
+and Bas and Guill\'o [2], drawing on Habermas's four knowledge interests. The
+integrated typology and its Synthetic extension were conceptualized and
+developed by Bas and Bossler. The sequence should be read as a series of
+substrate transitions rather than as discrete schools of thought.
+Reproduced without modification from \citet[Table~1]{bossler2026} under a
+CC~BY-NC-ND~4.0 licence; [1] and [2] refer to \citet{bas2004} and
+\citet{bas2015}.}
+\label{tab:typology}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{>{\itshape}l*{6}{>{\raggedright\arraybackslash}X}}
+\toprule
+\normalfont & \textbf{Supernatural} & \textbf{Hermeneutic} & \textbf{Technical} &
+  \textbf{Emancipatory} & \textbf{Participatory} & \textbf{Synthetic} \\
+\normalfont & & & & & & \textbf{\emph{(proposed)}} \\
+\midrule
+Origin & Primitive societies & Secular society & Industrial society &
+  Post-industrial & Liquid society & Digital society \\
+Paradigm shift & Old regime & Nation-state & Mass capitalism & Glocalization &
+  Social networks & Foundation models \\
+Key point & Religion & Ideology & Product & Knowledge & People/\allowbreak Experience & Data \\
+Dominant subsystem & Culture & Politics & Economy & Technology & Ecosystem &
+  Virtual \\
+Foundation & Emotional & Emotional & Rational & Rational & Rational + Emotional &
+  Emotional + Rational \\
+Method & God's orders & Utopias & Trend forecasting & Foresight/\allowbreak Delphi &
+  Creative futures & Augmented intelligence \\
+Attitude & Alienation & Alienation & Adaptation & Anticipation & Innovation &
+  Augmentation \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Two boundary conditions qualify this claim. First, an instrument that meets
+R1--R4 contributes to the \emph{foresight} capacity only. Synthetic respondents
+are computed from evidence about other people; they do not participate,
+consent, or deliberate, and they cannot stand in for engagement. Second, an
+instrument used in rule-making is itself a technology to be governed.
+Responsible-innovation criteria of anticipation, reflexivity, inclusion, and
+responsiveness \citep{stilgoe2013} apply to BVS as much as to the packaging
+transition: who selects the sources, who validates the mapping between survey
+questions, who can contest an estimate, and who answers for its use.
+Section~\ref{sec:implications} returns to these conditions.
+
