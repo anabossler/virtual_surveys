@@ -73,7 +73,7 @@ if [ ${#SEEDS[@]} -gt 0 ]; then
   for seed in "${SEEDS[@]}"; do
     dir="runs/seed_$seed"
     mkdir -p "$dir/metadata"
-    cp ./*.py ./*.csv "$dir/"
+    cp ./*.py ./*.csv category_mappings.json regression_priors.json "$dir/"
     ln -sf "$(pwd)/$CIS" "$dir/$CIS"
     ( cd "$dir" && export BVS_SEED="$seed" \
       && python step1.py > step1.log 2>&1 && python step2.py > step2.log 2>&1 \
