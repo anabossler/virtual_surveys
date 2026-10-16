@@ -53,24 +53,28 @@ CIS Study 3391 microdata must be obtained from https://www.cis.es and placed at 
 
 ---
 
-## Usage
+## Reproducing the paper
+
+1. Install Python 3.13 and the pinned dependencies: `pip install -r requirements.txt`
+   (`requirements-optional.txt` adds the CTGAN/TVAE baselines, the extraction step and the interface).
+2. Place the two survey files, which are not redistributed:
+   - `metadata/3391_num.csv`: CIS Study 3391 microdata (www.cis.es), semicolon-separated, latin-1.
+   - `metadata/ZA7650_v2-0-0.dta`: ISSP 2020 Environment IV, Stata format (GESIS, doi:10.4232/1.14153, free registration).
+3. Run everything:
 
 ```bash
-python step1.py
-python step2.py
-python evidence_table.py
-python step4.py
-python transfer_model.py
-python measurement_plan.py
-python transport_issp.py --issp metadata/ZA7650_v2-0-0.dta
-python transfer_transport.py
-python step4b_targets.py
-python step6.py
-python step9.py
-python make_figures.py --base . --out figures
+bash run_all.sh --seeds 7 2024 --paper
 ```
 
-All random seeds are fixed at 42 unless set explicitly.
+This runs every stage in order (one log per stage in `logs/`), the structure-variability runs for
+seeds 7 and 2024, the figures (`figures/`), and writes `paper/main.tex` with every table and number
+filled from the outputs. Compile with `cd paper && pdflatex main.tex` (three times). A full run takes
+about 30 minutes on one CPU. Without `--seeds` and `--paper` it takes about 10 minutes.
+
+Results are deterministic: the main seed is 42 (override with `BVS_SEED`), and outputs do not depend
+on Python's hash randomisation. The language-model extraction (`harmonize_categories.py`) is the
+only stage that needs an API key; its reviewed output is versioned as `category_mappings.json`, so
+the pipeline starts from it.
 
 ---
 
