@@ -500,7 +500,7 @@ class MC3DAGEnsemble:
         for (u, v), p in zip(self.inter_edges, self.inter_probs):
             if rng.random() < p:
                 edges.add((u, v))
-        return self._enforce_topological(list(edges))
+        return self._enforce_topological(sorted(edges))
 
     def _sample_perturbation(self, rng):
         # Fallback when no MCMC samples available
@@ -522,7 +522,7 @@ class MC3DAGEnsemble:
                                   min(n_add, len(self.inter_edges)),
                                   replace=False, p=w):
                 edges.add(self.inter_edges[idx])
-        return self._enforce_topological(list(edges))
+        return self._enforce_topological(sorted(edges))
 
     def _enforce_topological(self, edges):
         # Remove forbidden edges (violate causal tiers) and enforce max in-degree
@@ -541,7 +541,8 @@ class MC3DAGEnsemble:
 
         consistent_p = [(u, v, self.emeta.get((u, v), 0.5))
                         for u, v in consistent]
-        consistent_p.sort(key=lambda x: x[2], reverse=True)
+        # Ties broken by edge name so the result does not depend on set order.
+        consistent_p.sort(key=lambda x: (-x[2], x[0], x[1]))
 
         in_deg = defaultdict(int)
         kept = []

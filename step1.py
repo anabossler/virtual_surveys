@@ -908,8 +908,10 @@ def bootstrap_interblock(df_disc, inter_candidates, ess=10.0,
     print(f"\nInter-block pairwise BDeu (B={n_bootstrap}, threshold={threshold})")
 
     rng = np.random.default_rng(seed)
-    valid_candidates = [(u, v) for u, v in inter_candidates
-                        if u in df_disc.columns and v in df_disc.columns]
+    # Sorted so that the bootstrap stream assigned to each pair does not depend
+    # on set iteration order (string hashing is randomised per process).
+    valid_candidates = sorted((u, v) for u, v in inter_candidates
+                              if u in df_disc.columns and v in df_disc.columns)
     print(f"  Candidate pairs: {len(valid_candidates)}")
 
     edge_probs = {}
@@ -1013,8 +1015,9 @@ def compose_full_dag(block_dags, inter_edges, all_vars, edge_probs_inter, df_dis
           f"{n_inter_rejected} rejected (top-{K_INTER_MAX} per node by BDeu prob)")
     print(f"  Total edges (pre-cycle check): {len(all_edges)}")
 
-    G = nx.DiGraph(list(all_edges))
-    G.add_nodes_from(all_vars)
+    G = nx.DiGraph()
+    G.add_nodes_from(sorted(all_vars))
+    G.add_edges_from(sorted(all_edges))
     n_removed = 0
 
     while not nx.is_directed_acyclic_graph(G):
