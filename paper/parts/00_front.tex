@@ -19,6 +19,10 @@
 % ---------------------------------------------------------------------------
 \newif\ifreviewmarks
 \reviewmarkstrue
+% Double-anonymized review: \blindtrue hides funding and the deposit DOI.
+% Set \blindfalse for the accepted version.
+\newif\ifblind
+\blindtrue
 \newcommand{\chk}[1]{\ifreviewmarks\textcolor{red}{#1}\else#1\fi}
 \newcommand{\todo}[1]{\ifreviewmarks\textcolor{red}{[\textbf{CHECK:} #1]}\fi}
 
