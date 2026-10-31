@@ -19,7 +19,7 @@ variables and adds a transfer component for unobserved ones, so that each part
 can be checked on its own terms.
 Figure~\ref{fig:pipeline_steps} shows the five steps.
 
-\begin{figure}[H]
+\begin{figure}[p]
 \centering
 \includegraphics[width=\textwidth]{fig_pipeline_steps.pdf}
 \caption{BVS pipeline. Observed variables are learned and generated from
@@ -56,10 +56,13 @@ details are given in Appendix~\ref{app:technical}.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{fig_dag.pdf}
-\caption{Dependency structure learned from CIS microdata, summarised by
-thematic block (seed 42). Line width is the number of edges between two blocks;
-outlined in orange are the blocks containing the five predictors of the
-transfer model. The target outcomes are not nodes of the network.}
+\caption{Core dependencies among the variables used by the transfer model.
+Solid lines: dependencies in the CIS microdata (Cram\'er's $V$,
+Table~\ref{tab:vratios}). Dashed lines: coefficients of the transfer model
+(source estimates of \citet{ruokamo2022}, attenuated by $a_0$ in
+Eq.~\eqref{eq:transfer}). Food-packaging acceptance is not a node of the
+learned network; the full structure (90 variables, 15 blocks) is in the
+deposited outputs.}
 \label{fig:dag}
 \end{figure}
 
