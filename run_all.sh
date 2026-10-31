@@ -91,7 +91,7 @@ stage figures python make_figures.py --base . --out figures
 # Manuscript (fills every table and number from the outputs above)
 if [ "$PAPER" = 1 ]; then
   stage paper python paper/assemble.py paper/parts paper/deposit paper/audit paper/main.tex transfer_output .
-  cp figures/*.png paper/
+  cp figures/*.pdf paper/
   echo "paper/main.tex written; compile with: cd paper && pdflatex main.tex (three times)"
 fi
 
