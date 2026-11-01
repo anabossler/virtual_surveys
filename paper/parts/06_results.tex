@@ -10,6 +10,56 @@ for the outcome the national survey does not measure. All figures can be
 recomputed with the scripts of Appendix~\ref{app:code}.
 
 %-----------------------------------------------------------------------------
+\subsection{Validation of the language-model extraction}
+\label{sec:res_extraction}
+%-----------------------------------------------------------------------------
+
+The language model extracted %%AUDENTRIES%% entries from the 11 studies, of
+which %%AUDPROPOSED%% were proposed for the five target outcomes. The human
+review accepted %%AUDACCEPTED%% of these as proposed, corrected
+%%AUDCORRECTED%%, and excluded %%AUDEXCLUDED%% (Table~\ref{tab:audit}). All
+recorded corrections concern the mapping of an item to a construct, a polarity
+or a scale; none concerns the transcription of a reported number. The most
+frequent error was construct mismatch: items on the environmental benefits of
+recycled plastic were assigned to perceived safety, and an item on second-hand
+products to acceptance of recycled material. The second was polarity: four risk
+statements were entered as safety statements without reversal, which would
+have turned disagreement with ``recycled plastics may be contaminated'' into
+low perceived safety. Double counting, where a construct score and its items
+from the same respondents were entered as separate evidence, would have
+inflated the pooled sample size.
+
+\begin{table}[htbp]
+\centering
+\caption{Human audit of the entries proposed by the language model for the
+target outcomes. Share: of the %%AUDPROPOSED%% proposed entries. Source:
+\texttt{transfer\_output/extraction\_audit.csv}, from
+\texttt{evidence\_rules.csv}.}
+\label{tab:audit}
+\small
+\begin{tabularx}{\textwidth}{lrrlX}
+\toprule
+\textbf{Error type} & \textbf{Entries} & \textbf{Share} & \textbf{Action} &
+  \textbf{Example} \\
+\midrule
+%%AUDITROWS%%
+\midrule
+No correction & %%AUDACCEPTED%% & %%AUDACCSHARE%% & accept & --- \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The same kinds of error occurred among the entries mapped to variables the CIS
+already measures, where weekly meat consumption was treated as reduced plastic
+consumption and interpersonal trust as institutional trust
+(Section~\ref{sec:step3}). Their cost can be measured: used as priors,
+those entries recovered masked CIS variables with a mean total variation
+distance of $0.110$, against $0.038$ with a flat prior. In this audit the
+errors concentrated in meaning rather than transcription, so the accuracy of
+the extraction step has to be assessed at the level of construct mapping. Query parsing
+by the interface has not been evaluated (Section~\ref{sec:limitations}).
+
+%-----------------------------------------------------------------------------
 \subsection{Reproduction of observed variables}
 \label{sec:res_fidelity}
 %-----------------------------------------------------------------------------

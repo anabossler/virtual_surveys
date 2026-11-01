@@ -51,26 +51,46 @@ Section~\ref{sec:theory} shows that this gap is not incidental: anticipatory
 governance and risk-mitigation theory imply specific requirements that none of
 these instruments meets jointly.
 
+Large language models offer a way into this gap, and two uses have emerged.
+The first treats them as analytical engines over text: synthesising reported
+empirical results \citep{guo2026}, analysing public discourse on the circular
+economy \citep{li2026}, mining patents \citep{park2026}, or developing
+measurement scales \citep{hoffmann2024}. The second treats them as simulated
+respondents whose answers stand in for a human sample \citep{argyle2023}. Both
+face the validation problem: the performance, sensitivity and bias of
+general-purpose models depend on the task and context
+\citep{hajikhani2024}. For the policy-before-data problem the second use is
+also unsuitable in principle, because a model's simulated answers reflect its
+training data, not the Spanish population segments a regulation affects. BVS
+takes a third route. Language models do what can be audited, extracting
+statistics from published studies and translating queries; a Bayesian model
+estimated from national microdata computes every probability; and researchers
+review each extracted entry and own the transfer assumptions.
+
 \paragraph{Aim and contributions.}
-This paper examines how an AI-enabled probabilistic decision-support system can
-support the anticipatory governance of a mandated circular-packaging transition
+This paper examines how large language models can be integrated into a
+probabilistic decision-support system for a mandated technology transition
 when target-specific behavioural evidence is unavailable, and under which
-conditions its outputs may be used. It makes three contributions.
+conditions its outputs may be used. It makes four contributions.
+
+\emph{Methodological.} We present Bayesian Virtual Surveys (BVS), a system in
+which language-model-assisted evidence extraction and query translation are
+combined with a Bayesian inference engine that generates national microdata as
+in \citet{martins2024} and attaches unmeasured outcomes through a documented
+transfer model, updated by conjugate fusion as national data arrive. The
+division of labour between language models, the engine and human researchers
+is specified task by task (Sections~\ref{sec:system}--\ref{sec:framework}).
+
+\emph{Validation of the language-model component.} We audit every entry the
+model proposed against human review, classify the errors, and show their
+downstream cost when they are not corrected (Section~\ref{sec:res_extraction}).
 
 \emph{Theoretical.} We frame policy-before-data as a demand-side Collingridge
 dilemma and derive from anticipatory governance and risk-mitigation theory four
 design requirements for an instrument operating in the pre-observational window
-(Section~\ref{sec:theory}).
-
-\emph{Technological.} We present Bayesian Virtual Surveys (BVS), a system
-combining language-model-assisted evidence extraction, a Bayesian inference
-engine that generates national microdata as in \citet{martins2024} and attaches
-unmeasured outcomes through a documented transfer model updated by conjugate
-fusion as national data arrive, and a
-natural-language interface for non-specialist users
-(Sections~\ref{sec:system}--\ref{sec:framework}). The language model extracts
-evidence and translates queries; it does not generate acceptance
-probabilities.
+(Section~\ref{sec:theory}). For technology-acceptance research, the instrument
+replaces a single acceptance rate with a conditional surface over population
+segments, the quantity on which mitigation under a mandate depends.
 
 \emph{Empirical and governance-related.} Applied to Spain under
 Regulation~2025/40, the system produces segment-level scenarios for outcomes

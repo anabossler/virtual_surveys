@@ -53,6 +53,7 @@ stage missingness      python missingness.py
 # Unobserved outcome: transfer model and measurement plan
 stage transfer_model   python transfer_model.py --cis "$CIS"
 stage measurement_plan python measurement_plan.py --cis "$CIS"
+stage extraction_audit python extraction_audit.py --out transfer_output
 stage step4b           python step4b_targets.py
 
 # Validation

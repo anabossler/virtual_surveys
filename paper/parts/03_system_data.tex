@@ -57,6 +57,48 @@ model for the most receptive profile of Section~\ref{sec:spread}.}
 \label{fig:gradio}
 \end{figure}
 
+\paragraph{Division of labour.}
+Table~\ref{tab:labour} assigns each task to the language model, the inference
+engine, or the researchers and users. Language models are confined to tasks
+whose output a person can check against a source: the extracted statistic
+against the published table, the parsed profile against the question. They
+produce no number that enters a probability without review, and the
+assumptions that most affect the projections (base rate, transfer factor,
+coding of scales) are set by the researchers and varied in sensitivity
+analyses.
+
+\begin{table}[htbp]
+\centering
+\caption{Division of labour between language models, the Bayesian engine,
+and researchers or users. Language models: \texttt{harmonize\_categories.py}
+(extraction) and \texttt{app\_gradio.py} (interface).}
+\label{tab:labour}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm}XXX}
+\toprule
+\textbf{Task} & \textbf{Language model} & \textbf{Bayesian engine} &
+  \textbf{Researchers / users} \\
+\midrule
+Source selection & --- & --- & Select studies; record exclusions \\
+Statistic extraction & Proposes sample sizes, distributions, coefficients &
+  --- & Review every entry against the source \\
+Construct and scale mapping & Proposes target construct and scale &
+  --- & Accept, correct or exclude; record each decision in
+  \texttt{evidence\_rules.csv} \\
+Structure and parameters & --- & Learns graphs and tables from national
+  microdata & Set block structure and forbidden edges \\
+Transfer assumptions & --- & Propagates uncertainty by Monte Carlo & Choose
+  base rate, transfer factor and scale coding; test them on ISSP data \\
+Query parsing & Converts free text to a structured profile & --- & User sees
+  the parsed profile with the result \\
+Probabilities and intervals & --- & Computes all of them & --- \\
+Narrative & Writes text from computed numbers & --- & Read with the status
+  label (observed, validated, projected) \\
+Decision & --- & --- & Decision-maker remains accountable \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 Table~\ref{tab:requirements} relates the layers to the requirements of
 Section~\ref{sec:requirements}. The technological contribution lies in their
 combination: evidence integration, scenario exploration, and later updating

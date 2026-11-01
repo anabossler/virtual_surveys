@@ -282,6 +282,28 @@ def plan_rows(transfer: Path) -> str:
     return "\n".join(lines)
 
 
+def audit_rows(transfer: Path) -> str:
+    lines = []
+    for r in read_csv(transfer / "extraction_audit.csv"):
+        example = r["example"].replace("&", "\\&")
+        lines.append(f"{r['error_type']} & {r['entries']} & {100 * float(r['share_of_proposed']):.0f}\\% & "
+                     f"{r['action'].replace('_', ' ')} & {example} \\\\")
+    return "\n".join(lines)
+
+
+def audit_scalars(transfer: Path) -> dict[str, str]:
+    a = json.loads((transfer / "extraction_audit.json").read_text())
+    return {
+        "%%AUDENTRIES%%": str(a["entries_extracted"]),
+        "%%AUDPROPOSED%%": str(a["proposed_for_targets"]),
+        "%%AUDACCEPTED%%": str(a["accepted_as_proposed"]),
+        "%%AUDCORRECTED%%": str(a["corrected"]),
+        "%%AUDEXCLUDED%%": str(a["excluded"]),
+        "%%AUDCHANGED%%": str(a["corrected"] + a["excluded"]),
+        "%%AUDACCSHARE%%": f"{100 * a['accepted_as_proposed'] / a['proposed_for_targets']:.0f}\\%",
+    }
+
+
 def transport_scalars(transfer: Path, transport: Path) -> dict[str, str]:
     t = json.loads((transport / "issp_transport.json").read_text())
     prof = {r["quantity"]: r for r in read_csv(transfer / "transport_profiles.csv")}
@@ -429,13 +451,14 @@ def main() -> None:
         "%%SEGROWS%%": segment_rows(transfer),
         "%%SEGA0ROWS%%": segment_a0_rows(transfer),
         "%%PLANROWS%%": plan_rows(transfer),
+        "%%AUDITROWS%%": audit_rows(transfer),
     }
     text = "".join((parts / name).read_text(encoding="utf-8") for name in PART_ORDER)
     for marker, rows in fillers.items():
         if text.count(marker) != 1:
             raise SystemExit(f"marker {marker} found {text.count(marker)} times")
         text = text.replace(marker, rows)
-    scalars = run_scalars(run, run / "metadata/3391_num.csv") | transport_scalars(transfer, transfer.parent / "transport_output")
+    scalars = run_scalars(run, run / "metadata/3391_num.csv") | transport_scalars(transfer, transfer.parent / "transport_output") | audit_scalars(transfer)
     for marker, value in scalars.items():
         if marker not in text:
             raise SystemExit(f"marker {marker} not found")

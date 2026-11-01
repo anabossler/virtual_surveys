@@ -1,0 +1,5 @@
+error_type,entries,share_of_proposed,action,example
+Construct mismatch,7,0.3181818181818182,exclude,"perceived-benefit item, not safety"
+Reversed polarity,4,0.18181818181818182,reverse,risk statement; agreement means low perceived safety
+Double counting,3,0.13636363636363635,exclude,construct mean of the same respondents and items
+Scale handling,1,0.045454545454545456,binary_share,single share judging recycled plastic suitable; positive mass on the two highest categories

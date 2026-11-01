@@ -26,9 +26,9 @@
 \newcommand{\chk}[1]{\ifreviewmarks\textcolor{red}{#1}\else#1\fi}
 \newcommand{\todo}[1]{\ifreviewmarks\textcolor{red}{[\textbf{CHECK:} #1]}\fi}
 
-\title{Bayesian Virtual Surveys as an AI-enabled decision-support system for
-anticipatory governance:\\
-Adoption-risk scenarios for recycled-content food-contact packaging}
+\title{Large language models as auditable components of Bayesian Virtual
+Surveys:\\
+Anticipating acceptance of recycled-content food packaging before it is measured}
 
 \author{[Withheld for anonymous review]}
 
@@ -37,41 +37,42 @@ Adoption-risk scenarios for recycled-content food-contact packaging}
 
 \section*{Highlights}
 \begin{itemize}
-\item BVS couples a Bayesian inference engine with a natural-language query interface.
-\item It builds adoption scenarios before target-specific surveys exist.
-\item Anticipatory governance and risk mitigation theory set its design requirements.
+\item Language models extract evidence and parse queries; a Bayesian engine computes.
+\item Human audit corrected or excluded %%AUDCHANGED%% of %%AUDPROPOSED%% model-proposed evidence entries.
+\item Construct mismatch, not transcription, was the most frequent extraction error.
 \item Projected acceptance differs by 55--83 points between contrasting profiles.
-\item Outcomes absent from national data stay projections until measured in Spain.
+\item Cross-national data bound transfer error; projections stay unvalidated in Spain.
 \end{itemize}
 
 \begin{abstract}
-Regulatory mandates can fix a technology and a timeline before the behavioural
-evidence needed to implement them exists. This policy-before-data gap is a
-demand-side form of the Collingridge dilemma: flanking measures are cheapest to
-adjust while public response is still unmeasured. From anticipatory
-governance and risk-mitigation theory we derive four requirements for an
-instrument that operates in this window and present Bayesian Virtual Surveys
-(BVS), an AI-enabled decision-support system built to meet them. BVS combines
-a Bayesian network learned from national survey microdata, priors extracted from
-external studies with language-model assistance, and a natural-language
-interface that returns segment-level scenarios with credible intervals. We apply
-it to recycled-content food-contact packaging under EU~Regulation~2025/40, using
-Spanish microdata (CIS~3391, $n = 2{,}254$) and an extraction corpus of 11
-external studies, of which four supply evidence retained for the target
-outcomes and one supplies the transfer model. The
-synthetic population reproduces observed marginals (mean total variation
-distance %%TVDMEAN%%). Under the central transfer specification, projected
-acceptance differs by 75~percentage points between contrasting profiles
-(55--83 across transfer factors). Cross-national ISSP data place the
-Finland-to-Spain transfer factor at %%TA0%% and show that levels transfer
-poorly; propagating this error widens the population projection to
-%%TPOP%%. External evidence enters only the unmeasured outcome, and the projection has
-not been validated in Spain. BVS supports scenario exploration, targeting of pilots and
-prioritisation of measurement; it does not replace fieldwork or public
-engagement.
+Large language models (LLMs) are increasingly proposed as research instruments
+in technology management, but their outputs are fluent rather than verified.
+We present Bayesian Virtual Surveys (BVS), a decision-support system in which
+the division of labour between LLMs, a probabilistic engine and human
+researchers is explicit and auditable, and apply it where a regulation fixes a
+technology before the behavioural evidence needed to implement it exists. LLMs
+extract statistics from published studies and translate natural-language
+queries into structured profiles; they generate no probabilities. A Bayesian
+network learned from national survey microdata generates the observed
+population, and a documented transfer model attaches the outcome the survey
+does not measure. Researchers review every extracted entry and own the transfer
+assumptions. Applied to acceptance of recycled-content food-contact packaging
+under EU~Regulation~2025/40, with Spanish microdata (CIS~3391,
+$n = 2{,}254$) and 11 external studies, the human audit accepted
+%%AUDACCEPTED%% of the %%AUDPROPOSED%% entries the LLM proposed for the target
+outcomes as extracted, corrected %%AUDCORRECTED%% and excluded
+%%AUDEXCLUDED%%; construct mismatch was the most frequent error, and
+LLM-mapped evidence on observed variables degraded fidelity. The synthetic
+population reproduces observed marginals (mean total variation distance
+%%TVDMEAN%%), and projected acceptance differs by 75~percentage points between
+contrasting profiles (55--83 across transfer factors). Cross-national ISSP data
+place the Finland-to-Spain transfer factor at %%TA0%% and widen the population
+projection to %%TPOP%%. Anticipatory governance theory supplies the design
+requirements, and the results state when LLM-assisted projections can inform
+pilots and measurement and when they cannot.
 \end{abstract}
 
-\noindent\textbf{Keywords:} anticipatory governance; AI-enabled decision support;
-Bayesian networks; synthetic survey data; regulatory transition;
-recycled-content packaging
+\noindent\textbf{Keywords:} large language models; human--AI division of labour;
+Bayesian networks; synthetic survey data; anticipatory governance; technology
+acceptance
 
