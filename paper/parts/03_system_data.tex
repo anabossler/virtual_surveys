@@ -8,10 +8,14 @@ governance, because each layer has a different epistemic role and a different
 failure mode.
 
 \paragraph{Evidence layer.}
-Published studies and reports are ingested as PDF files. A large language model
-extracts, for each source, the reported sample sizes, response distributions,
-and regression coefficients, and proposes a mapping from each source item to a
-target construct and response scale. Every proposed mapping is exported to a
+Each published study is first recorded as a structured file (sampling design,
+item wording and response distributions, regression tables).
+\todo{State how the per-study JSON files in \texttt{metadata/} were produced
+from the PDFs: by hand, or with which model and settings.} A large language
+model (Claude Sonnet~4, snapshot \texttt{claude-sonnet-4-20250514}, temperature
+0; Appendix~\ref{app:llm}) then extracts, for each source, the reported sample
+sizes, response distributions, and regression coefficients, and proposes a
+mapping from each source item to a target construct and response scale. Every proposed mapping is exported to a
 review table (source item, source scale, extracted statistic, transformation,
 resulting pseudo-counts) so that it can be verified manually. The language
 model is therefore an extraction aid whose output is auditable line by line; it
@@ -28,7 +32,8 @@ probabilities and intervals reported in this paper are computed by this layer.
 
 \paragraph{Access layer.}
 A conversational interface (ASAP~v6) makes the engine usable without
-statistical training. A free-text query is parsed by a language model into a
+statistical training. A free-text query is parsed by the same model,
+at temperature 0 (Appendix~\ref{app:llm}), into a
 structured profile (single profile, comparison of profiles, or overview); the
 profile is passed to the inference engine, which returns the projected
 probability and its 95\% interval; the result is

@@ -802,6 +802,7 @@ def parse_question(text):
     r = _client().messages.create(
         model="claude-sonnet-4-20250514",
         max_tokens=500,
+        temperature=0,
         system=PARSE_SYS,
         messages=[{"role": "user", "content": text}],
     )
@@ -822,6 +823,7 @@ def narrative(data, question):
     r = _client().messages.create(
         model="claude-sonnet-4-20250514",
         max_tokens=400,
+        temperature=0,
         system=_NARR_SYS,
         messages=[{"role": "user",
                    "content": f"Q: {question}\nData:\n{json.dumps(data, ensure_ascii=False)}"}],

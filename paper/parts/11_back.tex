@@ -380,6 +380,41 @@ imputed with the modal category. %%MISSSUMMARY%%}
 \end{tabular}
 \end{table}
 
+\section{Language-model configuration}
+\label{app:llm}
+
+\begin{table}[htbp]
+\centering
+\caption{Language-model calls in BVS. All calls use the Anthropic Messages API
+with the dated model identifier, which fixes the model version; prompts are
+in the scripts named. Outputs are not guaranteed to be identical across calls
+even at temperature~0, so the reviewed extraction is versioned
+(\texttt{category\_mappings.json}) and the pipeline starts from it.}
+\label{tab:llm}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{3.2cm}XX}
+\toprule
+\textbf{Call} & \textbf{Settings} & \textbf{Input and prompt} & \textbf{Output} \\
+\midrule
+Evidence extraction & \texttt{claude-sonnet-4-20250514}; temperature 0;
+  max.\ 16{,}000 output tokens; one call per study record, retried on rate
+  limits & One structured record per study (14 records, 11 studies) and the
+  list of CIS targets; \texttt{EXTRACTION\_PROMPT} in
+  \texttt{harmonize\_categories.py} & Entries with statistic, scale and
+  proposed target (80 entries, \texttt{category\_mappings.json}); regression
+  coefficients (\texttt{regression\_priors.json}) \\
+Query parsing & \texttt{claude-sonnet-4-20250514}; temperature 0; max.\ 500
+  output tokens & Free-text question; system prompt \texttt{PARSE\_SYS} in
+  \texttt{app\_gradio.py} & Structured profile (JSON); defaults to an empty
+  profile if parsing fails \\
+Narrative & \texttt{claude-sonnet-4-20250514}; temperature 0; max.\ 400
+  output tokens & Question and the numbers computed by the engine; system
+  prompt \texttt{\_NARR\_SYS} in \texttt{app\_gradio.py} & Short text shown
+  with the result card \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 \section{Pipeline scripts}
 \label{app:code}
 
@@ -391,7 +426,6 @@ imputed with the modal category. %%MISSSUMMARY%%}
 \toprule
 \textbf{Script} & \textbf{Section} & \textbf{Key output} \\
 \midrule
-\texttt{ingest\_pdf.py}           & \ref{sec:system}       & Text extraction from PDF sources \\
 \texttt{harmonize\_categories.py} & \ref{sec:step2}        & \texttt{category\_mappings.json} \\
 \texttt{step1.py}                 & \ref{sec:step1}        & \texttt{dag\_edges\_3391.csv} \\
 \texttt{step2.py}                 & \ref{sec:step2}        & \texttt{step2\_dirichlet\_priors.json} \\
