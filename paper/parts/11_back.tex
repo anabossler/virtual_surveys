@@ -50,6 +50,14 @@ Lynch, M., Wajcman, J.\ (Eds.), The Handbook of Science and Technology Studies, 
 MIT Press, Cambridge, MA, pp.\ 979--1000.
 
 
+\bibitem[Anthropic, 2025a]{anthropic2025opus}
+Anthropic, 2025a. Claude Opus 4.5 [large language model]. Anthropic, San Francisco.
+\url{https://www.anthropic.com}. \chk{Accessed April 2026.}
+
+\bibitem[Anthropic, 2025b]{anthropic2025sonnet}
+Anthropic, 2025b. Claude Sonnet 4 [large language model], version \texttt{claude-sonnet-4-20250514}.
+Anthropic, San Francisco. \url{https://www.anthropic.com}.
+
 \bibitem[Argyle et~al., 2023]{argyle2023}
 Argyle, L.P., Busby, E.C., Fulda, N., Gubler, J.R., Rytting, C., Wingate, D., 2023. Out of one,
 many: using language models to simulate human samples. Polit.\ Anal.\ 31(3), 337--351.
@@ -413,9 +421,9 @@ imputed with the modal category. %%MISSSUMMARY%%}
 
 \begin{table}[htbp]
 \centering
-\caption{Language-model calls in BVS. All calls use the Anthropic Messages API
-with the dated model identifier, which fixes the model version; prompts are
-in the scripts named. Outputs are not guaranteed to be identical across calls
+\caption{Language-model calls in BVS. The pipeline calls use the Anthropic
+Messages API with the dated model identifier, which fixes the model version;
+prompts are in the scripts named. Outputs are not guaranteed to be identical across calls
 even at temperature~0, so the reviewed extraction is versioned
 (\texttt{category\_mappings.json}) and the pipeline starts from it.}
 \label{tab:llm}
@@ -424,6 +432,8 @@ even at temperature~0, so the reviewed extraction is versioned
 \toprule
 \textbf{Call} & \textbf{Settings} & \textbf{Input and prompt} & \textbf{Output} \\
 \midrule
+PDF to structured record & Claude Opus~4.5; April~2026 & Published article
+  (PDF) & One structured JSON record per study (\texttt{metadata/}) \\
 Evidence extraction & \texttt{claude-sonnet-4-20250514}; temperature 0;
   max.\ 16{,}000 output tokens; one call per study record, retried on rate
   limits & One structured record per study (14 records, 11 studies) and the
