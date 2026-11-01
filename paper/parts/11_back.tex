@@ -432,8 +432,11 @@ even at temperature~0, so the reviewed extraction is versioned
 \toprule
 \textbf{Call} & \textbf{Settings} & \textbf{Input and prompt} & \textbf{Output} \\
 \midrule
-PDF to structured record & Claude Opus~4.5; April~2026 & Published article
-  (PDF) & One structured JSON record per study (\texttt{metadata/}) \\
+PDF to structured record & Claude Opus~4.5 via the Anthropic API; April~2026
+  \todo{temperature} & Published article (PDF); schema-guided prompt with
+  fields, units, admissible values and per-value provenance (page, locator
+  text/table/figure, excerpt) & One structured JSON record per study
+  (\texttt{metadata/}) \\
 Evidence extraction & \texttt{claude-sonnet-4-20250514}; temperature 0;
   max.\ 16{,}000 output tokens; one call per study record, retried on rate
   limits & One structured record per study (14 records, 11 studies) and the

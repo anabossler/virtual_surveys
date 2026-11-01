@@ -11,9 +11,15 @@ failure mode.
 Language models enter the evidence layer in two stages
 (Appendix~\ref{app:llm}). First, each published study was converted from its
 PDF into a structured record (sampling design, item wording and response
-distributions, regression tables) with Claude Opus~4.5 \citep{anthropic2025opus}
-in April~2026. \todo{State whether this was done through the chat interface or
-the API, and whether the prompt was saved.} Second, Claude Sonnet~4
+distributions, regression tables) with Claude Opus~4.5 \citep{anthropic2025opus},
+called through the Anthropic API in April~2026. The conversion followed a
+schema-guided strategy:
+the model fills a fixed schema that declares each field, its unit and its
+admissible values, and every value it returns carries its provenance (page,
+whether it was read from running text, a table or a figure, and the supporting
+excerpt), so that each number in a record can be traced back to the article.
+\todo{Temperature and other settings of this call; add the prompt and schema
+to the repository.} Second, Claude Sonnet~4
 \citep{anthropic2025sonnet} reads each record and extracts the reported sample
 sizes, response distributions, and regression coefficients, and proposes a
 mapping from each source item to a target construct and response scale. Every proposed mapping is exported to a
