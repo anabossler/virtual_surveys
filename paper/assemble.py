@@ -304,6 +304,31 @@ def audit_scalars(transfer: Path) -> dict[str, str]:
     }
 
 
+def baseline_scalars(deposit: Path) -> dict[str, str]:
+    """TVD ratios and association-strength ranges of the baselines (step8, same code for every model)."""
+    base = deposit / "04_validation/baselines"
+    table = {r["Model"]: r for r in read_csv(base / "comparison_table.csv")}
+    chi = read_csv(base / "chisq_by_model.csv")
+    bvs = table["BVS (S1)"]
+
+    def ratio(model: str, column: str) -> str:
+        return f"{float(table[model][column]) / float(bvs[column]):.2f}"
+
+    def v_ratios(model: str) -> list[float]:
+        return [float(r["V_ratio"]) for r in chi if r["model"] == model]
+
+    return {
+        "%%TVDRCTGAN%%": ratio("CTGAN", "TVD (mean)"),
+        "%%TVDRTVAE%%": ratio("TVAE", "TVD (mean)"),
+        "%%TVDMEDRCTGAN%%": ratio("CTGAN", "TVD (median)"),
+        "%%TVDMEDRTVAE%%": ratio("TVAE", "TVD (median)"),
+        "%%CTGANVMIN%%": f"{100 * min(v_ratios('CTGAN')):.0f}",
+        "%%CTGANVMAX%%": f"{100 * max(v_ratios('CTGAN')):.0f}",
+        "%%TVAEVMIN%%": f"{min(v_ratios('TVAE')):.2f}",
+        "%%TVAEVMAX%%": f"{max(v_ratios('TVAE')):.2f}",
+    }
+
+
 def data_scalars(run: Path) -> dict[str, str]:
     """Variable counts (variable_counts.py) and Little's MCAR test by block (mcar_test.py)."""
     c = json.loads((run / "variable_counts.json").read_text())
@@ -472,7 +497,7 @@ def main() -> None:
         if text.count(marker) != 1:
             raise SystemExit(f"marker {marker} found {text.count(marker)} times")
         text = text.replace(marker, rows)
-    scalars = run_scalars(run, run / "metadata/3391_num.csv") | transport_scalars(transfer, transfer.parent / "transport_output") | audit_scalars(transfer) | data_scalars(run)
+    scalars = run_scalars(run, run / "metadata/3391_num.csv") | transport_scalars(transfer, transfer.parent / "transport_output") | audit_scalars(transfer) | data_scalars(run) | baseline_scalars(deposit)
     for marker, value in scalars.items():
         if marker not in text:
             raise SystemExit(f"marker {marker} not found")

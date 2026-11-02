@@ -573,7 +573,7 @@ def build_comparison_table(results_list):
             'TVD (median)': r['tvd_median'],
             'TVD Exc. (%)': r['tvd_pct_excellent'],
             'Corr MAE':     r['corr_mae'],
-            'Chi2 pres.':   r['chi2_str'],
+            'Chi² pres.':   r['chi2_str'],
             'pMSE':         r['pmse'],
             'Detect. AUC':  r['detection_auc'],
         })

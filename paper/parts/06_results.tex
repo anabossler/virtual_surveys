@@ -72,13 +72,15 @@ to the same data.
 
 \begin{table}[htbp]
 \centering
-\caption{Synthetic-data methods on CIS~3391 (78 alignable variables). For
+\caption{Synthetic-data methods on CIS~3391. For
 observed variables BVS is a Bayesian network with a BDeu prior and
 survey-weighted counts, as in \citet{martins2024}. $\chi^2$: dependencies significant in the CIS that remain
 significant in the synthetic data, of those tested. $V$ ratio: range of
 $V_{\mathrm{synthetic}} / V_{\mathrm{CIS}}$ over the tested pairs; 1 indicates
-preserved strength. CTGAN, TVAE and the independent baseline are from the
-deposited comparison (v1.0).}
+preserved strength. CTGAN and TVAE are the synthetic files of the v1.0 deposit
+(one training run each, 100{,}000 records); every row is evaluated with the same
+code (\texttt{step8.py}). TVD is averaged over the variables alignable for each
+method: 78 for BVS and CTGAN, 79 for TVAE, 90 for the independent baseline.}
 \label{tab:comparison}
 \small
 \begin{threeparttable}
@@ -104,9 +106,11 @@ deposited comparison (v1.0).}
 \end{threeparttable}
 \end{table}
 
-BVS has a mean TVD 4.5 and 6.2 times lower than CTGAN and TVAE, and a median
-TVD 11 and 12 times lower. CTGAN shrinks association strength to 10--31\% of its CIS
-value, and TVAE inflates it by up to a factor of six.
+BVS has a mean TVD %%TVDRCTGAN%% and %%TVDRTVAE%% times lower than CTGAN and TVAE,
+and a median TVD %%TVDMEDRCTGAN%% and %%TVDMEDRTVAE%% times lower, all four computed with the
+same code (\texttt{step8.py}). CTGAN shrinks association strength to
+%%CTGANVMIN%%--%%CTGANVMAX%%\% of its CIS value; TVAE inflates it by a factor of
+%%TVAEVMIN%% to %%TVAEVMAX%%, so it keeps every dependency but not its magnitude.
 
 Table~\ref{tab:vratios} reports dependency preservation pair by pair.
 Dependencies within thematic blocks are kept (environmental concern with
