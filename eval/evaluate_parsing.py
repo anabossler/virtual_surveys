@@ -16,11 +16,17 @@ Outputs (in --out):
     parsing_summary.json        exact-profile accuracy, field accuracy, JSON
                                 failures, stability across repeats, model
 
-Requires ANTHROPIC_API_KEY in the environment (or a .env file).
+Backends (the model is the same, claude-sonnet-4-20250514):
+    anthropic    Anthropic Messages API; needs ANTHROPIC_API_KEY
+    openrouter   OpenRouter, model anthropic/claude-sonnet-4 served by the
+                 Anthropic provider only (no fallback to other providers);
+                 needs OPENROUTER_API_KEY
+Keys are read from the environment or a .env file in the repository root.
 
 Usage
 -----
     python eval/evaluate_parsing.py --out eval/results --repeats 3
+    python eval/evaluate_parsing.py --backend openrouter --out eval/results --repeats 3
 """
 
 from __future__ import annotations
@@ -36,6 +42,8 @@ from pathlib import Path
 import pandas as pd
 
 MODEL = "claude-sonnet-4-20250514"
+OPENROUTER_MODEL = "anthropic/claude-sonnet-4"
+OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 MAX_TOKENS = 500
 TEMPERATURE = 0
 FIELDS = ["age", "gender", "edu", "income", "product", "env_concern", "urban",
@@ -64,6 +72,40 @@ def to_profile(text: str) -> dict | None:
         return None
 
 
+def make_caller(backend: str, system: str):
+    """Function question -> (raw text, model reported by the service)."""
+    if backend == "anthropic":
+        import anthropic
+        if not os.getenv("ANTHROPIC_API_KEY"):
+            raise SystemExit("ANTHROPIC_API_KEY is not set")
+        client = anthropic.Anthropic()
+
+        def call(question: str) -> tuple[str, str]:
+            r = client.messages.create(model=MODEL, max_tokens=MAX_TOKENS, temperature=TEMPERATURE,
+                                       system=system, messages=[{"role": "user", "content": question}])
+            return r.content[0].text, getattr(r, "model", MODEL)
+        return call
+
+    import requests
+    key = os.getenv("OPENROUTER_API_KEY")
+    if not key:
+        raise SystemExit("OPENROUTER_API_KEY is not set")
+
+    def call(question: str) -> tuple[str, str]:
+        body = {
+            "model": OPENROUTER_MODEL, "max_tokens": MAX_TOKENS, "temperature": TEMPERATURE,
+            "messages": [{"role": "system", "content": system}, {"role": "user", "content": question}],
+            "provider": {"order": ["Anthropic"], "allow_fallbacks": False},
+        }
+        r = requests.post(OPENROUTER_URL, json=body, timeout=120,
+                          headers={"Authorization": f"Bearer {key}"})
+        if r.status_code != 200:
+            raise SystemExit(f"OpenRouter error {r.status_code}: {r.text[:300]}")
+        data = r.json()
+        return data["choices"][0]["message"]["content"], f"{data.get('model')} via {data.get('provider')}"
+    return call
+
+
 def correct(field: str, gold, predicted) -> bool | None:
     """None when the field is not scored for this question."""
     if gold == "*":
@@ -81,18 +123,17 @@ def main() -> None:
     parser.add_argument("--app", type=Path, default=ROOT / "app_gradio.py")
     parser.add_argument("--out", type=Path, default=ROOT / "eval/results")
     parser.add_argument("--repeats", type=int, default=3)
+    parser.add_argument("--backend", choices=("anthropic", "openrouter"), default="anthropic")
     args = parser.parse_args()
 
-    import anthropic
     try:
         from dotenv import load_dotenv
         load_dotenv(ROOT / ".env")
     except ImportError:
         pass
-    if not os.getenv("ANTHROPIC_API_KEY"):
-        raise SystemExit("ANTHROPIC_API_KEY is not set")
-    client = anthropic.Anthropic()
     system = parse_system_prompt(args.app)
+    call = make_caller(args.backend, system)
+    served = set()
     items = [json.loads(line) for line in args.gold.read_text(encoding="utf-8").splitlines() if line.strip()]
     args.out.mkdir(parents=True, exist_ok=True)
 
@@ -101,11 +142,8 @@ def main() -> None:
     for item in items:
         profiles = []
         for repeat in range(args.repeats):
-            response = client.messages.create(
-                model=MODEL, max_tokens=MAX_TOKENS, temperature=TEMPERATURE, system=system,
-                messages=[{"role": "user", "content": item["question"]}],
-            )
-            text = response.content[0].text
+            text, served_by = call(item["question"])
+            served.add(served_by)
             profile = to_profile(text)
             failures += profile is None
             profiles.append(profile)
@@ -127,7 +165,8 @@ def main() -> None:
                            for f, v in scores.items()])
     fields.to_csv(args.out / "parsing_fields.csv", index=False)
     summary = {
-        "model": MODEL, "temperature": TEMPERATURE, "max_tokens": MAX_TOKENS,
+        "model": MODEL, "backend": args.backend, "served_by": sorted(served),
+        "temperature": TEMPERATURE, "max_tokens": MAX_TOKENS,
         "questions": len(items), "repeats": args.repeats,
         "exact_profile_accuracy": sum(exact) / len(exact),
         "field_accuracy": float(fields["correct"].sum() / fields["scored"].sum()),
