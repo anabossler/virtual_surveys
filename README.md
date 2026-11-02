@@ -35,6 +35,9 @@ The synthetic population has 10,000 individuals (50 graphs from the structure po
 | `step6.py` | Fidelity and dependency diagnostics | `step6_output/` |
 | `step8.py` | Baseline generators (CTGAN, TVAE, independent); models trained on CIS codes are compared on those codes, so the CIS reference is the same for every model | `step8_output/comparison_table.csv`, `chisq_by_model.csv` |
 | `step9.py` | Comparison with Ipsos 2022 Spain | `step9_output/ipsos_validation.json` |
+| `second_coder.py` | Blind coding sheet for a second reviewer of the language-model extraction, and Cohen's kappa against the first review | `coding_sheet.xlsx`, `transfer_output/second_coder_agreement.json` |
+| `eval/evaluate_parsing.py` | Accuracy of the interface's query parsing on 50 labelled questions (`eval/interface_parsing_gold.jsonl`); needs `ANTHROPIC_API_KEY` | `eval/results/parsing_summary.json` |
+| `backtest_transfer.py` | Retrospective test of the transfer procedure on ISSP outcomes observed in every country | `transport_output/backtest_summary_*.json` |
 | `make_figures.py` | Manuscript figures from pipeline outputs | `figures/*.png` |
 | `app_gradio.py` | Query interface (ASAP v6) | |
 
