@@ -186,3 +186,75 @@ contrasts by gender (%%FEMW%% against %%FEMWO%%), higher education
 (%%EDUW%% against %%EDUWO%%) and recycling (%%RECW%% against %%RECWO%%)
 reproduce those of the CIS projection in Table~\ref{tab:segments}.
 
+%-----------------------------------------------------------------------------
+\subsection{Retrospective test on observed outcomes}
+\label{sec:backtest}
+%-----------------------------------------------------------------------------
+
+The target outcome has not been measured in Spain, so the projections cannot
+be checked directly. The procedure that produces them can. On the five ISSP
+proxy outcomes of Section~\ref{sec:transport}, which every country measures, we
+treat each country in turn as the target, predict its values from another
+country exactly as Spain is predicted from Finland, and compare the prediction
+with what the target country reports (\texttt{backtest\_transfer.py}). Over the
+%%BTNEU%% European countries this gives %%BTLEVELCASES%% predictions of a
+population level and %%BTGAPCASES%% predictions of a gap between segments (for
+example, women against men). Two variants are tested: the procedure of the main
+analysis, with $a_0 = 0.80$ and only sampling uncertainty, and the procedure
+with transport error. For the second, the transport parameters are estimated
+from the other countries and the other outcomes only, so the predicted value
+never informs its own interval. Table~\ref{tab:backtest} reports the results.
+
+\begin{table}[htbp]
+\centering
+\caption{Retrospective test of the transfer procedure: %%BTNEU%% European
+countries of ISSP~2020, every ordered pair of countries, five proxy outcomes.
+Level: share of the target population giving a favourable answer. Gap:
+difference in that share between the two groups defined by one predictor.
+Errors are mean absolute errors in percentage points; coverage is the share of
+cases in which the observed value lies inside the 95\% interval; width is the
+median interval width in points; sign is the share of gaps larger than twice
+their standard error (%%BTSIGNCASES%% of the %%BTGAPCASES%% gaps) whose sign is
+predicted correctly.}
+\label{tab:backtest}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{\textbf{Level}} & \multicolumn{3}{c}{\textbf{Gap between segments}} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+\textbf{Prediction} & Error & Coverage & Width & Error & Coverage & Sign \\
+\midrule
+%%BTROWS%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three results follow. First, differences between segments transfer: predicted
+gaps miss the observed ones by %%BTGPFIX%% points on average, against
+%%BTGPNONE%% points if no difference is assumed, and their sign is right in
+%%BTGPSIGN%% of the clear cases. Shrinking the source effects helps slightly,
+and the attenuation observed between European pairs (mean slope
+%%BTA0MIN%%--%%BTA0MAX%% depending on the country and outcome left out) is close
+to the $a_0 = 0.80$ assumed. Second, levels do not transfer: copying the source
+country's share misses by %%BTLVCOPY%% points on average, more than taking the
+mean of the other countries (%%BTLVOTHER%%). Third, the intervals of the main
+analysis are too narrow: they contain the observed level in %%BTLVCOVFIX%% of
+cases and the observed gap in %%BTGPCOVFIX%%. With transport error, coverage
+rises to %%BTLVCOVTR%% for levels and %%BTGPCOVTR%% for gaps, close to the
+nominal 95\%, at the cost of level intervals %%BTLVWIDTR%% points wide.
+Over all %%BTNALL%% ISSP countries the pattern is the same (coverage with
+transport error %%BTALLLVCOVTR%% and %%BTALLGPCOVTR%%; gap sign correct in
+%%BTALLGPSIGN%%). For Finland to Spain itself, copying the Finnish level
+misses by %%BTFIESLVCOPY%% points, the interval of the main analysis contains
+%%BTFIESLVCOVFIX%% of the %%BTFIESLVN%% Spanish levels and the interval with
+transport error all %%BTFIESLVCOVTR%%, and gaps are predicted to within
+%%BTFIESGPFIX%% points on average (%%BTFIESGPNONE%% if no gap is assumed).
+
+The test supports the use of BVS made in this paper and bounds it. What
+transfers is the structure of receptiveness: which segments are more
+receptive, and by roughly how much. What does not transfer is the level, which
+is why the measurement plan of Section~\ref{sec:implications} gives priority to
+a first Spanish measurement, and why only the intervals with transport error
+should be reported. The test is on proxy outcomes, not on acceptance of
+recycled packaging, and on the probit model only.
+

@@ -329,6 +329,75 @@ def baseline_scalars(deposit: Path) -> dict[str, str]:
     }
 
 
+def backtest_rows(transport: Path) -> str:
+    """Retrospective test of the transfer procedure, European pairs (backtest_transfer.py)."""
+    b = json.loads((transport / "backtest_summary_europe.json").read_text())["pairs"]
+    lv, gp = b["level"], b["gap"]
+
+    def pp(x: float) -> str:
+        return f"{100 * x:.1f}"
+
+    def pct(x: float) -> str:
+        return f"{100 * x:.1f}\\%"
+
+    dash = "--"
+    rows = [
+        ("Source share copied / no gap", pp(lv["mae_copy"]), dash, dash, pp(gp["mae_none"]), dash, dash),
+        ("Mean of the other countries", pp(lv["mae_other_mean"]), dash, dash, dash, dash, dash),
+        ("Source effects, no shrinkage ($a_0 = 1$)", dash, dash, dash, pp(gp["mae_unshrunk"]), dash, dash),
+        ("Transfer, fixed $a_0 = 0.80$", pp(lv["mae_fixed"]), pct(lv["coverage95_fixed"]), pp(lv["width95_fixed"]),
+         pp(gp["mae_fixed"]), pct(gp["coverage95_fixed"]), pct(gp["sign_correct_fixed"])),
+        ("Transfer with transport error", pp(lv["mae_transport"]), pct(lv["coverage95_transport"]),
+         pp(lv["width95_transport"]), pp(gp["mae_transport"]), pct(gp["coverage95_transport"]),
+         pct(gp["sign_correct_transport"])),
+    ]
+    return "\n".join(" & ".join(r) + " \\\\" for r in rows)
+
+
+def backtest_scalars(transport: Path) -> dict[str, str]:
+    eu = json.loads((transport / "backtest_summary_europe.json").read_text())
+    al = json.loads((transport / "backtest_summary_all.json").read_text())
+    e, a = eu["pairs"], al["pairs"]
+    fe = eu["fi_to_es"]
+
+    def pp(x: float) -> str:
+        return f"{100 * x:.1f}"
+
+    def pct(x: float) -> str:
+        return f"{100 * x:.1f}\\%"
+
+    params = read_csv(transport / "backtest_transport_parameters_europe.csv")
+    a0 = [float(r["a0_mean"]) for r in params]
+    return {
+        "%%BTA0MIN%%": f"{min(a0):.2f}",
+        "%%BTA0MAX%%": f"{max(a0):.2f}",
+        "%%BTNEU%%": str(len(eu["countries"])),
+        "%%BTNALL%%": str(len(al["countries"])),
+        "%%BTLEVELCASES%%": f"{e['level']['cases']:,}".replace(",", "{,}"),
+        "%%BTGAPCASES%%": f"{e['gap']['cases']:,}".replace(",", "{,}"),
+        "%%BTSIGNCASES%%": f"{e['gap']['sign_cases']:,}".replace(",", "{,}"),
+        "%%BTLVCOPY%%": pp(e["level"]["mae_copy"]),
+        "%%BTLVOTHER%%": pp(e["level"]["mae_other_mean"]),
+        "%%BTLVCOVFIX%%": pct(e["level"]["coverage95_fixed"]),
+        "%%BTLVCOVTR%%": pct(e["level"]["coverage95_transport"]),
+        "%%BTLVWIDTR%%": pp(e["level"]["width95_transport"]),
+        "%%BTGPNONE%%": pp(e["gap"]["mae_none"]),
+        "%%BTGPFIX%%": pp(e["gap"]["mae_fixed"]),
+        "%%BTGPCOVFIX%%": pct(e["gap"]["coverage95_fixed"]),
+        "%%BTGPCOVTR%%": pct(e["gap"]["coverage95_transport"]),
+        "%%BTGPSIGN%%": pct(e["gap"]["sign_correct_fixed"]),
+        "%%BTALLLVCOVTR%%": pct(a["level"]["coverage95_transport"]),
+        "%%BTALLGPCOVTR%%": pct(a["gap"]["coverage95_transport"]),
+        "%%BTALLGPSIGN%%": pct(a["gap"]["sign_correct_fixed"]),
+        "%%BTFIESLVCOPY%%": pp(fe["level"]["mae_copy"]),
+        "%%BTFIESLVCOVFIX%%": str(round(fe["level"]["coverage95_fixed"] * fe["level"]["cases"])),
+        "%%BTFIESLVCOVTR%%": str(round(fe["level"]["coverage95_transport"] * fe["level"]["cases"])),
+        "%%BTFIESLVN%%": str(fe["level"]["cases"]),
+        "%%BTFIESGPFIX%%": pp(fe["gap"]["mae_fixed"]),
+        "%%BTFIESGPNONE%%": pp(fe["gap"]["mae_none"]),
+    }
+
+
 def data_scalars(run: Path) -> dict[str, str]:
     """Variable counts (variable_counts.py) and Little's MCAR test by block (mcar_test.py)."""
     c = json.loads((run / "variable_counts.json").read_text())
@@ -491,13 +560,14 @@ def main() -> None:
         "%%SEGA0ROWS%%": segment_a0_rows(transfer),
         "%%PLANROWS%%": plan_rows(transfer),
         "%%AUDITROWS%%": audit_rows(transfer),
+        "%%BTROWS%%": backtest_rows(transfer.parent / "transport_output"),
     }
     text = "".join((parts / name).read_text(encoding="utf-8") for name in PART_ORDER)
     for marker, rows in fillers.items():
         if text.count(marker) != 1:
             raise SystemExit(f"marker {marker} found {text.count(marker)} times")
         text = text.replace(marker, rows)
-    scalars = run_scalars(run, run / "metadata/3391_num.csv") | transport_scalars(transfer, transfer.parent / "transport_output") | audit_scalars(transfer) | data_scalars(run) | baseline_scalars(deposit)
+    scalars = run_scalars(run, run / "metadata/3391_num.csv") | transport_scalars(transfer, transfer.parent / "transport_output") | audit_scalars(transfer) | data_scalars(run) | baseline_scalars(deposit) | backtest_scalars(transfer.parent / "transport_output")
     for marker, value in scalars.items():
         if marker not in text:
             raise SystemExit(f"marker {marker} not found")

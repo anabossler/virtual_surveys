@@ -66,6 +66,8 @@ stage step9            python step9.py
 if [ -f "$ISSP" ]; then
   stage transport_issp     python transport_issp.py --issp "$ISSP" --out transport_output
   stage transfer_transport python transfer_transport.py --cis "$CIS"
+  stage backtest_europe    python backtest_transfer.py --issp "$ISSP" --out transport_output --pool europe
+  stage backtest_all       python backtest_transfer.py --issp "$ISSP" --out transport_output --pool all
 else
   echo "transport_issp skipped: $ISSP not found (download from GESIS)" >&2
 fi
