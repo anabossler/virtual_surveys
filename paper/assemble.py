@@ -398,6 +398,24 @@ def backtest_scalars(transport: Path) -> dict[str, str]:
     }
 
 
+def heldout_scalars(deposit: Path) -> dict[str, str]:
+    """Held-out recovery of masked CIS variables and subsample experiment (deposit v1.0)."""
+    base = deposit / "04_validation"
+    h = json.loads((base / "level4_heldout_summary.json").read_text())
+    sub = read_csv(base / "subsample_experiment.csv")
+    sizes = [int(r["n"]) for r in sub]
+    if any(r["Winner"] != "S2" for r in sub):
+        raise SystemExit("subsample_experiment.csv: external priors win at some size; "
+                         "the sentence on subsample sizes no longer holds")
+    return {
+        "%%HONVARS%%": str(h["n_variables"]),
+        "%%HOTVDEXT%%": f"{h['tvd_s1_mean']:.4f}",
+        "%%HOTVDFLAT%%": f"{h['tvd_s2_mean']:.4f}",
+        "%%SUBMIN%%": thousands(min(sizes)),
+        "%%SUBMAX%%": thousands(max(sizes)),
+    }
+
+
 def data_scalars(run: Path) -> dict[str, str]:
     """Variable counts (variable_counts.py) and Little's MCAR test by block (mcar_test.py)."""
     c = json.loads((run / "variable_counts.json").read_text())
@@ -567,7 +585,7 @@ def main() -> None:
         if text.count(marker) != 1:
             raise SystemExit(f"marker {marker} found {text.count(marker)} times")
         text = text.replace(marker, rows)
-    scalars = run_scalars(run, run / "metadata/3391_num.csv") | transport_scalars(transfer, transfer.parent / "transport_output") | audit_scalars(transfer) | data_scalars(run) | baseline_scalars(deposit) | backtest_scalars(transfer.parent / "transport_output")
+    scalars = run_scalars(run, run / "metadata/3391_num.csv") | transport_scalars(transfer, transfer.parent / "transport_output") | audit_scalars(transfer) | data_scalars(run) | heldout_scalars(deposit) | baseline_scalars(deposit) | backtest_scalars(transfer.parent / "transport_output")
     for marker, value in scalars.items():
         if marker not in text:
             raise SystemExit(f"marker {marker} not found")
