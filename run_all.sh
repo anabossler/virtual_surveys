@@ -49,6 +49,8 @@ stage step2            python step2.py
 stage evidence_table   python evidence_table.py
 stage step4            python step4.py
 stage missingness      python missingness.py
+stage mcar_test        python mcar_test.py
+stage variable_counts  python variable_counts.py
 
 # Unobserved outcome: transfer model and measurement plan
 stage transfer_model   python transfer_model.py --cis "$CIS"

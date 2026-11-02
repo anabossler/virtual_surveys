@@ -81,9 +81,12 @@ would allow the gap to be estimated for specific product categories.
 
 \paragraph{Missing data and survey design.}
 Mode imputation of the network variables (Section~\ref{sec:data}) treats
-missing responses as typical ones. MCAR is rejected in 4 of 9 tested blocks,
-so the imputed distributions, and the complete-case estimates of the transfer
-model, are unbiased only under assumptions that have not been verified.
+missing responses as typical ones. Little's test \citep{little1988} rejects MCAR
+in %%MCARREJECTED%% of the %%MCARTESTED%% blocks that have missing values (the other
+%%MCARUNTESTED%% have none; $\alpha = 0.05$, \texttt{mcar\_test.py}),
+so the imputed distributions, and
+the complete-case estimates of the transfer model, can be biased; whether the data
+are missing at random cannot be tested from the survey itself.
 The projections of Section~\ref{sec:scenarios} do not depend on the
 imputation: they are computed on CIS respondents with complete predictors.
 Imputation affects the synthetic population and the fidelity results. EM

@@ -25,13 +25,15 @@ The synthetic population has 10,000 individuals (50 graphs from the structure po
 | `evidence_table.py` | Evidence summary for the target outcomes | `target_evidence.csv` |
 | `step3.py` | Conditional probability tables (legacy fusion; not used for the final population) | `step3_fused_priors.json` |
 | `step4.py` | Synthetic population; S2 = network with BDeu prior and PESOFIN-weighted counts | `step4_output/synthetic_surveys_S2.csv` |
+| `variable_counts.py` | Number of CIS variables at each selection stage of step1 | `variable_counts.json` |
+| `mcar_test.py` | Little's MCAR test for each variable block | `mcar_blocks.csv`, `mcar_summary.json` |
 | `transfer_model.py` | Transfer model for food-packaging acceptance, intervals and sensitivity | `transfer_output/*.csv` |
 | `transport_issp.py` | Finland-to-Spain transport error on ISSP 2020 proxy outcomes | `transport_output/issp_transport.json` |
 | `transfer_transport.py` | Projections with empirical transport error | `transfer_output/transport_*.csv` |
 | `measurement_plan.py` | Segment sensitivity to a0 and sample sizes for the first Spanish measurement | `transfer_output/segments_a0.csv`, `measurement_plan.csv` |
 | `step4b_targets.py` | Attaches the target outcome to each synthetic individual | `step4_output/synthetic_surveys_final.csv` |
 | `step6.py` | Fidelity and dependency diagnostics | `step6_output/` |
-| `step8.py` | Baseline generators (CTGAN, TVAE, independent) | `step8_output/comparison_table.csv` |
+| `step8.py` | Baseline generators (CTGAN, TVAE, independent); models trained on CIS codes are compared on those codes, so the CIS reference is the same for every model | `step8_output/comparison_table.csv`, `chisq_by_model.csv` |
 | `step9.py` | Comparison with Ipsos 2022 Spain | `step9_output/ipsos_validation.json` |
 | `make_figures.py` | Manuscript figures from pipeline outputs | `figures/*.png` |
 | `app_gradio.py` | Query interface (ASAP v6) | |

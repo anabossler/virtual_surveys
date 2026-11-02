@@ -4,3 +4,4 @@ sdv>=1.12
 anthropic>=0.40
 python-dotenv>=1.0
 gradio>=4.0
+pytest

@@ -144,7 +144,8 @@ R4 Accessible & Natural-language interface; review tables and versioned
 
 \paragraph{National microdata.}
 The primary dataset is CIS Study~3391 (ISSP Environment~IV, Spain, 2023;
-$n = 2{,}254$), comprising 194 raw variables filtered to 90 substantive items on
+$n = 2{,}254$). Of the %%NCOLSFILE%% variables in the released file, %%NCOLSUSABLE%% remain
+after removing empty, constant and almost empty ($\geq 90\%$ missing) columns; these are filtered to %%NCOLSANALYSIS%% substantive items on
 demographics, environmental concern, institutional trust, willingness to pay,
 and recycling behaviour \citep{cis2023}. It is used to learn the dependency
 structure and to estimate the conditional distributions of observed variables.

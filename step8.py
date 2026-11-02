@@ -93,6 +93,9 @@ _CORR_KEY_VARS = [
     'V15', 'V26', 'V27', 'V52', 'V10',
 ]
 
+# Models trained on the original CIS codes (BVS outputs are 0-based).
+_RAW_SCALE_MODELS = {'Synthpop (S3)', 'CTGAN', 'TVAE', 'INDEP'}
+
 _N_SYNTH     = 100_000
 _RANDOM_SEED = 42
 
@@ -265,11 +268,20 @@ def load_or_generate_models(df_train, paths):
     return models
 
 
-def align_to_0based(x_cis_raw, x_synth):
+def align_to_0based(x_cis_raw, x_synth, raw_scale=False):
     """
     Align CIS variable (original scale) with synthetic (0-based scale).
     Replicates step6 canonical method.
 
+    raw_scale=True is for models trained on the original CIS codes (CTGAN,
+    TVAE, INDEP, synthpop). If the synthetic values are a subset of the CIS
+    codes, both are returned unchanged: a category the model never generates
+    has zero synthetic count, and the CIS reference is not re-binned. Without
+    this rule a rare category missing from the synthetic data (SEX=7, 7 of
+    2,254 respondents) sends the CIS variable to the qcut branch and changes
+    the reference against which that model is scored.
+
+    0. raw_scale and synthetic values within the CIS codes -> return as-is.
     1. Values already match -> return as-is.
     2. Same number of categories but different values -> rank mapping.
     3. CIS has more values -> qcut to same K as synthetic.
@@ -282,6 +294,9 @@ def align_to_0based(x_cis_raw, x_synth):
 
     vals_cis   = sorted(x_cis.unique())
     vals_synth = sorted(x_synth.unique())
+
+    if raw_scale and set(vals_synth) <= set(vals_cis):
+        return x_cis, x_synth
 
     if set(vals_cis) == set(vals_synth):
         return x_cis, x_synth
@@ -302,13 +317,13 @@ def align_to_0based(x_cis_raw, x_synth):
     return None, None
 
 
-def compute_tvd(df_cis, df_synth, shared_cols):
+def compute_tvd(df_cis, df_synth, shared_cols, raw_scale=False):
     """TVD per variable using align_to_0based + np.bincount (mirrors step4.validate)."""
     results = []
     for var in shared_cols:
         if var not in df_cis.columns or var not in df_synth.columns:
             continue
-        x_c, x_s = align_to_0based(df_cis[var], df_synth[var])
+        x_c, x_s = align_to_0based(df_cis[var], df_synth[var], raw_scale)
         if x_c is None:
             continue
         K = max(int(x_c.max()), int(x_s.max())) + 1
@@ -330,13 +345,13 @@ def compute_tvd(df_cis, df_synth, shared_cols):
     }, df_r
 
 
-def compute_correlation_mae(df_cis, df_synth, key_vars):
+def compute_correlation_mae(df_cis, df_synth, key_vars, raw_scale=False):
     """MAE between correlation matrices, with aligned scales."""
     cis_aln, syn_aln = {}, {}
     for v in key_vars:
         if v not in df_cis.columns or v not in df_synth.columns:
             continue
-        x_c, x_s = align_to_0based(df_cis[v], df_synth[v])
+        x_c, x_s = align_to_0based(df_cis[v], df_synth[v], raw_scale)
         if x_c is not None:
             cis_aln[v] = x_c
             syn_aln[v] = x_s
@@ -357,7 +372,7 @@ def _cramers_v(ct):
     return float(np.sqrt(chi2 / (n * (min(r, c) - 1)))) if min(r, c) > 1 else 0.0
 
 
-def compute_chi2_preservation(df_cis, df_synth, pairs, shared_cols):
+def compute_chi2_preservation(df_cis, df_synth, pairs, shared_cols, raw_scale=False):
     """
     Chi-squared preservation with scale alignment and Cramer's V for magnitude.
     Detects spurious dependencies (CTGAN chi2=10/10 with V ratio >> 1).
@@ -371,8 +386,8 @@ def compute_chi2_preservation(df_cis, df_synth, pairs, shared_cols):
         if any(v not in df_synth.columns for v in [v1, v2]):
             continue
         try:
-            c1, s1 = align_to_0based(df_cis[v1], df_synth[v1])
-            c2, s2 = align_to_0based(df_cis[v2], df_synth[v2])
+            c1, s1 = align_to_0based(df_cis[v1], df_synth[v1], raw_scale)
+            c2, s2 = align_to_0based(df_cis[v2], df_synth[v2], raw_scale)
             if c1 is None or c2 is None:
                 continue
             idx_c    = c1.index.intersection(c2.index)
@@ -406,7 +421,7 @@ def compute_chi2_preservation(df_cis, df_synth, pairs, shared_cols):
     return int(df_r['preserved'].sum()), len(df_r), df_r
 
 
-def compute_pmse(df_cis, df_synth, shared_cols, seed=_RANDOM_SEED):
+def compute_pmse(df_cis, df_synth, shared_cols, seed=_RANDOM_SEED, raw_scale=False):
     """
     Balanced pMSE: n_real == n_synth == min(2000, len(df_cis)).
     Woo et al. (2009): pMSE = max(0, Brier - 0.25).
@@ -431,6 +446,7 @@ def compute_pmse(df_cis, df_synth, shared_cols, seed=_RANDOM_SEED):
         x_c, x_s = align_to_0based(
             df_cis[col].iloc[idx_cis].reset_index(drop=True),
             df_synth[col].iloc[idx_syn].reset_index(drop=True),
+            raw_scale,
         )
         if x_c is None:
             continue
@@ -450,7 +466,7 @@ def compute_pmse(df_cis, df_synth, shared_cols, seed=_RANDOM_SEED):
 
 
 def compute_detection_auc(df_cis, df_synth, shared_cols,
-                           n_sample=2000, seed=_RANDOM_SEED):
+                           n_sample=2000, seed=_RANDOM_SEED, raw_scale=False):
     """
     Balanced Random Forest AUC. AUC~0.5 ideal, ~1.0 detectable.
     Note: with n_synth=100K >> n_CIS, AUC tends to 1.0 due to class
@@ -474,6 +490,7 @@ def compute_detection_auc(df_cis, df_synth, shared_cols,
         x_c, x_s = align_to_0based(
             df_cis[col].iloc[idx_cis].reset_index(drop=True),
             df_synth[col].iloc[idx_syn].reset_index(drop=True),
+            raw_scale,
         )
         if x_c is None:
             continue
@@ -491,7 +508,7 @@ def compute_detection_auc(df_cis, df_synth, shared_cols,
     return round(float(aucs.mean()), 4)
 
 
-def evaluate_model(model_name, df_cis, df_synth, shared_cols):
+def evaluate_model(model_name, df_cis, df_synth, shared_cols, raw_scale=False):
     """Compute all metrics for one synthetic model."""
     print(f"\n  Evaluating {model_name}")
 
@@ -511,23 +528,23 @@ def evaluate_model(model_name, df_cis, df_synth, shared_cols):
         if c in df_synth.columns:
             df_synth[c] = pd.to_numeric(df_synth[c], errors='coerce')
 
-    tvd_stats, df_tvd = compute_tvd(df_cis, df_synth, shared_cols)
+    tvd_stats, df_tvd = compute_tvd(df_cis, df_synth, shared_cols, raw_scale)
     print(f"    TVD mean={tvd_stats['mean']:.4f}  "
           f"median={tvd_stats['median']:.4f}  "
           f"excellent={tvd_stats['pct_excellent']:.1f}%")
 
-    corr_mae = compute_correlation_mae(df_cis, df_synth, _CORR_KEY_VARS)
+    corr_mae = compute_correlation_mae(df_cis, df_synth, _CORR_KEY_VARS, raw_scale)
     print(f"    Corr MAE={corr_mae:.4f}")
 
     n_pres, n_tot, df_chi2 = compute_chi2_preservation(
-        df_cis, df_synth, _CHI2_PAIRS, shared_cols)
+        df_cis, df_synth, _CHI2_PAIRS, shared_cols, raw_scale)
     chi2_str = f"{n_pres}/{n_tot}" if not (isinstance(n_pres, float) and np.isnan(n_pres)) else "N/A"
     print(f"    Chi2 preserved={chi2_str}")
 
-    pmse = compute_pmse(df_cis, df_synth, shared_cols)
+    pmse = compute_pmse(df_cis, df_synth, shared_cols, raw_scale=raw_scale)
     print(f"    pMSE={pmse:.4f}")
 
-    auc = compute_detection_auc(df_cis, df_synth, shared_cols)
+    auc = compute_detection_auc(df_cis, df_synth, shared_cols, raw_scale=raw_scale)
     print(f"    Detection AUC={auc:.4f}")
 
     return {
@@ -718,7 +735,8 @@ def main():
 
     model_order  = ['BVS (S1)', 'BN-MLE (S2)', 'Synthpop (S3)', 'CTGAN', 'TVAE', 'INDEP']
     results_list = [
-        evaluate_model(name, df_cis, all_models[name], shared_cols)
+        evaluate_model(name, df_cis, all_models[name], shared_cols,
+                       raw_scale=name in _RAW_SCALE_MODELS)
         for name in model_order if name in all_models
     ]
 

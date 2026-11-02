@@ -304,6 +304,20 @@ def audit_scalars(transfer: Path) -> dict[str, str]:
     }
 
 
+def data_scalars(run: Path) -> dict[str, str]:
+    """Variable counts (variable_counts.py) and Little's MCAR test by block (mcar_test.py)."""
+    c = json.loads((run / "variable_counts.json").read_text())
+    m = json.loads((run / "mcar_summary.json").read_text())
+    return {
+        "%%NCOLSFILE%%": str(c["columns_in_file"]),
+        "%%NCOLSUSABLE%%": str(c["usable"]),
+        "%%NCOLSANALYSIS%%": str(c["analysis"]),
+        "%%MCARUNTESTED%%": str(m["blocks"] - m["blocks_tested"]),
+        "%%MCARTESTED%%": str(m["blocks_tested"]),
+        "%%MCARREJECTED%%": str(m["blocks_rejected"]),
+    }
+
+
 def transport_scalars(transfer: Path, transport: Path) -> dict[str, str]:
     t = json.loads((transport / "issp_transport.json").read_text())
     prof = {r["quantity"]: r for r in read_csv(transfer / "transport_profiles.csv")}
@@ -458,7 +472,7 @@ def main() -> None:
         if text.count(marker) != 1:
             raise SystemExit(f"marker {marker} found {text.count(marker)} times")
         text = text.replace(marker, rows)
-    scalars = run_scalars(run, run / "metadata/3391_num.csv") | transport_scalars(transfer, transfer.parent / "transport_output") | audit_scalars(transfer)
+    scalars = run_scalars(run, run / "metadata/3391_num.csv") | transport_scalars(transfer, transfer.parent / "transport_output") | audit_scalars(transfer) | data_scalars(run)
     for marker, value in scalars.items():
         if marker not in text:
             raise SystemExit(f"marker {marker} not found")
