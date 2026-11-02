@@ -156,17 +156,19 @@ without weights, because the BDeu score is not a well-defined marginal
 likelihood for fractional counts.
 
 \paragraph{Missing values.}
-Missing values affect 31 of the 90 network variables: 3.9\% of all cells of the
-90 variables, 11.2\% on average among the 31 affected, and at most 62\%. They
-are treated differently in three places. (i)~For structure learning and the
-conditional tables, they are imputed with the modal category. Available-case
-analysis is not used here because, with BDeu, each parent set would be scored
-on a different subsample and the scores of different graphs would cease to be
-comparable within MC$^3$. Mode imputation inflates the modal category of the
-variables with most missing values (Appendix~\ref{app:missing}). (ii)~The
-transfer model uses complete cases on its five predictors ($n = 2{,}133$ of
-$2{,}254$). (iii)~Validation metrics compare synthetic and CIS distributions
-over the non-missing responses of each variable.
+Missing values affect 31 of the 90 network variables: 3.87\% of all cells of the
+90 variables, 11.23\% on average among the 31 affected, and at most 62.16\%.
+Missing values are the CIS non-response codes (96--99, 996--999); the
+single-digit ``don't know'' and ``no answer'' codes and SEX~$=7$ are kept as
+response categories. Structure learning uses available cases: each local BDeu
+score is computed on the respondents observed on the child and its parents, and
+cross-block candidates on pairwise-complete data, so scores of different parent
+sets rest on slightly different subsamples. The conditional tables and the
+synthetic population impute the modal category, which inflates it for the
+variables with most missing values (Appendix~\ref{app:missing}). The transfer
+model uses complete cases on its five predictors ($n = 2{,}133$ of $2{,}254$),
+with SEX restricted to codes 1 and 2. Validation metrics compare synthetic and
+CIS distributions over the non-missing responses of each variable.
 
 \paragraph{Target outcomes.}
 CIS~3391 contains no measure of five outcomes relevant to implementation:
