@@ -1,8 +1,9 @@
 """Accuracy of the query-parsing call of the interface on a labelled question set.
 
 Sends each question of interface_parsing_gold.jsonl to the same call as
-app_gradio.parse_question (system prompt PARSE_SYS read from app_gradio.py,
-same model, temperature and output limit, same post-processing) and compares
+app_gradio.parse_question (system prompt PARSE_SYS and model INTERFACE_MODEL
+read from app_gradio.py, same temperature and output limit, same
+post-processing) and compares
 the returned profile with the gold profile, field by field.
 
 A field is correct when the returned value equals the gold value, including
@@ -16,11 +17,11 @@ Outputs (in --out):
     parsing_summary.json        exact-profile accuracy, field accuracy, JSON
                                 failures, stability across repeats, model
 
-Backends (the model is the same, claude-sonnet-4-20250514):
+Backends (same model, INTERFACE_MODEL of app_gradio.py):
     anthropic    Anthropic Messages API; needs ANTHROPIC_API_KEY
-    openrouter   OpenRouter, model anthropic/claude-sonnet-4 served by the
-                 Anthropic provider only (no fallback to other providers);
-                 needs OPENROUTER_API_KEY
+    openrouter   OpenRouter, the corresponding model slug (OPENROUTER_SLUGS)
+                 served by the Anthropic provider only (no fallback to other
+                 providers); needs OPENROUTER_API_KEY
 Keys are read from the environment or a .env file in the repository root.
 
 Usage
@@ -41,8 +42,10 @@ from pathlib import Path
 
 import pandas as pd
 
-MODEL = "claude-sonnet-4-20250514"
-OPENROUTER_MODEL = "anthropic/claude-sonnet-4"
+OPENROUTER_SLUGS = {
+    "claude-sonnet-5-5": "anthropic/claude-sonnet-5.5",
+    "claude-sonnet-4-20250514": "anthropic/claude-sonnet-4",
+}
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 MAX_TOKENS = 500
 TEMPERATURE = 0
@@ -51,13 +54,13 @@ FIELDS = ["age", "gender", "edu", "income", "product", "env_concern", "urban",
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def parse_system_prompt(app: Path) -> str:
-    """PARSE_SYS from app_gradio.py, read without importing the app."""
+def app_constant(app: Path, name: str) -> str:
+    """A string constant of app_gradio.py, read without importing the app."""
     tree = ast.parse(app.read_text(encoding="utf-8"))
     for node in tree.body:
-        if isinstance(node, ast.Assign) and any(getattr(t, "id", "") == "PARSE_SYS" for t in node.targets):
+        if isinstance(node, ast.Assign) and any(getattr(t, "id", "") == name for t in node.targets):
             return ast.literal_eval(node.value)
-    raise SystemExit(f"PARSE_SYS not found in {app}")
+    raise SystemExit(f"{name} not found in {app}")
 
 
 def to_profile(text: str) -> dict | None:
@@ -72,7 +75,7 @@ def to_profile(text: str) -> dict | None:
         return None
 
 
-def make_caller(backend: str, system: str):
+def make_caller(backend: str, system: str, model: str):
     """Function question -> (raw text, model reported by the service)."""
     if backend == "anthropic":
         import anthropic
@@ -81,9 +84,9 @@ def make_caller(backend: str, system: str):
         client = anthropic.Anthropic()
 
         def call(question: str) -> tuple[str, str]:
-            r = client.messages.create(model=MODEL, max_tokens=MAX_TOKENS, temperature=TEMPERATURE,
+            r = client.messages.create(model=model, max_tokens=MAX_TOKENS, temperature=TEMPERATURE,
                                        system=system, messages=[{"role": "user", "content": question}])
-            return r.content[0].text, getattr(r, "model", MODEL)
+            return r.content[0].text, getattr(r, "model", model)
         return call
 
     import requests
@@ -93,7 +96,7 @@ def make_caller(backend: str, system: str):
 
     def call(question: str) -> tuple[str, str]:
         body = {
-            "model": OPENROUTER_MODEL, "max_tokens": MAX_TOKENS, "temperature": TEMPERATURE,
+            "model": OPENROUTER_SLUGS[model], "max_tokens": MAX_TOKENS, "temperature": TEMPERATURE,
             "messages": [{"role": "system", "content": system}, {"role": "user", "content": question}],
             "provider": {"order": ["Anthropic"], "allow_fallbacks": False},
         }
@@ -131,8 +134,11 @@ def main() -> None:
         load_dotenv(ROOT / ".env")
     except ImportError:
         pass
-    system = parse_system_prompt(args.app)
-    call = make_caller(args.backend, system)
+    system = app_constant(args.app, "PARSE_SYS")
+    model = app_constant(args.app, "INTERFACE_MODEL")
+    if args.backend == "openrouter" and model not in OPENROUTER_SLUGS:
+        raise SystemExit(f"no OpenRouter slug recorded for {model}")
+    call = make_caller(args.backend, system, model)
     served = set()
     items = [json.loads(line) for line in args.gold.read_text(encoding="utf-8").splitlines() if line.strip()]
     args.out.mkdir(parents=True, exist_ok=True)
@@ -165,7 +171,7 @@ def main() -> None:
                            for f, v in scores.items()])
     fields.to_csv(args.out / "parsing_fields.csv", index=False)
     summary = {
-        "model": MODEL, "backend": args.backend, "served_by": sorted(served),
+        "model": model, "backend": args.backend, "served_by": sorted(served),
         "temperature": TEMPERATURE, "max_tokens": MAX_TOKENS,
         "questions": len(items), "repeats": args.repeats,
         "exact_profile_accuracy": sum(exact) / len(exact),

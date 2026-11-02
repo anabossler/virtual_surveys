@@ -58,6 +58,10 @@ Anthropic, 2025a. Claude Opus 4.5 [large language model]. Anthropic, San Francis
 Anthropic, 2025b. Claude Sonnet 4 [large language model], version \texttt{claude-sonnet-4-20250514}.
 Anthropic, San Francisco. \url{https://www.anthropic.com}.
 
+\bibitem[Anthropic, 2026]{anthropic2026sonnet}
+Anthropic, 2026. Claude Sonnet 5.5 [large language model], version \texttt{claude-sonnet-5-5}.
+Anthropic, San Francisco. \url{https://www.anthropic.com}. \chk{Check release year.}
+
 \bibitem[Argyle et~al., 2023]{argyle2023}
 Argyle, L.P., Busby, E.C., Fulda, N., Gubler, J.R., Rytting, C., Wingate, D., 2023. Out of one,
 many: using language models to simulate human samples. Polit.\ Anal.\ 31(3), 337--351.
@@ -431,7 +435,10 @@ population; structure learning uses available cases. %%MISSSUMMARY%%}
 Messages API with the dated model identifier, which fixes the model version;
 prompts are in the scripts named. Outputs are not guaranteed to be identical across calls
 even at temperature~0, so the reviewed extraction is versioned
-(\texttt{category\_mappings.json}) and the pipeline starts from it.}
+(\texttt{category\_mappings.json}) and the pipeline starts from it. The
+interface calls were moved from Claude Sonnet~4, no longer served, to Claude
+Sonnet~5.5 \citep{anthropic2026sonnet}; the model is set in one place
+(\texttt{INTERFACE\_MODEL} in \texttt{app\_gradio.py}).}
 \label{tab:llm}
 \small
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{3.2cm}XX}
@@ -450,11 +457,11 @@ Evidence extraction & \texttt{claude-sonnet-4-20250514}; temperature 0;
   \texttt{harmonize\_categories.py} & Entries with statistic, scale and
   proposed target (80 entries, \texttt{category\_mappings.json}); regression
   coefficients (\texttt{regression\_priors.json}) \\
-Query parsing & \texttt{claude-sonnet-4-20250514}; temperature 0; max.\ 500
+Query parsing & \texttt{claude-sonnet-5-5}; temperature 0; max.\ 500
   output tokens & Free-text question; system prompt \texttt{PARSE\_SYS} in
   \texttt{app\_gradio.py} & Structured profile (JSON); defaults to an empty
   profile if parsing fails \\
-Narrative & \texttt{claude-sonnet-4-20250514}; temperature 0; max.\ 400
+Narrative & \texttt{claude-sonnet-5-5}; temperature 0; max.\ 400
   output tokens & Question and the numbers computed by the engine; system
   prompt \texttt{\_NARR\_SYS} in \texttt{app\_gradio.py} & Short text shown
   with the result card \\

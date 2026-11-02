@@ -753,6 +753,10 @@ LABELS = {
                   "strongly_agree":    "Strongly agree to pay more"},
 }
 
+# Model of the interface calls (query parsing and narrative). Claude Sonnet 4
+# (claude-sonnet-4-20250514), used during development, is no longer served.
+INTERFACE_MODEL = "claude-sonnet-5-5"
+
 # System prompt for profile extraction (sent to Claude)
 PARSE_SYS = """Extract consumer profile JSON from a question about recycled plastic acceptance.
 Output ONLY valid JSON, no markdown.
@@ -800,7 +804,7 @@ def parse_question(text):
     Unknown fields are set to None.
     """
     r = _client().messages.create(
-        model="claude-sonnet-4-20250514",
+        model=INTERFACE_MODEL,
         max_tokens=500,
         temperature=0,
         system=PARSE_SYS,
@@ -821,7 +825,7 @@ def parse_question(text):
 def narrative(data, question):
     """Generate a plain-language interpretation of computed results via Claude."""
     r = _client().messages.create(
-        model="claude-sonnet-4-20250514",
+        model=INTERFACE_MODEL,
         max_tokens=400,
         temperature=0,
         system=_NARR_SYS,
