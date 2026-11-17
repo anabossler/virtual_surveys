@@ -1,0 +1,2136 @@
+{
+  "source_n": 272,
+  "draws": 200,
+  "seed": 7,
+  "loro": true,
+  "regions": {
+    "DK": "nordic",
+    "FI": "nordic",
+    "IS": "nordic",
+    "NO": "nordic",
+    "SE": "nordic",
+    "AT": "western",
+    "CH": "western",
+    "DE": "western",
+    "FR": "western",
+    "ES": "southern",
+    "IT": "southern",
+    "HR": "central_eastern",
+    "HU": "central_eastern",
+    "LT": "central_eastern",
+    "SI": "central_eastern",
+    "SK": "central_eastern"
+  },
+  "scenarios": {
+    "same": {
+      "all": {
+        "level": {
+          "cases": 1200,
+          "mae_fixed": 13.215830597738067,
+          "coverage_fixed": 13.416666666666666,
+          "interval_score_fixed": 440.45621851969196,
+          "crps_fixed": 12.542680392260683,
+          "mae_transport": 13.21055242432795,
+          "coverage_transport": 85.25,
+          "interval_score_transport": 102.08646326012412,
+          "crps_transport": 9.820939394197758,
+          "mae_copy": 13.217087771990323,
+          "mae_other_mean": 9.673703265515611
+        },
+        "gap": {
+          "cases": 6000,
+          "mae_fixed": 7.301931266502349,
+          "coverage_fixed": 43.7,
+          "interval_score_fixed": 151.30933179878377,
+          "crps_fixed": 6.179218912074156,
+          "mae_transport": 7.67892917045266,
+          "coverage_transport": 84.75,
+          "interval_score_transport": 63.496122447071514,
+          "crps_transport": 5.656245800848251,
+          "clear_cases": 3915,
+          "mae_none": 13.520684155875811,
+          "mae_unshrunk": 7.530451235980892,
+          "sign_all_fixed": 86.51666666666667,
+          "sign_clear_fixed": 95.14687100893997,
+          "sign_all_transport": 86.33333333333333,
+          "sign_clear_transport": 95.04469987228607,
+          "sign_all_always_positive": 84.5,
+          "sign_clear_always_positive": 91.57088122605363
+        }
+      },
+      "ci95": {
+        "level": {
+          "mae_fixed": [
+            11.890899226895488,
+            14.744989111741377
+          ],
+          "coverage_fixed": [
+            11.416666666666666,
+            15.5
+          ],
+          "interval_score_fixed": [
+            388.6622545808047,
+            499.6681944975484
+          ],
+          "crps_fixed": [
+            11.230022347753035,
+            14.060053643622835
+          ],
+          "mae_transport": [
+            11.898839029294617,
+            14.702475914905092
+          ],
+          "coverage_transport": [
+            78.58333333333334,
+            91.66666666666666
+          ],
+          "interval_score_transport": [
+            80.47650605161992,
+            125.56890410776572
+          ],
+          "crps_transport": [
+            8.775654261098644,
+            11.035295757148521
+          ],
+          "mae_copy": [
+            11.896532984236124,
+            14.742799269561877
+          ],
+          "mae_other_mean": [
+            7.389906031658847,
+            12.070861776560609
+          ]
+        },
+        "gap": {
+          "mae_fixed": [
+            6.775227413744086,
+            7.924490184867737
+          ],
+          "coverage_fixed": [
+            40.83291666666667,
+            46.434999999999995
+          ],
+          "interval_score_fixed": [
+            131.95300269958952,
+            173.88151869201113
+          ],
+          "crps_fixed": [
+            5.671517283435756,
+            6.779301800787486
+          ],
+          "mae_transport": [
+            7.077677053307203,
+            8.388023655900037
+          ],
+          "coverage_transport": [
+            81.91583333333334,
+            87.43416666666666
+          ],
+          "interval_score_transport": [
+            54.763652298711605,
+            74.10873321782574
+          ],
+          "crps_transport": [
+            5.170215383650025,
+            6.231840250811356
+          ],
+          "mae_none": [
+            11.792638634000681,
+            15.120543056176809
+          ],
+          "mae_unshrunk": [
+            7.049437786166791,
+            8.031000078845048
+          ],
+          "sign_all_fixed": [
+            84.5,
+            88.21708333333333
+          ],
+          "sign_clear_fixed": [
+            94.10520892015553,
+            96.22862314184124
+          ],
+          "sign_all_transport": [
+            84.39958333333333,
+            88.01791666666666
+          ],
+          "sign_clear_transport": [
+            93.97355265387668,
+            96.1299248557313
+          ],
+          "sign_all_always_positive": [
+            81.25,
+            87.50625
+          ],
+          "sign_clear_always_positive": [
+            88.45973782771534,
+            94.6239648992708
+          ]
+        }
+      },
+      "by_outcome": {
+        "avoid_products": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 12.500682639483355,
+            "coverage_fixed": 16.666666666666664,
+            "interval_score_fixed": 409.1515603524944,
+            "crps_fixed": 11.801606396165608,
+            "mae_transport": 12.557184316375777,
+            "coverage_transport": 91.25,
+            "interval_score_transport": 79.35571500323613,
+            "crps_transport": 9.221870084620624,
+            "mae_copy": 12.497836721023468,
+            "mae_other_mean": 8.7050222604522
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 7.6319423640713495,
+            "coverage_fixed": 41.41666666666667,
+            "interval_score_fixed": 159.97073022071703,
+            "crps_fixed": 6.474953914367762,
+            "mae_transport": 8.10098583033639,
+            "coverage_transport": 83.5,
+            "interval_score_transport": 67.6039889420699,
+            "crps_transport": 5.9464568191020275,
+            "clear_cases": 930,
+            "mae_none": 16.234479179393144,
+            "mae_unshrunk": 7.805784790244921,
+            "sign_all_fixed": 94.58333333333333,
+            "sign_clear_fixed": 96.98924731182795,
+            "sign_all_transport": 94.41666666666667,
+            "sign_clear_transport": 96.98924731182795,
+            "sign_all_always_positive": 82.5,
+            "sign_clear_always_positive": 85.48387096774194
+          }
+        },
+        "cut_living_standard": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 19.137227241946196,
+            "coverage_fixed": 9.166666666666666,
+            "interval_score_fixed": 676.7615233999524,
+            "crps_fixed": 18.464924755929644,
+            "mae_transport": 19.108658191988635,
+            "coverage_transport": 62.916666666666664,
+            "interval_score_transport": 207.36564035061664,
+            "crps_transport": 14.968956125432817,
+            "mae_copy": 19.14266654762139,
+            "mae_other_mean": 13.872537206063102
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 8.814722372126761,
+            "coverage_fixed": 37.5,
+            "interval_score_fixed": 205.16629647139166,
+            "crps_fixed": 7.6503382759470755,
+            "mae_transport": 9.090965538119601,
+            "coverage_transport": 77.25,
+            "interval_score_transport": 98.09732545359793,
+            "crps_transport": 6.90521565398345,
+            "clear_cases": 735,
+            "mae_none": 13.293688246163029,
+            "mae_unshrunk": 9.100359478888947,
+            "sign_all_fixed": 84.75,
+            "sign_clear_fixed": 92.10884353741497,
+            "sign_all_transport": 84.33333333333334,
+            "sign_clear_transport": 91.70068027210885,
+            "sign_all_always_positive": 92.5,
+            "sign_clear_always_positive": 97.95918367346938
+          }
+        },
+        "do_right_despite_cost": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 9.41151800129535,
+            "coverage_fixed": 15.833333333333332,
+            "interval_score_fixed": 281.43914734117817,
+            "crps_fixed": 8.680588405725235,
+            "mae_transport": 9.317150594371904,
+            "coverage_transport": 98.75,
+            "interval_score_transport": 59.91765634094228,
+            "crps_transport": 6.711646203039466,
+            "mae_copy": 9.407801733840623,
+            "mae_other_mean": 6.639589217268014
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 6.138472115059336,
+            "coverage_fixed": 51.5,
+            "interval_score_fixed": 101.92572215352465,
+            "crps_fixed": 4.984922608262246,
+            "mae_transport": 6.726682839636126,
+            "coverage_transport": 92.58333333333333,
+            "interval_score_transport": 42.221226630712366,
+            "crps_transport": 4.81505743079653,
+            "clear_cases": 840,
+            "mae_none": 15.244199277871347,
+            "mae_unshrunk": 6.108444645913879,
+            "sign_all_fixed": 94.16666666666667,
+            "sign_clear_fixed": 98.69047619047619,
+            "sign_all_transport": 94.16666666666667,
+            "sign_clear_transport": 98.45238095238096,
+            "sign_all_always_positive": 80.0,
+            "sign_clear_always_positive": 87.5
+          }
+        },
+        "pay_higher_prices": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 15.64357341422732,
+            "coverage_fixed": 10.416666666666668,
+            "interval_score_fixed": 538.7752429759869,
+            "crps_fixed": 14.979497290772528,
+            "mae_transport": 15.624860285678194,
+            "coverage_transport": 79.16666666666666,
+            "interval_score_transport": 114.60780426137845,
+            "crps_transport": 11.588090009180279,
+            "mae_copy": 15.64585692251988,
+            "mae_other_mean": 11.792981141320348
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 7.623121187343425,
+            "coverage_fixed": 41.5,
+            "interval_score_fixed": 163.48786172425346,
+            "crps_fixed": 6.4985617607842,
+            "mae_transport": 7.9595109887930064,
+            "coverage_transport": 83.08333333333333,
+            "interval_score_transport": 61.82254283012928,
+            "crps_transport": 5.867153345905483,
+            "clear_cases": 750,
+            "mae_none": 12.937273104550865,
+            "mae_unshrunk": 7.9919991183036485,
+            "sign_all_fixed": 81.33333333333333,
+            "sign_clear_fixed": 94.93333333333334,
+            "sign_all_transport": 81.16666666666667,
+            "sign_clear_transport": 95.06666666666666,
+            "sign_all_always_positive": 86.25,
+            "sign_clear_always_positive": 94.0
+          }
+        },
+        "pay_higher_taxes": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 9.386151691738135,
+            "coverage_fixed": 15.0,
+            "interval_score_fixed": 296.15361852884786,
+            "crps_fixed": 8.786785112710403,
+            "mae_transport": 9.444908733225247,
+            "coverage_transport": 94.16666666666667,
+            "interval_score_transport": 49.18550034444697,
+            "crps_transport": 6.614134548715607,
+            "mae_copy": 9.391276934946262,
+            "mae_other_mean": 7.358386502474396
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 6.301398293910876,
+            "coverage_fixed": 46.58333333333333,
+            "interval_score_fixed": 125.99604842403203,
+            "crps_fixed": 5.2873180010094964,
+            "mae_transport": 6.516500655378177,
+            "coverage_transport": 87.33333333333333,
+            "interval_score_transport": 47.735528378848116,
+            "crps_transport": 4.747345754453761,
+            "clear_cases": 660,
+            "mae_none": 9.893780971400663,
+            "mae_unshrunk": 6.645668146553064,
+            "sign_all_fixed": 77.75,
+            "sign_clear_fixed": 91.66666666666666,
+            "sign_all_transport": 77.58333333333334,
+            "sign_clear_transport": 91.66666666666666,
+            "sign_all_always_positive": 81.25,
+            "sign_clear_always_positive": 95.45454545454545
+          }
+        }
+      },
+      "by_region": {
+        "different": {
+          "level": {
+            "cases": 930,
+            "mae_fixed": 14.860881426843275,
+            "coverage_fixed": 10.43010752688172,
+            "interval_score_fixed": 505.10189578977685,
+            "crps_fixed": 14.181642652378878,
+            "mae_transport": 14.842911081789776,
+            "coverage_transport": 82.25806451612904,
+            "interval_score_transport": 114.88301476947235,
+            "crps_transport": 10.980812436070314,
+            "mae_copy": 14.861181905291451,
+            "mae_other_mean": 9.622314393145519
+          },
+          "gap": {
+            "cases": 4650,
+            "mae_fixed": 7.633966671202927,
+            "coverage_fixed": 41.935483870967744,
+            "interval_score_fixed": 163.9542903992911,
+            "crps_fixed": 6.50885042397698,
+            "mae_transport": 8.03055744142017,
+            "coverage_transport": 83.11827956989248,
+            "interval_score_transport": 68.45569660235826,
+            "crps_transport": 5.950718282404845,
+            "clear_cases": 3049,
+            "mae_none": 13.554705300896114,
+            "mae_unshrunk": 7.938315034045701,
+            "sign_all_fixed": 86.58064516129032,
+            "sign_clear_fixed": 94.94916366021646,
+            "sign_all_transport": 86.34408602150538,
+            "sign_clear_transport": 94.85077074450639,
+            "sign_all_always_positive": 84.3225806451613,
+            "sign_clear_always_positive": 91.37422105608395
+          }
+        },
+        "same": {
+          "level": {
+            "cases": 270,
+            "mae_fixed": 7.549544408597904,
+            "coverage_fixed": 23.703703703703706,
+            "interval_score_fixed": 217.78777458939942,
+            "crps_fixed": 6.897365940742454,
+            "mae_transport": 7.587983715292772,
+            "coverage_transport": 95.55555555555556,
+            "interval_score_transport": 58.009452505702356,
+            "crps_transport": 5.825821138858956,
+            "mae_copy": 7.554096868397554,
+            "mae_other_mean": 9.850709381457042
+          },
+          "gap": {
+            "cases": 1350,
+            "mae_fixed": 6.158253761422585,
+            "coverage_fixed": 49.77777777777778,
+            "interval_score_fixed": 107.75447439703629,
+            "crps_fixed": 5.043821482186647,
+            "mae_transport": 6.467765126009013,
+            "coverage_transport": 90.37037037037037,
+            "interval_score_transport": 46.41314480108388,
+            "crps_transport": 4.64195169770887,
+            "clear_cases": 866,
+            "mae_none": 13.40350021191698,
+            "mae_unshrunk": 6.125587042646554,
+            "sign_all_fixed": 86.29629629629629,
+            "sign_clear_fixed": 95.84295612009238,
+            "sign_all_transport": 86.29629629629629,
+            "sign_clear_transport": 95.72748267898383,
+            "sign_all_always_positive": 85.11111111111111,
+            "sign_clear_always_positive": 92.26327944572749
+          }
+        }
+      },
+      "gap_mae_predictor_specific_a0": 7.1276898121972785,
+      "by_target": {
+        "AT": 8.232341959827021,
+        "CH": 7.965477552533278,
+        "DE": 7.852082794571519,
+        "DK": 7.049270155220657,
+        "ES": 5.876255256265474,
+        "FI": 7.366791547855608,
+        "FR": 9.92925031238924,
+        "HR": 5.577669794646395,
+        "HU": 7.304323224515917,
+        "IS": 6.588521833799149,
+        "IT": 6.026341492842836,
+        "LT": 7.27659352113043,
+        "NO": 9.445827364880802,
+        "SE": 6.859851849107436,
+        "SI": 6.227125902309794,
+        "SK": 7.253175702142037
+      },
+      "by_predictor": {
+        "gap_env_worry": 10.590199337329098,
+        "gap_female": 3.923659833437005,
+        "gap_high_education": 6.055849664118451,
+        "gap_recycles": 9.48106043036549,
+        "gap_under_30": 6.458887067261705
+      }
+    },
+    "small": {
+      "all": {
+        "level": {
+          "cases": 1200,
+          "mae_fixed": 13.5929802452825,
+          "coverage_fixed": 26.666666666666668,
+          "interval_score_fixed": 341.9871954579413,
+          "crps_fixed": 12.033914796110011,
+          "mae_transport": 13.635572073640203,
+          "coverage_transport": 86.25,
+          "interval_score_transport": 99.5760552195428,
+          "crps_transport": 10.085037894117505,
+          "mae_copy": 13.598852872618302,
+          "mae_other_mean": 9.673703265515611
+        },
+        "gap": {
+          "cases": 6000,
+          "mae_fixed": 9.118289833999969,
+          "coverage_fixed": 67.56666666666666,
+          "interval_score_fixed": 115.11506083088992,
+          "crps_fixed": 7.057300116259317,
+          "mae_transport": 9.190364388983857,
+          "coverage_transport": 85.65,
+          "interval_score_transport": 73.8241852524493,
+          "crps_transport": 6.742541706245148,
+          "clear_cases": 3915,
+          "mae_none": 13.520684155875811,
+          "mae_unshrunk": 9.756902931272807,
+          "sign_all_fixed": 80.16666666666666,
+          "sign_clear_fixed": 88.4035759897829,
+          "sign_all_transport": 80.18333333333332,
+          "sign_clear_transport": 88.22477650063857,
+          "sign_all_always_positive": 84.5,
+          "sign_clear_always_positive": 91.57088122605363
+        }
+      },
+      "ci95": {
+        "level": {
+          "mae_fixed": [
+            12.305861797528607,
+            14.966028080043092
+          ],
+          "coverage_fixed": [
+            23.833333333333336,
+            29.5
+          ],
+          "interval_score_fixed": [
+            291.758391616748,
+            395.6754374704927
+          ],
+          "crps_fixed": [
+            10.740891365963932,
+            13.419473577937353
+          ],
+          "mae_transport": [
+            12.354366252502464,
+            15.038544406624029
+          ],
+          "coverage_transport": [
+            80.24791666666667,
+            91.58333333333334
+          ],
+          "interval_score_transport": [
+            79.06583129204837,
+            122.874301111245
+          ],
+          "crps_transport": [
+            9.05775193861064,
+            11.248275986084266
+          ],
+          "mae_copy": [
+            12.302660386124808,
+            14.972712573978857
+          ],
+          "mae_other_mean": [
+            7.344968846746588,
+            12.07587480848176
+          ]
+        },
+        "gap": {
+          "mae_fixed": [
+            8.640137612455897,
+            9.637859778751578
+          ],
+          "coverage_fixed": [
+            64.68333333333334,
+            70.23375
+          ],
+          "interval_score_fixed": [
+            99.00365883715534,
+            132.2179000703191
+          ],
+          "crps_fixed": [
+            6.615269995600187,
+            7.550926723601294
+          ],
+          "mae_transport": [
+            8.619070219120344,
+            9.783396953493508
+          ],
+          "coverage_transport": [
+            83.44875,
+            87.61749999999999
+          ],
+          "interval_score_transport": [
+            65.83306987773373,
+            82.53366748131018
+          ],
+          "crps_transport": [
+            6.282060971803009,
+            7.228728538099789
+          ],
+          "mae_none": [
+            11.742748382454653,
+            15.251539616072947
+          ],
+          "mae_unshrunk": [
+            9.279085095847218,
+            10.25657478693863
+          ],
+          "sign_all_fixed": [
+            78.61625000000001,
+            81.63333333333334
+          ],
+          "sign_clear_fixed": [
+            87.37450396825398,
+            89.50773558368496
+          ],
+          "sign_all_transport": [
+            78.71583333333334,
+            81.63333333333334
+          ],
+          "sign_clear_transport": [
+            86.97902008836421,
+            89.50834628766009
+          ],
+          "sign_all_always_positive": [
+            81.0,
+            88.0
+          ],
+          "sign_clear_always_positive": [
+            88.18897637795276,
+            94.79634021279324
+          ]
+        }
+      },
+      "by_outcome": {
+        "avoid_products": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 13.396701654254784,
+            "coverage_fixed": 41.25,
+            "interval_score_fixed": 259.43142936273756,
+            "crps_fixed": 11.234803829056744,
+            "mae_transport": 13.346285543628559,
+            "coverage_transport": 95.0,
+            "interval_score_transport": 69.49229687608437,
+            "crps_transport": 9.781452487756335,
+            "mae_copy": 13.411541093675309,
+            "mae_other_mean": 8.7050222604522
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 10.072372718491202,
+            "coverage_fixed": 71.08333333333333,
+            "interval_score_fixed": 111.4505068488355,
+            "crps_fixed": 7.62770709489216,
+            "mae_transport": 10.12248421346675,
+            "coverage_transport": 86.83333333333333,
+            "interval_score_transport": 77.04564709635228,
+            "crps_transport": 7.402428267238645,
+            "clear_cases": 930,
+            "mae_none": 16.234479179393144,
+            "mae_unshrunk": 10.499428991334815,
+            "sign_all_fixed": 87.83333333333333,
+            "sign_clear_fixed": 90.21505376344085,
+            "sign_all_transport": 87.91666666666667,
+            "sign_clear_transport": 90.43010752688173,
+            "sign_all_always_positive": 82.5,
+            "sign_clear_always_positive": 85.48387096774194
+          }
+        },
+        "cut_living_standard": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 19.213936579980203,
+            "coverage_fixed": 13.750000000000002,
+            "interval_score_fixed": 583.3022114967594,
+            "crps_fixed": 17.83347342908986,
+            "mae_transport": 19.236089580511546,
+            "coverage_transport": 65.41666666666667,
+            "interval_score_transport": 196.86689956174297,
+            "crps_transport": 14.895832464290626,
+            "mae_copy": 19.227150811544018,
+            "mae_other_mean": 13.872537206063102
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 10.16675881223874,
+            "coverage_fixed": 62.083333333333336,
+            "interval_score_fixed": 157.79811061698464,
+            "crps_fixed": 8.123235033974568,
+            "mae_transport": 10.335555087568359,
+            "coverage_transport": 78.91666666666667,
+            "interval_score_transport": 107.90668752039598,
+            "crps_transport": 7.726259506219687,
+            "clear_cases": 735,
+            "mae_none": 13.293688246163029,
+            "mae_unshrunk": 10.645213326190834,
+            "sign_all_fixed": 74.91666666666667,
+            "sign_clear_fixed": 80.81632653061224,
+            "sign_all_transport": 74.75,
+            "sign_clear_transport": 80.68027210884354,
+            "sign_all_always_positive": 92.5,
+            "sign_clear_always_positive": 97.95918367346938
+          }
+        },
+        "do_right_despite_cost": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 9.600871569949488,
+            "coverage_fixed": 32.916666666666664,
+            "interval_score_fixed": 201.95560953063372,
+            "crps_fixed": 8.187395214638741,
+            "mae_transport": 9.750455617823327,
+            "coverage_transport": 99.16666666666667,
+            "interval_score_transport": 59.92381604165744,
+            "crps_transport": 6.913208074154569,
+            "mae_copy": 9.608338701176907,
+            "mae_other_mean": 6.639589217268014
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 8.376958222690858,
+            "coverage_fixed": 71.66666666666667,
+            "interval_score_fixed": 88.56882619662645,
+            "crps_fixed": 6.339202008773549,
+            "mae_transport": 8.611880121841473,
+            "coverage_transport": 89.75,
+            "interval_score_transport": 55.54617517100476,
+            "crps_transport": 6.183873339325129,
+            "clear_cases": 840,
+            "mae_none": 15.244199277871347,
+            "mae_unshrunk": 8.890847568548383,
+            "sign_all_fixed": 86.66666666666667,
+            "sign_clear_fixed": 91.54761904761905,
+            "sign_all_transport": 86.16666666666667,
+            "sign_clear_transport": 90.95238095238095,
+            "sign_all_always_positive": 80.0,
+            "sign_clear_always_positive": 87.5
+          }
+        },
+        "pay_higher_prices": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 16.221939322761,
+            "coverage_fixed": 17.916666666666668,
+            "interval_score_fixed": 437.70146586734944,
+            "crps_fixed": 14.590594426415024,
+            "mae_transport": 16.231179835292675,
+            "coverage_transport": 76.25,
+            "interval_score_transport": 121.14061140649042,
+            "crps_transport": 12.076323153297528,
+            "mae_copy": 16.210038746682613,
+            "mae_other_mean": 11.792981141320348
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 9.986291750755464,
+            "coverage_fixed": 62.5,
+            "interval_score_fixed": 132.49312913125837,
+            "crps_fixed": 7.803103949193449,
+            "mae_transport": 9.806087967429754,
+            "coverage_transport": 83.58333333333333,
+            "interval_score_transport": 79.48358965521626,
+            "crps_transport": 7.237596272999322,
+            "clear_cases": 750,
+            "mae_none": 12.937273104550865,
+            "mae_unshrunk": 11.013322269858051,
+            "sign_all_fixed": 76.83333333333333,
+            "sign_clear_fixed": 88.66666666666667,
+            "sign_all_transport": 76.75,
+            "sign_clear_transport": 88.26666666666667,
+            "sign_all_always_positive": 86.25,
+            "sign_clear_always_positive": 94.0
+          }
+        },
+        "pay_higher_taxes": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 9.531452099467037,
+            "coverage_fixed": 27.500000000000004,
+            "interval_score_fixed": 227.5452610322263,
+            "crps_fixed": 8.32330708134969,
+            "mae_transport": 9.613849790944913,
+            "coverage_transport": 95.41666666666667,
+            "interval_score_transport": 50.45665221173873,
+            "crps_transport": 6.7583732910884695,
+            "mae_copy": 9.537195010012661,
+            "mae_other_mean": 7.358386502474396
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 6.989067665823575,
+            "coverage_fixed": 70.5,
+            "interval_score_fixed": 85.26473136074462,
+            "crps_fixed": 5.393252494462858,
+            "mae_transport": 7.075814554612957,
+            "coverage_transport": 89.16666666666667,
+            "interval_score_transport": 49.13882681927722,
+            "crps_transport": 5.162551145442955,
+            "clear_cases": 660,
+            "mae_none": 9.893780971400663,
+            "mae_unshrunk": 7.735702500431948,
+            "sign_all_fixed": 74.58333333333333,
+            "sign_clear_fixed": 90.0,
+            "sign_all_transport": 75.33333333333333,
+            "sign_clear_transport": 90.0,
+            "sign_all_always_positive": 81.25,
+            "sign_clear_always_positive": 95.45454545454545
+          }
+        }
+      },
+      "by_region": {
+        "different": {
+          "level": {
+            "cases": 930,
+            "mae_fixed": 15.269523603429064,
+            "coverage_fixed": 21.935483870967744,
+            "interval_score_fixed": 398.41234800519914,
+            "crps_fixed": 13.637158640679678,
+            "mae_transport": 15.342994509665692,
+            "coverage_transport": 83.33333333333334,
+            "interval_score_transport": 111.34048718339935,
+            "crps_transport": 11.305672363773951,
+            "mae_copy": 15.27626020028062,
+            "mae_other_mean": 9.622314393145519
+          },
+          "gap": {
+            "cases": 4650,
+            "mae_fixed": 9.452430441266683,
+            "coverage_fixed": 66.45161290322581,
+            "interval_score_fixed": 123.89287290456672,
+            "crps_fixed": 7.351181815507438,
+            "mae_transport": 9.51903562856696,
+            "coverage_transport": 84.36559139784946,
+            "interval_score_transport": 78.34590962516015,
+            "crps_transport": 7.009221145062621,
+            "clear_cases": 3049,
+            "mae_none": 13.554705300896114,
+            "mae_unshrunk": 10.143707689182117,
+            "sign_all_fixed": 80.0,
+            "sign_clear_fixed": 88.02886192194163,
+            "sign_all_transport": 79.93548387096774,
+            "sign_clear_transport": 87.76648081338143,
+            "sign_all_always_positive": 84.3225806451613,
+            "sign_clear_always_positive": 91.37422105608395
+          }
+        },
+        "same": {
+          "level": {
+            "cases": 270,
+            "mae_fixed": 7.81821978944434,
+            "coverage_fixed": 42.96296296296296,
+            "interval_score_fixed": 147.63389223960868,
+            "crps_fixed": 6.5116304425922715,
+            "mae_transport": 7.754450349552414,
+            "coverage_transport": 96.29629629629629,
+            "interval_score_transport": 59.05412289959238,
+            "crps_transport": 5.880630276411973,
+            "mae_copy": 7.821116521781428,
+            "mae_other_mean": 9.850709381457042
+          },
+          "gap": {
+            "cases": 1350,
+            "mae_fixed": 7.967361075636838,
+            "coverage_fixed": 71.4074074074074,
+            "interval_score_fixed": 84.88037479933644,
+            "crps_fixed": 6.045040929960234,
+            "mae_transport": 8.058274563753173,
+            "coverage_transport": 90.07407407407408,
+            "interval_score_transport": 58.249356857556364,
+            "crps_transport": 5.823979194762739,
+            "clear_cases": 866,
+            "mae_none": 13.40350021191698,
+            "mae_unshrunk": 8.424575431807405,
+            "sign_all_fixed": 80.74074074074075,
+            "sign_clear_fixed": 89.72286374133948,
+            "sign_all_transport": 81.03703703703704,
+            "sign_clear_transport": 89.83833718244803,
+            "sign_all_always_positive": 85.11111111111111,
+            "sign_clear_always_positive": 92.26327944572749
+          }
+        }
+      },
+      "gap_mae_predictor_specific_a0": 8.674467876370137,
+      "by_target": {
+        "AT": 10.123624219132868,
+        "CH": 9.240479731935764,
+        "DE": 9.617247661098787,
+        "DK": 8.525476776425945,
+        "ES": 8.077255421665079,
+        "FI": 9.337377745549187,
+        "FR": 11.583151323922797,
+        "HR": 8.078703878149447,
+        "HU": 9.312036349387522,
+        "IS": 8.356662737908193,
+        "IT": 7.8250751306911726,
+        "LT": 8.807076157499889,
+        "NO": 10.94974746095652,
+        "SE": 8.66337247545116,
+        "SI": 8.073317083899727,
+        "SK": 9.322033190325442
+      },
+      "by_predictor": {
+        "gap_env_worry": 11.618595567788018,
+        "gap_female": 5.099696855129887,
+        "gap_high_education": 7.153120821130898,
+        "gap_recycles": 12.874575896854646,
+        "gap_under_30": 8.845460029096394
+      }
+    },
+    "cross": {
+      "all": {
+        "level": {
+          "cases": 4800,
+          "mae_fixed": 13.214235692651668,
+          "coverage_fixed": 13.041666666666666,
+          "interval_score_fixed": 440.22627805443204,
+          "crps_fixed": 12.538746070181386,
+          "mae_transport": 13.272083868594503,
+          "coverage_transport": 85.33333333333334,
+          "interval_score_transport": 102.39721711178788,
+          "crps_transport": 9.854892535856932,
+          "mae_copy": 13.217087771990323,
+          "mae_other_mean": 9.673703265515611
+        },
+        "gap": {
+          "cases": 24000,
+          "mae_fixed": 8.774757745360716,
+          "coverage_fixed": 35.55416666666667,
+          "interval_score_fixed": 200.25989850624333,
+          "crps_fixed": 7.59161334523126,
+          "mae_transport": 9.021654480076805,
+          "coverage_transport": 77.72916666666667,
+          "interval_score_transport": 84.41828623238801,
+          "crps_transport": 6.759251668683863,
+          "clear_cases": 15660,
+          "mae_none": 13.520684155875811,
+          "mae_unshrunk": 9.205002276470521,
+          "sign_all_fixed": 80.34583333333333,
+          "sign_clear_fixed": 90.1213282247765,
+          "sign_all_transport": 80.30000000000001,
+          "sign_clear_transport": 90.14048531289912,
+          "sign_all_always_positive": 84.5,
+          "sign_clear_always_positive": 91.57088122605363
+        }
+      },
+      "ci95": {
+        "level": {
+          "mae_fixed": [
+            11.994355425728441,
+            14.744302888044428
+          ],
+          "coverage_fixed": [
+            11.104166666666666,
+            14.9171875
+          ],
+          "interval_score_fixed": [
+            392.21673671316563,
+            499.8786507856172
+          ],
+          "crps_fixed": [
+            11.317175003484403,
+            14.061649512085816
+          ],
+          "mae_transport": [
+            12.080847356367034,
+            14.771807486484484
+          ],
+          "coverage_transport": [
+            79.10312499999999,
+            91.08489583333335
+          ],
+          "interval_score_transport": [
+            82.10647152712748,
+            126.21860612258563
+          ],
+          "crps_transport": [
+            8.889561644742988,
+            11.053505893653517
+          ],
+          "mae_copy": [
+            11.99902678447253,
+            14.745703811348585
+          ],
+          "mae_other_mean": [
+            7.649142098308624,
+            12.121285217995599
+          ]
+        },
+        "gap": {
+          "mae_fixed": [
+            8.243935784781973,
+            9.428760995428714
+          ],
+          "coverage_fixed": [
+            33.54979166666667,
+            37.566874999999996
+          ],
+          "interval_score_fixed": [
+            179.48893364732038,
+            225.33300764351657
+          ],
+          "crps_fixed": [
+            7.070101906012559,
+            8.233129918052011
+          ],
+          "mae_transport": [
+            8.456535759081808,
+            9.728959648363904
+          ],
+          "coverage_transport": [
+            75.1790625,
+            80.55895833333334
+          ],
+          "interval_score_transport": [
+            72.77257752795764,
+            98.22766032485683
+          ],
+          "crps_transport": [
+            6.265391329245723,
+            7.385438697020461
+          ],
+          "mae_none": [
+            11.794959624287543,
+            15.255646424423746
+          ],
+          "mae_unshrunk": [
+            8.823206805601805,
+            9.597776050762887
+          ],
+          "sign_all_fixed": [
+            78.07479166666667,
+            82.36291666666668
+          ],
+          "sign_clear_fixed": [
+            88.60105692918192,
+            91.55000172606806
+          ],
+          "sign_all_transport": [
+            78.04989583333334,
+            82.3125
+          ],
+          "sign_clear_transport": [
+            88.49517472321077,
+            91.63283071784207
+          ],
+          "sign_all_always_positive": [
+            81.25,
+            88.0
+          ],
+          "sign_clear_always_positive": [
+            88.54884082555839,
+            94.67224802094371
+          ]
+        }
+      },
+      "by_outcome": {
+        "avoid_products": {
+          "level": {
+            "cases": 960,
+            "mae_fixed": 12.494694791516435,
+            "coverage_fixed": 16.25,
+            "interval_score_fixed": 408.9448091906645,
+            "crps_fixed": 11.793289957567234,
+            "mae_transport": 12.513804081647642,
+            "coverage_transport": 91.875,
+            "interval_score_transport": 77.80253117290438,
+            "crps_transport": 9.220883367981754,
+            "mae_copy": 12.49783672102347,
+            "mae_other_mean": 8.7050222604522
+          },
+          "gap": {
+            "cases": 4800,
+            "mae_fixed": 9.74962131692593,
+            "coverage_fixed": 34.625,
+            "interval_score_fixed": 222.36603138061213,
+            "crps_fixed": 8.414173379886906,
+            "mae_transport": 10.161734808330252,
+            "coverage_transport": 73.35416666666667,
+            "interval_score_transport": 107.45961734279328,
+            "crps_transport": 7.749853725046487,
+            "clear_cases": 3720,
+            "mae_none": 16.234479179393148,
+            "mae_unshrunk": 9.954673831310295,
+            "sign_all_fixed": 83.04166666666667,
+            "sign_clear_fixed": 87.1236559139785,
+            "sign_all_transport": 83.27083333333334,
+            "sign_clear_transport": 87.36559139784946,
+            "sign_all_always_positive": 82.5,
+            "sign_clear_always_positive": 85.48387096774194
+          }
+        },
+        "cut_living_standard": {
+          "level": {
+            "cases": 960,
+            "mae_fixed": 19.14009465529675,
+            "coverage_fixed": 9.479166666666666,
+            "interval_score_fixed": 677.0046242551201,
+            "crps_fixed": 18.46619282204136,
+            "mae_transport": 19.156616013531142,
+            "coverage_transport": 62.916666666666664,
+            "interval_score_transport": 208.26245128429161,
+            "crps_transport": 15.001340688960513,
+            "mae_copy": 19.14266654762139,
+            "mae_other_mean": 13.872537206063102
+          },
+          "gap": {
+            "cases": 4800,
+            "mae_fixed": 9.451782564754998,
+            "coverage_fixed": 33.5,
+            "interval_score_fixed": 229.0470103095191,
+            "crps_fixed": 8.289917288993202,
+            "mae_transport": 9.666181897041646,
+            "coverage_transport": 72.97916666666666,
+            "interval_score_transport": 99.82111700106945,
+            "crps_transport": 7.350413788962136,
+            "clear_cases": 2940,
+            "mae_none": 13.293688246163029,
+            "mae_unshrunk": 9.879629468097459,
+            "sign_all_fixed": 79.70833333333334,
+            "sign_clear_fixed": 90.47619047619048,
+            "sign_all_transport": 79.5625,
+            "sign_clear_transport": 90.54421768707483,
+            "sign_all_always_positive": 92.5,
+            "sign_clear_always_positive": 97.95918367346938
+          }
+        },
+        "do_right_despite_cost": {
+          "level": {
+            "cases": 960,
+            "mae_fixed": 9.40760859194195,
+            "coverage_fixed": 15.520833333333334,
+            "interval_score_fixed": 280.79471062852275,
+            "crps_fixed": 8.675891664822903,
+            "mae_transport": 9.464418662735929,
+            "coverage_transport": 98.4375,
+            "interval_score_transport": 59.6105419229193,
+            "crps_transport": 6.7869171913868405,
+            "mae_copy": 9.407801733840621,
+            "mae_other_mean": 6.639589217268014
+          },
+          "gap": {
+            "cases": 4800,
+            "mae_fixed": 8.514749766254402,
+            "coverage_fixed": 42.41666666666667,
+            "interval_score_fixed": 168.51471600447672,
+            "crps_fixed": 7.155753705824417,
+            "mae_transport": 8.761927449201947,
+            "coverage_transport": 83.5625,
+            "interval_score_transport": 75.77810586010234,
+            "crps_transport": 6.474225198939276,
+            "clear_cases": 3360,
+            "mae_none": 15.244199277871346,
+            "mae_unshrunk": 9.1407677379289,
+            "sign_all_fixed": 83.0625,
+            "sign_clear_fixed": 89.13690476190477,
+            "sign_all_transport": 83.0,
+            "sign_clear_transport": 89.16666666666667,
+            "sign_all_always_positive": 80.0,
+            "sign_clear_always_positive": 87.5
+          }
+        },
+        "pay_higher_prices": {
+          "level": {
+            "cases": 960,
+            "mae_fixed": 15.644874932096183,
+            "coverage_fixed": 9.791666666666666,
+            "interval_score_fixed": 537.447639300386,
+            "crps_fixed": 14.972962401564386,
+            "mae_transport": 15.778726140482089,
+            "coverage_transport": 78.54166666666667,
+            "interval_score_transport": 116.12849221813084,
+            "crps_transport": 11.673205809578956,
+            "mae_copy": 15.645856922519878,
+            "mae_other_mean": 11.792981141320348
+          },
+          "gap": {
+            "cases": 4800,
+            "mae_fixed": 8.717290849038752,
+            "coverage_fixed": 35.083333333333336,
+            "interval_score_fixed": 204.35982684916465,
+            "crps_fixed": 7.588292400613916,
+            "mae_transport": 8.981383114431821,
+            "coverage_transport": 78.35416666666667,
+            "interval_score_transport": 79.00058695285963,
+            "crps_transport": 6.699855078659736,
+            "clear_cases": 3000,
+            "mae_none": 12.937273104550865,
+            "mae_unshrunk": 9.156385850895553,
+            "sign_all_fixed": 81.16666666666667,
+            "sign_clear_fixed": 92.56666666666666,
+            "sign_all_transport": 80.89583333333333,
+            "sign_clear_transport": 92.2,
+            "sign_all_always_positive": 86.25,
+            "sign_clear_always_positive": 94.0
+          }
+        },
+        "pay_higher_taxes": {
+          "level": {
+            "cases": 960,
+            "mae_fixed": 9.383905492407015,
+            "coverage_fixed": 14.166666666666666,
+            "interval_score_fixed": 296.93960689746655,
+            "crps_fixed": 8.785393504911058,
+            "mae_transport": 9.446854444575704,
+            "coverage_transport": 94.89583333333333,
+            "interval_score_transport": 50.18206896069327,
+            "crps_transport": 6.592115621376594,
+            "mae_copy": 9.391276934946264,
+            "mae_other_mean": 7.358386502474396
+          },
+          "gap": {
+            "cases": 4800,
+            "mae_fixed": 7.44034422982951,
+            "coverage_fixed": 32.145833333333336,
+            "interval_score_fixed": 177.01190798744403,
+            "crps_fixed": 6.509929950837856,
+            "mae_transport": 7.537045131378356,
+            "coverage_transport": 80.39583333333333,
+            "interval_score_transport": 60.03200400511533,
+            "crps_transport": 5.521910551811679,
+            "clear_cases": 2640,
+            "mae_none": 9.893780971400663,
+            "mae_unshrunk": 7.893554494120396,
+            "sign_all_fixed": 74.75,
+            "sign_clear_fixed": 92.42424242424242,
+            "sign_all_transport": 74.77083333333333,
+            "sign_clear_transport": 92.5,
+            "sign_all_always_positive": 81.25,
+            "sign_clear_always_positive": 95.45454545454545
+          }
+        }
+      },
+      "by_region": {
+        "different": {
+          "level": {
+            "cases": 3720,
+            "mae_fixed": 14.857398662845716,
+            "coverage_fixed": 9.919354838709678,
+            "interval_score_fixed": 504.91342284427975,
+            "crps_fixed": 14.175811671310715,
+            "mae_transport": 14.891528412018678,
+            "coverage_transport": 82.41935483870968,
+            "interval_score_transport": 115.15037120705168,
+            "crps_transport": 11.01566520197927,
+            "mae_copy": 14.861181905291451,
+            "mae_other_mean": 9.622314393145519
+          },
+          "gap": {
+            "cases": 18600,
+            "mae_fixed": 9.055575309642624,
+            "coverage_fixed": 34.19892473118279,
+            "interval_score_fixed": 210.76703797156392,
+            "crps_fixed": 7.867798112620647,
+            "mae_transport": 9.330408793176288,
+            "coverage_transport": 76.47849462365592,
+            "interval_score_transport": 89.03372488704116,
+            "crps_transport": 7.014879188337344,
+            "clear_cases": 12196,
+            "mae_none": 13.554705300896114,
+            "mae_unshrunk": 9.536643114764672,
+            "sign_all_fixed": 80.29569892473118,
+            "sign_clear_fixed": 89.92292554936044,
+            "sign_all_transport": 80.23655913978494,
+            "sign_clear_transport": 89.98852082650049,
+            "sign_all_always_positive": 84.3225806451613,
+            "sign_clear_always_positive": 91.37422105608395
+          }
+        },
+        "same": {
+          "level": {
+            "cases": 1080,
+            "mae_fixed": 7.554452128649945,
+            "coverage_fixed": 23.796296296296298,
+            "interval_score_fixed": 217.41500155606715,
+            "crps_fixed": 6.89996455518037,
+            "mae_transport": 7.693997107911223,
+            "coverage_transport": 95.37037037037037,
+            "interval_score_transport": 58.469686339212636,
+            "crps_transport": 5.856675574768879,
+            "mae_copy": 7.5540968683975525,
+            "mae_other_mean": 9.850709381457042
+          },
+          "gap": {
+            "cases": 5400,
+            "mae_fixed": 7.807497246167489,
+            "coverage_fixed": 40.22222222222222,
+            "interval_score_fixed": 164.06864034791678,
+            "crps_fixed": 6.640310257556704,
+            "mae_transport": 7.958167401623031,
+            "coverage_transport": 82.03703703703704,
+            "interval_score_transport": 68.52066419969381,
+            "crps_transport": 5.878756878766322,
+            "clear_cases": 3464,
+            "mae_none": 13.40350021191698,
+            "mae_unshrunk": 8.062683833457331,
+            "sign_all_fixed": 80.51851851851852,
+            "sign_clear_fixed": 90.81986143187068,
+            "sign_all_transport": 80.51851851851852,
+            "sign_clear_transport": 90.67551963048498,
+            "sign_all_always_positive": 85.11111111111111,
+            "sign_clear_always_positive": 92.26327944572749
+          }
+        }
+      },
+      "gap_mae_predictor_specific_a0": 8.363395752566243,
+      "by_target": {
+        "AT": 9.444804197783242,
+        "CH": 10.003078138480728,
+        "DE": 10.061653048886114,
+        "DK": 8.492955503809434,
+        "ES": 7.387909327811479,
+        "FI": 9.150523291493545,
+        "FR": 11.348383542902262,
+        "HR": 7.078823253672287,
+        "HU": 8.334489107913306,
+        "IS": 8.59226621504193,
+        "IT": 7.55763344355858,
+        "LT": 7.99019201277395,
+        "NO": 10.226918909152825,
+        "SE": 8.480137292204228,
+        "SI": 8.179254057605592,
+        "SK": 8.067102582681981
+      },
+      "by_predictor": {
+        "gap_env_worry": 10.634025099943463,
+        "gap_female": 4.882750785024492,
+        "gap_high_education": 7.40164161129198,
+        "gap_recycles": 11.871419124270849,
+        "gap_under_30": 9.083952106272804
+      }
+    },
+    "small_cross": {
+      "all": {
+        "level": {
+          "cases": 4800,
+          "mae_fixed": 13.599939176159856,
+          "coverage_fixed": 25.895833333333336,
+          "interval_score_fixed": 354.0029080448459,
+          "crps_fixed": 12.138172140749589,
+          "mae_transport": 13.620196220020143,
+          "coverage_transport": 85.25,
+          "interval_score_transport": 102.77793460275791,
+          "crps_transport": 10.10365922426655,
+          "mae_copy": 13.598852872618297,
+          "mae_other_mean": 9.673703265515611
+        },
+        "gap": {
+          "cases": 24000,
+          "mae_fixed": 10.25885265022968,
+          "coverage_fixed": 61.72916666666667,
+          "interval_score_fixed": 139.240994838143,
+          "crps_fixed": 8.0464305170623,
+          "mae_transport": 10.203647235209049,
+          "coverage_transport": 81.53333333333333,
+          "interval_score_transport": 88.81647668749638,
+          "crps_transport": 7.530356655050781,
+          "clear_cases": 15660,
+          "mae_none": 13.520684155875811,
+          "mae_unshrunk": 11.020632758934202,
+          "sign_all_fixed": 75.64999999999999,
+          "sign_clear_fixed": 84.27841634738186,
+          "sign_all_transport": 75.64999999999999,
+          "sign_clear_transport": 84.24010217113666,
+          "sign_all_always_positive": 84.5,
+          "sign_clear_always_positive": 91.57088122605363
+        }
+      },
+      "ci95": {
+        "level": {
+          "mae_fixed": [
+            12.446214851862965,
+            15.106375599306617
+          ],
+          "coverage_fixed": [
+            22.958333333333332,
+            28.541666666666664
+          ],
+          "interval_score_fixed": [
+            310.4326277081168,
+            408.85270405644985
+          ],
+          "crps_fixed": [
+            10.999569803951267,
+            13.608640673872795
+          ],
+          "mae_transport": [
+            12.429962277388666,
+            15.142719258688045
+          ],
+          "coverage_transport": [
+            78.70833333333334,
+            91.0625
+          ],
+          "interval_score_transport": [
+            81.70097710060051,
+            128.76444962906046
+          ],
+          "crps_transport": [
+            9.12548677735314,
+            11.341623062146368
+          ],
+          "mae_copy": [
+            12.445911412210373,
+            15.101077153709326
+          ],
+          "mae_other_mean": [
+            7.573753172322996,
+            12.34584437334234
+          ]
+        },
+        "gap": {
+          "mae_fixed": [
+            9.71276319482126,
+            10.852784382764685
+          ],
+          "coverage_fixed": [
+            58.56218749999999,
+            65.07916666666667
+          ],
+          "interval_score_fixed": [
+            120.54950524878429,
+            159.4060023428751
+          ],
+          "crps_fixed": [
+            7.524077426660285,
+            8.608939633616872
+          ],
+          "mae_transport": [
+            9.622279742118435,
+            10.83723334184512
+          ],
+          "coverage_transport": [
+            79.1321875,
+            83.82927083333334
+          ],
+          "interval_score_transport": [
+            78.39869211678639,
+            100.42453923345983
+          ],
+          "crps_transport": [
+            7.037462259808427,
+            8.07510489754798
+          ],
+          "mae_none": [
+            11.824438826500645,
+            15.165143390863857
+          ],
+          "mae_unshrunk": [
+            10.666245971422756,
+            11.383872600045683
+          ],
+          "sign_all_fixed": [
+            73.765625,
+            77.49635416666666
+          ],
+          "sign_clear_fixed": [
+            82.72207064696833,
+            85.775042494185
+          ],
+          "sign_all_transport": [
+            73.8034375,
+            77.43010416666667
+          ],
+          "sign_clear_transport": [
+            82.65383838383839,
+            85.71839231992809
+          ],
+          "sign_all_always_positive": [
+            81.25,
+            88.0
+          ],
+          "sign_clear_always_positive": [
+            88.47583643122677,
+            94.80037037037037
+          ]
+        }
+      },
+      "by_outcome": {
+        "avoid_products": {
+          "level": {
+            "cases": 960,
+            "mae_fixed": 13.419583449408417,
+            "coverage_fixed": 32.395833333333336,
+            "interval_score_fixed": 349.01614032937164,
+            "crps_fixed": 11.97183554278936,
+            "mae_transport": 13.433318766229158,
+            "coverage_transport": 90.83333333333333,
+            "interval_score_transport": 88.6661317597325,
+            "crps_transport": 10.046174616100542,
+            "mae_copy": 13.411541093675305,
+            "mae_other_mean": 8.7050222604522
+          },
+          "gap": {
+            "cases": 4800,
+            "mae_fixed": 11.086339456874427,
+            "coverage_fixed": 60.60416666666667,
+            "interval_score_fixed": 151.2770581206879,
+            "crps_fixed": 8.685192836296636,
+            "mae_transport": 11.265091015710718,
+            "coverage_transport": 79.79166666666667,
+            "interval_score_transport": 102.78122821302912,
+            "crps_transport": 8.34010306165666,
+            "clear_cases": 3720,
+            "mae_none": 16.234479179393148,
+            "mae_unshrunk": 11.67026572767539,
+            "sign_all_fixed": 78.25,
+            "sign_clear_fixed": 82.15053763440861,
+            "sign_all_transport": 78.0,
+            "sign_clear_transport": 81.85483870967742,
+            "sign_all_always_positive": 82.5,
+            "sign_clear_always_positive": 85.48387096774194
+          }
+        },
+        "cut_living_standard": {
+          "level": {
+            "cases": 960,
+            "mae_fixed": 19.2098480851148,
+            "coverage_fixed": 16.145833333333336,
+            "interval_score_fixed": 547.5945740697848,
+            "crps_fixed": 17.581054012981514,
+            "mae_transport": 19.280039572391157,
+            "coverage_transport": 65.9375,
+            "interval_score_transport": 188.48776075187644,
+            "crps_transport": 14.84437333276047,
+            "mae_copy": 19.227150811544014,
+            "mae_other_mean": 13.872537206063102
+          },
+          "gap": {
+            "cases": 4800,
+            "mae_fixed": 11.160992893274226,
+            "coverage_fixed": 57.125,
+            "interval_score_fixed": 162.64698556227518,
+            "crps_fixed": 8.877652201416282,
+            "mae_transport": 11.077319517934816,
+            "coverage_transport": 77.14583333333334,
+            "interval_score_transport": 102.10119085222014,
+            "crps_transport": 8.242409919435056,
+            "clear_cases": 2940,
+            "mae_none": 13.293688246163029,
+            "mae_unshrunk": 11.92992943259108,
+            "sign_all_fixed": 73.97916666666666,
+            "sign_clear_fixed": 84.421768707483,
+            "sign_all_transport": 74.0625,
+            "sign_clear_transport": 84.5578231292517,
+            "sign_all_always_positive": 92.5,
+            "sign_clear_always_positive": 97.95918367346938
+          }
+        },
+        "do_right_despite_cost": {
+          "level": {
+            "cases": 960,
+            "mae_fixed": 9.612686639181613,
+            "coverage_fixed": 34.6875,
+            "interval_score_fixed": 195.15741075777575,
+            "crps_fixed": 8.1414862664644,
+            "mae_transport": 9.621729306686385,
+            "coverage_transport": 98.54166666666667,
+            "interval_score_transport": 59.81587663948257,
+            "crps_transport": 6.8605763804232955,
+            "mae_copy": 9.608338701176905,
+            "mae_other_mean": 6.639589217268014
+          },
+          "gap": {
+            "cases": 4800,
+            "mae_fixed": 10.225564715309119,
+            "coverage_fixed": 71.89583333333334,
+            "interval_score_fixed": 108.65618929927012,
+            "crps_fixed": 7.708303917910377,
+            "mae_transport": 10.067010050416112,
+            "coverage_transport": 87.52083333333334,
+            "interval_score_transport": 78.32333745074492,
+            "crps_transport": 7.288571380551469,
+            "clear_cases": 3360,
+            "mae_none": 15.244199277871346,
+            "mae_unshrunk": 11.224515799916473,
+            "sign_all_fixed": 79.02083333333333,
+            "sign_clear_fixed": 84.01785714285714,
+            "sign_all_transport": 79.54166666666667,
+            "sign_clear_transport": 84.31547619047619,
+            "sign_all_always_positive": 80.0,
+            "sign_clear_always_positive": 87.5
+          }
+        },
+        "pay_higher_prices": {
+          "level": {
+            "cases": 960,
+            "mae_fixed": 16.188522808213925,
+            "coverage_fixed": 16.145833333333336,
+            "interval_score_fixed": 455.4658454107247,
+            "crps_fixed": 14.713474852582136,
+            "mae_transport": 16.1637947404585,
+            "coverage_transport": 77.70833333333333,
+            "interval_score_transport": 121.44694833944965,
+            "crps_transport": 12.018161724586001,
+            "mae_copy": 16.210038746682613,
+            "mae_other_mean": 11.792981141320348
+          },
+          "gap": {
+            "cases": 4800,
+            "mae_fixed": 10.007712217324832,
+            "coverage_fixed": 59.854166666666664,
+            "interval_score_fixed": 149.59404422513114,
+            "crps_fixed": 7.967082618378603,
+            "mae_transport": 9.997028201123118,
+            "coverage_transport": 80.5625,
+            "interval_score_transport": 89.98273522099768,
+            "crps_transport": 7.439315874085447,
+            "clear_cases": 3000,
+            "mae_none": 12.937273104550865,
+            "mae_unshrunk": 10.69402348824886,
+            "sign_all_fixed": 75.85416666666667,
+            "sign_clear_fixed": 86.06666666666666,
+            "sign_all_transport": 75.54166666666666,
+            "sign_clear_transport": 85.83333333333333,
+            "sign_all_always_positive": 86.25,
+            "sign_clear_always_positive": 94.0
+          }
+        },
+        "pay_higher_taxes": {
+          "level": {
+            "cases": 960,
+            "mae_fixed": 9.569054898880523,
+            "coverage_fixed": 30.104166666666664,
+            "interval_score_fixed": 222.78056965657268,
+            "crps_fixed": 8.283010028930534,
+            "mae_transport": 9.602098714335519,
+            "coverage_transport": 93.22916666666666,
+            "interval_score_transport": 55.47295552324836,
+            "crps_transport": 6.749010067462445,
+            "mae_copy": 9.537195010012663,
+            "mae_other_mean": 7.358386502474396
+          },
+          "gap": {
+            "cases": 4800,
+            "mae_fixed": 8.813653968365808,
+            "coverage_fixed": 59.166666666666664,
+            "interval_score_fixed": 124.03069698335048,
+            "crps_fixed": 6.993921011309602,
+            "mae_transport": 8.611787390860478,
+            "coverage_transport": 82.64583333333333,
+            "interval_score_transport": 70.89389170049,
+            "crps_transport": 6.341383039525271,
+            "clear_cases": 2640,
+            "mae_none": 9.893780971400663,
+            "mae_unshrunk": 9.584429346239205,
+            "sign_all_fixed": 71.14583333333333,
+            "sign_clear_fixed": 85.41666666666666,
+            "sign_all_transport": 71.10416666666667,
+            "sign_clear_transport": 85.3409090909091,
+            "sign_all_always_positive": 81.25,
+            "sign_clear_always_positive": 95.45454545454545
+          }
+        }
+      },
+      "by_region": {
+        "different": {
+          "level": {
+            "cases": 3720,
+            "mae_fixed": 15.274529301430137,
+            "coverage_fixed": 20.86021505376344,
+            "interval_score_fixed": 413.3111630478123,
+            "crps_fixed": 13.761513122564379,
+            "mae_transport": 15.271209736453939,
+            "coverage_transport": 82.1236559139785,
+            "interval_score_transport": 115.8703095213873,
+            "crps_transport": 11.311624777568912,
+            "mae_copy": 15.276260200280618,
+            "mae_other_mean": 9.622314393145519
+          },
+          "gap": {
+            "cases": 18600,
+            "mae_fixed": 10.520638631820244,
+            "coverage_fixed": 60.967741935483865,
+            "interval_score_fixed": 146.64802393232463,
+            "crps_fixed": 8.283994472226796,
+            "mae_transport": 10.452216255046027,
+            "coverage_transport": 80.80645161290323,
+            "interval_score_transport": 93.10989192126911,
+            "crps_transport": 7.739095204890195,
+            "clear_cases": 12196,
+            "mae_none": 13.554705300896114,
+            "mae_unshrunk": 11.329669480326086,
+            "sign_all_fixed": 75.91397849462366,
+            "sign_clear_fixed": 84.25713348638898,
+            "sign_all_transport": 75.82258064516128,
+            "sign_clear_transport": 84.1341423417514,
+            "sign_all_always_positive": 84.3225806451613,
+            "sign_clear_always_positive": 91.37422105608395
+          }
+        },
+        "same": {
+          "level": {
+            "cases": 1080,
+            "mae_fixed": 7.831906522451117,
+            "coverage_fixed": 43.24074074074074,
+            "interval_score_fixed": 149.718918590184,
+            "crps_fixed": 6.546664314498646,
+            "mae_transport": 7.933371885637068,
+            "coverage_transport": 96.01851851851852,
+            "interval_score_transport": 57.681976549701034,
+            "crps_transport": 5.942888985113971,
+            "mae_copy": 7.821116521781427,
+            "mae_other_mean": 9.850709381457042
+          },
+          "gap": {
+            "cases": 5400,
+            "mae_fixed": 9.357145380306628,
+            "coverage_fixed": 64.35185185185185,
+            "interval_score_fixed": 113.72789462485062,
+            "crps_fixed": 7.228154671495702,
+            "mae_transport": 9.347465055770568,
+            "coverage_transport": 84.03703703703704,
+            "interval_score_transport": 74.02804643783479,
+            "crps_transport": 6.811368316715022,
+            "clear_cases": 3464,
+            "mae_none": 13.40350021191698,
+            "mae_unshrunk": 9.956172940806603,
+            "sign_all_fixed": 74.74074074074075,
+            "sign_clear_fixed": 84.35334872979215,
+            "sign_all_transport": 75.05555555555556,
+            "sign_clear_transport": 84.61316397228637,
+            "sign_all_always_positive": 85.11111111111111,
+            "sign_clear_always_positive": 92.26327944572749
+          }
+        }
+      },
+      "gap_mae_predictor_specific_a0": 9.644163811583566,
+      "by_target": {
+        "AT": 10.705010071936915,
+        "CH": 11.187792492148228,
+        "DE": 11.460451279353693,
+        "DK": 10.205176992782008,
+        "ES": 8.865701700565168,
+        "FI": 10.774118923554639,
+        "FR": 12.837797123035733,
+        "HR": 8.56064582596097,
+        "HU": 9.730367331074204,
+        "IS": 10.091366436331953,
+        "IT": 9.090671365122455,
+        "LT": 9.540613715106995,
+        "NO": 12.021969910807291,
+        "SE": 10.239577940868298,
+        "SI": 9.650353573448532,
+        "SK": 9.180027721577835
+      },
+      "by_predictor": {
+        "gap_env_worry": 11.50559981535991,
+        "gap_female": 5.771881521832757,
+        "gap_high_education": 8.430921873552139,
+        "gap_recycles": 14.522837931428919,
+        "gap_under_30": 11.063022108974684
+      }
+    },
+    "pooled": {
+      "all": {
+        "level": {
+          "cases": 1200,
+          "mae_fixed": 13.216083448365486,
+          "coverage_fixed": 13.666666666666666,
+          "interval_score_fixed": 440.3951403190482,
+          "crps_fixed": 12.540855158083444,
+          "mae_transport": 13.230739275770897,
+          "coverage_transport": 85.75,
+          "interval_score_transport": 100.32999722220413,
+          "crps_transport": 9.819873482948909,
+          "mae_copy": 13.217087771990323,
+          "mae_other_mean": 9.673703265515611
+        },
+        "gap": {
+          "cases": 6000,
+          "mae_fixed": 6.150111130483833,
+          "coverage_fixed": 27.616666666666667,
+          "interval_score_fixed": 159.95417618340306,
+          "crps_fixed": 5.480889990241693,
+          "mae_transport": 6.6861677912549,
+          "coverage_transport": 89.01666666666667,
+          "interval_score_transport": 45.243052463562464,
+          "crps_transport": 4.844072827873632,
+          "clear_cases": 3915,
+          "mae_none": 13.520684155875811,
+          "mae_unshrunk": 5.859775167973125,
+          "sign_all_fixed": 91.33333333333333,
+          "sign_clear_fixed": 98.26309067688378,
+          "sign_all_transport": 91.2,
+          "sign_clear_transport": 98.33971902937421,
+          "sign_all_always_positive": 84.5,
+          "sign_clear_always_positive": 91.57088122605363
+        }
+      },
+      "ci95": {
+        "level": {
+          "mae_fixed": [
+            12.071669223072899,
+            14.602992165631541
+          ],
+          "coverage_fixed": [
+            11.75,
+            15.502083333333331
+          ],
+          "interval_score_fixed": [
+            395.65419028162074,
+            495.13707082692923
+          ],
+          "crps_fixed": [
+            11.407268220305072,
+            13.91906260364639
+          ],
+          "mae_transport": [
+            12.083109855246418,
+            14.612587156330767
+          ],
+          "coverage_transport": [
+            79.66666666666666,
+            90.66874999999999
+          ],
+          "interval_score_transport": [
+            81.35387433460592,
+            123.94909429198299
+          ],
+          "crps_transport": [
+            8.891888622023545,
+            10.916803376443289
+          ],
+          "mae_copy": [
+            12.080858379772113,
+            14.59826178302983
+          ],
+          "mae_other_mean": [
+            7.691027469299129,
+            11.973553338224756
+          ]
+        },
+        "gap": {
+          "mae_fixed": [
+            5.405117191054978,
+            6.9166455335434565
+          ],
+          "coverage_fixed": [
+            23.716666666666665,
+            32.05499999999999
+          ],
+          "interval_score_fixed": [
+            132.13101184306092,
+            188.52534423429003
+          ],
+          "crps_fixed": [
+            4.746139411231811,
+            6.235671720304444
+          ],
+          "mae_transport": [
+            5.8313589034261994,
+            7.546461505559136
+          ],
+          "coverage_transport": [
+            85.33208333333334,
+            92.61708333333334
+          ],
+          "interval_score_transport": [
+            36.38253465200906,
+            54.51880035868293
+          ],
+          "crps_transport": [
+            4.215324565007891,
+            5.5044234946441355
+          ],
+          "mae_none": [
+            11.711769872760149,
+            15.149131132011005
+          ],
+          "mae_unshrunk": [
+            5.223385152844689,
+            6.584838519139448
+          ],
+          "sign_all_fixed": [
+            88.88333333333334,
+            93.70166666666667
+          ],
+          "sign_clear_fixed": [
+            97.02507584836805,
+            99.36995066948556
+          ],
+          "sign_all_transport": [
+            88.79958333333333,
+            93.56708333333333
+          ],
+          "sign_clear_transport": [
+            97.12895377128955,
+            99.4361111111111
+          ],
+          "sign_all_always_positive": [
+            81.5,
+            87.75
+          ],
+          "sign_clear_always_positive": [
+            88.40515921616657,
+            94.6365271562692
+          ]
+        }
+      },
+      "by_outcome": {
+        "avoid_products": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 12.495355989705308,
+            "coverage_fixed": 16.666666666666664,
+            "interval_score_fixed": 408.8066736968434,
+            "crps_fixed": 11.792267451845643,
+            "mae_transport": 12.55649989143077,
+            "coverage_transport": 92.5,
+            "interval_score_transport": 75.42909247845351,
+            "crps_transport": 9.174160175997658,
+            "mae_copy": 12.497836721023468,
+            "mae_other_mean": 8.7050222604522
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 6.393224014911381,
+            "coverage_fixed": 24.916666666666668,
+            "interval_score_fixed": 159.62578315272353,
+            "crps_fixed": 5.6399784321549475,
+            "mae_transport": 6.971690982900121,
+            "coverage_transport": 90.33333333333333,
+            "interval_score_transport": 45.695248986905995,
+            "crps_transport": 4.975650671644429,
+            "clear_cases": 930,
+            "mae_none": 16.234479179393144,
+            "mae_unshrunk": 5.987836679215655,
+            "sign_all_fixed": 97.5,
+            "sign_clear_fixed": 100.0,
+            "sign_all_transport": 97.5,
+            "sign_clear_transport": 100.0,
+            "sign_all_always_positive": 82.5,
+            "sign_clear_always_positive": 85.48387096774194
+          }
+        },
+        "cut_living_standard": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 19.146081286707904,
+            "coverage_fixed": 9.166666666666666,
+            "interval_score_fixed": 676.6780511217426,
+            "crps_fixed": 18.47185134259793,
+            "mae_transport": 19.133824300482193,
+            "coverage_transport": 62.916666666666664,
+            "interval_score_transport": 201.76373053104348,
+            "crps_transport": 14.958509133573694,
+            "mae_copy": 19.14266654762139,
+            "mae_other_mean": 13.872537206063102
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 7.6830337501311545,
+            "coverage_fixed": 23.166666666666664,
+            "interval_score_fixed": 213.1957995881221,
+            "crps_fixed": 6.953380334680211,
+            "mae_transport": 8.06526115693286,
+            "coverage_transport": 80.0,
+            "interval_score_transport": 69.16338619697268,
+            "crps_transport": 6.027982536142129,
+            "clear_cases": 735,
+            "mae_none": 13.293688246163029,
+            "mae_unshrunk": 7.3271766774699,
+            "sign_all_fixed": 90.5,
+            "sign_clear_fixed": 97.95918367346938,
+            "sign_all_transport": 90.41666666666667,
+            "sign_clear_transport": 97.82312925170068,
+            "sign_all_always_positive": 92.5,
+            "sign_clear_always_positive": 97.95918367346938
+          }
+        },
+        "do_right_despite_cost": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 9.409434267418579,
+            "coverage_fixed": 17.083333333333332,
+            "interval_score_fixed": 281.80778057178816,
+            "crps_fixed": 8.680324029275098,
+            "mae_transport": 9.366761747975785,
+            "coverage_transport": 99.16666666666667,
+            "interval_score_transport": 59.93618164297383,
+            "crps_transport": 6.758041986117766,
+            "mae_copy": 9.407801733840623,
+            "mae_other_mean": 6.639589217268014
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 4.983059184015876,
+            "coverage_fixed": 31.25,
+            "interval_score_fixed": 119.81081163496603,
+            "crps_fixed": 4.366194215995263,
+            "mae_transport": 5.852925047887461,
+            "coverage_transport": 95.91666666666666,
+            "interval_score_transport": 33.05426447768344,
+            "crps_transport": 4.133630517527168,
+            "clear_cases": 840,
+            "mae_none": 15.244199277871347,
+            "mae_unshrunk": 4.5117044124375365,
+            "sign_all_fixed": 97.5,
+            "sign_clear_fixed": 100.0,
+            "sign_all_transport": 97.5,
+            "sign_clear_transport": 100.0,
+            "sign_all_always_positive": 80.0,
+            "sign_clear_always_positive": 87.5
+          }
+        },
+        "pay_higher_prices": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 15.647162046792399,
+            "coverage_fixed": 10.833333333333334,
+            "interval_score_fixed": 537.7915859309782,
+            "crps_fixed": 14.976161848044029,
+            "mae_transport": 15.726754748535457,
+            "coverage_transport": 77.91666666666667,
+            "interval_score_transport": 115.29250865914977,
+            "crps_transport": 11.620920400155962,
+            "mae_copy": 15.64585692251988,
+            "mae_other_mean": 11.792981141320348
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 6.49331170243357,
+            "coverage_fixed": 25.916666666666664,
+            "interval_score_fixed": 174.5257051567502,
+            "crps_fixed": 5.835747561941845,
+            "mae_transport": 6.9736884516514195,
+            "coverage_transport": 88.25,
+            "interval_score_transport": 44.622007436655586,
+            "crps_transport": 5.058484476834418,
+            "clear_cases": 750,
+            "mae_none": 12.937273104550865,
+            "mae_unshrunk": 6.38417190983644,
+            "sign_all_fixed": 82.75,
+            "sign_clear_fixed": 94.8,
+            "sign_all_transport": 83.08333333333333,
+            "sign_clear_transport": 95.19999999999999,
+            "sign_all_always_positive": 86.25,
+            "sign_clear_always_positive": 94.0
+          }
+        },
+        "pay_higher_taxes": {
+          "level": {
+            "cases": 240,
+            "mae_fixed": 9.382383651203247,
+            "coverage_fixed": 14.583333333333334,
+            "interval_score_fixed": 296.8916102738888,
+            "crps_fixed": 8.783671118654524,
+            "mae_transport": 9.369855690430287,
+            "coverage_transport": 96.25,
+            "interval_score_transport": 49.2284727993999,
+            "crps_transport": 6.587735718899464,
+            "mae_copy": 9.391276934946262,
+            "mae_other_mean": 7.358386502474396
+          },
+          "gap": {
+            "cases": 1200,
+            "mae_fixed": 5.197927000927184,
+            "coverage_fixed": 32.83333333333333,
+            "interval_score_fixed": 132.61278138445346,
+            "crps_fixed": 4.609149406436203,
+            "mae_transport": 5.567273316902643,
+            "coverage_transport": 90.58333333333334,
+            "interval_score_transport": 33.680355219594645,
+            "crps_transport": 4.024615937220017,
+            "clear_cases": 660,
+            "mae_none": 9.893780971400663,
+            "mae_unshrunk": 5.087986160906093,
+            "sign_all_fixed": 88.41666666666667,
+            "sign_clear_fixed": 97.87878787878788,
+            "sign_all_transport": 87.5,
+            "sign_clear_transport": 98.03030303030303,
+            "sign_all_always_positive": 81.25,
+            "sign_clear_always_positive": 95.45454545454545
+          }
+        }
+      },
+      "by_region": {
+        "different": {
+          "level": {
+            "cases": 930,
+            "mae_fixed": 14.86254820400091,
+            "coverage_fixed": 10.43010752688172,
+            "interval_score_fixed": 505.096146734271,
+            "crps_fixed": 14.181105679011697,
+            "mae_transport": 14.858339777289425,
+            "coverage_transport": 83.01075268817203,
+            "interval_score_transport": 112.50964751558546,
+            "crps_transport": 10.963952729774302,
+            "mae_copy": 14.861181905291451,
+            "mae_other_mean": 9.622314393145519
+          },
+          "gap": {
+            "cases": 4650,
+            "mae_fixed": 6.323283037893041,
+            "coverage_fixed": 26.924731182795696,
+            "interval_score_fixed": 166.88765272125025,
+            "crps_fixed": 5.655242856948085,
+            "mae_transport": 6.864599394452156,
+            "coverage_transport": 88.64516129032258,
+            "interval_score_transport": 47.149157605797946,
+            "crps_transport": 4.994679599291278,
+            "clear_cases": 3049,
+            "mae_none": 13.554705300896114,
+            "mae_unshrunk": 6.090653988914113,
+            "sign_all_fixed": 91.31182795698925,
+            "sign_clear_fixed": 98.16333224007872,
+            "sign_all_transport": 91.3763440860215,
+            "sign_clear_transport": 98.26172515578878,
+            "sign_all_always_positive": 84.3225806451613,
+            "sign_clear_always_positive": 91.37422105608395
+          }
+        },
+        "same": {
+          "level": {
+            "cases": 270,
+            "mae_fixed": 7.5449270678434734,
+            "coverage_fixed": 24.814814814814813,
+            "interval_score_fixed": 217.53611822216996,
+            "crps_fixed": 6.891103363775025,
+            "mae_transport": 7.624559770540415,
+            "coverage_transport": 95.18518518518519,
+            "interval_score_transport": 58.37786843389057,
+            "crps_transport": 5.87915607721699,
+            "mae_copy": 7.554096868397554,
+            "mae_other_mean": 9.850709381457042
+          },
+          "gap": {
+            "cases": 1350,
+            "mae_fixed": 5.553630116074338,
+            "coverage_fixed": 30.0,
+            "interval_score_fixed": 136.0722014419294,
+            "crps_fixed": 4.880341227141902,
+            "mae_transport": 6.071570046908802,
+            "coverage_transport": 90.29629629629629,
+            "interval_score_transport": 38.67757919586247,
+            "crps_transport": 4.325316170768409,
+            "clear_cases": 866,
+            "mae_none": 13.40350021191698,
+            "mae_unshrunk": 5.0645258958430555,
+            "sign_all_fixed": 91.4074074074074,
+            "sign_clear_fixed": 98.61431870669746,
+            "sign_all_transport": 90.5925925925926,
+            "sign_clear_transport": 98.61431870669746,
+            "sign_all_always_positive": 85.11111111111111,
+            "sign_clear_always_positive": 92.26327944572749
+          }
+        }
+      },
+      "gap_mae_predictor_specific_a0": 6.251150572250966,
+      "by_target": {
+        "AT": 7.3236490241610275,
+        "CH": 7.225630066224376,
+        "DE": 6.883529037270285,
+        "DK": 6.0831877441138476,
+        "ES": 4.124523578036915,
+        "FI": 6.440760658987195,
+        "FR": 9.493594440680695,
+        "HR": 3.5474233131190984,
+        "HU": 6.071506894468543,
+        "IS": 5.474091470912657,
+        "IT": 4.384383294598313,
+        "LT": 6.095220147776683,
+        "NO": 8.849097494580189,
+        "SE": 5.689417320097554,
+        "SI": 4.960213461219967,
+        "SK": 5.755550141493985
+      },
+      "by_predictor": {
+        "gap_env_worry": 9.626613031112532,
+        "gap_female": 3.1643294439590077,
+        "gap_high_education": 5.278593322080467,
+        "gap_recycles": 7.674325053125071,
+        "gap_under_30": 5.006694802142088
+      }
+    }
+  }
+}

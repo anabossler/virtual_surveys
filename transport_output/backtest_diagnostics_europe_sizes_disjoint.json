@@ -1,0 +1,168 @@
+{
+  "pool": "europe",
+  "bootstrap": "2000 resamples of target countries",
+  "point": {
+    "level": {
+      "cases": 1200,
+      "mae_fixed": 13.21219997120642,
+      "coverage_fixed": 13.25,
+      "interval_score_fixed": 439.3579382358774,
+      "crps_fixed": 12.530925537075174,
+      "mae_transport": 13.29890814698963,
+      "coverage_transport": 89.33333333333333,
+      "interval_score_transport": 88.37546022509473,
+      "crps_transport": 9.732947713970566,
+      "mae_copy": 13.217087771990323,
+      "mae_other_mean": 9.673703265515613
+    },
+    "gap": {
+      "cases": 6000,
+      "mae_fixed": 7.277244934172869,
+      "coverage_fixed": 44.13333333333333,
+      "interval_score_fixed": 149.80988787736277,
+      "crps_fixed": 6.149435836786296,
+      "mae_transport": 7.455287701892502,
+      "coverage_transport": 87.51666666666667,
+      "interval_score_transport": 59.25772624699442,
+      "crps_transport": 5.466675782572061,
+      "clear_cases": 3915,
+      "mae_none": 13.520684155875806,
+      "mae_unshrunk": 7.5144352184395915,
+      "sign_all_fixed": 86.66666666666667,
+      "sign_clear_fixed": 95.1213282247765,
+      "sign_all_transport": 86.41666666666666,
+      "sign_clear_transport": 94.89144316730524,
+      "sign_all_always_positive": 84.5,
+      "sign_clear_always_positive": 91.57088122605363
+    }
+  },
+  "ci95": {
+    "level": {
+      "mae_fixed": [
+        11.90376204039858,
+        14.698370711610927
+      ],
+      "coverage_fixed": [
+        11.25,
+        15.252083333333323
+      ],
+      "interval_score_fixed": [
+        388.1403618134664,
+        498.2042984732412
+      ],
+      "crps_fixed": [
+        11.23276927815219,
+        14.011419488657742
+      ],
+      "mae_transport": [
+        12.001331169536607,
+        14.793745682910082
+      ],
+      "coverage_transport": [
+        85.58333333333333,
+        92.75
+      ],
+      "interval_score_transport": [
+        74.23316018897793,
+        105.88690365825833
+      ],
+      "crps_transport": [
+        8.758247215170977,
+        10.863212247417355
+      ],
+      "mae_copy": [
+        11.90850327241989,
+        14.70386725075463
+      ],
+      "mae_other_mean": [
+        7.445260838042139,
+        12.130789019895513
+      ]
+    },
+    "gap": {
+      "mae_fixed": [
+        6.760104960685427,
+        7.895472668998944
+      ],
+      "coverage_fixed": [
+        41.06666666666667,
+        46.88333333333333
+      ],
+      "interval_score_fixed": [
+        131.21404142928563,
+        172.58676041872562
+      ],
+      "crps_fixed": [
+        5.651023381808619,
+        6.750638241789603
+      ],
+      "mae_transport": [
+        6.829526734599412,
+        8.20529091064416
+      ],
+      "coverage_transport": [
+        84.31625,
+        90.26666666666667
+      ],
+      "interval_score_transport": [
+        50.11685318643193,
+        70.3202885869506
+      ],
+      "crps_transport": [
+        4.964155029640841,
+        6.082172482623989
+      ],
+      "mae_none": [
+        11.812358765138121,
+        15.077463080999415
+      ],
+      "mae_unshrunk": [
+        7.033066700966434,
+        8.04622776229048
+      ],
+      "sign_all_fixed": [
+        84.73333333333333,
+        88.28333333333333
+      ],
+      "sign_clear_fixed": [
+        94.11764705882352,
+        96.17240866258885
+      ],
+      "sign_all_transport": [
+        84.44958333333334,
+        88.14999999999999
+      ],
+      "sign_clear_transport": [
+        93.8402085276323,
+        96.00513665147481
+      ],
+      "sign_all_always_positive": [
+        81.0,
+        88.0
+      ],
+      "sign_clear_always_positive": [
+        88.37209302325581,
+        94.75659206234143
+      ]
+    }
+  },
+  "small_target_sample": {
+    "n50": {
+      "level": 5.57971815467818,
+      "gap": 13.723739552005801
+    },
+    "n100": {
+      "level": 4.094351300395902,
+      "gap": 10.455981314156135
+    },
+    "n200": {
+      "level": 3.017655429236821,
+      "gap": 7.8378554767673805
+    },
+    "n400": {
+      "level": 2.3831230955778424,
+      "gap": 6.175117238254506
+    }
+  },
+  "small_target_sample_disjoint": true
+}

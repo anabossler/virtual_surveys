@@ -95,8 +95,12 @@ def cluster_bootstrap(cases: pd.DataFrame, b: int, rng) -> dict:
     return ci
 
 
-def small_sample_baseline(issp: Path, countries: list[str], sizes, reps: int, rng) -> dict:
-    """MAE (points) of the target's own estimate from n respondents against its full sample."""
+def small_sample_baseline(issp: Path, countries: list[str], sizes, reps: int, rng, disjoint: bool = False) -> dict:
+    """MAE (points) of the target's own estimate from n respondents against its full sample.
+
+    With disjoint=True the reference is computed from the respondents not drawn,
+    so the small sample and the reference do not overlap.
+    """
     from backtest_transfer import segments, weighted_share
     from transport_issp import OUTCOMES, PREDICTORS, design
 
@@ -116,16 +120,26 @@ def small_sample_baseline(issp: Path, countries: list[str], sizes, reps: int, rn
             full_gap = {j: weighted_share(y[m], w[m])[0] - weighted_share(y[~m], w[~m])[0]
                         for j, m in masks.items() if m.sum() >= 30 and (~m).sum() >= 30}
             for n in sizes:
+                if n >= len(y) - 100:
+                    continue
                 for _ in range(reps):
                     idx = rng.choice(len(y), n, replace=False)
                     xs, ys, ws = x[idx], y[idx], w[idx]
-                    err[n]["level"].append(abs(weighted_share(ys, ws)[0] - full_level))
+                    ref_level, ref_gap = full_level, full_gap
+                    if disjoint:
+                        rest = np.setdiff1d(np.arange(len(y)), idx)
+                        xr, yr, wr = x[rest], y[rest], w[rest]
+                        ref_level = weighted_share(yr, wr)[0]
+                        mr = segments(xr)
+                        ref_gap = {j: weighted_share(yr[m], wr[m])[0] - weighted_share(yr[~m], wr[~m])[0]
+                                   for j, m in mr.items() if j in full_gap}
+                    err[n]["level"].append(abs(weighted_share(ys, ws)[0] - ref_level))
                     for j, m in segments(xs).items():
-                        if j not in full_gap or m.sum() < 2 or (~m).sum() < 2:
+                        if j not in ref_gap or m.sum() < 2 or (~m).sum() < 2:
                             continue
                         g = weighted_share(ys[m], ws[m])[0] - weighted_share(ys[~m], ws[~m])[0]
-                        err[n]["gap"].append(abs(g - full_gap[j]))
-    return {f"n{n}": {q: 100 * float(np.mean(v)) for q, v in e.items()} for n, e in err.items()}
+                        err[n]["gap"].append(abs(g - ref_gap[j]))
+    return {f"n{n}": {q: 100 * float(np.mean(v)) for q, v in e.items()} for n, e in err.items() if e["level"]}
 
 
 def main() -> None:
@@ -136,6 +150,7 @@ def main() -> None:
     ap.add_argument("--issp", type=Path, default=None)
     ap.add_argument("--sizes", type=int, nargs="+", default=[100, 200])
     ap.add_argument("--reps", type=int, default=200)
+    ap.add_argument("--disjoint", action="store_true", help="reference from respondents not in the small sample")
     args = ap.parse_args()
     rng = np.random.default_rng(SEED)
 
@@ -153,7 +168,8 @@ def main() -> None:
               "point": point, "ci95": ci}
     if args.issp is not None:
         result["small_target_sample"] = small_sample_baseline(
-            args.issp, sorted(cases["target"].unique()), args.sizes, args.reps, rng)
+            args.issp, sorted(cases["target"].unique()), args.sizes, args.reps, rng, args.disjoint)
+        result["small_target_sample_disjoint"] = args.disjoint
 
     rows = [{"quantity": q, "metric": m, "estimate": v,
              "low": ci[q].get(m, [np.nan, np.nan])[0], "high": ci[q].get(m, [np.nan, np.nan])[1]}
@@ -162,9 +178,10 @@ def main() -> None:
     print(table.to_string(index=False, float_format=lambda v: f"{v:.1f}"))
     if "small_target_sample" in result:
         print("small target sample (MAE, points):", json.dumps(result["small_target_sample"]))
-    (args.dir / f"backtest_diagnostics_{args.pool}.json").write_text(json.dumps(result, indent=2) + "\n")
-    table.to_csv(args.dir / f"backtest_diagnostics_{args.pool}.csv", index=False)
-    print("->", args.dir / f"backtest_diagnostics_{args.pool}.json")
+    tag = ("_sizes" if len(args.sizes) > 2 else "") + ("_disjoint" if args.disjoint else "")
+    (args.dir / f"backtest_diagnostics_{args.pool}{tag}.json").write_text(json.dumps(result, indent=2) + "\n")
+    table.to_csv(args.dir / f"backtest_diagnostics_{args.pool}{tag}.csv", index=False)
+    print("->", args.dir / f"backtest_diagnostics_{args.pool}{tag}.json")
 
 
 if __name__ == "__main__":

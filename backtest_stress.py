@@ -12,6 +12,16 @@ repeats the backtest under four scenarios:
     cross         coefficients from another outcome k' of the source, base rate
                   from the projected outcome k (as attractiveness -> suitability)
     small_cross   both
+    pooled        coefficients averaged over all countries except the target
+                  (a multi-source comparator); base rate from the source
+
+Two further options:
+    --loro        transport parameters estimated without the whole European
+                  region of the target (leave-region-out), instead of without
+                  the target country only
+    every case also records pred_pp: the transfer with a predictor-specific
+    attenuation (slope of target on source coefficients per predictor,
+    estimated without the target country and outcome) instead of a0 = 0.80
 
 For each scenario it reports level and gap errors, coverage, interval score,
 CRPS and sign accuracy (with 'always positive' and 'no gap' baselines), with
@@ -46,7 +56,8 @@ REGION = {**{c: "nordic" for c in ("DK", "FI", "IS", "NO", "SE")},
           **{c: "western" for c in ("AT", "CH", "DE", "FR")},
           **{c: "southern" for c in ("ES", "IT")},
           **{c: "central_eastern" for c in ("HR", "HU", "LT", "SI", "SK")}}
-SCENARIOS = {"same": (None, False), "small": ("n", False), "cross": (None, True), "small_cross": ("n", True)}
+SCENARIOS = {"same": (None, False), "small": ("n", False), "cross": (None, True), "small_cross": ("n", True),
+             "pooled": (None, False)}
 
 
 def fit(sub: pd.DataFrame, k: str, n: int | None, rng) -> dict | None:
@@ -59,6 +70,34 @@ def fit(sub: pd.DataFrame, k: str, n: int | None, rng) -> dict | None:
     return {"beta": b[1:], "se": se[1:], "share": weighted_share(y, w)[0], "n": len(sub)}
 
 
+def region_parameters(beta, se, share, countries, t, k, loro):
+    """transport_parameters without country t (or its whole region) and outcome k."""
+    drop = [i for i, c in enumerate(countries) if (REGION[c] == REGION[countries[t]] if loro else i == t)]
+    keep = [i for i in range(len(countries)) if i not in drop]
+    sub = (beta[keep], se[keep], share[keep])
+    # transport_parameters drops one country index; pass an index beyond the kept set
+    b2 = np.concatenate([sub[0], np.full((1,) + beta.shape[1:], np.nan)])
+    s2 = np.concatenate([sub[1], np.full((1,) + se.shape[1:], np.nan)])
+    h2 = np.concatenate([sub[2], np.full((1, share.shape[1]), np.nan)])
+    return transport_parameters(b2, s2, h2, len(keep), k)
+
+
+def predictor_slopes(beta, t, k):
+    """Per-predictor slope of target on source coefficients over pairs without country t and outcome k."""
+    n_c, n_o, n_p = beta.shape
+    cs = [c for c in range(n_c) if c != t]
+    os_ = [o for o in range(n_o) if o != k]
+    out = np.empty(n_p)
+    for j in range(n_p):
+        num = den = 0.0
+        for a, b in permutations(cs, 2):
+            xa, xb = beta[a, os_, j], beta[b, os_, j]
+            ok = ~(np.isnan(xa) | np.isnan(xb))
+            num += float(xa[ok] @ xb[ok]); den += float(xa[ok] @ xa[ok])
+        out[j] = num / den if den > 0 else A0_FIXED
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--issp", type=Path, default=Path("metadata/ZA7650_v2-0-0.dta"))
@@ -66,6 +105,7 @@ def main() -> None:
     ap.add_argument("--source-n", type=int, default=272)
     ap.add_argument("--draws", type=int, default=200)
     ap.add_argument("--boot", type=int, default=1000)
+    ap.add_argument("--loro", action="store_true", help="leave-region-out transport parameters")
     args = ap.parse_args()
     rng = np.random.default_rng(SEED)
     preds, outcomes = list(PREDICTORS), list(OUTCOMES)
@@ -83,8 +123,9 @@ def main() -> None:
         if f is not None:
             i, j = countries.index(c), outcomes.index(k)
             beta[i, j], se[i, j], share[i, j] = f["beta"], f["se"], f["share"]
-    params = {(t, k): transport_parameters(beta, se, share, countries.index(t), outcomes.index(k))
+    params = {(t, k): region_parameters(beta, se, share, countries, countries.index(t), outcomes.index(k), args.loro)
               for t in countries for k in outcomes}
+    slopes = {(t, k): predictor_slopes(beta, countries.index(t), outcomes.index(k)) for t in countries for k in outcomes}
 
     rows = []
     for scenario, (size, cross) in SCENARIOS.items():
@@ -103,6 +144,13 @@ def main() -> None:
                     src = fits[(s, kc)]
                     if src is None:
                         continue
+                    if scenario == "pooled":
+                        ti = countries.index(t)
+                        pool = np.delete(beta[:, outcomes.index(kc)], ti, axis=0)
+                        pool_se = np.delete(se[:, outcomes.index(kc)], ti, axis=0)
+                        src = {"beta": np.nanmean(pool, axis=0),
+                               "se": np.sqrt(np.nanvar(pool, axis=0, ddof=1) / np.sum(~np.isnan(pool[:, 0]))
+                                             + np.nanmean(pool_se**2, axis=0) / np.sum(~np.isnan(pool[:, 0])))}
                     p, d = params[(t, k)], args.draws
                     bd = rng.normal(src["beta"], src["se"], size=(d, len(preds)))
                     b0 = rng.beta(base["share"] * base["n"] + 0.5, (1 - base["share"]) * base["n"] + 0.5, size=d)
@@ -111,13 +159,15 @@ def main() -> None:
                     a0 = rng.normal(p["a0_mean"], p["a0_sd"], size=(d, 1))
                     lin = xe @ (a0 * bd + rng.normal(0.0, p["eta_sd"], size=bd.shape)).T
                     pr_tr = norm.cdf(calibrate(lin, we, b0) + rng.normal(0.0, p["level_sd"], size=d) + lin)
+                    lin_pp = xe @ (slopes[(t, k)] * bd.mean(axis=0))
+                    pr_pp = norm.cdf(calibrate(lin_pp[:, None], we, np.array([base["share"]])) + lin_pp[:, None])[:, 0]
                     lin_u = xe @ bd.mean(axis=0)
                     pr_u = norm.cdf(calibrate(lin_u[:, None], we, np.array([base["share"]])) + lin_u[:, None])[:, 0]
                     common = {"scenario": scenario, "source": s, "target": t, "outcome": k, "coef_outcome": kc,
                               "same_region": REGION[s] == REGION[t]}
                     obs, obs_se = weighted_share(y, w)
                     row = common | {"quantity": "level", "observed": obs, "observed_se": obs_se,
-                                    "pred_copy": base["share"],
+                                    "pred_copy": base["share"], "pred_pp": float(np.average(pr_pp, weights=we)),
                                     "pred_other_mean": float(np.nanmean([full[(c, k)]["share"] for c in countries
                                                                          if c != t and full[(c, k)] is not None]))}
                     for v, pr in (("fixed", pr_fixed), ("transport", pr_tr)):
@@ -133,6 +183,7 @@ def main() -> None:
                         g0, s0 = weighted_share(y[~mo], w[~mo])
                         row = common | {"quantity": f"gap_{j}", "observed": g1 - g0, "observed_se": float(np.hypot(s1, s0)),
                                         "pred_none": 0.0,
+                                        "pred_pp": float(np.average(pr_pp[me], weights=we[me]) - np.average(pr_pp[~me], weights=we[~me])),
                                         "pred_unshrunk": float(np.average(pr_u[me], weights=we[me]) - np.average(pr_u[~me], weights=we[~me]))}
                         for v, pr in (("fixed", pr_fixed), ("transport", pr_tr)):
                             gp = np.average(pr[me], axis=0, weights=we[me]) - np.average(pr[~me], axis=0, weights=we[~me])
@@ -143,15 +194,22 @@ def main() -> None:
 
     cases = pd.DataFrame(rows)
     args.out.mkdir(parents=True, exist_ok=True)
-    cases.to_csv(args.out / "backtest_stress_cases.csv", index=False)
-    summary = {"source_n": args.source_n, "draws": args.draws, "seed": SEED, "regions": REGION, "scenarios": {}}
+    tag = "_loro" if args.loro else ""
+    cases.to_csv(args.out / f"backtest_stress_cases{tag}.csv", index=False)
+    summary = {"source_n": args.source_n, "draws": args.draws, "seed": SEED, "loro": args.loro,
+               "regions": REGION, "scenarios": {}}
     for scenario, g in cases.groupby("scenario", sort=False):
         summary["scenarios"][scenario] = {
             "all": metrics(g), "ci95": cluster_bootstrap(g, args.boot, rng),
             "by_outcome": {k: metrics(gk) for k, gk in g.groupby("outcome")},
             "by_region": {("same" if r else "different"): metrics(gr) for r, gr in g.groupby("same_region")},
+            "gap_mae_predictor_specific_a0": 100 * float((g[g.quantity != "level"]["pred_pp"]
+                                                          - g[g.quantity != "level"]["observed"]).abs().mean()),
+            "by_target": {t: metrics(gt)["gap"]["mae_fixed"] for t, gt in g.groupby("target")},
+            "by_predictor": {q: 100 * float((gq["pred_fixed"] - gq["observed"]).abs().mean())
+                             for q, gq in g[g.quantity != "level"].groupby("quantity")},
         }
-    (args.out / "backtest_stress_summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    (args.out / f"backtest_stress_summary{tag}.json").write_text(json.dumps(summary, indent=2) + "\n")
 
     keys = [("level", "mae_fixed"), ("level", "coverage_transport"), ("level", "crps_transport"),
             ("gap", "mae_fixed"), ("gap", "mae_none"), ("gap", "coverage_fixed"), ("gap", "coverage_transport"),
@@ -161,7 +219,11 @@ def main() -> None:
     region = {sc: {f"gap mae {r}": v["by_region"][r]["gap"]["mae_fixed"] for r in v["by_region"]}
               for sc, v in summary["scenarios"].items()}
     print(pd.DataFrame(region).round(1).to_string())
-    print("->", args.out / "backtest_stress_summary.json")
+    print("gap MAE with predictor-specific a0:",
+          {sc: round(v["gap_mae_predictor_specific_a0"], 1) for sc, v in summary["scenarios"].items()})
+    print("gap MAE by predictor:", {sc: {q: round(x, 1) for q, x in v["by_predictor"].items()}
+                                    for sc, v in summary["scenarios"].items()})
+    print("->", args.out / f"backtest_stress_summary{tag}.json")
 
 
 if __name__ == "__main__":
