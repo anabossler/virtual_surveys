@@ -1,0 +1,4 @@
+entry_id,study_id,cis_target,source_variable,first_decision,first_reason,decision,reason,comment
+E01,cao_lu_zhu_2022_eol_recycled_preferences,acceptance_general,recycled_products_recycled_material,accept,none,rescale,scale,"The construct is relevant, but the 1–7 mean must be mapped to the common 5-point scale."
+E03,leal_filho_2025,price_willingness_to_pay_premium,willingness_pay_more_bioplastics,exclude,double_counting,accept,none,
+E04,leal_filho_2025,price_willingness_to_pay_premium,willingness_pay_more_bioplastics_distribution,accept,none,exclude,double_counting,"Same construct, respondents, and study as E03; retain the direct mean in E03."

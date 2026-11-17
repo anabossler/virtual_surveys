@@ -1,0 +1,35 @@
+{
+  "entries": 22,
+  "decision_agreement": 0.8636363636363636,
+  "decision_kappa": 0.7962962962962963,
+  "change_agreement": 0.8636363636363636,
+  "change_kappa": 0.6732673267326733,
+  "first_changed": 15,
+  "second_changed": 16,
+  "confusion": {
+    "accept": {
+      "accept": 5,
+      "exclude": 1,
+      "rescale": 0,
+      "reverse": 0
+    },
+    "exclude": {
+      "accept": 1,
+      "exclude": 9,
+      "rescale": 0,
+      "reverse": 0
+    },
+    "rescale": {
+      "accept": 1,
+      "exclude": 0,
+      "rescale": 1,
+      "reverse": 0
+    },
+    "reverse": {
+      "accept": 0,
+      "exclude": 0,
+      "rescale": 0,
+      "reverse": 4
+    }
+  }
+}
