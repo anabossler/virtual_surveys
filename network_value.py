@@ -406,10 +406,11 @@ class NetworkGenerator:
     def fit(self, train_index, weights_raw):
         df = self.pipeline.loc[self.pipeline.index.intersection(train_index)]
         dd, binfo = quiet(discretise, df.copy(), self.cfg.N_BINS)
+        # All network variables are generated, including any left without edges in a
+        # sampled graph (they are then drawn from their margins).
+        dag_vars = {u for e in self.dag_edges for u in e}
         if self.structure == "global":
-            dag_vars = {u for s in self.global_samples for e in s for u in e}
-        else:
-            dag_vars = {u for e in self.dag_edges for u in e}
+            dag_vars |= {u for s in self.global_samples for e in s for u in e}
         self.common = [v for v in dd.columns if v in dag_vars]
         w = weights_raw.loc[dd.index].to_numpy(float)
         w = w * len(w) / w.sum()
@@ -497,6 +498,8 @@ def rake_two_way(codes, dims, target_codes, target_w, sweeps=25, tol=1e-4):
             worst = max(worst, float(np.abs(cur - targets[ab]).max()))
         if worst < tol:
             break
+    if not np.isfinite(w).all() or w.sum() <= 0:
+        return np.ones(len(codes))      # calibration impossible for this graph: leave unweighted
     return w
 
 
@@ -572,6 +575,9 @@ def run_full(respondents, score, queries, groups, generator, args, rng):
                                                             "n_synth": int(n_synth[i])}))
     wide = table.pivot_table(index=["query", "kind", "label", "n_cis"], columns="method",
                              values="est").reset_index()
+    for m in METHODS:              # a method with no estimate at all keeps an empty column
+        if m not in wide:
+            wide[m] = np.nan
     se_direct = table[table.method == "direct"].set_index("query")["se"]
     wide["se_direct"] = wide["query"].map(se_direct)
     for m in ("bvs", "bvs_raked", "ipf2", "margins"):
