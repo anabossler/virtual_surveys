@@ -6,3 +6,12 @@ metadata/*.dta
 .env
 paper/*.png
 paper/main.*
+.DS_Store
+metadata/
+transport_output/*_cases*.csv
+transport_output/*_sizes*.csv
+network_value_output*/
+step1_global*
+dag_edges_3391.csv
+step1_mcmc_samples.json
+eval/results/
