@@ -1,0 +1,293 @@
+{
+  "input": "transport_output/backtest_stress_cases_loro.csv",
+  "alpha": 0.05,
+  "scenarios": {
+    "same": {
+      "level": {
+        "k": 1.636,
+        "k_by_held_out_region": {
+          "western": 1.546,
+          "nordic": 1.73,
+          "southern": 1.703,
+          "central_eastern": 1.6
+        },
+        "raw": {
+          "coverage": 83.1,
+          "median_width": 50.1,
+          "interval_score": 117.9
+        },
+        "recalibrated_out_of_region": {
+          "coverage": 94.5,
+          "median_width": 81.3,
+          "interval_score": 103.3
+        },
+        "cases": 1200
+      },
+      "gap": {
+        "k": 1.616,
+        "k_by_held_out_region": {
+          "western": 1.52,
+          "nordic": 1.607,
+          "southern": 1.68,
+          "central_eastern": 1.674
+        },
+        "raw": {
+          "coverage": 83.9,
+          "median_width": 26.4,
+          "interval_score": 67.6
+        },
+        "recalibrated_out_of_region": {
+          "coverage": 94.8,
+          "median_width": 42.7,
+          "interval_score": 56.9
+        },
+        "cases": 6000
+      }
+    },
+    "small": {
+      "level": {
+        "k": 1.716,
+        "k_by_held_out_region": {
+          "western": 1.58,
+          "nordic": 1.821,
+          "southern": 1.764,
+          "central_eastern": 1.542
+        },
+        "raw": {
+          "coverage": 83.1,
+          "median_width": 50.1,
+          "interval_score": 119.5
+        },
+        "recalibrated_out_of_region": {
+          "coverage": 94.5,
+          "median_width": 82.8,
+          "interval_score": 106.0
+        },
+        "cases": 1200
+      },
+      "gap": {
+        "k": 1.544,
+        "k_by_held_out_region": {
+          "western": 1.424,
+          "nordic": 1.504,
+          "southern": 1.599,
+          "central_eastern": 1.631
+        },
+        "raw": {
+          "coverage": 85.2,
+          "median_width": 32.0,
+          "interval_score": 75.5
+        },
+        "recalibrated_out_of_region": {
+          "coverage": 94.7,
+          "median_width": 49.0,
+          "interval_score": 68.0
+        },
+        "cases": 6000
+      }
+    },
+    "cross": {
+      "level": {
+        "k": 1.64,
+        "k_by_held_out_region": {
+          "western": 1.538,
+          "nordic": 1.804,
+          "southern": 1.727,
+          "central_eastern": 1.559
+        },
+        "raw": {
+          "coverage": 82.5,
+          "median_width": 49.9,
+          "interval_score": 118.1
+        },
+        "recalibrated_out_of_region": {
+          "coverage": 94.7,
+          "median_width": 80.5,
+          "interval_score": 105.1
+        },
+        "cases": 4800
+      },
+      "gap": {
+        "k": 1.835,
+        "k_by_held_out_region": {
+          "western": 1.71,
+          "nordic": 1.838,
+          "southern": 1.894,
+          "central_eastern": 1.909
+        },
+        "raw": {
+          "coverage": 77.0,
+          "median_width": 26.6,
+          "interval_score": 88.2
+        },
+        "recalibrated_out_of_region": {
+          "coverage": 94.8,
+          "median_width": 48.6,
+          "interval_score": 63.1
+        },
+        "cases": 24000
+      }
+    },
+    "small_cross": {
+      "level": {
+        "k": 1.682,
+        "k_by_held_out_region": {
+          "western": 1.573,
+          "nordic": 1.824,
+          "southern": 1.734,
+          "central_eastern": 1.574
+        },
+        "raw": {
+          "coverage": 82.8,
+          "median_width": 50.7,
+          "interval_score": 120.6
+        },
+        "recalibrated_out_of_region": {
+          "coverage": 94.3,
+          "median_width": 83.2,
+          "interval_score": 106.7
+        },
+        "cases": 4800
+      },
+      "gap": {
+        "k": 1.67,
+        "k_by_held_out_region": {
+          "western": 1.564,
+          "nordic": 1.639,
+          "southern": 1.721,
+          "central_eastern": 1.76
+        },
+        "raw": {
+          "coverage": 81.5,
+          "median_width": 32.1,
+          "interval_score": 88.9
+        },
+        "recalibrated_out_of_region": {
+          "coverage": 94.8,
+          "median_width": 53.5,
+          "interval_score": 72.9
+        },
+        "cases": 24000
+      }
+    },
+    "pooled": {
+      "level": {
+        "k": 1.635,
+        "k_by_held_out_region": {
+          "western": 1.528,
+          "nordic": 1.71,
+          "southern": 1.671,
+          "central_eastern": 1.535
+        },
+        "raw": {
+          "coverage": 83.2,
+          "median_width": 51.0,
+          "interval_score": 115.9
+        },
+        "recalibrated_out_of_region": {
+          "coverage": 94.8,
+          "median_width": 80.2,
+          "interval_score": 103.1
+        },
+        "cases": 1200
+      },
+      "gap": {
+        "k": 1.413,
+        "k_by_held_out_region": {
+          "western": 1.285,
+          "nordic": 1.423,
+          "southern": 1.485,
+          "central_eastern": 1.467
+        },
+        "raw": {
+          "coverage": 87.5,
+          "median_width": 25.1,
+          "interval_score": 50.2
+        },
+        "recalibrated_out_of_region": {
+          "coverage": 94.9,
+          "median_width": 35.2,
+          "interval_score": 45.8
+        },
+        "cases": 6000
+      }
+    }
+  },
+  "coverage_with_k_from_same": {
+    "level": {
+      "same": 94.9,
+      "small": 94.3,
+      "cross": 94.9,
+      "small_cross": 94.5,
+      "pooled": 95.0
+    },
+    "gap": {
+      "same": 95.0,
+      "small": 95.5,
+      "cross": 92.7,
+      "small_cross": 94.5,
+      "pooled": 97.1
+    }
+  },
+  "spain_gaps": {
+    "k_small_cross_gap": 1.67,
+    "coefficients": "transfer_coefficients_pp.csv",
+    "gaps": {
+      "women - men": {
+        "median": 8.9,
+        "transport": [
+          1.8,
+          16.6
+        ],
+        "recalibrated": [
+          -3.5,
+          21.3
+        ]
+      },
+      "higher - below higher education": {
+        "median": 18.8,
+        "transport": [
+          -1.8,
+          39.2
+        ],
+        "recalibrated": [
+          -15.5,
+          53.0
+        ]
+      },
+      "recycles often - rarely": {
+        "median": 17.3,
+        "transport": [
+          6.4,
+          28.8
+        ],
+        "recalibrated": [
+          -1.4,
+          36.0
+        ]
+      },
+      "extremely - not at all worried": {
+        "median": 39.2,
+        "transport": [
+          22.2,
+          56.8
+        ],
+        "recalibrated": [
+          10.2,
+          68.1
+        ]
+      },
+      "under 30 - 30 and over": {
+        "median": 0.2,
+        "transport": [
+          -8.8,
+          9.9
+        ],
+        "recalibrated": [
+          -15.4,
+          15.9
+        ]
+      }
+    }
+  }
+}

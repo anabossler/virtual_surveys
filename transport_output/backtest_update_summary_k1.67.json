@@ -1,0 +1,850 @@
+{
+  "sizes": [
+    25,
+    50,
+    100,
+    200
+  ],
+  "reps": 20,
+  "draws": 200,
+  "seed": 23,
+  "source_n": 272,
+  "prior": "transport-adjusted, leave-region-out",
+  "inflate": 1.67,
+  "table": [
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "combined",
+      "mae": 12.989787398152535,
+      "sign": 73.8075,
+      "coverage": 95.29,
+      "mae_lo": 12.008983968199743,
+      "mae_hi": 13.877452682881021
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "combined_gap",
+      "mae": 7.456234082510226,
+      "sign": 84.57,
+      "coverage": 95.04833333333333,
+      "mae_lo": 6.821365974712873,
+      "mae_hi": 8.1525049708326
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "local",
+      "mae": 16.384359900638053,
+      "sign": 67.1625,
+      "coverage": 92.98166666666667,
+      "mae_lo": 15.339151724780425,
+      "mae_hi": 17.51012752589043
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "transfer",
+      "mae": 7.596137011083534,
+      "sign": 86.21166666666667,
+      "coverage": 99.95083333333334,
+      "mae_lo": 6.966423139545716,
+      "mae_hi": 8.267101044405674
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "combined",
+      "mae": 11.213587432848026,
+      "sign": 77.10666666666667,
+      "coverage": 93.16,
+      "mae_lo": 10.443270780901592,
+      "mae_hi": 11.996615073518555
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "combined_gap",
+      "mae": 7.234537464273342,
+      "sign": 84.6375,
+      "coverage": 94.19166666666666,
+      "mae_lo": 6.71869299506996,
+      "mae_hi": 7.787037385669257
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "local",
+      "mae": 12.958173016917852,
+      "sign": 72.575,
+      "coverage": 91.69333333333333,
+      "mae_lo": 12.053293722948686,
+      "mae_hi": 13.91106191232067
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "transfer",
+      "mae": 7.604955264806643,
+      "sign": 86.27833333333334,
+      "coverage": 99.95666666666666,
+      "mae_lo": 6.979696609099689,
+      "mae_hi": 8.275341303399452
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "combined",
+      "mae": 8.857570820711697,
+      "sign": 80.3325,
+      "coverage": 92.48083333333334,
+      "mae_lo": 8.159119216698,
+      "mae_hi": 9.580035180505543
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "combined_gap",
+      "mae": 6.57457124375349,
+      "sign": 85.1075,
+      "coverage": 93.30833333333334,
+      "mae_lo": 6.035129247957991,
+      "mae_hi": 7.135473254847309
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "local",
+      "mae": 9.679625163669018,
+      "sign": 78.075,
+      "coverage": 91.7925,
+      "mae_lo": 8.848914868511951,
+      "mae_hi": 10.593987745382591
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "transfer",
+      "mae": 7.619561484415405,
+      "sign": 86.11583333333333,
+      "coverage": 99.94666666666667,
+      "mae_lo": 7.014626471572368,
+      "mae_hi": 8.303903241659038
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "combined",
+      "mae": 7.209755225790654,
+      "sign": 82.9759959783838,
+      "coverage": 89.57647354530602,
+      "mae_lo": 6.644201404984648,
+      "mae_hi": 7.778142082261179
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "combined_gap",
+      "mae": 6.069383668183724,
+      "sign": 85.66461396673789,
+      "coverage": 90.21825646181559,
+      "mae_lo": 5.604078270477544,
+      "mae_hi": 6.573596528509561
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "local",
+      "mae": 7.54094506324139,
+      "sign": 81.70164634912655,
+      "coverage": 89.35612249172637,
+      "mae_lo": 6.932293163352501,
+      "mae_hi": 8.159392222423476
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "transfer",
+      "mae": 7.71917177526485,
+      "sign": 85.75426249423987,
+      "coverage": 99.9421892673118,
+      "mae_lo": 7.101313200340156,
+      "mae_hi": 8.404756730740521
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 25,
+      "strategy": "combined",
+      "mae": 7.079290065151724,
+      "sign": NaN,
+      "coverage": 93.4875,
+      "mae_lo": 6.6393453585842215,
+      "mae_hi": 7.517464125684906
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 25,
+      "strategy": "local",
+      "mae": 7.4283878479262855,
+      "sign": NaN,
+      "coverage": 93.0,
+      "mae_lo": 6.958671852503426,
+      "mae_hi": 7.928939743207557
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 25,
+      "strategy": "transfer",
+      "mae": 12.760645878050703,
+      "sign": NaN,
+      "coverage": 96.8875,
+      "mae_lo": 11.419670611014956,
+      "mae_hi": 14.374285449180144
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 50,
+      "strategy": "combined",
+      "mae": 5.434031613821096,
+      "sign": NaN,
+      "coverage": 92.25416666666666,
+      "mae_lo": 5.220992599477263,
+      "mae_hi": 5.655108583053943
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 50,
+      "strategy": "local",
+      "mae": 5.5617409170149354,
+      "sign": NaN,
+      "coverage": 92.3125,
+      "mae_lo": 5.317273346840134,
+      "mae_hi": 5.806143420449558
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 50,
+      "strategy": "transfer",
+      "mae": 12.76864670264927,
+      "sign": NaN,
+      "coverage": 96.90416666666667,
+      "mae_lo": 11.426446308342843,
+      "mae_hi": 14.383357169163766
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 100,
+      "strategy": "combined",
+      "mae": 3.944608235993541,
+      "sign": NaN,
+      "coverage": 92.6125,
+      "mae_lo": 3.6910293847620324,
+      "mae_hi": 4.217953560741639
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 100,
+      "strategy": "local",
+      "mae": 3.984289035926156,
+      "sign": NaN,
+      "coverage": 92.75,
+      "mae_lo": 3.7271719018842813,
+      "mae_hi": 4.26612601548687
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 100,
+      "strategy": "transfer",
+      "mae": 12.766412630865297,
+      "sign": NaN,
+      "coverage": 96.89583333333333,
+      "mae_lo": 11.425780738985788,
+      "mae_hi": 14.384192441627162
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 200,
+      "strategy": "combined",
+      "mae": 2.9479028469558672,
+      "sign": NaN,
+      "coverage": 91.12083333333334,
+      "mae_lo": 2.8151921874768413,
+      "mae_hi": 3.097191421239303
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 200,
+      "strategy": "local",
+      "mae": 2.970280567968754,
+      "sign": NaN,
+      "coverage": 91.25,
+      "mae_lo": 2.8376293500562317,
+      "mae_hi": 3.1204428808649642
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 200,
+      "strategy": "transfer",
+      "mae": 12.776231214801543,
+      "sign": NaN,
+      "coverage": 96.925,
+      "mae_lo": 11.441940729256501,
+      "mae_hi": 14.387546567646224
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "combined",
+      "mae": 13.458561096857023,
+      "sign": 72.96416666666667,
+      "coverage": 94.79916666666666,
+      "mae_lo": 12.388053594728506,
+      "mae_hi": 14.4216267330259
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "combined_gap",
+      "mae": 8.915813456400686,
+      "sign": 79.11583333333333,
+      "coverage": 95.16333333333333,
+      "mae_lo": 8.204198328136952,
+      "mae_hi": 9.620088781973221
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "local",
+      "mae": 16.384359900638053,
+      "sign": 67.1625,
+      "coverage": 93.00166666666667,
+      "mae_lo": 15.339151724780425,
+      "mae_hi": 17.51012752589043
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "transfer",
+      "mae": 9.59321456538173,
+      "sign": 78.93166666666667,
+      "coverage": 99.98333333333333,
+      "mae_lo": 9.006924165408185,
+      "mae_hi": 10.262442843759976
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "combined",
+      "mae": 11.53530176160221,
+      "sign": 76.51833333333333,
+      "coverage": 92.59833333333333,
+      "mae_lo": 10.699561944521404,
+      "mae_hi": 12.374671155117204
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "combined_gap",
+      "mae": 8.356610876035745,
+      "sign": 80.53333333333333,
+      "coverage": 94.13083333333333,
+      "mae_lo": 7.793369222400665,
+      "mae_hi": 8.944445333375317
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "local",
+      "mae": 12.958173016917852,
+      "sign": 72.575,
+      "coverage": 91.78333333333333,
+      "mae_lo": 12.053293722948686,
+      "mae_hi": 13.91106191232067
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "transfer",
+      "mae": 9.596451713393291,
+      "sign": 79.01,
+      "coverage": 99.98583333333333,
+      "mae_lo": 9.018861547041464,
+      "mae_hi": 10.26209396607936
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "combined",
+      "mae": 9.044140640592401,
+      "sign": 79.985,
+      "coverage": 92.05083333333333,
+      "mae_lo": 8.30310599754623,
+      "mae_hi": 9.803516145311274
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "combined_gap",
+      "mae": 7.324463170460726,
+      "sign": 82.22083333333333,
+      "coverage": 93.1975,
+      "mae_lo": 6.760869284308428,
+      "mae_hi": 7.909096198870065
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "local",
+      "mae": 9.679625163669018,
+      "sign": 78.075,
+      "coverage": 91.73333333333333,
+      "mae_lo": 8.848914868511951,
+      "mae_hi": 10.593987745382591
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "transfer",
+      "mae": 9.607211072162237,
+      "sign": 78.91583333333334,
+      "coverage": 99.98166666666667,
+      "mae_lo": 9.024065305376336,
+      "mae_hi": 10.276834642942262
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "combined",
+      "mae": 7.289037052374262,
+      "sign": 82.81261782078673,
+      "coverage": 89.3443927778476,
+      "mae_lo": 6.702814032439497,
+      "mae_hi": 7.877871663706395
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "combined_gap",
+      "mae": 6.4621452886117705,
+      "sign": 84.08780528674961,
+      "coverage": 90.35231033471577,
+      "mae_lo": 5.960787735029928,
+      "mae_hi": 6.963025115623988
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "local",
+      "mae": 7.54094506324139,
+      "sign": 81.70164634912655,
+      "coverage": 89.43152779523271,
+      "mae_lo": 6.932293163352501,
+      "mae_hi": 8.159392222423476
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "transfer",
+      "mae": 9.680020533149257,
+      "sign": 78.80189351095471,
+      "coverage": 99.98156759247622,
+      "mae_lo": 9.088498136403462,
+      "mae_hi": 10.355844498729443
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 25,
+      "strategy": "combined",
+      "mae": 7.055491582605114,
+      "sign": NaN,
+      "coverage": 93.54166666666667,
+      "mae_lo": 6.614021694448139,
+      "mae_hi": 7.502058704158205
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 25,
+      "strategy": "local",
+      "mae": 7.4283878479262855,
+      "sign": NaN,
+      "coverage": 93.0,
+      "mae_lo": 6.958671852503426,
+      "mae_hi": 7.928939743207557
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 25,
+      "strategy": "transfer",
+      "mae": 12.996803837030505,
+      "sign": NaN,
+      "coverage": 97.21666666666667,
+      "mae_lo": 11.685439065344525,
+      "mae_hi": 14.557431611516531
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 50,
+      "strategy": "combined",
+      "mae": 5.422821633145266,
+      "sign": NaN,
+      "coverage": 92.21666666666667,
+      "mae_lo": 5.205212691761631,
+      "mae_hi": 5.643981283820211
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 50,
+      "strategy": "local",
+      "mae": 5.5617409170149354,
+      "sign": NaN,
+      "coverage": 92.3125,
+      "mae_lo": 5.317273346840134,
+      "mae_hi": 5.806143420449558
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 50,
+      "strategy": "transfer",
+      "mae": 13.004531447359891,
+      "sign": NaN,
+      "coverage": 97.20416666666667,
+      "mae_lo": 11.693216532827153,
+      "mae_hi": 14.567539451636582
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 100,
+      "strategy": "combined",
+      "mae": 3.9397788696411227,
+      "sign": NaN,
+      "coverage": 92.725,
+      "mae_lo": 3.6840090815886817,
+      "mae_hi": 4.21209598780618
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 100,
+      "strategy": "local",
+      "mae": 3.984289035926156,
+      "sign": NaN,
+      "coverage": 92.75,
+      "mae_lo": 3.7271719018842813,
+      "mae_hi": 4.26612601548687
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 100,
+      "strategy": "transfer",
+      "mae": 13.00547155945223,
+      "sign": NaN,
+      "coverage": 97.21666666666667,
+      "mae_lo": 11.698809815263726,
+      "mae_hi": 14.55975793446934
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 200,
+      "strategy": "combined",
+      "mae": 2.9471493443782193,
+      "sign": NaN,
+      "coverage": 91.17916666666666,
+      "mae_lo": 2.8138847088295877,
+      "mae_hi": 3.0973347531103377
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 200,
+      "strategy": "local",
+      "mae": 2.970280567968754,
+      "sign": NaN,
+      "coverage": 91.25,
+      "mae_lo": 2.8376293500562317,
+      "mae_hi": 3.1204428808649642
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 200,
+      "strategy": "transfer",
+      "mae": 13.013605202018946,
+      "sign": NaN,
+      "coverage": 97.25416666666666,
+      "mae_lo": 11.707176374981882,
+      "mae_hi": 14.559569364989548
+    }
+  ],
+  "gain_combined_over_local": [
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "combined",
+      "gain": 3.3945725024855182,
+      "gain_lo": 2.8488428669023813,
+      "gain_hi": 4.063841981126066
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "combined",
+      "gain": 1.7445855840698261,
+      "gain_lo": 1.3392702118083608,
+      "gain_hi": 2.2034834921811
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "combined",
+      "gain": 0.8220543429573208,
+      "gain_lo": 0.6165577293727066,
+      "gain_hi": 1.0565510025559706
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "combined",
+      "gain": 0.3311898374507356,
+      "gain_lo": 0.22813083483668484,
+      "gain_hi": 0.45392619268212114
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 25,
+      "strategy": "combined",
+      "gain": 0.34909778277456116,
+      "gain_lo": 0.2230199929317492,
+      "gain_hi": 0.47398655392778005
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 50,
+      "strategy": "combined",
+      "gain": 0.12770930319383922,
+      "gain_lo": 0.05760902659276297,
+      "gain_hi": 0.18463881699876505
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 100,
+      "strategy": "combined",
+      "gain": 0.039680799932614974,
+      "gain_lo": 0.01567867807984049,
+      "gain_hi": 0.06596651803023053
+    },
+    {
+      "scenario": "same",
+      "quantity": "level",
+      "n": 200,
+      "strategy": "combined",
+      "gain": 0.02237772101288682,
+      "gain_lo": 0.009845462205373212,
+      "gain_hi": 0.034131934614720014
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "combined",
+      "gain": 2.9257988037810296,
+      "gain_lo": 2.4004522398578336,
+      "gain_hi": 3.545877180255921
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "combined",
+      "gain": 1.422871255315643,
+      "gain_lo": 1.060907247640638,
+      "gain_hi": 1.8311751504882108
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "combined",
+      "gain": 0.6354845230766166,
+      "gain_lo": 0.47181706857143824,
+      "gain_hi": 0.8228717627020078
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "combined",
+      "gain": 0.2519080108671279,
+      "gain_lo": 0.17223385505822808,
+      "gain_hi": 0.34092274424711694
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 25,
+      "strategy": "combined",
+      "gain": 0.37289626532117115,
+      "gain_lo": 0.2561644236093069,
+      "gain_hi": 0.485439709038553
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 50,
+      "strategy": "combined",
+      "gain": 0.13891928386966956,
+      "gain_lo": 0.0711985844272881,
+      "gain_hi": 0.19429863339109635
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 100,
+      "strategy": "combined",
+      "gain": 0.044510166285033126,
+      "gain_lo": 0.023023813028420492,
+      "gain_hi": 0.06771216229279943
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "level",
+      "n": 200,
+      "strategy": "combined",
+      "gain": 0.023131223590534766,
+      "gain_lo": 0.010811467690196109,
+      "gain_hi": 0.03479356185010494
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "combined_gap",
+      "gain": 8.928125818127828,
+      "gain_lo": 8.294485429571857,
+      "gain_hi": 9.55157076056515
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "combined_gap",
+      "gain": 5.72363555264451,
+      "gain_lo": 5.217263450024872,
+      "gain_hi": 6.276960454543599
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "combined_gap",
+      "gain": 3.1050539199155276,
+      "gain_lo": 2.733363437637266,
+      "gain_hi": 3.5335431016833
+    },
+    {
+      "scenario": "same",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "combined_gap",
+      "gain": 1.471561395057666,
+      "gain_lo": 1.2505431934886235,
+      "gain_hi": 1.736636818786246
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 25,
+      "strategy": "combined_gap",
+      "gain": 7.468546444237367,
+      "gain_lo": 6.910305888011651,
+      "gain_hi": 8.074699728037851
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 50,
+      "strategy": "combined_gap",
+      "gain": 4.601562140882107,
+      "gain_lo": 4.167166785213872,
+      "gain_hi": 5.088646181968616
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 100,
+      "strategy": "combined_gap",
+      "gain": 2.3551619932082914,
+      "gain_lo": 2.027511500340652,
+      "gain_hi": 2.7475975848255416
+    },
+    {
+      "scenario": "small_cross",
+      "quantity": "gap",
+      "n": 200,
+      "strategy": "combined_gap",
+      "gain": 1.0787997746296192,
+      "gain_lo": 0.8987459785199895,
+      "gain_hi": 1.2964363627724875
+    }
+  ]
+}

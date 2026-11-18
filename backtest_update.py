@@ -31,7 +31,10 @@ Reported for every scenario, strategy and n: MAE of levels and gaps (points),
 share of gaps with the right sign, coverage of 95% intervals, and the gain of
 combined over local; 95% intervals from bootstrap resamples of target countries.
 
-Usage: python backtest_update.py --issp metadata/ZA7650_v2-0-0.dta
+Usage: python backtest_update.py --issp metadata/ZA7650_v2-0-0.dta [--inflate k]
+With --inflate k every prior keeps its mean and has its SD multiplied by k (the
+recalibration factor estimated by recalibrate_intervals.py); outputs then carry
+the suffix _k<k>.
 Outputs (transport_output): backtest_update_cases.csv (aggregated over
 replications) and backtest_update_summary.json
 """
@@ -64,6 +67,14 @@ def beta_from_draws(d: np.ndarray, m_max: float = 1e4) -> tuple[float, float]:
     return p * m, (1 - p) * m
 
 
+def inflate_beta(ab: tuple[float, float], k: float) -> tuple[float, float]:
+    """Beta prior with the same mean and k^2 times the variance (k = 1: unchanged)."""
+    a, b = ab
+    m = a + b
+    m2 = max((m + 1) / k**2 - 1, 0.5)
+    return a / m * m2, b / m * m2
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--issp", type=Path, default=Path("metadata/ZA7650_v2-0-0.dta"))
@@ -72,7 +83,11 @@ def main() -> None:
     ap.add_argument("--draws", type=int, default=200)
     ap.add_argument("--reps", type=int, default=20)
     ap.add_argument("--boot", type=int, default=1000)
+    ap.add_argument("--inflate", type=float, default=1.0,
+                    help="multiply the prior SD by k (recalibration factor from recalibrate_intervals.py)")
     args = ap.parse_args()
+    k_inf = args.inflate
+    tag = "" if k_inf == 1.0 else f"_k{k_inf:g}"
     rng = np.random.default_rng(SEED)
     preds, outcomes = list(PREDICTORS), list(OUTCOMES)
 
@@ -140,14 +155,14 @@ def main() -> None:
                 a0 = rng.normal(p["a0_mean"], p["a0_sd"], size=(d, 1))
                 lin = xe @ (a0 * bd + rng.normal(0.0, p["eta_sd"], size=bd.shape)).T
                 pr = norm.cdf(calibrate(lin, we, b0) + rng.normal(0.0, p["level_sd"], size=d) + lin)
-                priors = {"level": beta_from_draws(np.average(pr, axis=0, weights=we))}
+                priors = {"level": inflate_beta(beta_from_draws(np.average(pr, axis=0, weights=we)), k_inf)}
                 me = segments(xe)
                 for j in preds:
                     if me[j].sum() >= 10 and (~me[j]).sum() >= 10:
                         d1 = np.average(pr[me[j]], axis=0, weights=we[me[j]])
                         d0 = np.average(pr[~me[j]], axis=0, weights=we[~me[j]])
-                        priors[j] = (beta_from_draws(d1), beta_from_draws(d0),
-                                     (float((d1 - d0).mean()), float(max((d1 - d0).std(), 1e-4))))
+                        priors[j] = (inflate_beta(beta_from_draws(d1), k_inf), inflate_beta(beta_from_draws(d0), k_inf),
+                                     (float((d1 - d0).mean()), k_inf * float(max((d1 - d0).std(), 1e-4))))
                 acc = {}
                 for rec in reps:
                     n = rec["n"]
@@ -197,7 +212,7 @@ def main() -> None:
 
     cases = pd.DataFrame(rows)
     args.out.mkdir(parents=True, exist_ok=True)
-    cases.to_csv(args.out / "backtest_update_cases.csv", index=False)
+    cases.to_csv(args.out / f"backtest_update_cases{tag}.csv", index=False)
 
     def agg(g):
         wts = g["cases"]
@@ -226,13 +241,13 @@ def main() -> None:
                                    "gain_hi": bg.quantile(0.975, axis=1)}).dropna(subset=["gain"]).reset_index())
     gains = pd.concat(gains, ignore_index=True)
     summary = {"sizes": list(SIZES), "reps": args.reps, "draws": args.draws, "seed": SEED,
-               "source_n": args.source_n, "prior": "transport-adjusted, leave-region-out",
+               "source_n": args.source_n, "prior": "transport-adjusted, leave-region-out", "inflate": k_inf,
                "table": table.to_dict(orient="records"), "gain_combined_over_local": gains.to_dict(orient="records")}
-    (args.out / "backtest_update_summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    (args.out / f"backtest_update_summary{tag}.json").write_text(json.dumps(summary, indent=2) + "\n")
     show = table.pivot_table(index=["scenario", "quantity", "n"], columns="strategy", values=["mae", "sign", "coverage"])
     print(show.round(1).to_string())
     print(gains.round(2).to_string(index=False))
-    print("->", args.out / "backtest_update_summary.json")
+    print("->", args.out / f"backtest_update_summary{tag}.json")
 
 
 if __name__ == "__main__":
