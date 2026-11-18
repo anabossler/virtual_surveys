@@ -1,0 +1,155 @@
+d=3 n=500: calibrated gamma 3.0  (19s)
+   rep 1: P(true) P1 0.97 P2 0.61
+   rep 2: P(true) P1 0.97 P2 0.72
+   rep 3: P(true) P1 0.94 P2 0.51
+   rep 4: P(true) P1 0.84 P2 0.55
+   rep 5: P(true) P1 0.98 P2 0.71
+   rep 6: P(true) P1 0.98 P2 0.55
+   rep 7: P(true) P1 0.03 P2 0.31
+   rep 8: P(true) P1 0.59 P2 0.66
+   rep 9: P(true) P1 0.97 P2 0.66
+   rep 10: P(true) P1 0.98 P2 0.73
+d=3 n=1000: calibrated gamma 3.0  (55s)
+   rep 1: P(true) P1 0.01 P2 0.00
+   rep 2: P(true) P1 0.98 P2 0.80
+   rep 3: P(true) P1 0.94 P2 0.38
+   rep 4: P(true) P1 0.89 P2 0.28
+   rep 5: P(true) P1 0.99 P2 0.73
+   rep 6: P(true) P1 0.99 P2 0.82
+   rep 7: P(true) P1 0.98 P2 0.80
+   rep 8: P(true) P1 0.95 P2 0.46
+   rep 9: P(true) P1 0.97 P2 0.63
+   rep 10: P(true) P1 0.99 P2 0.75
+d=3 n=5000: calibrated gamma 1.0  (84s)
+   rep 1: P(true) P1 0.97 P2 0.88
+   rep 2: P(true) P1 0.91 P2 0.77
+   rep 3: P(true) P1 0.85 P2 0.68
+   rep 4: P(true) P1 0.92 P2 0.82
+   rep 5: P(true) P1 0.94 P2 0.84
+   rep 6: P(true) P1 0.90 P2 0.79
+   rep 7: P(true) P1 0.93 P2 0.84
+   rep 8: P(true) P1 0.94 P2 0.89
+   rep 9: P(true) P1 0.97 P2 0.86
+   rep 10: P(true) P1 0.90 P2 0.73
+d=4 n=1000: calibrated gamma 2.0  (126s)
+   rep 1: P(true) P1 0.86 P2 0.41
+   rep 2: P(true) P1 0.85 P2 0.43
+   rep 3: P(true) P1 0.91 P2 0.65
+   rep 4: P(true) P1 0.86 P2 0.56
+   rep 5: P(true) P1 0.83 P2 0.40
+   rep 6: P(true) P1 0.92 P2 0.54
+   rep 7: P(true) P1 0.91 P2 0.58
+   rep 8: P(true) P1 0.93 P2 0.66
+   rep 9: P(true) P1 0.89 P2 0.49
+   rep 10: P(true) P1 0.91 P2 0.50
+d=4 n=5000: calibrated gamma 2.0  (167s)
+   rep 1: P(true) P1 0.97 P2 0.78
+   rep 2: P(true) P1 0.92 P2 0.66
+   rep 3: P(true) P1 0.97 P2 0.77
+   rep 4: P(true) P1 0.94 P2 0.72
+   rep 5: P(true) P1 0.98 P2 0.84
+   rep 6: P(true) P1 0.98 P2 0.80
+   rep 7: P(true) P1 0.96 P2 0.76
+   rep 8: P(true) P1 0.96 P2 0.78
+   rep 9: P(true) P1 0.96 P2 0.69
+   rep 10: P(true) P1 0.94 P2 0.64
+d=7 n=2000: calibrated gamma 14.0  (323s)
+   rep 1: P(true) P1 0.79 P2 0.14
+   rep 2: P(true) P1 1.00 P2 0.26
+   rep 3: P(true) P1 0.66 P2 0.10
+   rep 4: P(true) P1 1.00 P2 0.16
+   rep 5: P(true) P1 0.70 P2 0.10
+   rep 6: P(true) P1 1.00 P2 0.22
+   rep 7: P(true) P1 0.90 P2 0.13
+   rep 8: P(true) P1 1.00 P2 0.07
+   rep 9: P(true) P1 0.55 P2 0.06
+   rep 10: P(true) P1 1.00 P2 0.23
+d=7 n=5000: calibrated gamma 8.0  (472s)
+   rep 1: P(true) P1 0.97 P2 0.14
+   rep 2: P(true) P1 0.39 P2 0.15
+   rep 3: P(true) P1 1.00 P2 0.17
+   rep 4: P(true) P1 0.99 P2 0.40
+   rep 5: P(true) P1 1.00 P2 0.27
+   rep 6: P(true) P1 0.34 P2 0.06
+   rep 7: P(true) P1 0.98 P2 0.09
+   rep 8: P(true) P1 0.99 P2 0.01
+   rep 9: P(true) P1 1.00 P2 0.28
+   rep 10: P(true) P1 1.00 P2 0.08
+
+Network posterior (cf. Table 3): replications with true class on top - mean P(true) | others
+  d3_n500    P1:  9 - 0.91 / 0.03   gamma=3.0
+  d3_n500    P2: 10 - 0.60 / nan   gamma=0
+  d3_n1000   P1:  9 - 0.96 / 0.01   gamma=3.0
+  d3_n1000   P2:  9 - 0.63 / 0.00   gamma=0
+  d3_n5000   P1: 10 - 0.92 / nan   gamma=1.0
+  d3_n5000   P2: 10 - 0.81 / nan   gamma=0
+  d4_n1000   P1: 10 - 0.89 / nan   gamma=2.0
+  d4_n1000   P2: 10 - 0.52 / nan   gamma=0
+  d4_n5000   P1: 10 - 0.96 / nan   gamma=2.0
+  d4_n5000   P2: 10 - 0.74 / nan   gamma=0
+  d7_n2000   P1: 10 - 0.86 / nan   gamma=14.0
+  d7_n2000   P2:  8 - 0.17 / 0.07   gamma=0
+  d7_n5000   P1:  9 - 0.92 / 0.34   gamma=8.0
+  d7_n5000   P2:  5 - 0.25 / 0.07   gamma=0
+
+Synthetic-data statistics, mean over replications (|error| vs original; S1 interval covers original?)
+  d3_n500    oic   P1: |err| S1 0.3005 S2 0.2361 S3 0.2265
+  d3_n500    oic-combined P1: S1 0.934 S2 0.765
+  d3_n500    oic   P2: |err| S1 0.2920 S2 0.1958 S3 0.2248
+  d3_n500    oic-combined P2: S1 0.971 S2 0.841
+  d3_n500    mle   P1: |err| S1 0.0056 S2 0.0107 S3 0.0260   covers truth S1 100% S2 100%
+  d3_n500    mle   P2: |err| S1 0.0028 S2 0.0110 S3 0.0254   covers truth S1 100% S2 100%
+  d3_n500    pv12  P1: |err| S1 0.0768 S2 0.0637 S3 0.0052   covers truth S1 100% S2 90%
+  d3_n500    pv12  P2: |err| S1 0.0382 S2 0.0065 S3 0.0793   covers truth S1 100% S2 90%
+  d3_n1000   oic   P1: |err| S1 0.2879 S2 0.2271 S3 0.1843
+  d3_n1000   oic-combined P1: S1 0.965 S2 0.839
+  d3_n1000   oic   P2: |err| S1 0.2861 S2 0.2106 S3 0.3054
+  d3_n1000   oic-combined P2: S1 0.975 S2 0.763
+  d3_n1000   mle   P1: |err| S1 0.0015 S2 0.0052 S3 0.0147   covers truth S1 100% S2 100%
+  d3_n1000   mle   P2: |err| S1 0.0012 S2 0.0043 S3 0.0267   covers truth S1 100% S2 100%
+  d3_n1000   pv12  P1: |err| S1 0.0019 S2 0.0000 S3 0.0000   covers truth S1 100% S2 100%
+  d3_n1000   pv12  P2: |err| S1 0.0012 S2 0.0000 S3 0.0062   covers truth S1 100% S2 100%
+  d3_n5000   oic   P1: |err| S1 0.2906 S2 0.1990 S3 0.1878
+  d3_n5000   oic-combined P1: S1 0.970 S2 0.854
+  d3_n5000   oic   P2: |err| S1 0.2905 S2 0.1993 S3 0.2324
+  d3_n5000   oic-combined P2: S1 0.971 S2 0.843
+  d3_n5000   mle   P1: |err| S1 0.0007 S2 0.0026 S3 0.0062   covers truth S1 100% S2 100%
+  d3_n5000   mle   P2: |err| S1 0.0006 S2 0.0027 S3 0.0081   covers truth S1 100% S2 100%
+  d3_n5000   pv12  P1: |err| S1 0.0000 S2 0.0000 S3 0.0000   covers truth S1 100% S2 80%
+  d3_n5000   pv12  P2: |err| S1 0.0000 S2 0.0000 S3 0.0000   covers truth S1 100% S2 80%
+  d4_n1000   oic   P1: |err| S1 0.2851 S2 0.2000 S3 0.1828
+  d4_n1000   oic-combined P1: S1 0.968 S2 0.882
+  d4_n1000   oic   P2: |err| S1 0.2929 S2 0.2020 S3 0.2264
+  d4_n1000   oic-combined P2: S1 0.967 S2 0.820
+  d4_n1000   mle   P1: |err| S1 0.0012 S2 0.0087 S3 0.0171   covers truth S1 100% S2 100%
+  d4_n1000   mle   P2: |err| S1 0.0014 S2 0.0093 S3 0.0204   covers truth S1 100% S2 100%
+  d4_n1000   pv12  P1: |err| S1 0.0009 S2 0.0002 S3 0.0000   covers truth S1 100% S2 100%
+  d4_n1000   pv12  P2: |err| S1 0.0008 S2 0.0000 S3 0.0000   covers truth S1 100% S2 100%
+  d4_n5000   oic   P1: |err| S1 0.2924 S2 0.1884 S3 0.1473
+  d4_n5000   oic-combined P1: S1 0.971 S2 0.818
+  d4_n5000   oic   P2: |err| S1 0.2859 S2 0.1913 S3 0.1821
+  d4_n5000   oic-combined P2: S1 0.976 S2 0.897
+  d4_n5000   mle   P1: |err| S1 0.0005 S2 0.0023 S3 0.0067   covers truth S1 100% S2 100%
+  d4_n5000   mle   P2: |err| S1 0.0005 S2 0.0033 S3 0.0065   covers truth S1 100% S2 100%
+  d4_n5000   pv12  P1: |err| S1 0.0000 S2 0.0000 S3 0.0000   covers truth S1 100% S2 80%
+  d4_n5000   pv12  P2: |err| S1 0.0000 S2 0.0000 S3 0.0000   covers truth S1 100% S2 80%
+  d7_n2000   oic   P1: |err| S1 0.2805 S2 0.1928 S3 0.3047
+  d7_n2000   oic-combined P1: S1 0.959 S2 0.903
+  d7_n2000   oic   P2: |err| S1 0.2938 S2 0.2179 S3 0.3168
+  d7_n2000   oic-combined P2: S1 0.971 S2 0.810
+  d7_n2000   mle   P1: |err| S1 0.0010 S2 0.0057 S3 0.0176   covers truth S1 100% S2 100%
+  d7_n2000   mle   P2: |err| S1 0.0009 S2 0.0055 S3 0.0200   covers truth S1 100% S2 100%
+  d7_n2000   pv12  P1: |err| S1 0.0003 S2 0.0000 S3 0.0000   covers truth S1 100% S2 90%
+  d7_n2000   pv12  P2: |err| S1 0.0000 S2 0.0000 S3 0.0000   covers truth S1 100% S2 100%
+  d7_n2000   pv15  P1: |err| S1 0.2911 S2 0.3818 S3 0.2396   covers truth S1 100% S2 80%
+  d7_n2000   pv15  P2: |err| S1 0.2930 S2 0.3233 S3 0.2704   covers truth S1 100% S2 80%
+  d7_n5000   oic   P1: |err| S1 0.2880 S2 0.1901 S3 0.2138
+  d7_n5000   oic-combined P1: S1 0.960 S2 0.866
+  d7_n5000   oic   P2: |err| S1 0.2919 S2 0.1644 S3 0.1855
+  d7_n5000   oic-combined P2: S1 0.972 S2 0.853
+  d7_n5000   mle   P1: |err| S1 0.0006 S2 0.0024 S3 0.0082   covers truth S1 100% S2 100%
+  d7_n5000   mle   P2: |err| S1 0.0006 S2 0.0023 S3 0.0069   covers truth S1 100% S2 100%
+  d7_n5000   pv12  P1: |err| S1 0.0000 S2 0.0000 S3 0.0000   covers truth S1 100% S2 80%
+  d7_n5000   pv12  P2: |err| S1 0.0000 S2 0.0000 S3 0.0000   covers truth S1 100% S2 90%
+  d7_n5000   pv15  P1: |err| S1 0.2998 S2 0.3401 S3 0.2281   covers truth S1 100% S2 80%
+  d7_n5000   pv15  P2: |err| S1 0.2671 S2 0.2742 S3 0.2333   covers truth S1 100% S2 70%
