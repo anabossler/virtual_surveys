@@ -1,0 +1,563 @@
+{
+  "seed": 31,
+  "construct_gradient": {
+    "tercile_cuts": [
+      0.22,
+      0.334
+    ],
+    "groups": {
+      "full_source": {
+        "same item": {
+          "mae": 7.3,
+          "sign": 86.5,
+          "neq": 245,
+          "cases": 6000,
+          "coverage_transport": 87.0
+        },
+        "near": {
+          "mae": 7.82,
+          "sign": 80.8,
+          "neq": 200,
+          "cases": 8100,
+          "coverage_transport": 84.2,
+          "item_corr_range": [
+            0.33,
+            0.71
+          ]
+        },
+        "middle": {
+          "mae": 8.43,
+          "sign": 82.4,
+          "neq": 169,
+          "cases": 7950,
+          "coverage_transport": 83.7,
+          "item_corr_range": [
+            0.22,
+            0.33
+          ]
+        },
+        "far": {
+          "mae": 10.09,
+          "sign": 77.8,
+          "neq": 114,
+          "cases": 7950,
+          "coverage_transport": 73.1,
+          "item_corr_range": [
+            -0.02,
+            0.22
+          ]
+        }
+      },
+      "small_source": {
+        "same item": {
+          "mae": 9.12,
+          "sign": 80.2,
+          "neq": 143,
+          "cases": 6000,
+          "coverage_transport": 87.2
+        },
+        "near": {
+          "mae": 9.4,
+          "sign": 76.3,
+          "neq": 133,
+          "cases": 8100,
+          "coverage_transport": 85.0,
+          "item_corr_range": [
+            0.33,
+            0.71
+          ]
+        },
+        "middle": {
+          "mae": 9.73,
+          "sign": 79.4,
+          "neq": 124,
+          "cases": 7950,
+          "coverage_transport": 87.2,
+          "item_corr_range": [
+            0.22,
+            0.33
+          ]
+        },
+        "far": {
+          "mae": 11.66,
+          "sign": 71.3,
+          "neq": 84,
+          "cases": 7950,
+          "coverage_transport": 76.3,
+          "item_corr_range": [
+            -0.02,
+            0.22
+          ]
+        }
+      }
+    },
+    "mean_item_corr_by_pair": [
+      {
+        "outcome": "avoid_products",
+        "coef_outcome": "cut_living_standard",
+        "item_corr": 0.21
+      },
+      {
+        "outcome": "avoid_products",
+        "coef_outcome": "do_right_despite_cost",
+        "item_corr": 0.27
+      },
+      {
+        "outcome": "avoid_products",
+        "coef_outcome": "pay_higher_prices",
+        "item_corr": 0.22
+      },
+      {
+        "outcome": "avoid_products",
+        "coef_outcome": "pay_higher_taxes",
+        "item_corr": 0.19
+      },
+      {
+        "outcome": "cut_living_standard",
+        "coef_outcome": "avoid_products",
+        "item_corr": 0.21
+      },
+      {
+        "outcome": "cut_living_standard",
+        "coef_outcome": "do_right_despite_cost",
+        "item_corr": 0.23
+      },
+      {
+        "outcome": "cut_living_standard",
+        "coef_outcome": "pay_higher_prices",
+        "item_corr": 0.43
+      },
+      {
+        "outcome": "cut_living_standard",
+        "coef_outcome": "pay_higher_taxes",
+        "item_corr": 0.42
+      },
+      {
+        "outcome": "do_right_despite_cost",
+        "coef_outcome": "avoid_products",
+        "item_corr": 0.27
+      },
+      {
+        "outcome": "do_right_despite_cost",
+        "coef_outcome": "cut_living_standard",
+        "item_corr": 0.23
+      },
+      {
+        "outcome": "do_right_despite_cost",
+        "coef_outcome": "pay_higher_prices",
+        "item_corr": 0.25
+      },
+      {
+        "outcome": "do_right_despite_cost",
+        "coef_outcome": "pay_higher_taxes",
+        "item_corr": 0.21
+      },
+      {
+        "outcome": "pay_higher_prices",
+        "coef_outcome": "avoid_products",
+        "item_corr": 0.22
+      },
+      {
+        "outcome": "pay_higher_prices",
+        "coef_outcome": "cut_living_standard",
+        "item_corr": 0.43
+      },
+      {
+        "outcome": "pay_higher_prices",
+        "coef_outcome": "do_right_despite_cost",
+        "item_corr": 0.25
+      },
+      {
+        "outcome": "pay_higher_prices",
+        "coef_outcome": "pay_higher_taxes",
+        "item_corr": 0.59
+      },
+      {
+        "outcome": "pay_higher_taxes",
+        "coef_outcome": "avoid_products",
+        "item_corr": 0.19
+      },
+      {
+        "outcome": "pay_higher_taxes",
+        "coef_outcome": "cut_living_standard",
+        "item_corr": 0.42
+      },
+      {
+        "outcome": "pay_higher_taxes",
+        "coef_outcome": "do_right_despite_cost",
+        "item_corr": 0.21
+      },
+      {
+        "outcome": "pay_higher_taxes",
+        "coef_outcome": "pay_higher_prices",
+        "item_corr": 0.59
+      }
+    ]
+  },
+  "competitors": {
+    "same": {
+      "all": {
+        "transfer": {
+          "mae": 7.3,
+          "sign": 86.5,
+          "neq": 245,
+          "cases": 6000,
+          "coverage_transport": 87.0
+        },
+        "proxy_own": {
+          "mae": 6.53,
+          "sign": 85.8,
+          "neq": 343,
+          "cases": 6000
+        },
+        "generic": {
+          "mae": 7.46,
+          "sign": 83.8,
+          "neq": 230,
+          "cases": 6000
+        },
+        "blend": {
+          "mae": 5.74,
+          "sign": 88.6,
+          "neq": ">400",
+          "cases": 6000
+        },
+        "no_gap": {
+          "mae": 13.52,
+          "sign": 0.0,
+          "neq": 61,
+          "cases": 6000
+        },
+        "by_predictor": {
+          "env_worry": {
+            "transfer": 10.59,
+            "proxy_own": 5.37,
+            "generic": 7.88
+          },
+          "female": {
+            "transfer": 3.92,
+            "proxy_own": 3.83,
+            "generic": 4.26
+          },
+          "high_education": {
+            "transfer": 6.06,
+            "proxy_own": 4.96,
+            "generic": 6.04
+          },
+          "recycles": {
+            "transfer": 9.48,
+            "proxy_own": 10.93,
+            "generic": 11.28
+          },
+          "under_30": {
+            "transfer": 6.46,
+            "proxy_own": 7.57,
+            "generic": 7.83
+          }
+        }
+      },
+      "ES": {
+        "transfer": {
+          "mae": 5.88,
+          "sign": 86.9,
+          "neq": ">400",
+          "cases": 375,
+          "coverage_transport": 92.8
+        },
+        "proxy_own": {
+          "mae": 6.42,
+          "sign": 76.0,
+          "neq": 362,
+          "cases": 375
+        },
+        "generic": {
+          "mae": 6.68,
+          "sign": 84.0,
+          "neq": 321,
+          "cases": 375
+        },
+        "blend": {
+          "mae": 4.83,
+          "sign": 89.3,
+          "neq": ">400",
+          "cases": 375
+        },
+        "no_gap": {
+          "mae": 12.62,
+          "sign": 0.0,
+          "neq": 71,
+          "cases": 375
+        },
+        "by_predictor": {
+          "env_worry": {
+            "transfer": 8.88,
+            "proxy_own": 8.22,
+            "generic": 7.12
+          },
+          "female": {
+            "transfer": 3.84,
+            "proxy_own": 3.2,
+            "generic": 4.45
+          },
+          "high_education": {
+            "transfer": 3.78,
+            "proxy_own": 2.76,
+            "generic": 4.48
+          },
+          "recycles": {
+            "transfer": 7.94,
+            "proxy_own": 11.54,
+            "generic": 10.9
+          },
+          "under_30": {
+            "transfer": 4.95,
+            "proxy_own": 6.38,
+            "generic": 6.46
+          }
+        }
+      }
+    },
+    "small_cross": {
+      "all": {
+        "transfer": {
+          "mae": 10.26,
+          "sign": 75.6,
+          "neq": 110,
+          "cases": 24000,
+          "coverage_transport": 82.8
+        },
+        "proxy_own": {
+          "mae": 6.53,
+          "sign": 85.8,
+          "neq": 343,
+          "cases": 24000
+        },
+        "generic": {
+          "mae": 7.46,
+          "sign": 83.8,
+          "neq": 230,
+          "cases": 24000
+        },
+        "blend": {
+          "mae": 7.36,
+          "sign": 83.3,
+          "neq": 239,
+          "cases": 24000
+        },
+        "no_gap": {
+          "mae": 13.52,
+          "sign": 0.0,
+          "neq": 61,
+          "cases": 24000
+        },
+        "by_predictor": {
+          "env_worry": {
+            "transfer": 11.51,
+            "proxy_own": 5.37,
+            "generic": 7.88
+          },
+          "female": {
+            "transfer": 5.77,
+            "proxy_own": 3.83,
+            "generic": 4.26
+          },
+          "high_education": {
+            "transfer": 8.43,
+            "proxy_own": 4.96,
+            "generic": 6.04
+          },
+          "recycles": {
+            "transfer": 14.52,
+            "proxy_own": 10.93,
+            "generic": 11.28
+          },
+          "under_30": {
+            "transfer": 11.06,
+            "proxy_own": 7.57,
+            "generic": 7.83
+          }
+        }
+      },
+      "ES": {
+        "transfer": {
+          "mae": 8.87,
+          "sign": 76.3,
+          "neq": 152,
+          "cases": 1500,
+          "coverage_transport": 88.9
+        },
+        "proxy_own": {
+          "mae": 6.42,
+          "sign": 76.0,
+          "neq": 362,
+          "cases": 1500
+        },
+        "generic": {
+          "mae": 6.68,
+          "sign": 84.0,
+          "neq": 321,
+          "cases": 1500
+        },
+        "blend": {
+          "mae": 6.51,
+          "sign": 82.5,
+          "neq": 346,
+          "cases": 1500
+        },
+        "no_gap": {
+          "mae": 12.62,
+          "sign": 0.0,
+          "neq": 71,
+          "cases": 1500
+        },
+        "by_predictor": {
+          "env_worry": {
+            "transfer": 9.59,
+            "proxy_own": 8.22,
+            "generic": 7.12
+          },
+          "female": {
+            "transfer": 5.15,
+            "proxy_own": 3.2,
+            "generic": 4.45
+          },
+          "high_education": {
+            "transfer": 6.02,
+            "proxy_own": 2.76,
+            "generic": 4.48
+          },
+          "recycles": {
+            "transfer": 14.01,
+            "proxy_own": 11.54,
+            "generic": 10.9
+          },
+          "under_30": {
+            "transfer": 9.56,
+            "proxy_own": 6.38,
+            "generic": 6.46
+          }
+        }
+      }
+    },
+    "level_proxy_own_mae": 12.23,
+    "spain_proxy_gaps_points": {
+      "female": {
+        "pay_higher_prices": -2.8,
+        "pay_higher_taxes": -3.6,
+        "cut_living_standard": 2.2,
+        "do_right_despite_cost": 0.2,
+        "avoid_products": 4.0
+      },
+      "under_30": {
+        "pay_higher_prices": -1.0,
+        "pay_higher_taxes": -5.1,
+        "cut_living_standard": 0.2,
+        "do_right_despite_cost": -10.3,
+        "avoid_products": -14.9
+      },
+      "high_education": {
+        "pay_higher_prices": 8.9,
+        "pay_higher_taxes": 7.6,
+        "cut_living_standard": 11.4,
+        "do_right_despite_cost": 3.2,
+        "avoid_products": 6.2
+      },
+      "recycles": {
+        "pay_higher_prices": 13.3,
+        "pay_higher_taxes": 12.3,
+        "cut_living_standard": 17.5,
+        "do_right_despite_cost": 32.5,
+        "avoid_products": 34.8
+      },
+      "env_worry": {
+        "pay_higher_prices": 17.1,
+        "pay_higher_taxes": 15.9,
+        "cut_living_standard": 26.4,
+        "do_right_despite_cost": 32.4,
+        "avoid_products": 31.7
+      }
+    },
+    "spain_proxy_gap_mean_points": {
+      "female": -0.0,
+      "under_30": -6.2,
+      "high_education": 7.4,
+      "recycles": 22.1,
+      "env_worry": 24.7
+    }
+  },
+  "omitted_predictors": {
+    "same": {
+      "env_worry": {
+        "mae": 6.68,
+        "sign": 79.3,
+        "neq": ">400",
+        "cases": 3600,
+        "coverage_transport": 90.6
+      },
+      "full": {
+        "mae": 6.59,
+        "sign": 79.1,
+        "neq": ">400",
+        "cases": 3600,
+        "coverage_transport": 89.8
+      },
+      "high_education": {
+        "mae": 6.66,
+        "sign": 79.4,
+        "neq": ">400",
+        "cases": 3600,
+        "coverage_transport": 89.6
+      }
+    },
+    "small_cross": {
+      "env_worry": {
+        "mae": 11.11,
+        "sign": 65.0,
+        "neq": 121,
+        "cases": 3600,
+        "coverage_transport": 84.8
+      },
+      "full": {
+        "mae": 10.93,
+        "sign": 66.0,
+        "neq": 125,
+        "cases": 3600,
+        "coverage_transport": 84.4
+      },
+      "high_education": {
+        "mae": 11.09,
+        "sign": 65.8,
+        "neq": 122,
+        "cases": 3600,
+        "coverage_transport": 84.3
+      }
+    },
+    "evaluated_predictors": [
+      "female",
+      "under_30",
+      "recycles"
+    ]
+  },
+  "leave_one_outcome_out_k": {
+    "pay_higher_prices": {
+      "k": 1.639,
+      "coverage": 93.4
+    },
+    "pay_higher_taxes": {
+      "k": 1.694,
+      "coverage": 96.0
+    },
+    "cut_living_standard": {
+      "k": 1.62,
+      "coverage": 92.5
+    },
+    "do_right_despite_cost": {
+      "k": 1.73,
+      "coverage": 97.5
+    },
+    "avoid_products": {
+      "k": 1.67,
+      "coverage": 95.0
+    }
+  }
+}
