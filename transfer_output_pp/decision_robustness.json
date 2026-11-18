@@ -1,0 +1,112 @@
+{
+  "draws": 20000,
+  "seed": 2026,
+  "central_classes": [
+    40,
+    29,
+    11
+  ],
+  "sampling": {
+    "rank_median": 0.9686826066572902,
+    "rank_mean": 0.9555639135021098,
+    "rank_p05": 0.8695721987810595,
+    "top_quartile_kept": 0.8525775000000001,
+    "all_positive": 0.9145,
+    "worry_leads_centered": 0.9844,
+    "worry_leads_contrast": 0.6891,
+    "worry_leads_per_step": 0.9999,
+    "education_leads_binary": 0.6989,
+    "female_above_recycling": 0.15175
+  },
+  "transport": {
+    "rank_median": 0.9577707454289732,
+    "rank_mean": 0.9432181516643227,
+    "rank_p05": 0.841629160806376,
+    "top_quartile_kept": 0.835015,
+    "all_positive": 0.80385,
+    "worry_leads_centered": 0.9721,
+    "worry_leads_contrast": 0.65815,
+    "worry_leads_per_step": 0.99875,
+    "education_leads_binary": 0.67275,
+    "female_above_recycling": 0.1971,
+    "class_kept_mean": 0.73403125
+  },
+  "proxies": {
+    "avoid_products": {
+      "rank_vs_central": 0.8022503516174403,
+      "rank_fi_vs_es": 0.9612283169245195,
+      "same_sign_fi_es": 4,
+      "es_positive": {
+        "female": true,
+        "under_30": false,
+        "high_education": true,
+        "recycles": true,
+        "env_worry": true
+      }
+    },
+    "cut_living_standard": {
+      "rank_vs_central": 0.9569854664791374,
+      "rank_fi_vs_es": 0.9709563994374122,
+      "same_sign_fi_es": 4,
+      "es_positive": {
+        "female": false,
+        "under_30": true,
+        "high_education": true,
+        "recycles": true,
+        "env_worry": true
+      }
+    },
+    "do_right_despite_cost": {
+      "rank_vs_central": 0.8149554617909048,
+      "rank_fi_vs_es": 0.9692920768870137,
+      "same_sign_fi_es": 4,
+      "es_positive": {
+        "female": false,
+        "under_30": false,
+        "high_education": true,
+        "recycles": true,
+        "env_worry": true
+      }
+    },
+    "pay_higher_prices": {
+      "rank_vs_central": 0.9324894514767932,
+      "rank_fi_vs_es": 0.9879981247069854,
+      "same_sign_fi_es": 5,
+      "es_positive": {
+        "female": false,
+        "under_30": true,
+        "high_education": true,
+        "recycles": true,
+        "env_worry": true
+      }
+    },
+    "pay_higher_taxes": {
+      "rank_vs_central": 0.9101734646038444,
+      "rank_fi_vs_es": 0.9693858415377402,
+      "same_sign_fi_es": 4,
+      "es_positive": {
+        "female": false,
+        "under_30": false,
+        "high_education": true,
+        "recycles": true,
+        "env_worry": true
+      }
+    }
+  },
+  "proxies_summary": {
+    "rank_vs_central_mean": 0.8833708391936239,
+    "rank_vs_central_range": [
+      0.8022503516174403,
+      0.9569854664791374
+    ],
+    "rank_fi_vs_es_mean": 0.9717721518987341,
+    "same_sign_fi_es": "21 of 25",
+    "es_positive_count": {
+      "female": 1,
+      "under_30": 2,
+      "high_education": 5,
+      "recycles": 5,
+      "env_worry": 5
+    }
+  }
+}

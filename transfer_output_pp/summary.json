@@ -1,0 +1,43 @@
+{
+  "p0": 0.38,
+  "p0_n": 301,
+  "a0": 0.8,
+  "n_draws": 5000,
+  "seed": 42,
+  "weights": "PESOFIN",
+  "codings": {
+    "centered": {
+      "n_cis": 2254,
+      "n_complete": 2133,
+      "intercept": -1.3021666930767064,
+      "population_mean": 0.37999999999997325,
+      "weighted_median": 0.3773961279169905,
+      "share_below_0.25": 0.18461398434720594,
+      "share_above_0.50": 0.2355004619129965,
+      "n_most_receptive_profile": 18,
+      "n_least_receptive_profile": 8
+    },
+    "contrast": {
+      "n_cis": 2254,
+      "n_complete": 2133,
+      "intercept": -1.4051245608784813,
+      "population_mean": 0.37999999999997885,
+      "weighted_median": 0.3987265861096738,
+      "share_below_0.25": 0.15820255748384152,
+      "share_above_0.50": 0.21333013878155827,
+      "n_most_receptive_profile": 18,
+      "n_least_receptive_profile": 8
+    },
+    "per_step": {
+      "n_cis": 2254,
+      "n_complete": 2133,
+      "intercept": -3.1367314451329826,
+      "population_mean": 0.3799999999999998,
+      "weighted_median": 0.4435670780582854,
+      "share_below_0.25": 0.28842858971767804,
+      "share_above_0.50": 0.3620899284958372,
+      "n_most_receptive_profile": 18,
+      "n_least_receptive_profile": 8
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "a0_central": 0.8,
+  "attenuation": {
+    "env_worry": 0.865,
+    "female": 0.395,
+    "high_education": 0.832,
+    "recycles": 0.808,
+    "under_30": 0.396
+  },
+  "pairs": "all ordered pairs of 16 European countries, 5 ISSP proxy outcomes"
+}

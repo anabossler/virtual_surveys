@@ -1,0 +1,714 @@
+{
+  "seed": 11,
+  "sizes": [
+    10,
+    25,
+    50,
+    100,
+    200,
+    400
+  ],
+  "levels": {
+    "mae_all_pairs": {
+      "copy": 13.22,
+      "other_mean": 9.74,
+      "composition": 11.78,
+      "ce_source": 9.47,
+      "ce_pool": 7.28,
+      "comp_ce": 9.58
+    },
+    "mae_target_ES": {
+      "copy": 11.32,
+      "other_mean": 5.68,
+      "composition": 12.5,
+      "ce_source": 9.48,
+      "ce_pool": 6.43,
+      "comp_ce": 10.23
+    },
+    "mae_FI_to_ES": {
+      "copy": 8.92,
+      "other_mean": 5.68,
+      "composition": 10.94,
+      "ce_source": 10.31,
+      "ce_pool": 6.43,
+      "comp_ce": 10.24
+    },
+    "by_outcome": {
+      "avoid_products": {
+        "copy": 12.5,
+        "other_mean": 8.67,
+        "composition": 10.85,
+        "ce_source": 9.04,
+        "ce_pool": 6.94,
+        "comp_ce": 9.44
+      },
+      "cut_living_standard": {
+        "copy": 19.14,
+        "other_mean": 14.32,
+        "composition": 18.15,
+        "ce_source": 10.59,
+        "ce_pool": 7.47,
+        "comp_ce": 11.22
+      },
+      "do_right_despite_cost": {
+        "copy": 9.41,
+        "other_mean": 6.63,
+        "composition": 7.24,
+        "ce_source": 12.81,
+        "ce_pool": 10.54,
+        "comp_ce": 12.82
+      },
+      "pay_higher_prices": {
+        "copy": 15.65,
+        "other_mean": 11.69,
+        "composition": 13.9,
+        "ce_source": 7.74,
+        "ce_pool": 5.74,
+        "comp_ce": 7.63
+      },
+      "pay_higher_taxes": {
+        "copy": 9.39,
+        "other_mean": 7.36,
+        "composition": 8.74,
+        "ce_source": 7.17,
+        "ce_pool": 5.71,
+        "comp_ce": 6.77
+      }
+    },
+    "composition_share_of_squared_level_error_removed": 0.19,
+    "application": {
+      "fi_es_mean_probit_shift": -0.1318,
+      "p0_country_effect_adjusted": 0.3309,
+      "per_outcome_shift": {
+        "pay_higher_prices": -0.3831,
+        "pay_higher_taxes": -0.2596,
+        "cut_living_standard": -0.3351,
+        "do_right_despite_cost": 0.1924,
+        "avoid_products": 0.1262
+      }
+    }
+  },
+  "curves": {
+    "all": {
+      "level": {
+        "10": 12.295,
+        "25": 7.783,
+        "50": 5.636,
+        "100": 4.065,
+        "200": 3.001,
+        "400": 2.402
+      },
+      "gap_female": {
+        "10": 25.637,
+        "25": 15.967,
+        "50": 11.318,
+        "100": 8.092,
+        "200": 6.08,
+        "400": 4.781
+      },
+      "gap_under_30": {
+        "10": 27.884,
+        "25": 24.908,
+        "50": 18.376,
+        "100": 12.929,
+        "200": 9.347,
+        "400": 7.322
+      },
+      "gap_high_education": {
+        "10": 28.103,
+        "25": 18.131,
+        "50": 12.937,
+        "100": 9.192,
+        "200": 6.742,
+        "400": 5.462
+      },
+      "gap_recycles": {
+        "10": 24.948,
+        "25": 23.181,
+        "50": 20.331,
+        "100": 15.41,
+        "200": 10.997,
+        "400": 8.694
+      },
+      "gap_env_worry": {
+        "10": 25.406,
+        "25": 15.855,
+        "50": 11.21,
+        "100": 8.023,
+        "200": 5.894,
+        "400": 4.79
+      },
+      "rank_corr": {
+        "10": 0.235,
+        "25": 0.355,
+        "50": 0.465,
+        "100": 0.58,
+        "200": 0.684,
+        "400": 0.751
+      },
+      "top1": {
+        "10": 0.277,
+        "25": 0.367,
+        "50": 0.434,
+        "100": 0.513,
+        "200": 0.607,
+        "400": 0.667
+      },
+      "gap_all": {
+        "10": 26.396,
+        "25": 19.609,
+        "50": 14.834,
+        "100": 10.729,
+        "200": 7.812,
+        "400": 6.21
+      }
+    },
+    "ES": {
+      "level": {
+        "10": 11.997,
+        "25": 6.909,
+        "50": 5.078,
+        "100": 3.731,
+        "200": 2.545,
+        "400": 2.019
+      },
+      "gap_female": {
+        "10": 24.916,
+        "25": 14.494,
+        "50": 10.788,
+        "100": 7.473,
+        "200": 5.235,
+        "400": 3.884
+      },
+      "gap_under_30": {
+        "10": 26.091,
+        "25": 23.135,
+        "50": 15.649,
+        "100": 10.271,
+        "200": 7.453,
+        "400": 5.72
+      },
+      "gap_high_education": {
+        "10": 26.403,
+        "25": 15.546,
+        "50": 11.258,
+        "100": 7.743,
+        "200": 5.487,
+        "400": 4.297
+      },
+      "gap_recycles": {
+        "10": 22.344,
+        "25": 15.69,
+        "50": 11.256,
+        "100": 7.952,
+        "200": 5.634,
+        "400": 4.134
+      },
+      "gap_env_worry": {
+        "10": 23.056,
+        "25": 14.847,
+        "50": 10.353,
+        "100": 7.084,
+        "200": 4.981,
+        "400": 3.947
+      },
+      "rank_corr": {
+        "10": 0.321,
+        "25": 0.48,
+        "50": 0.605,
+        "100": 0.744,
+        "200": 0.84,
+        "400": 0.891
+      },
+      "top1": {
+        "10": 0.257,
+        "25": 0.324,
+        "50": 0.41,
+        "100": 0.473,
+        "200": 0.581,
+        "400": 0.639
+      },
+      "gap_all": {
+        "10": 24.562,
+        "25": 16.742,
+        "50": 11.861,
+        "100": 8.105,
+        "200": 5.758,
+        "400": 4.396
+      }
+    }
+  },
+  "equivalents_all": {
+    "same": {
+      "level_mae": 13.22,
+      "level_neq": "<10",
+      "gap_mae": 7.3,
+      "gap_neq": 245,
+      "by_predictor": {
+        "env_worry": {
+          "mae": 10.59,
+          "neq": 56
+        },
+        "female": {
+          "mae": 3.92,
+          "neq": ">400"
+        },
+        "high_education": {
+          "mae": 6.06,
+          "neq": 285
+        },
+        "recycles": {
+          "mae": 9.48,
+          "neq": 310
+        },
+        "under_30": {
+          "mae": 6.46,
+          "neq": ">400"
+        }
+      },
+      "ranking": {
+        "rank_corr": 0.729,
+        "rank_corr_neq": 320,
+        "top1": 0.679,
+        "top1_neq": ">400",
+        "groups": 1200
+      }
+    },
+    "small": {
+      "level_mae": 13.59,
+      "level_neq": "<10",
+      "gap_mae": 9.12,
+      "gap_neq": 143,
+      "by_predictor": {
+        "env_worry": {
+          "mae": 11.62,
+          "neq": 47
+        },
+        "female": {
+          "mae": 5.1,
+          "neq": 332
+        },
+        "high_education": {
+          "mae": 7.15,
+          "neq": 175
+        },
+        "recycles": {
+          "mae": 12.87,
+          "neq": 145
+        },
+        "under_30": {
+          "mae": 8.85,
+          "neq": 234
+        }
+      },
+      "ranking": {
+        "rank_corr": 0.638,
+        "rank_corr_neq": 147,
+        "top1": 0.579,
+        "top1_neq": 163,
+        "groups": 1200
+      }
+    },
+    "cross": {
+      "level_mae": 13.21,
+      "level_neq": "<10",
+      "gap_mae": 8.77,
+      "gap_neq": 155,
+      "by_predictor": {
+        "env_worry": {
+          "mae": 10.63,
+          "neq": 56
+        },
+        "female": {
+          "mae": 4.88,
+          "neq": 376
+        },
+        "high_education": {
+          "mae": 7.4,
+          "neq": 162
+        },
+        "recycles": {
+          "mae": 11.87,
+          "neq": 171
+        },
+        "under_30": {
+          "mae": 9.08,
+          "neq": 217
+        }
+      },
+      "ranking": {
+        "rank_corr": 0.609,
+        "rank_corr_neq": 122,
+        "top1": 0.422,
+        "top1_neq": 44,
+        "groups": 4800
+      }
+    },
+    "small_cross": {
+      "level_mae": 13.6,
+      "level_neq": "<10",
+      "gap_mae": 10.26,
+      "gap_neq": 110,
+      "by_predictor": {
+        "env_worry": {
+          "mae": 11.51,
+          "neq": 47
+        },
+        "female": {
+          "mae": 5.77,
+          "neq": 232
+        },
+        "high_education": {
+          "mae": 8.43,
+          "neq": 121
+        },
+        "recycles": {
+          "mae": 14.52,
+          "neq": 113
+        },
+        "under_30": {
+          "mae": 11.06,
+          "neq": 140
+        }
+      },
+      "ranking": {
+        "rank_corr": 0.542,
+        "rank_corr_neq": 80,
+        "top1": 0.42,
+        "top1_neq": 43,
+        "groups": 4800
+      }
+    },
+    "pooled": {
+      "level_mae": 13.22,
+      "level_neq": "<10",
+      "gap_mae": 6.15,
+      "gap_neq": ">400",
+      "by_predictor": {
+        "env_worry": {
+          "mae": 9.63,
+          "neq": 69
+        },
+        "female": {
+          "mae": 3.16,
+          "neq": ">400"
+        },
+        "high_education": {
+          "mae": 5.28,
+          "neq": ">400"
+        },
+        "recycles": {
+          "mae": 7.67,
+          "neq": ">400"
+        },
+        "under_30": {
+          "mae": 5.01,
+          "neq": ">400"
+        }
+      },
+      "ranking": {
+        "rank_corr": 0.844,
+        "rank_corr_neq": ">400",
+        "top1": 0.808,
+        "top1_neq": ">400",
+        "groups": 1200
+      }
+    }
+  },
+  "equivalents_ES": {
+    "same": {
+      "level_mae": 11.34,
+      "level_neq": 11,
+      "gap_mae": 5.88,
+      "gap_neq": 192,
+      "by_predictor": {
+        "env_worry": {
+          "mae": 8.88,
+          "neq": 66
+        },
+        "female": {
+          "mae": 3.84,
+          "neq": ">400"
+        },
+        "high_education": {
+          "mae": 3.78,
+          "neq": ">400"
+        },
+        "recycles": {
+          "mae": 7.94,
+          "neq": 100
+        },
+        "under_30": {
+          "mae": 4.95,
+          "neq": ">400"
+        }
+      },
+      "ranking": {
+        "rank_corr": 0.825,
+        "rank_corr_neq": 180,
+        "top1": 0.76,
+        "top1_neq": ">400",
+        "groups": 75
+      }
+    },
+    "small": {
+      "level_mae": 11.68,
+      "level_neq": 10,
+      "gap_mae": 8.08,
+      "gap_neq": 101,
+      "by_predictor": {
+        "env_worry": {
+          "mae": 10.62,
+          "neq": 48
+        },
+        "female": {
+          "mae": 4.38,
+          "neq": 303
+        },
+        "high_education": {
+          "mae": 5.49,
+          "neq": 200
+        },
+        "recycles": {
+          "mae": 12.22,
+          "neq": 42
+        },
+        "under_30": {
+          "mae": 7.68,
+          "neq": 187
+        }
+      },
+      "ranking": {
+        "rank_corr": 0.729,
+        "rank_corr_neq": 93,
+        "top1": 0.68,
+        "top1_neq": ">400",
+        "groups": 75
+      }
+    },
+    "cross": {
+      "level_mae": 11.31,
+      "level_neq": 11,
+      "gap_mae": 7.39,
+      "gap_neq": 121,
+      "by_predictor": {
+        "env_worry": {
+          "mae": 8.36,
+          "neq": 74
+        },
+        "female": {
+          "mae": 4.56,
+          "neq": 275
+        },
+        "high_education": {
+          "mae": 4.78,
+          "neq": 296
+        },
+        "recycles": {
+          "mae": 11.27,
+          "neq": 50
+        },
+        "under_30": {
+          "mae": 7.97,
+          "neq": 173
+        }
+      },
+      "ranking": {
+        "rank_corr": 0.77,
+        "rank_corr_neq": 120,
+        "top1": 0.45,
+        "top1_neq": 78,
+        "groups": 300
+      }
+    },
+    "small_cross": {
+      "level_mae": 11.76,
+      "level_neq": 10,
+      "gap_mae": 8.87,
+      "gap_neq": 85,
+      "by_predictor": {
+        "env_worry": {
+          "mae": 9.59,
+          "neq": 57
+        },
+        "female": {
+          "mae": 5.15,
+          "neq": 208
+        },
+        "high_education": {
+          "mae": 6.02,
+          "neq": 166
+        },
+        "recycles": {
+          "mae": 14.01,
+          "neq": 32
+        },
+        "under_30": {
+          "mae": 9.56,
+          "neq": 117
+        }
+      },
+      "ranking": {
+        "rank_corr": 0.67,
+        "rank_corr_neq": 69,
+        "top1": 0.44,
+        "top1_neq": 70,
+        "groups": 300
+      }
+    },
+    "pooled": {
+      "level_mae": 11.32,
+      "level_neq": 11,
+      "gap_mae": 4.12,
+      "gap_neq": ">400",
+      "by_predictor": {
+        "env_worry": {
+          "mae": 7.02,
+          "neq": 102
+        },
+        "female": {
+          "mae": 3.27,
+          "neq": ">400"
+        },
+        "high_education": {
+          "mae": 2.32,
+          "neq": ">400"
+        },
+        "recycles": {
+          "mae": 5.68,
+          "neq": 197
+        },
+        "under_30": {
+          "mae": 2.33,
+          "neq": ">400"
+        }
+      },
+      "ranking": {
+        "rank_corr": 0.945,
+        "rank_corr_neq": ">400",
+        "top1": 1.0,
+        "top1_neq": ">400",
+        "groups": 75
+      }
+    }
+  },
+  "regions": {
+    "variable": "ES_REG",
+    "n_by_region": {
+      "9": 367,
+      "1": 347,
+      "13": 340,
+      "10": 241,
+      "12": 146,
+      "8": 139,
+      "16": 120,
+      "7": 98,
+      "2": 81,
+      "5": 79,
+      "11": 59,
+      "3": 54,
+      "14": 53,
+      "4": 40,
+      "15": 37,
+      "6": 28,
+      "17": 22,
+      "19": 2,
+      "18": 1
+    },
+    "regions_used": [
+      "9",
+      "1",
+      "13",
+      "10",
+      "12",
+      "8",
+      "16"
+    ],
+    "by_outcome": {
+      "pay_higher_prices": {
+        "level_sd_regions": 0.0,
+        "level_sd_countries": 13.21,
+        "gap_sd_regions_female": 0.0,
+        "gap_sd_countries_female": 2.53,
+        "gap_sd_regions_under_30": 0.0,
+        "gap_sd_countries_under_30": 3.93,
+        "gap_sd_regions_high_education": 0.0,
+        "gap_sd_countries_high_education": 5.69,
+        "gap_sd_regions_recycles": 0.0,
+        "gap_sd_countries_recycles": 5.07,
+        "gap_sd_regions_env_worry": 0.0,
+        "gap_sd_countries_env_worry": 10.27
+      },
+      "pay_higher_taxes": {
+        "level_sd_regions": 0.0,
+        "level_sd_countries": 7.86,
+        "gap_sd_regions_female": 0.0,
+        "gap_sd_countries_female": 1.94,
+        "gap_sd_regions_under_30": 0.0,
+        "gap_sd_countries_under_30": 2.46,
+        "gap_sd_regions_high_education": 0.0,
+        "gap_sd_countries_high_education": 5.87,
+        "gap_sd_regions_recycles": 4.01,
+        "gap_sd_countries_recycles": 3.94,
+        "gap_sd_regions_env_worry": 2.39,
+        "gap_sd_countries_env_worry": 8.26
+      },
+      "cut_living_standard": {
+        "level_sd_regions": 0.04,
+        "level_sd_countries": 16.45,
+        "gap_sd_regions_female": 4.23,
+        "gap_sd_countries_female": 3.85,
+        "gap_sd_regions_under_30": 2.52,
+        "gap_sd_countries_under_30": 8.49,
+        "gap_sd_regions_high_education": 0.0,
+        "gap_sd_countries_high_education": 5.34,
+        "gap_sd_regions_recycles": 6.02,
+        "gap_sd_countries_recycles": 8.13,
+        "gap_sd_regions_env_worry": 0.0,
+        "gap_sd_countries_env_worry": 11.78
+      },
+      "do_right_despite_cost": {
+        "level_sd_regions": 0.0,
+        "level_sd_countries": 7.89,
+        "gap_sd_regions_female": 12.95,
+        "gap_sd_countries_female": 1.77,
+        "gap_sd_regions_under_30": 0.0,
+        "gap_sd_countries_under_30": 3.72,
+        "gap_sd_regions_high_education": 0.0,
+        "gap_sd_countries_high_education": 1.56,
+        "gap_sd_regions_recycles": 0.0,
+        "gap_sd_countries_recycles": 6.07,
+        "gap_sd_regions_env_worry": 3.57,
+        "gap_sd_countries_env_worry": 3.54
+      },
+      "avoid_products": {
+        "level_sd_regions": 3.88,
+        "level_sd_countries": 11.09,
+        "gap_sd_regions_female": 2.52,
+        "gap_sd_countries_female": 3.26,
+        "gap_sd_regions_under_30": 4.62,
+        "gap_sd_countries_under_30": 5.76,
+        "gap_sd_regions_high_education": 0.0,
+        "gap_sd_countries_high_education": 4.63,
+        "gap_sd_regions_recycles": 5.68,
+        "gap_sd_countries_recycles": 8.76,
+        "gap_sd_regions_env_worry": 4.1,
+        "gap_sd_countries_env_worry": 7.95
+      }
+    },
+    "mean": {
+      "level_sd_regions": 0.78,
+      "level_sd_countries": 11.3,
+      "gap_sd_regions_female": 3.94,
+      "gap_sd_countries_female": 2.67,
+      "gap_sd_regions_under_30": 1.43,
+      "gap_sd_countries_under_30": 4.87,
+      "gap_sd_regions_high_education": 0.0,
+      "gap_sd_countries_high_education": 4.62,
+      "gap_sd_regions_recycles": 3.14,
+      "gap_sd_countries_recycles": 6.39,
+      "gap_sd_regions_env_worry": 2.01,
+      "gap_sd_countries_env_worry": 8.36
+    }
+  }
+}

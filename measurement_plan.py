@@ -38,7 +38,7 @@ from transfer_model import (
 
 CODING = "centered"
 A0_GRID = (0.50, 0.65, 0.80, 1.00)
-DELTAS = (1.0, 0.5, 0.25)
+DELTAS = (1.0, 0.5, 0.25, 0.0)  # 0.0: no prior (sample alone)
 HALF_WIDTH = 0.05
 Z = norm.ppf(0.975)
 
