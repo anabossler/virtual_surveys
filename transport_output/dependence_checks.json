@@ -1,0 +1,199 @@
+{
+  "bootstrap": {
+    "no local data": {
+      "targets": {
+        "mae": 10.13,
+        "mae_ci": [
+          9.1,
+          11.2
+        ],
+        "coverage": 95.3,
+        "coverage_ci": [
+          93.3,
+          96.9
+        ]
+      },
+      "targets x outcomes": {
+        "mae": 10.13,
+        "mae_ci": [
+          8.6,
+          11.7
+        ],
+        "coverage": 95.3,
+        "coverage_ci": [
+          92.5,
+          97.5
+        ]
+      },
+      "targets x sources": {
+        "mae": 10.13,
+        "mae_ci": [
+          9.0,
+          11.4
+        ],
+        "coverage": 95.3,
+        "coverage_ci": [
+          92.4,
+          97.8
+        ]
+      },
+      "targets x sources x outcomes": {
+        "mae": 10.13,
+        "mae_ci": [
+          8.5,
+          11.9
+        ],
+        "coverage": 95.3,
+        "coverage_ci": [
+          91.0,
+          98.2
+        ]
+      }
+    },
+    "n = 25": {
+      "targets": {
+        "mae": 9.14,
+        "mae_ci": [
+          8.4,
+          9.8
+        ],
+        "coverage": 95.3,
+        "coverage_ci": [
+          94.2,
+          96.3
+        ]
+      },
+      "targets x outcomes": {
+        "mae": 9.14,
+        "mae_ci": [
+          7.9,
+          10.3
+        ],
+        "coverage": 95.3,
+        "coverage_ci": [
+          93.6,
+          96.8
+        ]
+      },
+      "targets x sources": {
+        "mae": 9.14,
+        "mae_ci": [
+          8.3,
+          9.9
+        ],
+        "coverage": 95.3,
+        "coverage_ci": [
+          93.7,
+          96.6
+        ]
+      },
+      "targets x sources x outcomes": {
+        "mae": 9.14,
+        "mae_ci": [
+          7.9,
+          10.5
+        ],
+        "coverage": 95.3,
+        "coverage_ci": [
+          93.1,
+          96.9
+        ]
+      }
+    },
+    "n = 200": {
+      "targets": {
+        "mae": 6.51,
+        "mae_ci": [
+          6.0,
+          7.0
+        ],
+        "coverage": 92.8,
+        "coverage_ci": [
+          91.9,
+          93.6
+        ]
+      },
+      "targets x outcomes": {
+        "mae": 6.51,
+        "mae_ci": [
+          5.7,
+          7.2
+        ],
+        "coverage": 92.8,
+        "coverage_ci": [
+          91.8,
+          93.8
+        ]
+      },
+      "targets x sources": {
+        "mae": 6.51,
+        "mae_ci": [
+          6.0,
+          7.0
+        ],
+        "coverage": 92.8,
+        "coverage_ci": [
+          91.4,
+          93.9
+        ]
+      },
+      "targets x sources x outcomes": {
+        "mae": 6.51,
+        "mae_ci": [
+          5.7,
+          7.2
+        ],
+        "coverage": 92.8,
+        "coverage_ci": [
+          91.3,
+          94.2
+        ]
+      }
+    }
+  },
+  "interval_score": {
+    "k = 1": {
+      "interval_score": 72.2,
+      "width": 43.4,
+      "coverage": 89.6,
+      "excludes_zero": 5.5,
+      "sign_right_when_excluding_zero": 97.8
+    },
+    "k = 1.5": {
+      "interval_score": 68.4,
+      "width": 54.7,
+      "coverage": 95.0,
+      "excludes_zero": 0.5,
+      "sign_right_when_excluding_zero": 99.1
+    },
+    "k = 1.75": {
+      "interval_score": 69.7,
+      "width": 59.8,
+      "coverage": 96.3,
+      "excludes_zero": 0.1,
+      "sign_right_when_excluding_zero": 100.0
+    },
+    "k out of region": {
+      "interval_score": 70.0,
+      "width": 56.9,
+      "coverage": 95.3,
+      "excludes_zero": 0.1,
+      "sign_right_when_excluding_zero": 100.0
+    },
+    "own items (no local data)": {
+      "interval_score": 36.8,
+      "width": 31.0,
+      "coverage": 93.8,
+      "excludes_zero": 35.5,
+      "sign_right_when_excluding_zero": 100.0
+    },
+    "other countries (no local data)": {
+      "interval_score": 43.5,
+      "width": 35.5,
+      "coverage": 95.5,
+      "excludes_zero": 21.2,
+      "sign_right_when_excluding_zero": 98.8
+    }
+  },
+  "excludes_zero": {}
+}
