@@ -1,0 +1,460 @@
+{
+  "k_choice": {
+    "small_cross": {
+      "region": {
+        "coverage_gap": 95.3,
+        "width_gap": 56.9,
+        "mae_gap": 10.13,
+        "coverage_level": 95.5,
+        "k_values": {
+          "1.5": 2,
+          "1.75": 2
+        },
+        "update_25": {
+          "coverage": 95.3,
+          "mae": 9.14
+        },
+        "update_50": {
+          "coverage": 94.8,
+          "mae": 8.39
+        },
+        "update_100": {
+          "coverage": 93.8,
+          "mae": 7.45
+        },
+        "update_200": {
+          "coverage": 92.8,
+          "mae": 6.51
+        }
+      },
+      "region_and_outcome": {
+        "coverage_gap": 95.5,
+        "width_gap": 57.5,
+        "mae_gap": 10.15,
+        "coverage_level": 95.5,
+        "k_values": {
+          "1.5": 9,
+          "1.75": 11
+        },
+        "update_25": {
+          "coverage": 95.3,
+          "mae": 9.17
+        },
+        "update_50": {
+          "coverage": 94.9,
+          "mae": 8.42
+        },
+        "update_100": {
+          "coverage": 93.7,
+          "mae": 7.49
+        },
+        "update_200": {
+          "coverage": 93.0,
+          "mae": 6.52
+        }
+      }
+    },
+    "same": {
+      "region": {
+        "coverage_gap": 95.4,
+        "width_gap": 42.1,
+        "mae_gap": 8.01,
+        "coverage_level": 96.8,
+        "k_values": {
+          "1.5": 2,
+          "1.75": 2
+        },
+        "update_25": {
+          "coverage": 96.1,
+          "mae": 6.94
+        },
+        "update_50": {
+          "coverage": 95.9,
+          "mae": 6.59
+        },
+        "update_100": {
+          "coverage": 95.5,
+          "mae": 6.14
+        },
+        "update_200": {
+          "coverage": 94.2,
+          "mae": 5.74
+        }
+      },
+      "region_and_outcome": {
+        "coverage_gap": 95.5,
+        "width_gap": 42.8,
+        "mae_gap": 8.11,
+        "coverage_level": 95.8,
+        "k_values": {
+          "1.5": 8,
+          "1.75": 12
+        },
+        "update_25": {
+          "coverage": 96.0,
+          "mae": 7.0
+        },
+        "update_50": {
+          "coverage": 96.0,
+          "mae": 6.7
+        },
+        "update_100": {
+          "coverage": 95.6,
+          "mae": 6.14
+        },
+        "update_200": {
+          "coverage": 94.6,
+          "mae": 5.72
+        }
+      }
+    }
+  },
+  "by_outcome": {
+    "small_cross": {
+      "avoid_products": {
+        "prior_mae": 11.93,
+        "prior_coverage": 92.1,
+        "prior_width": 54.4,
+        "level_coverage": 98.6,
+        "level_mae": 11.99,
+        "n_eq": "71",
+        "local_curve": {
+          "25": 19.05,
+          "50": 14.0,
+          "100": 10.22,
+          "200": 7.36
+        },
+        "update_25": {
+          "mae": 10.41,
+          "coverage": 92.9
+        },
+        "update_50": {
+          "mae": 9.36,
+          "coverage": 92.8
+        },
+        "update_100": {
+          "mae": 8.09,
+          "coverage": 92.6
+        },
+        "update_200": {
+          "mae": 6.81,
+          "coverage": 92.7
+        }
+      },
+      "cut_living_standard": {
+        "prior_mae": 10.47,
+        "prior_coverage": 94.5,
+        "prior_width": 57.3,
+        "level_coverage": 85.6,
+        "level_mae": 18.44,
+        "n_eq": "98",
+        "local_curve": {
+          "25": 19.08,
+          "50": 13.91,
+          "100": 10.39,
+          "200": 7.61
+        },
+        "update_25": {
+          "mae": 9.12,
+          "coverage": 95.2
+        },
+        "update_50": {
+          "mae": 8.4,
+          "coverage": 94.8
+        },
+        "update_100": {
+          "mae": 7.6,
+          "coverage": 92.6
+        },
+        "update_200": {
+          "mae": 6.6,
+          "coverage": 92.0
+        }
+      },
+      "do_right_despite_cost": {
+        "prior_mae": 10.46,
+        "prior_coverage": 96.5,
+        "prior_width": 61.4,
+        "level_coverage": 100.0,
+        "level_mae": 8.82,
+        "n_eq": "122",
+        "local_curve": {
+          "25": 21.23,
+          "50": 15.36,
+          "100": 11.49,
+          "200": 8.26
+        },
+        "update_25": {
+          "mae": 10.18,
+          "coverage": 96.1
+        },
+        "update_50": {
+          "mae": 9.54,
+          "coverage": 95.1
+        },
+        "update_100": {
+          "mae": 8.4,
+          "coverage": 94.2
+        },
+        "update_200": {
+          "mae": 7.28,
+          "coverage": 92.8
+        }
+      },
+      "pay_higher_prices": {
+        "prior_mae": 9.84,
+        "prior_coverage": 96.4,
+        "prior_width": 60.2,
+        "level_coverage": 93.3,
+        "level_mae": 14.85,
+        "n_eq": "105",
+        "local_curve": {
+          "25": 18.22,
+          "50": 13.84,
+          "100": 10.06,
+          "200": 7.5
+        },
+        "update_25": {
+          "mae": 8.73,
+          "coverage": 95.8
+        },
+        "update_50": {
+          "mae": 7.94,
+          "coverage": 96.0
+        },
+        "update_100": {
+          "mae": 7.12,
+          "coverage": 94.6
+        },
+        "update_200": {
+          "mae": 6.41,
+          "coverage": 93.4
+        }
+      },
+      "pay_higher_taxes": {
+        "prior_mae": 8.03,
+        "prior_coverage": 97.9,
+        "prior_width": 54.0,
+        "level_coverage": 100.0,
+        "level_mae": 9.36,
+        "n_eq": "138",
+        "local_curve": {
+          "25": 17.2,
+          "50": 12.72,
+          "100": 9.34,
+          "200": 6.73
+        },
+        "update_25": {
+          "mae": 7.41,
+          "coverage": 96.5
+        },
+        "update_50": {
+          "mae": 6.84,
+          "coverage": 95.9
+        },
+        "update_100": {
+          "mae": 6.23,
+          "coverage": 94.5
+        },
+        "update_200": {
+          "mae": 5.48,
+          "coverage": 93.9
+        }
+      }
+    },
+    "same": {
+      "avoid_products": {
+        "prior_mae": 8.63,
+        "prior_coverage": 95.1,
+        "prior_width": 42.9,
+        "level_coverage": 98.8,
+        "level_mae": 11.51,
+        "n_eq": "152",
+        "local_curve": {
+          "25": 18.94,
+          "50": 13.87,
+          "100": 10.08,
+          "200": 7.8
+        },
+        "update_25": {
+          "mae": 7.29,
+          "coverage": 95.8
+        },
+        "update_50": {
+          "mae": 6.75,
+          "coverage": 96.2
+        },
+        "update_100": {
+          "mae": 6.28,
+          "coverage": 95.7
+        },
+        "update_200": {
+          "mae": 5.64,
+          "coverage": 95.6
+        }
+      },
+      "cut_living_standard": {
+        "prior_mae": 9.35,
+        "prior_coverage": 89.4,
+        "prior_width": 39.3,
+        "level_coverage": 84.2,
+        "level_mae": 18.13,
+        "n_eq": "128",
+        "local_curve": {
+          "25": 19.42,
+          "50": 14.39,
+          "100": 10.76,
+          "200": 7.3
+        },
+        "update_25": {
+          "mae": 7.84,
+          "coverage": 92.4
+        },
+        "update_50": {
+          "mae": 7.04,
+          "coverage": 93.9
+        },
+        "update_100": {
+          "mae": 6.62,
+          "coverage": 92.2
+        },
+        "update_200": {
+          "mae": 6.04,
+          "coverage": 92.8
+        }
+      },
+      "do_right_despite_cost": {
+        "prior_mae": 7.87,
+        "prior_coverage": 99.2,
+        "prior_width": 48.5,
+        "level_coverage": 100.0,
+        "level_mae": 8.54,
+        "n_eq": ">200",
+        "local_curve": {
+          "25": 20.78,
+          "50": 15.86,
+          "100": 11.13,
+          "200": 8.17
+        },
+        "update_25": {
+          "mae": 7.28,
+          "coverage": 99.2
+        },
+        "update_50": {
+          "mae": 7.16,
+          "coverage": 98.0
+        },
+        "update_100": {
+          "mae": 6.53,
+          "coverage": 97.9
+        },
+        "update_200": {
+          "mae": 6.21,
+          "coverage": 95.4
+        }
+      },
+      "pay_higher_prices": {
+        "prior_mae": 8.19,
+        "prior_coverage": 96.0,
+        "prior_width": 43.3,
+        "level_coverage": 96.2,
+        "level_mae": 14.56,
+        "n_eq": "157",
+        "local_curve": {
+          "25": 18.74,
+          "50": 13.69,
+          "100": 10.13,
+          "200": 7.32
+        },
+        "update_25": {
+          "mae": 6.78,
+          "coverage": 96.5
+        },
+        "update_50": {
+          "mae": 6.8,
+          "coverage": 95.5
+        },
+        "update_100": {
+          "mae": 5.94,
+          "coverage": 96.1
+        },
+        "update_200": {
+          "mae": 5.59,
+          "coverage": 94.8
+        }
+      },
+      "pay_higher_taxes": {
+        "prior_mae": 6.53,
+        "prior_coverage": 97.7,
+        "prior_width": 39.7,
+        "level_coverage": 100.0,
+        "level_mae": 8.98,
+        "n_eq": ">200",
+        "local_curve": {
+          "25": 17.32,
+          "50": 13.11,
+          "100": 9.05,
+          "200": 6.85
+        },
+        "update_25": {
+          "mae": 5.8,
+          "coverage": 96.3
+        },
+        "update_50": {
+          "mae": 5.76,
+          "coverage": 96.2
+        },
+        "update_100": {
+          "mae": 5.32,
+          "coverage": 95.9
+        },
+        "update_200": {
+          "mae": 5.14,
+          "coverage": 94.6
+        }
+      }
+    }
+  },
+  "own_items_by_outcome": {
+    "avoid_products": {
+      "own_0": 7.51,
+      "joint_0": 11.93,
+      "own_mrp_25": 7.02,
+      "joint_25": 10.41,
+      "own_mrp_200": 5.65,
+      "joint_200": 6.81
+    },
+    "cut_living_standard": {
+      "own_0": 5.86,
+      "joint_0": 10.47,
+      "own_mrp_25": 5.36,
+      "joint_25": 9.12,
+      "own_mrp_200": 4.78,
+      "joint_200": 6.6
+    },
+    "do_right_despite_cost": {
+      "own_0": 7.11,
+      "joint_0": 10.46,
+      "own_mrp_25": 6.44,
+      "joint_25": 10.18,
+      "own_mrp_200": 5.72,
+      "joint_200": 7.28
+    },
+    "pay_higher_prices": {
+      "own_0": 5.14,
+      "joint_0": 9.84,
+      "own_mrp_25": 4.69,
+      "joint_25": 8.73,
+      "own_mrp_200": 4.25,
+      "joint_200": 6.41
+    },
+    "pay_higher_taxes": {
+      "own_0": 7.05,
+      "joint_0": 8.03,
+      "own_mrp_25": 4.86,
+      "joint_25": 7.41,
+      "own_mrp_200": 4.09,
+      "joint_200": 5.48
+    }
+  }
+}

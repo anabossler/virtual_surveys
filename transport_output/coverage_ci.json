@@ -1,0 +1,902 @@
+{
+  "joint": {
+    "same|prior|gap": {
+      "mae": 8.01,
+      "mae_ci": [
+        7.1,
+        8.9
+      ],
+      "coverage": 95.4,
+      "coverage_ci": [
+        93.5,
+        97.1
+      ],
+      "cases": 6000,
+      "countries": 16
+    },
+    "same|prior|level": {
+      "mae": 12.43,
+      "mae_ci": [
+        10.7,
+        14.3
+      ],
+      "coverage": 96.8,
+      "coverage_ci": [
+        94.2,
+        98.8
+      ],
+      "cases": 1200,
+      "countries": 16
+    },
+    "same|n25|gap": {
+      "mae": 6.94,
+      "mae_ci": [
+        6.3,
+        7.6
+      ],
+      "coverage": 96.1,
+      "coverage_ci": [
+        94.6,
+        97.3
+      ],
+      "cases": 6000,
+      "countries": 16
+    },
+    "same|n25|level": {
+      "mae": 6.33,
+      "mae_ci": [
+        6.0,
+        6.8
+      ],
+      "coverage": 95.6,
+      "coverage_ci": [
+        94.4,
+        96.6
+      ],
+      "cases": 1200,
+      "countries": 16
+    },
+    "same|n50|gap": {
+      "mae": 6.59,
+      "mae_ci": [
+        6.0,
+        7.2
+      ],
+      "coverage": 95.8,
+      "coverage_ci": [
+        94.9,
+        96.7
+      ],
+      "cases": 6000,
+      "countries": 16
+    },
+    "same|n50|level": {
+      "mae": 4.83,
+      "mae_ci": [
+        4.6,
+        5.0
+      ],
+      "coverage": 94.7,
+      "coverage_ci": [
+        93.8,
+        95.6
+      ],
+      "cases": 1200,
+      "countries": 16
+    },
+    "same|n100|gap": {
+      "mae": 6.14,
+      "mae_ci": [
+        5.6,
+        6.7
+      ],
+      "coverage": 95.5,
+      "coverage_ci": [
+        94.5,
+        96.5
+      ],
+      "cases": 6000,
+      "countries": 16
+    },
+    "same|n100|level": {
+      "mae": 3.54,
+      "mae_ci": [
+        3.4,
+        3.7
+      ],
+      "coverage": 95.7,
+      "coverage_ci": [
+        94.4,
+        96.8
+      ],
+      "cases": 1200,
+      "countries": 16
+    },
+    "same|n200|gap": {
+      "mae": 5.74,
+      "mae_ci": [
+        5.2,
+        6.3
+      ],
+      "coverage": 94.2,
+      "coverage_ci": [
+        93.2,
+        95.1
+      ],
+      "cases": 6000,
+      "countries": 16
+    },
+    "same|n200|level": {
+      "mae": 2.65,
+      "mae_ci": [
+        2.5,
+        2.8
+      ],
+      "coverage": 95.6,
+      "coverage_ci": [
+        94.2,
+        96.8
+      ],
+      "cases": 1200,
+      "countries": 16
+    },
+    "small_cross|prior|gap": {
+      "mae": 10.13,
+      "mae_ci": [
+        9.1,
+        11.2
+      ],
+      "coverage": 95.3,
+      "coverage_ci": [
+        93.5,
+        96.9
+      ],
+      "cases": 24000,
+      "countries": 16
+    },
+    "small_cross|prior|level": {
+      "mae": 12.75,
+      "mae_ci": [
+        11.2,
+        14.4
+      ],
+      "coverage": 95.5,
+      "coverage_ci": [
+        92.7,
+        98.1
+      ],
+      "cases": 4800,
+      "countries": 16
+    },
+    "small_cross|n25|gap": {
+      "mae": 9.14,
+      "mae_ci": [
+        8.4,
+        9.8
+      ],
+      "coverage": 95.3,
+      "coverage_ci": [
+        94.2,
+        96.3
+      ],
+      "cases": 24000,
+      "countries": 16
+    },
+    "small_cross|n25|level": {
+      "mae": 6.5,
+      "mae_ci": [
+        6.3,
+        6.7
+      ],
+      "coverage": 94.1,
+      "coverage_ci": [
+        93.2,
+        95.0
+      ],
+      "cases": 4800,
+      "countries": 16
+    },
+    "small_cross|n50|gap": {
+      "mae": 8.39,
+      "mae_ci": [
+        7.8,
+        9.0
+      ],
+      "coverage": 94.8,
+      "coverage_ci": [
+        94.0,
+        95.6
+      ],
+      "cases": 24000,
+      "countries": 16
+    },
+    "small_cross|n50|level": {
+      "mae": 4.97,
+      "mae_ci": [
+        4.8,
+        5.1
+      ],
+      "coverage": 94.9,
+      "coverage_ci": [
+        94.0,
+        95.7
+      ],
+      "cases": 4800,
+      "countries": 16
+    },
+    "small_cross|n100|gap": {
+      "mae": 7.45,
+      "mae_ci": [
+        6.9,
+        8.0
+      ],
+      "coverage": 93.8,
+      "coverage_ci": [
+        93.0,
+        94.6
+      ],
+      "cases": 24000,
+      "countries": 16
+    },
+    "small_cross|n100|level": {
+      "mae": 3.65,
+      "mae_ci": [
+        3.5,
+        3.7
+      ],
+      "coverage": 94.0,
+      "coverage_ci": [
+        93.3,
+        94.7
+      ],
+      "cases": 4800,
+      "countries": 16
+    },
+    "small_cross|n200|gap": {
+      "mae": 6.51,
+      "mae_ci": [
+        6.0,
+        7.0
+      ],
+      "coverage": 92.8,
+      "coverage_ci": [
+        91.9,
+        93.5
+      ],
+      "cases": 24000,
+      "countries": 16
+    },
+    "small_cross|n200|level": {
+      "mae": 2.8,
+      "mae_ci": [
+        2.7,
+        2.9
+      ],
+      "coverage": 94.1,
+      "coverage_ci": [
+        93.3,
+        95.0
+      ],
+      "cases": 4800,
+      "countries": 16
+    }
+  },
+  "own_items": {
+    "generic|n0|gap": {
+      "mae": 7.46,
+      "mae_ci": [
+        7.0,
+        7.9
+      ],
+      "coverage": 95.5,
+      "coverage_ci": [
+        93.2,
+        97.5
+      ],
+      "cases": 400,
+      "countries": 16
+    },
+    "generic|n0|level": {
+      "mae": 14.9,
+      "mae_ci": [
+        12.4,
+        17.4
+      ],
+      "coverage": 96.2,
+      "coverage_ci": [
+        92.5,
+        100.0
+      ],
+      "cases": 80,
+      "countries": 16
+    },
+    "generic+local|n25|gap": {
+      "mae": 6.59,
+      "mae_ci": [
+        6.2,
+        7.0
+      ],
+      "coverage": 95.0,
+      "coverage_ci": [
+        93.1,
+        96.7
+      ],
+      "cases": 15164,
+      "countries": 16
+    },
+    "generic+local|n25|level": {
+      "mae": 6.96,
+      "mae_ci": [
+        6.7,
+        7.3
+      ],
+      "coverage": 92.6,
+      "coverage_ci": [
+        91.4,
+        93.8
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "generic+local|n50|gap": {
+      "mae": 6.34,
+      "mae_ci": [
+        6.0,
+        6.8
+      ],
+      "coverage": 94.9,
+      "coverage_ci": [
+        93.3,
+        96.4
+      ],
+      "cases": 15728,
+      "countries": 16
+    },
+    "generic+local|n50|level": {
+      "mae": 5.22,
+      "mae_ci": [
+        5.0,
+        5.4
+      ],
+      "coverage": 93.1,
+      "coverage_ci": [
+        92.0,
+        94.2
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "generic+local|n100|gap": {
+      "mae": 6.01,
+      "mae_ci": [
+        5.6,
+        6.5
+      ],
+      "coverage": 94.3,
+      "coverage_ci": [
+        93.0,
+        95.6
+      ],
+      "cases": 15958,
+      "countries": 16
+    },
+    "generic+local|n100|level": {
+      "mae": 3.85,
+      "mae_ci": [
+        3.7,
+        4.0
+      ],
+      "coverage": 94.5,
+      "coverage_ci": [
+        94.0,
+        95.0
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "generic+local|n200|gap": {
+      "mae": 5.49,
+      "mae_ci": [
+        5.1,
+        5.9
+      ],
+      "coverage": 94.7,
+      "coverage_ci": [
+        93.9,
+        95.5
+      ],
+      "cases": 15998,
+      "countries": 16
+    },
+    "generic+local|n200|level": {
+      "mae": 2.96,
+      "mae_ci": [
+        2.8,
+        3.1
+      ],
+      "coverage": 93.6,
+      "coverage_ci": [
+        92.6,
+        94.6
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "local|n25|gap": {
+      "mae": 19.02,
+      "mae_ci": [
+        17.9,
+        20.3
+      ],
+      "coverage": 96.5,
+      "coverage_ci": [
+        96.2,
+        96.9
+      ],
+      "cases": 15164,
+      "countries": 16
+    },
+    "local|n25|level": {
+      "mae": 7.39,
+      "mae_ci": [
+        7.1,
+        7.7
+      ],
+      "coverage": 93.9,
+      "coverage_ci": [
+        92.8,
+        94.9
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "local|n50|gap": {
+      "mae": 14.08,
+      "mae_ci": [
+        13.0,
+        15.2
+      ],
+      "coverage": 96.1,
+      "coverage_ci": [
+        95.7,
+        96.4
+      ],
+      "cases": 15728,
+      "countries": 16
+    },
+    "local|n50|level": {
+      "mae": 5.39,
+      "mae_ci": [
+        5.1,
+        5.6
+      ],
+      "coverage": 94.4,
+      "coverage_ci": [
+        93.7,
+        95.1
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "local|n100|gap": {
+      "mae": 10.3,
+      "mae_ci": [
+        9.4,
+        11.2
+      ],
+      "coverage": 95.5,
+      "coverage_ci": [
+        95.3,
+        95.8
+      ],
+      "cases": 15958,
+      "countries": 16
+    },
+    "local|n100|level": {
+      "mae": 3.87,
+      "mae_ci": [
+        3.7,
+        4.1
+      ],
+      "coverage": 95.1,
+      "coverage_ci": [
+        94.5,
+        95.8
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "local|n200|gap": {
+      "mae": 7.49,
+      "mae_ci": [
+        6.9,
+        8.1
+      ],
+      "coverage": 95.6,
+      "coverage_ci": [
+        95.2,
+        95.9
+      ],
+      "cases": 15998,
+      "countries": 16
+    },
+    "local|n200|level": {
+      "mae": 2.99,
+      "mae_ci": [
+        2.8,
+        3.2
+      ],
+      "coverage": 93.6,
+      "coverage_ci": [
+        92.6,
+        94.6
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "mrp|n25|gap": {
+      "mae": 11.02,
+      "mae_ci": [
+        10.0,
+        11.9
+      ],
+      "coverage": 94.4,
+      "coverage_ci": [
+        93.3,
+        95.4
+      ],
+      "cases": 16000,
+      "countries": 16
+    },
+    "mrp|n25|level": {
+      "mae": 6.85,
+      "mae_ci": [
+        6.7,
+        7.0
+      ],
+      "coverage": 95.5,
+      "coverage_ci": [
+        94.6,
+        96.4
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "mrp|n50|gap": {
+      "mae": 9.49,
+      "mae_ci": [
+        8.8,
+        10.2
+      ],
+      "coverage": 94.6,
+      "coverage_ci": [
+        93.7,
+        95.5
+      ],
+      "cases": 16000,
+      "countries": 16
+    },
+    "mrp|n50|level": {
+      "mae": 5.03,
+      "mae_ci": [
+        4.9,
+        5.2
+      ],
+      "coverage": 94.7,
+      "coverage_ci": [
+        93.9,
+        95.4
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "mrp|n100|gap": {
+      "mae": 7.9,
+      "mae_ci": [
+        7.3,
+        8.5
+      ],
+      "coverage": 94.5,
+      "coverage_ci": [
+        93.9,
+        95.1
+      ],
+      "cases": 16000,
+      "countries": 16
+    },
+    "mrp|n100|level": {
+      "mae": 3.68,
+      "mae_ci": [
+        3.5,
+        3.8
+      ],
+      "coverage": 95.2,
+      "coverage_ci": [
+        94.2,
+        95.9
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "mrp|n200|gap": {
+      "mae": 6.4,
+      "mae_ci": [
+        5.9,
+        6.9
+      ],
+      "coverage": 94.7,
+      "coverage_ci": [
+        94.1,
+        95.2
+      ],
+      "cases": 16000,
+      "countries": 16
+    },
+    "mrp|n200|level": {
+      "mae": 2.79,
+      "mae_ci": [
+        2.7,
+        2.9
+      ],
+      "coverage": 94.6,
+      "coverage_ci": [
+        93.8,
+        95.3
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "own|n0|gap": {
+      "mae": 6.53,
+      "mae_ci": [
+        5.9,
+        7.2
+      ],
+      "coverage": 93.8,
+      "coverage_ci": [
+        90.8,
+        96.8
+      ],
+      "cases": 400,
+      "countries": 16
+    },
+    "own|n0|level": {
+      "mae": 12.23,
+      "mae_ci": [
+        10.3,
+        14.0
+      ],
+      "coverage": 86.2,
+      "coverage_ci": [
+        81.2,
+        91.2
+      ],
+      "cases": 80,
+      "countries": 16
+    },
+    "own+local|n25|gap": {
+      "mae": 5.81,
+      "mae_ci": [
+        5.3,
+        6.3
+      ],
+      "coverage": 94.1,
+      "coverage_ci": [
+        91.7,
+        96.3
+      ],
+      "cases": 15164,
+      "countries": 16
+    },
+    "own+local|n25|level": {
+      "mae": 6.96,
+      "mae_ci": [
+        6.6,
+        7.4
+      ],
+      "coverage": 91.5,
+      "coverage_ci": [
+        89.5,
+        93.6
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "own+local|n50|gap": {
+      "mae": 5.79,
+      "mae_ci": [
+        5.3,
+        6.4
+      ],
+      "coverage": 94.3,
+      "coverage_ci": [
+        91.9,
+        96.4
+      ],
+      "cases": 15728,
+      "countries": 16
+    },
+    "own+local|n50|level": {
+      "mae": 5.29,
+      "mae_ci": [
+        5.0,
+        5.5
+      ],
+      "coverage": 92.5,
+      "coverage_ci": [
+        90.7,
+        94.1
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "own+local|n100|gap": {
+      "mae": 5.62,
+      "mae_ci": [
+        5.1,
+        6.2
+      ],
+      "coverage": 93.7,
+      "coverage_ci": [
+        91.3,
+        95.7
+      ],
+      "cases": 15958,
+      "countries": 16
+    },
+    "own+local|n100|level": {
+      "mae": 3.88,
+      "mae_ci": [
+        3.7,
+        4.0
+      ],
+      "coverage": 94.1,
+      "coverage_ci": [
+        93.4,
+        94.7
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "own+local|n200|gap": {
+      "mae": 5.24,
+      "mae_ci": [
+        4.8,
+        5.7
+      ],
+      "coverage": 94.3,
+      "coverage_ci": [
+        92.7,
+        95.7
+      ],
+      "cases": 15998,
+      "countries": 16
+    },
+    "own+local|n200|level": {
+      "mae": 2.96,
+      "mae_ci": [
+        2.8,
+        3.1
+      ],
+      "coverage": 93.6,
+      "coverage_ci": [
+        92.6,
+        94.6
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "own_mrp|n25|gap": {
+      "mae": 5.67,
+      "mae_ci": [
+        5.2,
+        6.2
+      ],
+      "coverage": 93.9,
+      "coverage_ci": [
+        91.8,
+        95.9
+      ],
+      "cases": 16000,
+      "countries": 16
+    },
+    "own_mrp|n25|level": {
+      "mae": 6.37,
+      "mae_ci": [
+        6.1,
+        6.6
+      ],
+      "coverage": 93.9,
+      "coverage_ci": [
+        92.6,
+        95.1
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "own_mrp|n50|gap": {
+      "mae": 5.48,
+      "mae_ci": [
+        5.0,
+        6.0
+      ],
+      "coverage": 93.9,
+      "coverage_ci": [
+        92.0,
+        95.6
+      ],
+      "cases": 16000,
+      "countries": 16
+    },
+    "own_mrp|n50|level": {
+      "mae": 4.85,
+      "mae_ci": [
+        4.6,
+        5.0
+      ],
+      "coverage": 93.6,
+      "coverage_ci": [
+        92.3,
+        94.8
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "own_mrp|n100|gap": {
+      "mae": 5.21,
+      "mae_ci": [
+        4.8,
+        5.7
+      ],
+      "coverage": 93.6,
+      "coverage_ci": [
+        92.0,
+        95.0
+      ],
+      "cases": 16000,
+      "countries": 16
+    },
+    "own_mrp|n100|level": {
+      "mae": 3.61,
+      "mae_ci": [
+        3.5,
+        3.7
+      ],
+      "coverage": 94.8,
+      "coverage_ci": [
+        93.9,
+        95.7
+      ],
+      "cases": 3200,
+      "countries": 16
+    },
+    "own_mrp|n200|gap": {
+      "mae": 4.9,
+      "mae_ci": [
+        4.5,
+        5.3
+      ],
+      "coverage": 93.8,
+      "coverage_ci": [
+        92.5,
+        95.0
+      ],
+      "cases": 16000,
+      "countries": 16
+    },
+    "own_mrp|n200|level": {
+      "mae": 2.77,
+      "mae_ci": [
+        2.6,
+        2.9
+      ],
+      "coverage": 94.3,
+      "coverage_ci": [
+        93.6,
+        95.0
+      ],
+      "cases": 3200,
+      "countries": 16
+    }
+  }
+}
