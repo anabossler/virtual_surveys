@@ -16,3 +16,6 @@ dag_edges_3391.csv
 step1_mcmc_samples.json
 eval/results/
 bn_output/*.json
+bn_cis_output/
+transport_output/jv_parts*/
+bn_cis_output/

@@ -92,3 +92,20 @@ Complete-case analysis drops 59% of respondents and misses P(worry = 2) by 6 poi
 Under mild MAR (`check_missing_mar30.txt`), all three agree, and complete cases give wider intervals.
 
 Speed: about 0.4–0.65 s per sweep with 15 variables, n = 4000 and 3% missing cells, so 3000 sweeps take about half an hour on a laptop.
+
+## Joint model on CIS 3391 and validation on ISSP (M2–M5)
+
+| File | What it does | Data |
+|---|---|---|
+| `cis_joint.py` | Network over 22 CIS variables, with missing answers inside the model. Tables use the weighted pseudo-posterior (PESOFIN). Two chains, plus a complete-case comparison. | CIS microdata (local) |
+| `transfer_node.py` | Adds the outcome node to the network. Its table comes from the transfer model with a hierarchical transport layer, and the projection is broken down by any network variable. | posterior of `cis_joint.py` |
+| `synthetic.py` | Fully synthetic datasets with the outcome, and the combining rule for fully synthetic data, checked against the posterior predictive. | posterior of `cis_joint.py` |
+| `validate_issp.py` | Retrospective validation of the joint model on ISSP 2020: leave-region-out hyperparameters estimated on same-item and on cross-item transfers, no inflation factor, and local updates by importance resampling. | ISSP microdata (local) |
+
+Order of runs (outputs of the first and third stay local; the others are aggregate):
+
+    python -m bn.cis_joint                     # ~20-40 min
+    python -m bn.validate_issp                 # ~30-40 min; writes transport_output/hierarchical_transport.json
+    python -m bn.transfer_node --hier transport_output/hierarchical_transport.json
+    python -m bn.transfer_node                 # Finland-Spain transport layer, for comparison
+    python -m bn.synthetic --hier transport_output/hierarchical_transport.json

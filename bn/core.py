@@ -52,8 +52,9 @@ class LocalScore:
         self.alpha, self.gamma, self.power, self.k = alpha, gamma, power, max_parents
         self._cache: dict[tuple[int, tuple[int, ...]], float] = {}
 
-    def counts(self, j: int, parents: tuple[int, ...]) -> np.ndarray:
-        """Counts N[q, l] for parent configuration q and value l of node j."""
+    def counts(self, j: int, parents: tuple[int, ...], weights: np.ndarray | None = None) -> np.ndarray:
+        """Counts N[q, l] for parent configuration q and value l of node j
+        (weighted counts if survey weights are given)."""
         r = self.arity[j]
         if parents:
             ar = self.arity[list(parents)]
@@ -61,7 +62,7 @@ class LocalScore:
             q = int(np.prod(ar))
         else:
             cfg, q = np.zeros(self.n, dtype=np.int64), 1
-        return np.bincount(cfg * r + self.data[:, j], minlength=q * r).reshape(q, r)
+        return np.bincount(cfg * r + self.data[:, j], weights=weights, minlength=q * r).reshape(q, r)
 
     def log_ml(self, j: int, parents: tuple[int, ...]) -> float:
         n = self.counts(j, parents).astype(float)
@@ -286,11 +287,16 @@ def structure_mcmc(score: LocalScore, iters: int, burn: int, thin: int,
 
 
 # -------------------------------------------------------------- parameters
-def sample_cpts(score: LocalScore, dag: tuple, rng: np.random.Generator, mle: bool = False):
-    """Conditional probability tables theta_j[q, :] ~ Dirichlet(alpha + N[q, :]) (or MLE)."""
+def sample_cpts(score: LocalScore, dag: tuple, rng: np.random.Generator, mle: bool = False,
+                weights: np.ndarray | None = None):
+    """Conditional probability tables theta_j[q, :] ~ Dirichlet(alpha + N[q, :]) (or MLE).
+
+    With survey weights (normalised to sum to n) the counts are weighted: the
+    pseudo-posterior of Savitsky and Toth (2016), which targets the population
+    tables rather than the sample ones."""
     cpts = []
     for j, ps in enumerate(dag):
-        n = score.counts(j, ps).astype(float)
+        n = score.counts(j, ps, weights).astype(float)
         if mle:
             tot = n.sum(1, keepdims=True)
             th = np.where(tot > 0, n / np.maximum(tot, 1), 1.0 / n.shape[1])

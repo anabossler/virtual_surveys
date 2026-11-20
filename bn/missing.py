@@ -65,8 +65,11 @@ class DAResult:
 def da_mcmc(data: np.ndarray, arity, sweeps: int, burn: int, thin: int, rng: np.random.Generator,
             gamma: float = 0.0, alpha: float = 1.0, max_parents: int = 3, allowed=None,
             struct_steps: int = 20, gibbs_prob: float = 0.3, init_dag=None,
-            keep_imputed: int = 0) -> DAResult:
-    """Joint posterior of (G, theta, X_mis). `data` uses -1 for a missing cell."""
+            keep_imputed: int = 0, verbose_every: int = 0, label: str = "",
+            weights: np.ndarray | None = None) -> DAResult:
+    """Joint posterior of (G, theta, X_mis). `data` uses -1 for a missing cell.
+    With `weights`, the tables are drawn from the weighted pseudo-posterior; the
+    network score and the imputation step use the same tables."""
     import time
     t0 = time.time()
     arity = np.asarray(arity, dtype=np.int64)
@@ -84,7 +87,7 @@ def da_mcmc(data: np.ndarray, arity, sweeps: int, burn: int, thin: int, rng: np.
         res = structure_mcmc(score, struct_steps, struct_steps, 1, rng, init=parents, gibbs_prob=gibbs_prob)
         dag = res.final
         parents = [set(p) for p in dag]
-        cpts = sample_cpts(score, dag, rng)
+        cpts = sample_cpts(score, dag, rng, weights=weights)
         if s >= burn and (s - burn) % thin == 0:
             out.dags.append(dag); out.cpts.append(cpts)
             out.log_post.append(sum(score(j, dag[j]) for j in range(len(dag))))
@@ -92,5 +95,9 @@ def da_mcmc(data: np.ndarray, arity, sweeps: int, burn: int, thin: int, rng: np.
                 out.imputed.append(Y.copy())
         changed = impute(Y, miss, dag, cpts, arity, rng)
         score.refresh(Y, changed)
+        if verbose_every and (s + 1) % verbose_every == 0:
+            el = time.time() - t0
+            print(f"    {label} sweep {s + 1}/{sweeps}: {el / 60:.1f} min, "
+                  f"about {el / (s + 1) * (sweeps - s - 1) / 60:.0f} min left", flush=True)
     out.seconds = time.time() - t0
     return out
