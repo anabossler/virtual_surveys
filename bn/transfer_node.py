@@ -37,6 +37,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import pickle
 from pathlib import Path
 
@@ -47,8 +48,19 @@ from scipy.stats import norm
 
 from bn.core import forward_sample
 
+# Transfer predictors and the network node each one is computed from. With
+# BVS_SECONDARY=1, secondary education (Ruokamo et al. 2022, model 2: 0.4235, SE
+# 0.3284) is added, so that the reference category of education is primary or less,
+# as in the source. Finnish "secondary" is upper secondary (general or vocational);
+# lower secondary belongs to Finnish basic education, so ESTUDIOS 5-6 is coded as
+# secondary and ESTUDIOS 1-4 stays in the reference.
 PREDICTORS = ("female", "under_30", "high_education", "recycles", "env_worry")
-PARENT_VARS = ("SEX", "BIRTH", "ESTUDIOS", "V52", "V15")
+PREDICTOR_VAR = {"female": "SEX", "under_30": "BIRTH", "high_education": "ESTUDIOS",
+                 "recycles": "V52", "env_worry": "V15"}
+if os.environ.get("BVS_SECONDARY") == "1":
+    PREDICTORS = PREDICTORS + ("secondary_education",)
+    PREDICTOR_VAR["secondary_education"] = "ESTUDIOS"
+PARENT_VARS = tuple(dict.fromkeys(PREDICTOR_VAR[p] for p in PREDICTORS))  # unique parent nodes
 P0, P0_N = 0.38, 301
 
 
@@ -60,6 +72,7 @@ def predictor_maps(coding: dict) -> dict:
         "female": np.array([1.0 if l.split("+")[0] == "2" else 0.0 for l in lab("SEX")]),
         "under_30": np.array([1.0 if l == "18-29" else 0.0 for l in lab("BIRTH")]),
         "high_education": np.array([1.0 if l.startswith("7") else 0.0 for l in lab("ESTUDIOS")]),
+        "secondary_education": np.array([1.0 if l.startswith("5-6") else 0.0 for l in lab("ESTUDIOS")]),
         "recycles": np.array([1.0 if l.split("+")[0] in ("1", "2") else 0.0 for l in lab("V52")]),
         # centred worry score: (V15 - 3) / 2 in [-1, 1]
         "env_worry": np.array([(float(l.split("+")[0]) - 3.0) / 2.0 for l in lab("V15")]),
@@ -67,7 +80,7 @@ def predictor_maps(coding: dict) -> dict:
 
 
 def design(Y: np.ndarray, names: list, maps: dict) -> np.ndarray:
-    return np.column_stack([maps[p][Y[:, names.index(v)]] for p, v in zip(PREDICTORS, PARENT_VARS)])
+    return np.column_stack([maps[p][Y[:, names.index(PREDICTOR_VAR[p])]] for p in PREDICTORS])
 
 
 def calibrate(linear: np.ndarray, p0: float) -> float:
@@ -136,7 +149,7 @@ def project(post: dict, T: dict, k: float, n_pop: int, rng, extra: list[str] | N
     pidx = [names.index(v) for v in PARENT_VARS]
     # every configuration of the five parent nodes, for the outcome table
     grid = np.array(np.meshgrid(*[np.arange(arity[j]) for j in pidx], indexing="ij")).reshape(len(pidx), -1).T
-    xg = np.column_stack([maps[p][grid[:, i]] for i, p in enumerate(PREDICTORS)])
+    xg = np.column_stack([maps[p][grid[:, PARENT_VARS.index(PREDICTOR_VAR[p])]] for p in PREDICTORS])
     rows, tables = [], []
     for dag, cpts in zip(post["dags"], post["cpts"]):
         Y = forward_sample(dag, cpts, arity, n_pop, rng)
@@ -210,7 +223,7 @@ def main():
     show[["mean", "low", "high"]] *= 100
     show = show.round({"mean": 1, "low": 1, "high": 1, "p_positive": 2})
     print(show.to_string())
-    tag = f"k{a.k:g}" + ("_hier" if a.hier else "")
+    tag = f"k{a.k:g}" + ("_hier" if a.hier else "") + ("_sec" if "secondary_education" in PREDICTORS else "")
     s.to_csv(a.out / f"transfer_node_summary_{tag}.csv", index=False)
     np.savez_compressed(a.out / f"transfer_node_tables_{tag}.npz", tables=tables, grid=grid)
     print(f"\n-> {a.out}/transfer_node_summary_{tag}.csv (aggregate; can be committed)")

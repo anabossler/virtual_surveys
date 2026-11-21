@@ -4,3 +4,4 @@ acceptance_food_packaging,under_30,BIRTH,survey year - BIRTH < 30,0.4557,0.2551,
 acceptance_food_packaging,high_education,ESTUDIOS,ESTUDIOS == 7 (Superiores),0.6064,0.3320,0.0677,Ruokamo et al. 2022,model 2 (ordered probit; n = 272),published
 acceptance_food_packaging,recycles,V52,V52 in {1; 2} (Siempre; A menudo),0.3980,0.1807,0.0276,Ruokamo et al. 2022,model 2 (ordered probit; n = 272),published
 acceptance_food_packaging,env_worry,V15,five-point scale; see --worry-coding,0.7723,0.1538,0.0000,Ruokamo et al. 2022,model 2 (ordered probit; n = 272),published; scale coding to verify
+acceptance_food_packaging,secondary_education,ESTUDIOS,ESTUDIOS in {5; 6} (upper secondary and vocational; reference 1-4),0.4235,0.3284,0.1973,Ruokamo et al. 2022,model 2 (ordered probit; n = 272),published; used only with BVS_SECONDARY=1
